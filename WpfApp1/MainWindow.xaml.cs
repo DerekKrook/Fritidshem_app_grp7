@@ -24,5 +24,15 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DbOperations db = new DbOperations();
+
+            List<Child> children = db.GetAllChildren();
+            listBox.ItemsSource = children;
+           
+
+        }
     }
 }
