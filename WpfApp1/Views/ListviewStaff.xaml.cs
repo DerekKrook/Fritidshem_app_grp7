@@ -11,14 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.DbOperation;
+using WpfApp1.Models; 
 
 namespace WpfApp1.Views
 {
+    
     /// <summary>
     /// Interaction logic for ListViewStaff.xaml
     /// </summary>
     public partial class ListViewStaff : Window
     {
+        List<Child> children = new List<Child>();
+
         public ListViewStaff()
         {
             InitializeComponent();
@@ -28,10 +33,10 @@ namespace WpfApp1.Views
         {
             DbOperations db = new DbOperations();
 
-            children = db.GetChild(txtLastNameGuardian.Text);
+            children = db.GetAllChildren(txtNameChild.Text);
 
-            listViewGuardian.ItemsSource = children;
-            listViewGuardian.DisplayMemberPath = "Fullinfo";
+            ListViewStaff1.ItemsSource = children;
+            ListViewStaff1.DisplayMemberPath = "Fullinformation";
         }
     }
 }
