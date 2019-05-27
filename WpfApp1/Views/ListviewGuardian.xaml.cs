@@ -29,12 +29,12 @@ namespace WpfApp1.Views
             //UpdateListView();
         }
 
-        //private void UpdateListView()
-        //{
-        //    DbOperations db = new DbOperations();
+        private void UpdateListView()
+        {
+            DbOperations db = new DbOperations();
 
-        //    listViewGuardian.ItemsSource = db.GetGuardian(txtLastNameGuardian.Text); 
-        //}
+            listViewGuardian.ItemsSource = db.GetGuardian(txtLastNameGuardian.Text);
+        }
 
         private void BtnSearchGuardian_Click(object sender, RoutedEventArgs e)
         {

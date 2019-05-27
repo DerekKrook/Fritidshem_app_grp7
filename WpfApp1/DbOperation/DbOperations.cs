@@ -57,7 +57,9 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($"SELECT * FROM guardian WHERE lastname = '{lastName}'").ToList();
+                //var output = connection.Query<Guardian>($"SELECT * FROM guardian WHERE lastname = '{lastName}'").ToList();
+
+                var output = connection.Query<Guardian>($"SELECT * FROM guardian").ToList();
 
                 return output;
             }
