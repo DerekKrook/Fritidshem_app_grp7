@@ -92,7 +92,24 @@ namespace WpfApp1
             }
         }
 
-        
+        // Hämtar vårdnadshavare till barn
+        public static List<Guardian> GetGuardianOfChild(Child child)
+        {
+
+            var Id = child.Id;
+           
+            
+
+            var Query = $"SELECT guardian.firstname, guardian.lastname FROM guardian_child INNER JOIN guardian ON guardian_id = guardian.id WHERE child_id='{Id}'";
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Guardian>(Query).ToList();
+
+                return output;
+            }
+        }
+
     }
 }
 

@@ -24,7 +24,8 @@ namespace WpfApp1.Views
     {
         //DbOperations db = new DbOperations();
         List<Child> children = new List<Child>();
-         
+        List<Guardian> guardian = new List<Guardian>();
+
         public ListViewStaff()
         {
             InitializeComponent();
@@ -48,6 +49,17 @@ namespace WpfApp1.Views
 
             ListViewStaff1.ItemsSource = children;
             ListViewStaff1.DisplayMemberPath = "Fullinformation";
+        }
+
+        private void ListViewStaff1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            Child child = (Child)ListViewStaff1.SelectedItem;
+            guardian = DbOperations.GetGuardianOfChild(child);
+
+            
+            listViewGuardian.ItemsSource = guardian;
+            listViewGuardian.DisplayMemberPath = "Fullinfo";
         }
     }
 }

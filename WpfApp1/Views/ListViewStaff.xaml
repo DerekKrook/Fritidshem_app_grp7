@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ListViewStaff" Height="450" Width="800" Activated="Window_Activated">
     <Grid>
-        <ListView x:Name="ListViewStaff1" HorizontalAlignment="Left" Height="283" Margin="224,73,0,0" VerticalAlignment="Top" Width="450">
+        <ListView x:Name="ListViewStaff1" HorizontalAlignment="Left" Height="283" Margin="224,73,0,0" VerticalAlignment="Top" Width="450" SelectionChanged="ListViewStaff1_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
@@ -20,5 +20,13 @@
 
         <Button x:Name="btnSearchChild" Content="Sök barn" HorizontalAlignment="Left" Margin="66,149,0,0" VerticalAlignment="Top" Width="75" Click="BtnSearchChild_Click"/>
         <TextBox x:Name="txtNameChild" HorizontalAlignment="Left" Height="23" Margin="46,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <ListView x:Name="listViewGuardian" HorizontalAlignment="Left" Height="134" Margin="22,236,0,0" VerticalAlignment="Top" Width="166">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
+                    <GridViewColumn Header="Efternamn" Width="150" DisplayMemberBinding="{Binding Lastname}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
