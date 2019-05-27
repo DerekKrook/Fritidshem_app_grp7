@@ -40,10 +40,13 @@ namespace WpfApp1
 
         private void BtnStaff_Click(object sender, RoutedEventArgs e)
         {
-            ListViewStaff listViewStaff = new ListViewStaff();
 
-            listViewStaff.Show();
+            StaffLogin stafflogin = new StaffLogin();
+            
 
+            stafflogin.Show();
+            
+        
             this.Close();
         }
     }
