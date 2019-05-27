@@ -7,10 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="button" Content="Hämta barn" HorizontalAlignment="Left" Margin="95,234,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="176" Margin="267,110,0,0" VerticalAlignment="Top" Width="172"/>
-        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Height="28" Margin="267,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" AutomationProperties.HelpText="Efternamn"/>
-        <Button x:Name="btnSearch" Content="Sök på efternamn" HorizontalAlignment="Left" Margin="312,69,0,0" VerticalAlignment="Top" Width="116" Click="BtnSearch_Click" Height="22"/>
 
     </Grid>
 </Window>
