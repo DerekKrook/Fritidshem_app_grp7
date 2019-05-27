@@ -29,6 +29,22 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        
+        private void BtnGuardian_Click(object sender, RoutedEventArgs e)
+        {
+            ListviewGuardian listviewGuardian = new ListviewGuardian();
+
+            listviewGuardian.Show();
+
+            this.Close();
+        }
+
+        private void BtnStaff_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewStaff listViewStaff = new ListViewStaff();
+
+            listViewStaff.Show();
+
+            this.Close();
+        }
     }
 }

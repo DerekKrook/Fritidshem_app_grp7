@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="FirstPage" Height="450" Width="800">
     <Grid>
+        <Button x:Name="btnGuardian" Content="Vårdnadshavare" HorizontalAlignment="Left" Margin="100,128,0,0" VerticalAlignment="Top" Width="200" Height="120" Click="BtnGuardian_Click"/>
+        <Button x:Name="btnStaff" Content="Personal" HorizontalAlignment="Left" Margin="500,128,0,0" VerticalAlignment="Top" Width="200" Height="120" Click="BtnStaff_Click"/>
 
     </Grid>
 </Window>
