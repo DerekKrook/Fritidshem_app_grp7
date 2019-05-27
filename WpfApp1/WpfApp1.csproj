@@ -50,6 +50,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.60.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.60.6\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql, Version=4.0.7.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.4.0.7\lib\net451\Npgsql.dll</HintPath>
     </Reference>
@@ -93,6 +96,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\ListviewGuardian.xaml.cs">
+      <DependentUpon>ListviewGuardian.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -101,14 +107,28 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Child.cs" />
-    <Compile Include="DbOperations.cs" />
+    <Compile Include="DbOperation\ConnString.cs" />
+    <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\Child.cs" />
+    <Compile Include="DbOperation\DbOperations.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ListviewGuardian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Date.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Facility.cs" />
+    <Compile Include="Models\Guardian.cs" />
+    <Compile Include="Models\Meal.cs" />
+    <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\School.cs" />
+    <Compile Include="Models\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -149,5 +169,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

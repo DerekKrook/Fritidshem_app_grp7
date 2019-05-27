@@ -8,13 +8,13 @@ namespace WpfApp1
 {
     class Child
     {
-        public int id { get; set; }
-        public string firstname { get; set; }
-        public string lastname { get; set; }
+        public int Id { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
 
         public override string ToString()
         {
-            return $"{id} {firstname} {lastname}";
+            return $"{Id} {Firstname} {Lastname}";
         }
     }
 }

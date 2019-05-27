@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Models;
 
 namespace WpfApp1
 {
@@ -20,6 +21,8 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Guardian> guardians = new List<Guardian>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,6 +41,16 @@ namespace WpfApp1
            
             //inget test
 
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            DbOperations db = new DbOperations();
+
+            guardians = db.GetGuardian(txtLastName.Text);
+
+            listBox.ItemsSource = guardians;
+            listBox.DisplayMemberPath = "Fullinfo";
         }
     }
 }
