@@ -12,9 +12,14 @@ namespace WpfApp1
         public string Firstname { get; set; }
         public string Lastname { get; set; }
 
-        public override string ToString()
+        public string Fullinformation
         {
-            return $"{Id} {Firstname} {Lastname}";
+            get
+            {
+
+                return $"{Firstname} {Lastname}";
+
+            }
         }
     }
 }
