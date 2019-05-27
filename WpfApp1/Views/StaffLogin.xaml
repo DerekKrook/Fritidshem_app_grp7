@@ -7,7 +7,15 @@
         mc:Ignorable="d"
         Title="StaffLogin" Height="450" Width="800" Activated="Window_Activated">
     <Grid>
-        <ListBox x:Name="listBoxStaff" HorizontalAlignment="Left" Height="241" Margin="379,94,0,0" VerticalAlignment="Top" Width="227" SelectionChanged="ListBoxStaff_SelectionChanged"/>
+        <ListView x:Name="listViewTotalStaff" HorizontalAlignment="Left" Height="254" Margin="95,94,0,0" VerticalAlignment="Top" Width="300
+                  " SelectionChanged="ListViewTotalStaff_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
+                    <GridViewColumn Header="Efternamn" Width="150" DisplayMemberBinding="{Binding Lastname}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

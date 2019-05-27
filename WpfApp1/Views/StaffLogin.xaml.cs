@@ -36,12 +36,14 @@ namespace WpfApp1.Views
 
             staff = db.GetAllStaff();
 
-            listBoxStaff.ItemsSource = staff;
-            listBoxStaff.DisplayMemberPath = "Fullinformation";
+            listViewTotalStaff.ItemsSource = staff;
+            listViewTotalStaff.DisplayMemberPath = "Fullinformation";
         }
 
-        private void ListBoxStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void ListViewTotalStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             // Staff staff = (Staff)listBoxStaff.SelectedItem;
             ListViewStaff staffview = new ListViewStaff();
 
