@@ -31,6 +31,8 @@ namespace WpfApp1
 
             List<Child> children = db.GetAllChildren();
 
+            // test test
+
             listBox.ItemsSource = null;
             listBox.ItemsSource = children;
            
