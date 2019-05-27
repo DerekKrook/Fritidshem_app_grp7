@@ -15,16 +15,30 @@ namespace WpfApp1
     class DbOperations
     {
         //Hämtar barn
-        public List<Child> GetAllChildren(string firstName)
+        public List<Child> GetChildren(string input)
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT * FROM child WHERE firstname = '{firstName}'").ToList();
-            
+                var output = connection.Query<Child>($"SELECT * FROM child WHERE firstname LIKE '%{input}%' OR lastname LIKE '%{input}%'").ToList();
+
+
                return output;
 
             }
             
+        }
+
+        public List<Child> GetAllChildren()
+        {
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>($"SELECT * FROM child").ToList();
+
+
+                return output;
+
+            }
+
         }
 
         //Hämtar föräldrar beroende på sökning av efternamn

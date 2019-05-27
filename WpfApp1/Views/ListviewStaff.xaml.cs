@@ -22,8 +22,9 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class ListViewStaff : Window
     {
+        DbOperations db = new DbOperations();
         List<Child> children = new List<Child>();
-
+         
         public ListViewStaff()
         {
             InitializeComponent();
@@ -31,9 +32,17 @@ namespace WpfApp1.Views
 
         private void BtnSearchChild_Click(object sender, RoutedEventArgs e)
         {
-            DbOperations db = new DbOperations();
+            
 
-            children = db.GetAllChildren(txtNameChild.Text);
+            children = db.GetChildren(txtNameChild.Text);
+
+            ListViewStaff1.ItemsSource = children;
+            ListViewStaff1.DisplayMemberPath = "Fullinformation";
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            children = db.GetAllChildren();
 
             ListViewStaff1.ItemsSource = children;
             ListViewStaff1.DisplayMemberPath = "Fullinformation";
