@@ -7,13 +7,18 @@
         mc:Ignorable="d"
         Title="ListviewGuardian" Height="450" Width="800">
     <Grid>
-        <ListView HorizontalAlignment="Left" Height="275" Margin="172,87,0,0" VerticalAlignment="Top" Width="470">
+        <ListView x:Name="listViewGuardian" HorizontalAlignment="Left" Height="275" Margin="168,37,0,0" VerticalAlignment="Top" Width="456">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Förnamn" Width="220" DisplayMemberBinding="{Binding Firstname}"/>
+                    <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
+                    <GridViewColumn Header="Efternamn" Width="150" DisplayMemberBinding="{Binding Lastname}"/>
+                    <GridViewColumn Header="Email" Width="150" DisplayMemberBinding="{Binding Email}"/>
+
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="btnSearchGuardian" Content="Sök" HorizontalAlignment="Left" Margin="46,144,0,0" VerticalAlignment="Top" Width="75" Click="BtnSearchGuardian_Click"/>
+        <TextBox x:Name="txtLastNameGuardian" HorizontalAlignment="Left" Height="23" Margin="26,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

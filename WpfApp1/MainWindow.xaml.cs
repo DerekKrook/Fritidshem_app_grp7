@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Models;
+using WpfApp1.Views;
 
 namespace WpfApp1
 {
@@ -21,36 +22,13 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Guardian> guardians = new List<Guardian>();
+       
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            DbOperations db = new DbOperations();
-
-            List<Child> children = db.GetAllChildren();
-
-            // test test
-
-            listBox.ItemsSource = null;
-            listBox.ItemsSource = children;
-           
-            //inget test
-
-        }
-
-        private void BtnSearch_Click(object sender, RoutedEventArgs e)
-        {
-            DbOperations db = new DbOperations();
-
-            guardians = db.GetGuardian(txtLastName.Text);
-
-            listBox.ItemsSource = guardians;
-            listBox.DisplayMemberPath = "Fullinfo";
-        }
+        
     }
 }
