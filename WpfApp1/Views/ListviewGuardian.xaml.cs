@@ -33,17 +33,25 @@ namespace WpfApp1.Views
         {
             DbOperations db = new DbOperations();
 
-            listViewGuardian.ItemsSource = db.GetGuardian(txtLastNameGuardian.Text);
-        }
-
-        private void BtnSearchGuardian_Click(object sender, RoutedEventArgs e)
-        {
-            DbOperations db = new DbOperations();
-
             guardians = db.GetGuardian(txtLastNameGuardian.Text);
 
             listViewGuardian.ItemsSource = guardians;
             listViewGuardian.DisplayMemberPath = "Fullinfo";
+        }
+
+        private void BtnSearchGuardian_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateListView();
+        }
+
+        private void ListViewGuardian_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Guardian guardian = (Guardian)listViewGuardian.SelectedItem;
+        }
+
+        private void ListViewGuardian_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateListView();
         }
     }
 }
