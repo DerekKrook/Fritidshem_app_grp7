@@ -48,7 +48,9 @@ namespace WpfApp1.Views
         {
             Guardian guardian = (Guardian)listViewGuardian.SelectedItem;
             DbOperations.GetChildrenOfGuardian(guardian);
-                       
+
+            LoggedInGuardian loggedIn = new LoggedInGuardian();
+                      
         }
 
         private void ListViewGuardian_Loaded(object sender, RoutedEventArgs e)

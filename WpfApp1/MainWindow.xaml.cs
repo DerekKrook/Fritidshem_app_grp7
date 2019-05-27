@@ -46,7 +46,7 @@ namespace WpfApp1
 
             stafflogin.Show();
             
-        
+                
             this.Close();
         }
     }
