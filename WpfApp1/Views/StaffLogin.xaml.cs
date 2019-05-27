@@ -31,10 +31,13 @@ namespace WpfApp1.Views
         private void Window_Activated(object sender, EventArgs e)
         {
 
-            DbOperations db = new DbOperations();
+           // DbOperations db = new DbOperations();
             List<Staff> staff = new List<Staff>();
 
-            staff = db.GetAllStaff();
+            //staff = db.GetAllStaff();
+
+            staff = DbOperations.GetAllStaff();
+
 
             listViewTotalStaff.ItemsSource = staff;
             listViewTotalStaff.DisplayMemberPath = "Fullinformation";

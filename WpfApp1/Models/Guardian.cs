@@ -19,10 +19,12 @@ namespace WpfApp1.Models
             get
             {
                 //Istället för override tostring skapar vi en property som endast hämtar information
-                return $"{Firstname} {Lastname} ({Email}) {Phone}";
+                return $"{Firstname} {Lastname} ({Email}) {Phone.ToString()}";
                     
             }
                 
         }
+
+       
     }
 }

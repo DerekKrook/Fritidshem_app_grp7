@@ -22,7 +22,7 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class ListViewStaff : Window
     {
-        DbOperations db = new DbOperations();
+        //DbOperations db = new DbOperations();
         List<Child> children = new List<Child>();
          
         public ListViewStaff()
@@ -34,7 +34,9 @@ namespace WpfApp1.Views
         {
             
 
-            children = db.GetChildren(txtNameChild.Text);
+           // children = db.GetChildren(txtNameChild.Text);
+            children = DbOperations.GetChildren(txtNameChild.Text);
+
 
             ListViewStaff1.ItemsSource = children;
             ListViewStaff1.DisplayMemberPath = "Fullinformation";
@@ -42,7 +44,7 @@ namespace WpfApp1.Views
 
         private void Window_Activated(object sender, EventArgs e)
         {
-            children = db.GetAllChildren();
+            children = DbOperations.GetAllChildren();
 
             ListViewStaff1.ItemsSource = children;
             ListViewStaff1.DisplayMemberPath = "Fullinformation";

@@ -22,6 +22,7 @@ namespace WpfApp1.Views
     public partial class ListviewGuardian : Window
     {
         List<Guardian> guardians = new List<Guardian>();
+        List<Child> children = new List<Child>();
 
         public ListviewGuardian()
         {
@@ -29,29 +30,30 @@ namespace WpfApp1.Views
             //UpdateListView();
         }
 
-        private void UpdateListView()
-        {
-            DbOperations db = new DbOperations();
-
-            guardians = db.GetGuardian(txtLastNameGuardian.Text);
+        private void UpdateListViewGuardian()
+        {            
+            guardians = DbOperations.GetAllGuardians();
 
             listViewGuardian.ItemsSource = guardians;
             listViewGuardian.DisplayMemberPath = "Fullinfo";
+       
         }
 
         private void BtnSearchGuardian_Click(object sender, RoutedEventArgs e)
         {
-            UpdateListView();
+            UpdateListViewGuardian();
         }
 
         private void ListViewGuardian_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Guardian guardian = (Guardian)listViewGuardian.SelectedItem;
+            DbOperations.GetChildrenOfGuardian(guardian);
+                       
         }
 
         private void ListViewGuardian_Loaded(object sender, RoutedEventArgs e)
         {
-            UpdateListView();
+            UpdateListViewGuardian();
         }
     }
 }

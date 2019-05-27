@@ -12,15 +12,14 @@ using System.Data;
 
 namespace WpfApp1
 {
-    class DbOperations
+    static class DbOperations
     {
         //Hämtar specifikt barn SÖK för- och efternamn.
-        public List<Child> GetChildren(string input)
+        public static List<Child> GetChildren(string input)
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Child>($"SELECT * FROM child WHERE firstname LIKE '%{input}%' OR lastname LIKE '%{input}%'").ToList();
-
 
                return output;
 
@@ -28,52 +27,72 @@ namespace WpfApp1
             
         }
 
-        /// Hämtar alla barn
-        public List<Child> GetAllChildren()
+        //Hämtar alla barn
+        public static List<Child> GetAllChildren()
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Child>($"SELECT * FROM child").ToList();
 
-
                 return output;
 
             }
 
         }
 
-        // Hämtar alla anställda
-        public List<Staff> GetAllStaff()
+        //Hämtar alla anställda
+        public static List<Staff> GetAllStaff()
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Staff>($"SELECT * FROM staff").ToList();
 
-
                 return output;
 
             }
 
         }
 
-        //Hämtar föräldrar beroende på sökning av efternamn
-        public List<Guardian> GetGuardian(string lastName)
-        {
+        //Hämtar alla föräldrar
+        public static List<Guardian> GetAllGuardians()
+         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            {
-                //var output = connection.Query<Guardian>($"SELECT * FROM guardian WHERE lastname = '{lastName}'").ToList();
-
+            {              
                 var output = connection.Query<Guardian>($"SELECT * FROM guardian").ToList();
 
                 return output;
             }
         }
 
-        public void InsertGuardian()
+        //Hämtar föräldrar efter sökning av för - och efternamn
+        public static List<Guardian> GetGuardian(string firstName, string lastName)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Guardian>($"SELECT * FROM child WHERE firstname LIKE '%{firstName}%' OR lastname LIKE '%{lastName}%'").ToList();
+
+                return output;
+            }
+        }
+
+        //Hämtar barn till vårdnadshavare 
+        public static List<Child> GetChildrenOfGuardian(Guardian guardian)
         {
 
+            var Id = guardian.Id;
+
+            var Query = $"SELECT child.firstname, child.lastname FROM guardian_child INNER JOIN child ON guardian_id = child.id WHERE guardian_id='{Id}'"; 
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>(Query).ToList();
+
+                return output;
+            }
         }
+
+        
     }
 }
 

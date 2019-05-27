@@ -13,7 +13,7 @@
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
                     <GridViewColumn Header="Efternamn" Width="150" DisplayMemberBinding="{Binding Lastname}"/>
                     <GridViewColumn Header="Email" Width="200" DisplayMemberBinding="{Binding Email}"/>
-                    <GridViewColumn Header="Telefon" Width="150" DisplayMemberBinding="{Binding Telefon}"/>
+                    <GridViewColumn Header="Telefon" Width="150" DisplayMemberBinding="{Binding Phone}"/>
 
 
                 </GridView>
