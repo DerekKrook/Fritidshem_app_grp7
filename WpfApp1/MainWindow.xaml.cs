@@ -30,6 +30,8 @@ namespace WpfApp1
             DbOperations db = new DbOperations();
 
             List<Child> children = db.GetAllChildren();
+
+            listBox.ItemsSource = null;
             listBox.ItemsSource = children;
            
 
