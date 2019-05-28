@@ -24,6 +24,9 @@ namespace WpfApp1
         //DbOperations db = new DbOperations();
         List<Child> children = new List<Child>();
         List<Guardian> guardian = new List<Guardian>();
+        List<Child> getclassone = new List<Child>();
+        List<Child> getclasstwo = new List<Child>();
+        List<Child> getclassthree = new List<Child>();
 
         public ListViewStaff()
         {
@@ -42,9 +45,21 @@ namespace WpfApp1
         private void Window_Activated(object sender, EventArgs e)
         {
             children = DbOperations.GetAllChildren();
+            getclassone = DbOperations.GetFirstGraders();
+            getclasstwo = DbOperations.GetSecondGraders();
+            getclassthree = DbOperations.GetThirdGraders();
 
             ListViewStaff1.ItemsSource = children;
             ListViewStaff1.DisplayMemberPath = "Fullinformation";
+
+            ListViewStaff1_Class1.ItemsSource = getclassone;
+            ListViewStaff1_Class1.DisplayMemberPath = "Fullinformation";
+
+            ListViewStaff1_Class2.ItemsSource = getclasstwo;
+            ListViewStaff1_Class2.DisplayMemberPath = "Fullinformation";
+
+            ListViewStaff1_Class3.ItemsSource = getclassthree;
+            ListViewStaff1_Class3.DisplayMemberPath = "Fullinformation";
         }
 
 

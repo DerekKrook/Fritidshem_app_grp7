@@ -39,9 +39,37 @@ namespace WpfApp1
                 var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, department.name AS Class FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) ORDER BY department.name DESC").ToList();
 
                 return output;
-
             }
+        }
+        // hämtar årkurs 1
+        public static List<Child> GetFirstGraders()
+        {
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>($"SELECT * FROM child WHERE class_id IN(1, 2)  ORDER BY child.firstname DESC").ToList();
 
+                return output;
+            }
+        }
+        // hämtar årkurs 2
+        public static List<Child> GetSecondGraders()
+        {
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>($"SELECT * FROM child WHERE class_id = 3 ORDER BY child.firstname DESC").ToList();
+
+                return output;
+            }
+        }
+        // hämtar årkurs 3
+        public static List<Child> GetThirdGraders()
+        {
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>($"SELECT * FROM child WHERE class_id = 7 ORDER BY child.firstname DESC").ToList();
+
+                return output;
+            }
         }
 
         //Hämtar alla anställda
@@ -52,9 +80,7 @@ namespace WpfApp1
                 var output = connection.Query<Staff>($"SELECT * FROM staff").ToList();
 
                 return output;
-
             }
-
         }
 
         //Hämtar alla föräldrar
