@@ -36,7 +36,7 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, department.name AS Class FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) ORDER BY department_name DESC").ToList();
+                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, department.name AS Class FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) ORDER BY department.name DESC").ToList();
 
                 return output;
 

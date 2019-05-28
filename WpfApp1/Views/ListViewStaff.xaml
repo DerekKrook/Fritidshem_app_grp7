@@ -11,7 +11,7 @@
             <RowDefinition Height="13*"/>
             <RowDefinition Height="14*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="ListViewStaff1" HorizontalAlignment="Left" Height="280" Margin="117,55,0,0" VerticalAlignment="Top" Width="620" SelectionChanged="ListViewStaff1_SelectionChanged" Grid.RowSpan="2">
+        <ListView x:Name="ListViewStaff1" HorizontalAlignment="Left" Height="280" Margin="117,55,0,0" VerticalAlignment="Top" Width="620" SelectionChanged="ListViewStaff1_SelectionChanged" Grid.RowSpan="2" MouseEnter="ListViewStaff1_MouseEnter">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>

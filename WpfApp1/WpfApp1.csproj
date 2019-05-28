@@ -103,6 +103,7 @@
       <DependentUpon>StaffMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="ErrorHandler\InputHandler.cs" />
+    <Compile Include="Models\Class.cs" />
     <Compile Include="Views\ListviewGuardian.xaml.cs">
       <DependentUpon>ListviewGuardian.xaml</DependentUpon>
     </Compile>
