@@ -91,5 +91,11 @@
   <ItemGroup>
     <Resource Include="Resources\address-card.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\food.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
