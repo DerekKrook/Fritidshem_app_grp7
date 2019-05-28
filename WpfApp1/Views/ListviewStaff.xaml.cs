@@ -34,7 +34,10 @@ namespace WpfApp1.Views
         private void BtnSearchChild_Click(object sender, RoutedEventArgs e)
         {
             
+
+           // children = db.GetChildren(txtNameChild.Text);
             children = DbOperations.GetChildren(txtNameChild.Text);
+
 
             ListViewStaff1.ItemsSource = children;
             ListViewStaff1.DisplayMemberPath = "Fullinformation";
@@ -48,17 +51,15 @@ namespace WpfApp1.Views
             ListViewStaff1.DisplayMemberPath = "Fullinformation";
         }
 
-        public void ListViewStaff1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ListViewStaff1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
             Child child = (Child)ListViewStaff1.SelectedItem;
             guardian = DbOperations.GetGuardianOfChild(child);
 
-
+            
             listViewGuardian.ItemsSource = guardian;
             listViewGuardian.DisplayMemberPath = "Fullinfo";
-            
         }
-
     }
 }

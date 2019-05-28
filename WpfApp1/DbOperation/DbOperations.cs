@@ -9,7 +9,6 @@ using WpfApp1.DbOperation;
 using WpfApp1.Models;
 using Dapper;
 using System.Data;
-using WpfApp1.ErrorHandler;
 
 namespace WpfApp1
 {
@@ -18,17 +17,14 @@ namespace WpfApp1
         //Hämtar specifikt barn SÖK för- och efternamn.
         public static List<Child> GetChildren(string input)
         {
-            InputHandler inputhandler = new InputHandler();
-            var a = inputhandler.Uppercase(input);
-
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT * FROM child WHERE firstname LIKE '%{a}%' OR lastname LIKE '%{a}%'").ToList();
+                var output = connection.Query<Child>($"SELECT * FROM child WHERE firstname LIKE '%{input}%' OR lastname LIKE '%{input}%'").ToList();
 
-                return output;
+               return output;
 
             }
-
+            
         }
 
         //Hämtar alla barn
