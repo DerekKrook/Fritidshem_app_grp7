@@ -11,8 +11,9 @@ namespace WpfApp1.Models
         public int Id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-    
-    public string Fullinformation
+        public string Department { get; set; }
+
+        public string Fullinformation
         {
             get
             {
