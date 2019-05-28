@@ -118,7 +118,7 @@ namespace WpfApp1
 
             var Id = child.Id;
 
-            var Query = $"SELECT  INNER JOIN guardian ON guardian_id = guardian.id WHERE child_id='{Id}'";
+            var Query = $"SELECT lecture.name, dates.day, time.timestart FROM ((((((child INNER JOIN schedule ON child.id = child_id) INNER JOIN schedule_lecture ON schedule.id = schedule_id) INNER JOIN lecture ON lecture__id = lecture.id) INNER JOIN lecture_dates_time ON lecture.id = lecture_id) INNER JOIN dates ON dates_id = dates.id) INNER JOIN time ON time_id = time.id) WHERE child.id='{Id}' ORDER BY time.timestart ASC";
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {

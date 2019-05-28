@@ -26,10 +26,10 @@
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="Profile" Content="{StaticResource ProfileIcon}" Click="Profile_Click" Grid.Column="1" Style="{StaticResource ButtonStyleMenu}"/>
-                    <Button x:Name="Schedule" Content="Schema" Click="Schedule_Click" Grid.Column="2" Style="{StaticResource ButtonStyleMenu}"/>
+                    <Button x:Name="Schedule" Content="{StaticResource CalendarIcon}" Click="Schedule_Click" Grid.Column="2" Style="{StaticResource ButtonStyleMenu}"/>
                     <Button x:Name="Attendance" Content="Frånvaro" Click="Attendance_Click" Grid.Column="3" Style="{StaticResource ButtonStyleMenu}"/>
-                    <Button x:Name="Meals" Content="Måltider" Click="Meals_Click" Grid.Column="4" Style="{StaticResource ButtonStyleMenu}"/>
-                    <Button x:Name="Contact" Content="Kontakt" Click="Contact_Click" Grid.Column="5" Style="{StaticResource ButtonStyleMenu}"/>
+                    <Button x:Name="Meals" Content="{StaticResource FoodIcon}" Click="Meals_Click" Grid.Column="4" Style="{StaticResource ButtonStyleMenu}"/>
+                    <Button x:Name="Contact" Content="{StaticResource ContactIcon}" Click="Contact_Click" Grid.Column="5" Style="{StaticResource ButtonStyleMenu}"/>
                     <Button x:Name="Loggout" Content="Logga Ut" Click="Button_Click_LogOut" Grid.Column="6" Style="{StaticResource ButtonStyleMenu}"/>
 
                 </Grid>

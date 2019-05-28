@@ -10,5 +10,18 @@ namespace WpfApp1.Models
     {
         public int Id { get; set; }
         public string Classname { get; set; }
+        public string Lecturename { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime Time { get; set; }
+
+        public string Fullinformation
+        {
+            get
+            {
+
+                return $"{Lecturename} {Date} {Time}";
+
+            }
+        }
     }
 }

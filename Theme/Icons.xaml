@@ -3,5 +3,9 @@
                     xmlns:local="clr-namespace:Theme.Properties">
 
     <Image x:Key="ProfileIcon" Source="/Theme;component\Resources\address-card.png"/>
-    
+
+    <Image x:Key="CalendarIcon" Source="/Theme;component\Resources\calendar.png"/>
+
+    <Image x:Key="FoodIcon" Source="/Theme;component\Resources\food.png"/>
+
 </ResourceDictionary>
