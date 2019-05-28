@@ -10,12 +10,12 @@
     <UserControl.Template>
         <ControlTemplate TargetType="UserControl">
 
-            <Border Background="FloralWhite">
+            <Border Background="White">
 
                 <Grid>
 
                     <Menu x:Name="Menu" Height="35" Width="400">
-                        <MenuItem x:Name="Profile" Header="Profile" Click="MenuItem_Click_Profile"/>
+                        <MenuItem x:Name="Profile" Header="Profile" Click="MenuItem_Click_Profile" FontSize="15"/>
                         <MenuItem x:Name="LogOut" Header="Log Out" Click="MenuItem_Click_LogOut"/>
                     </Menu>
 

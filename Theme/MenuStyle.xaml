@@ -52,25 +52,6 @@
 
     <!--MenuItem Styling-->
 
-    <!--<Style TargetType="MenuItem">
-        <Setter Property="SnapsToDevicePixels"
-                Value="True"/>
-        <Setter Property="OverridesDefaultStyle"
-          Value="true" />
-        <Setter Property="FocusVisualStyle"
-          Value="{StaticResource MenuItemFocusVisual}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="MenuItem">
-                    ´
-                    <Border TextBlock.Foreground="{TemplateBinding Foreground}">
-                        
-                        
-                    </Border>
 
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
-    
+
 </ResourceDictionary>
