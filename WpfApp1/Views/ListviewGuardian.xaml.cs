@@ -21,6 +21,7 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class ListviewGuardian : Window
     {
+        
         List<Guardian> guardians = new List<Guardian>();
         List<Child> children = new List<Child>();
 
@@ -34,6 +35,7 @@ namespace WpfApp1.Views
         {            
             guardians = DbOperations.GetAllGuardians();
 
+           
             listViewGuardian.ItemsSource = guardians;
             listViewGuardian.DisplayMemberPath = "Fullinfo";
        
@@ -47,9 +49,12 @@ namespace WpfApp1.Views
         private void ListViewGuardian_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Guardian guardian = (Guardian)listViewGuardian.SelectedItem;
-            DbOperations.GetChildrenOfGuardian(guardian);
-
-            LoggedInGuardian loggedIn = new LoggedInGuardian();
+            children = DbOperations.GetChildrenOfGuardian(guardian);
+            
+            LoggedInGuardian loggedIn = new LoggedInGuardian(children, guardian);
+           
+            loggedIn.Show();
+            this.Close();
                       
         }
 

@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.Models;
+using WpfApp1.Views;
+
+
 
 namespace WpfApp1.Views
 {
@@ -20,10 +23,17 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class LoggedInGuardian : Window
     {
-        public LoggedInGuardian()
+      
+        public LoggedInGuardian(List <Child> children, Guardian guardian)
         {
             InitializeComponent();
-          
+           
+            lblGuardianFirstName.Content = $"Inloggad som {guardian.Firstname} {guardian.Lastname}";
+
+            listViewGuardianChild.Items.Clear();
+            listViewGuardianChild.ItemsSource = children;
+            listViewGuardianChild.DisplayMemberPath = "Fullinformation";
         }
+        
     }
 }
