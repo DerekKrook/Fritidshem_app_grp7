@@ -23,9 +23,13 @@ namespace WpfApp1
     /// </summary>
     public partial class LoggedInGuardian : Window
     {
-      
-        public LoggedInGuardian(List <Child> children, Guardian guardian)
+        List<Guardian> guardians = new List<Guardian>();
+        List<Child> children = new List<Child>();
+        List<Schedule> schedule = new List<Schedule>();
+
+        public LoggedInGuardian(List<Child>children, Guardian guardian)
         {
+            
             InitializeComponent();
            
             lblGuardianFirstName.Content = $"Inloggad som {guardian.Firstname} {guardian.Lastname}";
@@ -34,6 +38,16 @@ namespace WpfApp1
             listViewGuardianChild.ItemsSource = children;
             listViewGuardianChild.DisplayMemberPath = "Fullinformation";
         }
-        
+
+        private void BtnScheduleChild_Click(object sender, RoutedEventArgs e)
+        {           
+            Child child = (Child)listViewGuardianChild.SelectedItem;
+            if(child != null)
+            {
+                schedule = DbOperations.GetSchedule(child);
+                listViewSchedule.ItemsSource = schedule;
+                listViewSchedule.DisplayMemberPath = "Fullinformation";
+            }
+        }
     }
 }
