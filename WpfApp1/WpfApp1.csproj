@@ -96,6 +96,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Control\GuardianMenu.xaml.cs">
+      <DependentUpon>GuardianMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\StaffMenu.xaml.cs">
+      <DependentUpon>StaffMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ErrorHandler\InputHandler.cs" />
     <Compile Include="Views\ListviewGuardian.xaml.cs">
       <DependentUpon>ListviewGuardian.xaml</DependentUpon>
@@ -109,6 +115,14 @@
     <Compile Include="Views\StaffLogin.xaml.cs">
       <DependentUpon>StaffLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="Control\GuardianMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\StaffMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
