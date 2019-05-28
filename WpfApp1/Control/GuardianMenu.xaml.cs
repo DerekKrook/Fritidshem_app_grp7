@@ -24,5 +24,13 @@ namespace WpfApp1.Control
         {
             InitializeComponent();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+
+            mainWindow.Show();
+
+        }
     }
 }
