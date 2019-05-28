@@ -5,14 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="ListViewStaff" Height="598" Width="1039" Activated="Window_Activated">
+        Title="ListViewStaff" Style="{StaticResource MyWindowStyle}" Activated="Window_Activated">
     
-    <Grid Margin="271,2,2,-2">
+    <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="13*"/>
             <RowDefinition Height="14*"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="ListViewStaff1" HorizontalAlignment="Left" Height="280" Margin="117,69,0,0" VerticalAlignment="Top" Width="623" Grid.RowSpan="2" SelectionChanged="ListViewStaff1_SelectionChanged_1">
+
+        <local:StaffMenu Grid.Row="0">
+            
+        </local:StaffMenu>
+        
+        <ListView x:Name="ListViewStaff1" HorizontalAlignment="Left" Height="280" Margin="117,69,0,0" VerticalAlignment="Top" Width="623" Grid.Row="1" Grid.RowSpan="2" SelectionChanged="ListViewStaff1_SelectionChanged_1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
@@ -23,11 +29,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label" Content="Barn" HorizontalAlignment="Left" Margin="117,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold"/>
-
-        <Button x:Name="btnSearchChild" Content="Sök barn" HorizontalAlignment="Left" Margin="527,38,0,0" VerticalAlignment="Top" Width="103" Click="BtnSearchChild_Click" Height="26" Style="{StaticResource ButtonStyleNormal}"/>
-        <TextBox x:Name="txtNameChild" HorizontalAlignment="Left" Height="24" Margin="307,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" RenderTransformOrigin="0.142,0.625" AutomationProperties.HelpText="Sök barn"/>
-        <ListView x:Name="listViewGuardian" HorizontalAlignment="Left" Height="124" Margin="117,147,0,0" VerticalAlignment="Top" Width="623" Grid.Row="1">
+        
+        <Label x:Name="label" Content="Barn" HorizontalAlignment="Left" Margin="117,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="1"/>
+        <Button x:Name="btnSearchChild" Content="Sök barn" HorizontalAlignment="Left" Margin="527,38,0,0" VerticalAlignment="Top" Width="103" Click="BtnSearchChild_Click" Height="26" Style="{StaticResource ButtonStyleNormal}" Grid.Row="1"/>
+        <TextBox x:Name="txtNameChild" HorizontalAlignment="Left" Height="24" Margin="307,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" RenderTransformOrigin="0.142,0.625" AutomationProperties.HelpText="Sök barn" Grid.Row="1"/>
+        <Button x:Name="btnEmptySearch" Content="Töm sökning" HorizontalAlignment="Left" Margin="635,38,0,0" VerticalAlignment="Top" Width="103" Height="26" Click="BtnEmptySearch_Click" Style="{StaticResource ButtonStyleNormal}" IsEnabled="False" Grid.Row="1"/>
+        
+        <ListView x:Name="listViewGuardian" HorizontalAlignment="Left" Height="124" Margin="117,147,0,0" VerticalAlignment="Top" Width="623" Grid.Row="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
@@ -37,9 +45,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label_Copy" Content="Vårdnadshavare för valt barn" HorizontalAlignment="Left" Margin="117,116,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="1"/>
-        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Left" Margin="225,81,0,0" VerticalAlignment="Top" Width="104" Click="BtnSearchChild_Click" Height="26" Grid.Row="1" Style="{StaticResource ButtonStyleNormal}"/>
-        <Button x:Name="btnChildHome" Content="Går hem" HorizontalAlignment="Left" Margin="117,81,0,0" VerticalAlignment="Top" Width="103" Click="BtnSearchChild_Click" Height="26" Grid.Row="1" Style="{StaticResource ButtonStyleNormal}"/>
-        <Button x:Name="btnEmptySearch" Content="Töm sökning" HorizontalAlignment="Left" Margin="635,38,0,0" VerticalAlignment="Top" Width="103" Height="26" Click="BtnEmptySearch_Click" Style="{StaticResource ButtonStyleNormal}" IsEnabled="False"/>
+        <Label x:Name="label_Copy" Content="Vårdnadshavare för valt barn" HorizontalAlignment="Left" Margin="117,116,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="2"/>
+        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Left" Margin="225,81,0,0" VerticalAlignment="Top" Width="104" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
+        <Button x:Name="btnChildHome" Content="Går hem" HorizontalAlignment="Left" Margin="117,81,0,0" VerticalAlignment="Top" Width="103" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
     </Grid>
 </Window>

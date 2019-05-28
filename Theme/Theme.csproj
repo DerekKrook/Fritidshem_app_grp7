@@ -97,5 +97,11 @@
   <ItemGroup>
     <Resource Include="Resources\food.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\contact.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sign-out-option.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

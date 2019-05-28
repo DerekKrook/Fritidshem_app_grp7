@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="LoggedInGuardian" Height="450" Width="800">
+        Title="LoggedInGuardian" Style="{StaticResource MyWindowStyle}">
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -29,8 +29,8 @@
             <Label Content="Label" Height="100" Width="100"/>
         </ListView>
         <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Left" Margin="291,10,0,0" VerticalAlignment="Top" Width="216" FontSize="18"/>
-        <Button x:Name="btnScheduleChild" Content="Schemalägg" HorizontalAlignment="Left" Margin="47,190,0,0" VerticalAlignment="Top" Width="85" Click="BtnScheduleChild_Click" Height="44"/>
-        <Button x:Name="btnReportAbsence" Content="Anmäl frånvaro" HorizontalAlignment="Left" Margin="168,190,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="0.609,-0.667" Height="44"/>
+            <Button x:Name="btnScheduleChild" Content="Schemalägg" HorizontalAlignment="Left" Margin="47,190,0,0" VerticalAlignment="Top" Width="85" Click="BtnScheduleChild_Click" Height="44" Style="{StaticResource ButtonStyleNormal}"/>
+        <Button x:Name="btnReportAbsence" Content="Anmäl frånvaro" HorizontalAlignment="Left" Margin="168,190,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="0.609,-0.667" Height="44" Style="{StaticResource ButtonStyleNormal}"/>
             <ListView x:Name="listViewSchedule" HorizontalAlignment="Left" Height="252" Margin="337,71,0,0" VerticalAlignment="Top" Width="445">
                 <ListView.View>
                     <GridView>

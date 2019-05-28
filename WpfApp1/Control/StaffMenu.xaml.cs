@@ -24,5 +24,42 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        private void Button_Click_LogOut(object sender, RoutedEventArgs e)
+        {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            MainWindow mainWindow = new MainWindow();
+
+            mainWindow.Show();
+
+            window.Close();
+
+        }
+
+        private void Schedule_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Meals_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Profile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Attendance_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Contact_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

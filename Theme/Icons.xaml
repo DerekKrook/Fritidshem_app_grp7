@@ -8,4 +8,8 @@
 
     <Image x:Key="FoodIcon" Source="/Theme;component\Resources\food.png"/>
 
+    <Image x:Key="ContactIcon" Source="/Theme;component\Resources\contact.png"/>
+
+    <Image x:Key="SignoutIcon" Source="/Theme;component\Resources\sign-out-option.png"/>
+
 </ResourceDictionary>

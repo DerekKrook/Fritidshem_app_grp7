@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.Views"
         mc:Ignorable="d"
-        Title="StaffLogin" Height="450" Width="800" Activated="Window_Activated">
+        Title="StaffLogin" Style="{StaticResource MyWindowStyle}" Activated="Window_Activated">
     <Grid>
         <ListView x:Name="listViewTotalStaff" HorizontalAlignment="Left" Height="254" Margin="95,94,0,0" VerticalAlignment="Top" Width="300
                   " SelectionChanged="ListViewTotalStaff_SelectionChanged">
