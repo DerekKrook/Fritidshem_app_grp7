@@ -102,7 +102,7 @@ namespace WpfApp1
 
             var Id = child.Id;
                       
-            var Query = $"SELECT guardian.firstname, guardian.lastname FROM guardian_child INNER JOIN guardian ON guardian_id = guardian.id WHERE child_id='{Id}'";
+            var Query = $"SELECT * FROM guardian_child INNER JOIN guardian ON guardian_id = guardian.id WHERE child_id='{Id}'";
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -112,6 +112,21 @@ namespace WpfApp1
             }
         }
 
+        //Hämta scheman för barn
+        public static List<Schedule> GetSchedule (Child child)
+        {
+
+            var Id = child.Id;
+
+            var Query = $"SELECT  INNER JOIN guardian ON guardian_id = guardian.id WHERE child_id='{Id}'";
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Schedule>(Query).ToList();
+
+                return output;
+            }
+        }
     }
 }
 

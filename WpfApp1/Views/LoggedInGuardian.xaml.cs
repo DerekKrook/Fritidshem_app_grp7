@@ -34,6 +34,7 @@ namespace WpfApp1.Views
             listViewGuardianChild.ItemsSource = children;
             listViewGuardianChild.DisplayMemberPath = "Fullinformation";
         }
+
         
     }
 }
