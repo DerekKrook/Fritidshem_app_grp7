@@ -2,10 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Theme.Properties">
 
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="ButtonStyle.xaml"/>
-        <ResourceDictionary Source="Window.xaml"/>
-        <ResourceDictionary Source="Icons.xaml"/>
-    </ResourceDictionary.MergedDictionaries>
+    <Image x:Key="ProfileIcon" Source="/Theme;component\Resources\address-card.png"/>
+
+    <Image x:Key="CalendarIcon" Source="/Theme;component\Resources\calendar.png"/>
+
+    <Image x:Key="FoodIcon" Source="/Theme;component\Resources\food.png"/>
 
 </ResourceDictionary>
