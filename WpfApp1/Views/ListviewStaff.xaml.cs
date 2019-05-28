@@ -32,11 +32,9 @@ namespace WpfApp1
 
         private void BtnSearchChild_Click(object sender, RoutedEventArgs e)
         {
-
-            
+            btnEmptySearch.IsEnabled = true;
             children = DbOperations.GetChildren(txtNameChild.Text);
-
-            
+            txtNameChild.Clear();
             ListViewStaff1.ItemsSource = children;
             ListViewStaff1.DisplayMemberPath = "Fullinformation";
         }
@@ -59,8 +57,16 @@ namespace WpfApp1
                 listViewGuardian.ItemsSource = guardian;
                 listViewGuardian.DisplayMemberPath = "Fullinfo";
             }
-        
-
     }
+
+        private void BtnEmptySearch_Click(object sender, RoutedEventArgs e)
+        {
+            btnEmptySearch.IsEnabled = false;
+            listViewGuardian.ItemsSource = null;
+            children = DbOperations.GetAllChildren();
+
+            ListViewStaff1.ItemsSource = children;
+            ListViewStaff1.DisplayMemberPath = "Fullinformation";
+        }
     }
 }
