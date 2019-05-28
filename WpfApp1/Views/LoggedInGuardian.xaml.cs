@@ -16,7 +16,7 @@ using WpfApp1.Views;
 
 
 
-namespace WpfApp1.Views
+namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for LoggedInGuardian.xaml
@@ -34,7 +34,6 @@ namespace WpfApp1.Views
             listViewGuardianChild.ItemsSource = children;
             listViewGuardianChild.DisplayMemberPath = "Fullinformation";
         }
-
         
     }
 }
