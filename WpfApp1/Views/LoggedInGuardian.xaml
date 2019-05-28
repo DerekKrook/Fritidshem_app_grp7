@@ -7,7 +7,18 @@
         mc:Ignorable="d"
         Title="LoggedInGuardian" Height="450" Width="800">
     <Grid>
-        <Label x:Name="lblGuardianFirstName" Content="" HorizontalAlignment="Left" Margin="282,61,0,0" VerticalAlignment="Top" Width="206"/>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <local:GuardianMenu Grid.Column="0">
+            
+        </local:GuardianMenu>
+
+        <Grid Grid.Column="1">
+            <Label x:Name="lblGuardianFirstName" Content="" HorizontalAlignment="Left" Margin="282,61,0,0" VerticalAlignment="Top" Width="206"/>
         <ListView x:Name="listViewGuardianChild" HorizontalAlignment="Left" Height="100" Margin="196,87,0,0" VerticalAlignment="Top" Width="304">
             <ListView.View>
                 <GridView>
@@ -20,7 +31,7 @@
         <Label x:Name="lblWelcome" Content="Välkommen till frtidshem" HorizontalAlignment="Left" Margin="282,30,0,0" VerticalAlignment="Top" Width="158"/>
         <Button x:Name="btnScheduleChild" Content="Schemalägg" HorizontalAlignment="Left" Margin="234,205,0,0" VerticalAlignment="Top" Width="85"/>
         <Button x:Name="btnReportAbsence" Content="Anmäl frånvaro" HorizontalAlignment="Left" Margin="370,205,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="0.609,-0.667"/>
-
+        </Grid>
 
     </Grid>
 </Window>
