@@ -5,7 +5,7 @@
 
     <Color x:Key="BackgroundColor1" A="255" R="169" G="222" B="249" />
 
-    <Color x:Key="MouseOverColor1" A="255" R="228" G="193" B="249" />
+    <Color x:Key="MouseOverColor1" A="255" R="160" G="210" B="230" />
 
     <Color x:Key="BorderBrush1" A="255" R="0" G="0" B="0"/>
     <Color x:Key="BorderBrush2" A="255" R="0" G="0" B="0"/>
