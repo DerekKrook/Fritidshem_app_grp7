@@ -96,6 +96,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ErrorHandler\InputHandler.cs" />
     <Compile Include="Views\ListviewGuardian.xaml.cs">
       <DependentUpon>ListviewGuardian.xaml</DependentUpon>
     </Compile>

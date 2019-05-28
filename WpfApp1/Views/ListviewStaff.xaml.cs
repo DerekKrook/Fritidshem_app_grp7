@@ -35,7 +35,6 @@ namespace WpfApp1.Views
         {
             
 
-           // children = db.GetChildren(txtNameChild.Text);
             children = DbOperations.GetChildren(txtNameChild.Text);
 
 
