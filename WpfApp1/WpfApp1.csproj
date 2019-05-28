@@ -190,6 +190,11 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Theme\Theme.csproj">
+      <Project>{423dfb2c-8d75-4b82-9449-5157e4151db4}</Project>
+      <Name>Theme</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
