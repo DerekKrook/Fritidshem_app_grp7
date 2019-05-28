@@ -25,11 +25,20 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void MenuItem_Click_LogOut(object sender, RoutedEventArgs e)
         {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
             MainWindow mainWindow = new MainWindow();
 
             mainWindow.Show();
+
+            window.Close();
+
+        }
+
+        private void MenuItem_Click_Profile(object sender, RoutedEventArgs e)
+        {
 
         }
     }
