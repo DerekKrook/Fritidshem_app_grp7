@@ -13,7 +13,8 @@ namespace WpfApp1.ErrorHandler
             if (string.IsNullOrEmpty(input))
                 throw new ArgumentException("Sökfält är tomt");
 
-            char[] a = input.ToCharArray();
+            string lower = input.ToLower();
+            char[] a = lower.ToCharArray();
             a[0] = char.ToUpper(a[0]);
             return new string(a);
         }

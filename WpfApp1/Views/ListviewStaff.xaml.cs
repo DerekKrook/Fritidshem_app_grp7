@@ -49,23 +49,18 @@ namespace WpfApp1
             ListViewStaff1.DisplayMemberPath = "Fullinformation";
         }
 
-        private void ListViewStaff1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void ListViewStaff1_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
+        Child child = (Child)ListViewStaff1.SelectedItem;
+            if (child!= null)
+            {
+                guardian = DbOperations.GetGuardianOfChild(child);
+                listViewGuardian.ItemsSource = guardian;
+                listViewGuardian.DisplayMemberPath = "Fullinfo";
+            }
+        
 
-
-        }
-
-        private void ListViewStaff1_MouseEnter(object sender, MouseEventArgs e)
-        {
-
-            Child child = (Child)ListViewStaff1.SelectedItem;
-            guardian = DbOperations.GetGuardianOfChild(child);
-
-
-            listViewGuardian.ItemsSource = guardian;
-            listViewGuardian.DisplayMemberPath = "Fullinfo";
-
-           
-        }
+    }
     }
 }
