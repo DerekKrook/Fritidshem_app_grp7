@@ -25,7 +25,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="Profile" Content="Profil" Click="Profile_Click" Grid.Column="1" Style="{StaticResource ButtonStyleMenu}"/>
+                    <Button x:Name="Profile" Content="{StaticResource ProfileIcon}" Click="Profile_Click" Grid.Column="1" Style="{StaticResource ButtonStyleMenu}"/>
                     <Button x:Name="Schedule" Content="Schema" Click="Schedule_Click" Grid.Column="2" Style="{StaticResource ButtonStyleMenu}"/>
                     <Button x:Name="Attendance" Content="Frånvaro" Click="Attendance_Click" Grid.Column="3" Style="{StaticResource ButtonStyleMenu}"/>
                     <Button x:Name="Meals" Content="Måltider" Click="Meals_Click" Grid.Column="4" Style="{StaticResource ButtonStyleMenu}"/>
