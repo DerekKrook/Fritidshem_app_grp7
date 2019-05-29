@@ -37,16 +37,6 @@ namespace WpfApp1
 
         }
 
-        private void Schedule_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Meals_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
 
@@ -58,6 +48,11 @@ namespace WpfApp1
         }
 
         private void Contact_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Fritids_Click(object sender, RoutedEventArgs e)
         {
 
         }
