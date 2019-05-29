@@ -14,5 +14,6 @@ namespace WpfApp1.Models
         public string Child { get; set; }
         public string Guardian { get; set; }
         public string Day { get; set; }
+        public string LeaveAlone { get; set; }
     }
 }
