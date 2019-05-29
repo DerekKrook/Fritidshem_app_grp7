@@ -23,7 +23,9 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, class_id, class.name AS Class FROM(child INNER JOIN class on class_id = class.id) WHERE child.firstname LIKE '%{a}%' OR child.lastname LIKE '%{a}%';").ToList();
+                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class_id, class.name AS Class 
+                FROM(child INNER JOIN class on class_id = class.id) 
+                WHERE child.firstname LIKE '%{a}%' OR child.lastname LIKE '%{a}%';").ToList();
 
                 return output;
 
@@ -36,7 +38,10 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, department.name AS Class FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) ORDER BY department.name DESC").ToList();
+                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, department.name AS Class 
+                FROM((child INNER JOIN class ON class_id = class.id) 
+                INNER JOIN department ON department_id = department.id) 
+                ORDER BY department.name DESC").ToList();
 
                 return output;
             }
@@ -46,7 +51,10 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) WHERE department_id = 1 ORDER BY class_id DESC;").ToList();
+                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning 
+                FROM((child INNER JOIN class ON class_id = class.id) 
+                INNER JOIN department ON department_id = department.id) 
+                WHERE department_id = 1 ORDER BY class_id DESC;").ToList();
 
 
                 return output;
@@ -57,7 +65,9 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) WHERE department_id = 2 ORDER BY class_id DESC;").ToList();
+                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning 
+                FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) 
+                WHERE department_id = 2 ORDER BY class_id DESC;").ToList();
 
                 return output;
             }
@@ -67,7 +77,10 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) WHERE department_id = 4 ORDER BY class_id DESC;").ToList();
+                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning 
+                FROM((child INNER JOIN class ON class_id = class.id) 
+                INNER JOIN department ON department_id = department.id)
+                WHERE department_id = 4 ORDER BY class_id DESC;").ToList();
 
                 return output;
             }
@@ -78,7 +91,7 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Staff>($"SELECT * FROM staff").ToList();
+                var output = connection.Query<Staff>($@"SELECT * FROM staff").ToList();
 
                 return output;
             }
@@ -90,7 +103,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {              
-                var output = connection.Query<Guardian>($"SELECT * FROM guardian").ToList();
+                var output = connection.Query<Guardian>($@"SELECT * FROM guardian").ToList();
 
                 return output;
             }
@@ -101,7 +114,8 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($"SELECT * FROM child WHERE firstname LIKE '%{firstName}%' OR lastname LIKE '%{lastName}%'").ToList();
+                var output = connection.Query<Guardian>($@"SELECT * FROM child 
+                WHERE firstname LIKE '%{firstName}%' OR lastname LIKE '%{lastName}%'").ToList();
 
                 return output;
             }
@@ -113,7 +127,7 @@ namespace WpfApp1
 
             var Id = guardian.Id;
 
-            var Query = $"SELECT * FROM guardian_child INNER JOIN child ON child_id = child.id WHERE guardian_id='{Id}'"; 
+            var Query = $@"SELECT * FROM guardian_child INNER JOIN child ON child_id = child.id WHERE guardian_id='{Id}'"; 
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -129,7 +143,9 @@ namespace WpfApp1
 
             var Id = child.Id;
                       
-            var Query = $"SELECT * FROM guardian_child INNER JOIN guardian ON guardian_id = guardian.id WHERE child_id='{Id}'";
+            var Query = $@"SELECT * FROM guardian_child 
+            INNER JOIN guardian ON guardian_id = guardian.id 
+            WHERE child_id='{Id}'";
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -143,19 +159,18 @@ namespace WpfApp1
         public static List<Schedule> GetSchedule (Child child)
         {
 
-            Schedule s;
-            List<Schedule> schedules = new List<Schedule>();
+            Schedule s = new Schedule();
+            List <Schedule> schedules = new List<Schedule>();
 
             var Id = child.Id;
 
-            var Query = $"SELECT lecture.name AS Lecturename, dates.day AS Day, time.timestart AS Timestart FROM ((((((child INNER JOIN schedule ON child.id = child_id) INNER JOIN schedule_lecture ON schedule.id = schedule_id) INNER JOIN lecture ON lecture__id = lecture.id) INNER JOIN lecture_dates_time ON lecture.id = lecture_id) INNER JOIN dates ON dates_id = dates.id) INNER JOIN time ON time_id = time.id) WHERE child.id='{Id}' ORDER BY time.timestart ASC";
-
-            //using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            //{
-            //    var output = connection.Query<Schedule>(Query).ToList();
-
-            //    return output;
-            //}
+            var Query = $@"SELECT lecture.name AS Lecturename, dates.day AS Day, time.timestart AS Timestart 
+            FROM ((((((child INNER JOIN schedule ON child.id = child_id) 
+            INNER JOIN schedule_lecture ON schedule.id = schedule_id) 
+            INNER JOIN lecture ON lecture__id = lecture.id) 
+            INNER JOIN lecture_dates_time ON lecture.id = lecture_id) 
+            INNER JOIN dates ON dates_id = dates.id) INNER JOIN time ON time_id = time.id)
+            WHERE child.id='{Id}' ORDER BY time.timestart ASC";           
 
             using (var conn = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
