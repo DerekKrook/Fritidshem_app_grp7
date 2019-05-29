@@ -4,12 +4,14 @@
 
     <BitmapImage x:Key="ProfileIcon" UriSource="/Theme;component\Resources\address-card.png"/>
 
-    <Image x:Key="CalendarIcon" Source="/Theme;component\Resources\calendar.png"/>
+    <BitmapImage x:Key="CalendarIcon" UriSource="/Theme;component\Resources\calendar.png"/>
 
-    <Image x:Key="FoodIcon" Source="/Theme;component\Resources\food.png"/>
+    <BitmapImage x:Key="FoodIcon" UriSource="/Theme;component\Resources\food.png"/>
 
-    <Image x:Key="ContactIcon" Source="/Theme;component\Resources\contact.png"/>
+    <BitmapImage x:Key="ContactIcon" UriSource="/Theme;component\Resources\contact.png"/>
 
-    <Image x:Key="SignoutIcon" Source="/Theme;component\Resources\sign-out-option.png"/>
+    <BitmapImage x:Key="SignoutIcon" UriSource="/Theme;component\Resources\sign-out-option.png"/>
+
+    <BitmapImage x:Key="AttendanceIcon" UriSource="/Theme;component\Resources\attendance.png"/>
 
 </ResourceDictionary>

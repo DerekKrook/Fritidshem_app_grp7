@@ -103,5 +103,8 @@
   <ItemGroup>
     <Resource Include="Resources\sign-out-option.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\attendance.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
