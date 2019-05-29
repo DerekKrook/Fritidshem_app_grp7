@@ -3,11 +3,11 @@
                     xmlns:local="clr-namespace:Theme.Properties">
 
 
-    <Color x:Key="DarkRed">#CB4C44</Color>
-    <Color x:Key="MediumRed">#E5564D</Color>
+    <Color x:Key="DarkRed">#577399</Color>
+    <Color x:Key="MediumRed">#88a5ce</Color>
 
-    <Color x:Key="BorderTest1" A="255" R="203" G="86" B="77"/>
-    <Color x:Key="BorderTest2" A="210" R="229" G="86" B="77"/>
+    <Color x:Key="BorderTest1">#88a5ce</Color>
+        <Color x:Key="BorderTest2">#88a5ce</Color>
 
     <Style  TargetType="{x:Type TabControl}">
         <Setter Property="OverridesDefaultStyle"
