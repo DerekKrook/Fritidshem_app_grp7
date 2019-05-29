@@ -147,6 +147,7 @@
           Value="Center" />
         <Setter Property="Foreground"
           Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+        <Setter Property="Cursor" Value="Arrow"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="GridViewColumnHeader">
@@ -280,6 +281,7 @@
           Value="true" />
         <Setter Property="VerticalContentAlignment"
           Value="Center" />
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">

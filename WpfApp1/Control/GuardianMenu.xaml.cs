@@ -84,6 +84,7 @@ namespace WpfApp1
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
+
             //var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
             //LoggedInGuardian loggedInGuardian = new LoggedInGuardian();

@@ -30,6 +30,7 @@
           Value="23" />
         <Setter Property="MinWidth"
           Value="60" />
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -180,6 +181,7 @@
         <Setter Property="MinWidth"
           Value="60" />
         <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -331,6 +333,7 @@
         <Setter Property="MinWidth"
           Value="60" />
         <Setter Property="TextBlock.FontWeight" Value="Bold"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
