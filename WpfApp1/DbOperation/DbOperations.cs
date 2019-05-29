@@ -112,7 +112,7 @@ namespace WpfApp1
 
             var Id = guardian.Id;
 
-            var Query = $"SELECT child.firstname, child.lastname FROM guardian_child INNER JOIN child ON child_id = child.id WHERE guardian_id='{Id}'"; 
+            var Query = $"SELECT * FROM guardian_child INNER JOIN child ON child_id = child.id WHERE guardian_id='{Id}'"; 
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
