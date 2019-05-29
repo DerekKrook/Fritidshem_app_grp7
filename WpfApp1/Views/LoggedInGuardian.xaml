@@ -14,30 +14,30 @@
         </Grid.RowDefinitions>
 
         <local:GuardianMenu Grid.Row="0">
-            
+
         </local:GuardianMenu>
 
         <Grid Grid.Row="1">
             <Label x:Name="lblGuardianFirstName" Content="" HorizontalAlignment="Left" Margin="291,40,0,0" VerticalAlignment="Top" Width="206"/>
-        <ListView x:Name="listViewGuardianChild" HorizontalAlignment="Left" Height="114" Margin="10,71,0,0" VerticalAlignment="Top" Width="305">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
-                    <GridViewColumn Header="Efternamn" Width="150" DisplayMemberBinding="{Binding Lastname}"/>
-                </GridView>
-            </ListView.View>
-            <Label Content="Label" Height="100" Width="100"/>
-        </ListView>
-        <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Left" Margin="497,16,0,0" VerticalAlignment="Top" Width="216" FontSize="18"/>
+            <ListView x:Name="listViewGuardianChild" HorizontalAlignment="Left" Height="114" Margin="10,71,0,0" VerticalAlignment="Top" Width="305">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
+                        <GridViewColumn Header="Efternamn" Width="150" DisplayMemberBinding="{Binding Lastname}"/>
+                    </GridView>
+                </ListView.View>
+                <Label Content="Label" Height="100" Width="100"/>
+            </ListView>
+            <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Left" Margin="497,16,0,0" VerticalAlignment="Top" Width="216" FontSize="18"/>
             <Button x:Name="btnScheduleChild" Content="Se schema" HorizontalAlignment="Left" Margin="47,190,0,0" VerticalAlignment="Top" Width="85" Click="BtnScheduleChild_Click" Height="44" Style="{StaticResource ButtonStyleNormal}"/>
-        <Button x:Name="btnReportAbsence" Content="Anmäl frånvaro" HorizontalAlignment="Left" Margin="168,190,0,0" VerticalAlignment="Top" Width="117" RenderTransformOrigin="0.609,-0.667" Height="44" Style="{StaticResource ButtonStyleNormal}"/>
-            <ListView x:Name="listViewSchedule" HorizontalAlignment="Left" Height="252" Margin="337,71,0,0" VerticalAlignment="Top" Width="445">
+            <Button x:Name="btnReportAbsence" Content="Anmäl frånvaro" HorizontalAlignment="Left" Margin="168,190,0,0" VerticalAlignment="Top" Width="117" RenderTransformOrigin="0.609,-0.667" Height="44" Style="{StaticResource ButtonStyleNormal}"/>
+            <ListView x:Name="listViewSchedule" HorizontalAlignment="Left" Height="252" Margin="371,75,0,0" VerticalAlignment="Top" Width="458">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Dag" Width="150" DisplayMemberBinding="{Binding Day}"/>
                         <GridViewColumn Header="Lektion" Width="150" DisplayMemberBinding="{Binding Lecturename}"/>
                         <GridViewColumn Header="Tid" Width="150" DisplayMemberBinding="{Binding Time}"/>
-                        
+
                     </GridView>
                 </ListView.View>
             </ListView>
