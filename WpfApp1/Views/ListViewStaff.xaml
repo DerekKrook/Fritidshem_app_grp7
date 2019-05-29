@@ -30,7 +30,7 @@
             </ListView.View>
         </ListView>
         <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Left" Margin="527,16,0,0" VerticalAlignment="Top" Width="216" FontSize="18" Grid.Row="1"/>
-        <Label x:Name="label" Content="Barn" HorizontalAlignment="Left" Margin="117,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="1"/>
+        <Label x:Name="label" Content="Barn" HorizontalAlignment="Left" Margin="45,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="1"/>
         <Button x:Name="btnSearchChild" Content="Sök barn" HorizontalAlignment="Left" Margin="861,80,0,0" VerticalAlignment="Top" Width="103" Click="BtnSearchChild_Click" Height="26" Style="{StaticResource ButtonStyleNormal}" Grid.Row="1"/>
         <TextBox x:Name="txtNameChild" HorizontalAlignment="Left" Height="24" Margin="861,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" RenderTransformOrigin="0.142,0.625" AutomationProperties.HelpText="Sök barn" Grid.Row="1"/>
         <Button x:Name="btnEmptySearch" Content="Avbryt sök" HorizontalAlignment="Left" Margin="973,80,0,0" VerticalAlignment="Top" Width="103" Height="26" Click="BtnEmptySearch_Click" Style="{StaticResource ButtonStyleNormal}" Grid.Row="1" Visibility="Hidden" />
