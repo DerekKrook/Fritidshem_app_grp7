@@ -18,7 +18,7 @@
 
     <!--ScrollViewer-->
     
-    <!--<Style x:Key="{x:Static GridView.GridViewScrollViewerStyleKey}"
+    <Style x:Key="{x:Static GridView.GridViewScrollViewerStyleKey}"
        TargetType="ScrollViewer">
         <Setter Property="Template">
             <Setter.Value>
@@ -89,21 +89,24 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>--> 
+    </Style>
 
-    <!--<Style x:Key="GridViewColumnHeaderGripper"
+
+    <!--GridViewColumnHeaderGripper-->
+
+    <Style x:Key="GridViewColumnHeaderGripper"
        TargetType="Thumb">
         <Setter Property="Width"
-          Value="18" />
+          Value="15" />
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0"
                            EndPoint="0,1">
                     <LinearGradientBrush.GradientStops>
                         <GradientStopCollection>
-                            <GradientStop Color="{DynamicResource BorderLightColor}"
+                            <GradientStop Color="{DynamicResource BorderBrush2}"
                           Offset="0.0" />
-                            <GradientStop Color="{DynamicResource BorderDarkColor}"
+                            <GradientStop Color="{DynamicResource BorderBrush1}"
                           Offset="1.0" />
                         </GradientStopCollection>
                     </LinearGradientBrush.GradientStops>
@@ -126,14 +129,14 @@
             <Setter.Value>
                 <LinearGradientBrush EndPoint="0.5,1"
                            StartPoint="0.5,0">
-                    <GradientStop Color="Black"
+                    <GradientStop Color="{StaticResource BorderBrush1}"
                       Offset="0" />
-                    <GradientStop Color="White"
+                    <GradientStop Color="{StaticResource BorderBrush2}"
                       Offset="1" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
-    </Style>-->
+    </Style>
     
     
     <!--GridViewColumnHeader-->
@@ -317,7 +320,7 @@
     </Style>
     
     
-    <!--ListView Items-->
+    <!--ListView Items Not In Use-->
 
     <!--<Style x:Key="{x:Type ListViewItem}"
        TargetType="ListViewItem">
@@ -346,7 +349,7 @@
                                                 Storyboard.TargetProperty="(Panel.Background).
                     (SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                         Value="{StaticResource SelectedBackgroundColor}" />
+                                         Value="{StaticResource FocusedListViewItem}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -356,7 +359,7 @@
                                                 Storyboard.TargetProperty="(Panel.Background).
                     (SolidColorBrush.Color)">
                                             <EasingColorKeyFrame KeyTime="0"
-                                         Value="{StaticResource SelectedUnfocusedColor}" />
+                                         Value="{StaticResource FocusedListViewItem}" />
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
