@@ -143,16 +143,43 @@ namespace WpfApp1
         public static List<Schedule> GetSchedule (Child child)
         {
 
+            Schedule s;
+            List<Schedule> schedules = new List<Schedule>();
+
             var Id = child.Id;
 
-            var Query = $"SELECT lecture.name AS Lecturename, dates.day FROM ((((((child INNER JOIN schedule ON child.id = child_id) INNER JOIN schedule_lecture ON schedule.id = schedule_id) INNER JOIN lecture ON lecture__id = lecture.id) INNER JOIN lecture_dates_time ON lecture.id = lecture_id) INNER JOIN dates ON dates_id = dates.id) INNER JOIN time ON time_id = time.id) WHERE child.id='{Id}' ORDER BY time.timestart ASC";
+            var Query = $"SELECT lecture.name AS Lecturename, dates.day AS Day, time.timestart AS Timestart FROM ((((((child INNER JOIN schedule ON child.id = child_id) INNER JOIN schedule_lecture ON schedule.id = schedule_id) INNER JOIN lecture ON lecture__id = lecture.id) INNER JOIN lecture_dates_time ON lecture.id = lecture_id) INNER JOIN dates ON dates_id = dates.id) INNER JOIN time ON time_id = time.id) WHERE child.id='{Id}' ORDER BY time.timestart ASC";
 
-            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            //using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            //{
+            //    var output = connection.Query<Schedule>(Query).ToList();
+
+            //    return output;
+            //}
+
+            using (var conn = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Schedule>(Query).ToList();
+                conn.Open();
 
-                return output;
+                using (var cmd = new NpgsqlCommand(Query, conn))
+                    using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        s = new Schedule()
+
+                        {
+                            Lecturename = reader["Lecturename"].ToString(),
+                            Day = reader["Day"].ToString(),
+                            Timestart = Convert.ToDateTime((reader["Timestart"]).ToString())
+
+                        };
+
+                    schedules.Add(s);
+                    }
+                }
             }
+            return schedules;
         }
     }
 }
