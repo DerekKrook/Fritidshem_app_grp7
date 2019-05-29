@@ -9,7 +9,10 @@ namespace WpfApp1.Models
     class Attendance
     {
         public int Id { get; set; }
-        public string Type { get; set; }
+        public string Category_attendance { get; set; }
         public string Comment { get; set; }
+        public string Child { get; set; }
+        public string Guardian { get; set; }
+        public string Day { get; set; }
     }
 }

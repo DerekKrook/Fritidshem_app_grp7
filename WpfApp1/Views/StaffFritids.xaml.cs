@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.Models;
 
 namespace WpfApp1
 {
@@ -19,18 +20,17 @@ namespace WpfApp1
     /// </summary>
     public partial class StaffFritids : Window
     {
-        List<Child> fritdschildren = new List<Child>();
+        List<Attendance> fritdschildren = new List<Attendance>();
         public StaffFritids()
         {
             InitializeComponent();
         }
 
-        //private void listViewTotalFritids_Loaded(object sender, RoutedEventArgs e)
-        //{
-        //    //fritdschildren = DbOperations.GetChildrenAtFritids();
-        //    ////listViewTotalFritids.ItemsSource = children;
-        //    //listViewTotalFritids.DisplayMemberPath = "Fullinformation";
-
-        //}
+        private void ListViewTotalFritids_Loaded(object sender, RoutedEventArgs e)
+        {
+            fritdschildren = DbOperations.GetChildrenAtFritids();
+            listViewTotalFritids.ItemsSource = fritdschildren;
+            listViewTotalFritids.DisplayMemberPath = "Fullinformation";
+        }
     }
 }

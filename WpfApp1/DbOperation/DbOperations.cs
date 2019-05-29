@@ -197,11 +197,21 @@ namespace WpfApp1
             return schedules;
         }
 
-        public static List<Child> GetChildrenAtFritids()
+        public static List<Attendance> GetChildrenAtFritids()
         {
+
+            Attendance a = new Attendance();
+            List<Attendance> attendance = new List<Attendance>();
+
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT child.firstname ||' '|| child.lastname AS Child, guardian.firstname ||' '|| guardian.lastname AS Parent, category_attendance.name_type AS department, dates.day AS day, attendance.comment AS parent_comment FROM (((((attendance INNER JOIN child ON child_id = child.id) INNER JOIN guardian ON guardian_id = guardian.id) INNER JOIN category_attendance ON category_attendance_id = category_attendance.id) INNER JOIN attendance_dates ON attendance_dates.dates_id = attendance_dates.dates_id AND attendance.id = attendance_dates.attendance_id) INNER JOIN dates ON attendance_dates.dates_id = dates.id AND dates.day = dates.day) WHERE category_attendance_id = 3 ORDER BY dates.day;").ToList();
+                var output = connection.Query<Attendance>($@"SELECT attendance_id AS id, child.firstname ||' '|| child.lastname AS Child, guardian.firstname ||' '|| guardian.lastname AS Guardian, category_attendance.name_type AS Category_attendance, dates.day AS Day, attendance.comment AS Comment 
+            FROM (((((attendance INNER JOIN child ON child_id = child.id) INNER JOIN guardian ON guardian_id = guardian.id) 
+            INNER JOIN category_attendance ON category_attendance_id = category_attendance.id)  
+            INNER JOIN attendance_dates ON attendance_dates.dates_id = attendance_dates.dates_id AND attendance.id = attendance_dates.attendance_id) 
+            INNER JOIN dates ON attendance_dates.dates_id = dates.id AND dates.day = dates.day) 
+            WHERE category_attendance_id = 3 
+            ORDER BY dates.day;").ToList();
 
                 return output;
             }

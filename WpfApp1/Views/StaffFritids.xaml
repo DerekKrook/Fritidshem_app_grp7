@@ -17,11 +17,11 @@
             
         </local:StaffMenu>
         
-        <ListView x:Name="listViewTotalFritids" HorizontalAlignment="Left" Height="255" Margin="95,94,0,0" VerticalAlignment="Top" Width="606" Grid.Row="1">
+        <ListView x:Name="listViewTotalFritids" HorizontalAlignment="Left" Height="255" Margin="95,94,0,0" VerticalAlignment="Top" Width="606" Grid.Row="1" Loaded="ListViewTotalFritids_Loaded">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Barn" Width="150" DisplayMemberBinding="{Binding Child}"/>
-                    <GridViewColumn Header="Förälder" Width="150" DisplayMemberBinding="{Binding Parent}"/>
+                    <GridViewColumn Header="Förälder" Width="150" DisplayMemberBinding="{Binding Guardian}"/>
                     <GridViewColumn Header="Dag" Width="150" DisplayMemberBinding="{Binding Day}"/>
                     <GridViewColumn Header="Kommentar" Width="150" DisplayMemberBinding="{Binding Comment}"/>
                 </GridView>
