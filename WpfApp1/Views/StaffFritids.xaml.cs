@@ -25,12 +25,12 @@ namespace WpfApp1.Views
             InitializeComponent();
         }
 
-        private void listViewTotalFritids_Loaded(object sender, RoutedEventArgs e)
-        {
-            fritdschildren = DbOperations.GetChildrenAtFritids();
-            listViewTotalFritids.ItemsSource = children;
-            listViewTotalFritids.DisplayMemberPath = "Fullinformation";
+        //private void listViewTotalFritids_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    //fritdschildren = DbOperations.GetChildrenAtFritids();
+        //    ////listViewTotalFritids.ItemsSource = children;
+        //    //listViewTotalFritids.DisplayMemberPath = "Fullinformation";
 
-        }
+        //}
     }
 }
