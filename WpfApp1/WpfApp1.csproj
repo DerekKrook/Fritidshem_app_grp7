@@ -119,6 +119,9 @@
     <Compile Include="Views\LoggedInGuardian.xaml.cs">
       <DependentUpon>LoggedInGuardian.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\StaffFritids.xaml.cs">
+      <DependentUpon>StaffFritids.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StaffLogin.xaml.cs">
       <DependentUpon>StaffLogin.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoggedInGuardian.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StaffFritids.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
