@@ -15,5 +15,9 @@
     <BitmapImage x:Key="AttendanceIcon" UriSource="/Theme;component\Resources\attendance.png"/>
 
     <BitmapImage x:Key="FritidsIcon" UriSource="/Theme;component\Resources\fritids.png"/>
-    
+
+    <BitmapImage x:Key="GuardianIcon" UriSource="/Theme;component\Resources\family.png"/>
+
+    <BitmapImage x:Key="StaffIcon"  UriSource="/Theme;component\Resources\teacher.png"/>
+
 </ResourceDictionary>
