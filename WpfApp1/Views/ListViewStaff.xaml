@@ -46,7 +46,7 @@
             </ListView.View>
         </ListView>
         <Label x:Name="label_Copy" Content="Vårdnadshavare för valt barn" HorizontalAlignment="Left" Margin="45,113,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="2" Height="31" Width="228"/>
-        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Left" Margin="153,82,0,0" VerticalAlignment="Top" Width="104" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
+        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Left" Margin="153,81,0,0" VerticalAlignment="Top" Width="104" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
         <Button x:Name="btnChildHome" Content="Går hem" HorizontalAlignment="Left" Margin="45,81,0,0" VerticalAlignment="Top" Width="103" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="278" Margin="45,98,0,0" Grid.Row="1" VerticalAlignment="Top" Width="624" Grid.RowSpan="2">
             <TabItem Header="Avdelning 1">
@@ -57,7 +57,7 @@
                         <ColumnDefinition Width="60*"/>
                         <ColumnDefinition Width="399*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="ListViewStaff1_Class1" HorizontalAlignment="Left" Height="251" VerticalAlignment="Top" Width="618" SelectionChanged="ListViewStaff1_SelectionChanged_1" Grid.ColumnSpan="4">
+                    <ListView x:Name="ListViewStaff1_Class1" HorizontalAlignment="Left" Height="251" VerticalAlignment="Top" Width="618" SelectionChanged="ListViewStaff1_Class1_SelectionChanged" Grid.ColumnSpan="4">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Förnamn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
@@ -71,7 +71,7 @@
             </TabItem>
             <TabItem Header="Avdelning 2">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,33">
-                    <ListView x:Name="ListViewStaff1_Class2" HorizontalAlignment="Left" Height="248" VerticalAlignment="Top" Width="625" SelectionChanged="ListViewStaff1_SelectionChanged_1" Margin="0,0,-7,-31">
+                    <ListView x:Name="ListViewStaff1_Class2" HorizontalAlignment="Left" Height="248" VerticalAlignment="Top" Width="625" SelectionChanged="ListViewStaff1_Class2_SelectionChanged" Margin="0,0,-7,-31">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Förnamn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
@@ -84,7 +84,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Avdelning 3">
-                <ListView x:Name="ListViewStaff1_Class3" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="618" SelectionChanged="ListViewStaff1_SelectionChanged_1">
+                <ListView x:Name="ListViewStaff1_Class3" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="618" SelectionChanged="ListViewStaff1_Class3_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Förnamn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
