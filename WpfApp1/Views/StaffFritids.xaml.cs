@@ -19,9 +19,18 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class StaffFritids : Window
     {
+        List<Child> fritdschildren = new List<Child>();
         public StaffFritids()
         {
             InitializeComponent();
+        }
+
+        private void listViewTotalFritids_Loaded(object sender, RoutedEventArgs e)
+        {
+            fritdschildren = DbOperations.GetChildrenAtFritids();
+            listViewTotalFritids.ItemsSource = children;
+            listViewTotalFritids.DisplayMemberPath = "Fullinformation";
+
         }
     }
 }
