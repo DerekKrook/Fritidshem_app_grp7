@@ -6,6 +6,8 @@
         <ResourceDictionary Source="ButtonStyle.xaml"/>
         <ResourceDictionary Source="Window.xaml"/>
         <ResourceDictionary Source="Icons.xaml"/>
+        <ResourceDictionary Source="Listview.xaml"/>
+        <ResourceDictionary Source="Color.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

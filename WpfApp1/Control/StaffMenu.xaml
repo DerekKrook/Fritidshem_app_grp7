@@ -10,7 +10,7 @@
     <UserControl.Template>
         <ControlTemplate TargetType="UserControl">
 
-            <Border Background="#d3f8e2">
+            <Border Background="#FE6F66">
 
                 <Grid>
 
