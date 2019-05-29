@@ -16,7 +16,7 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="65"/>
                         <ColumnDefinition Width="65"/>
                         <ColumnDefinition Width="65"/>
@@ -25,7 +25,13 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="Profile" Content="{StaticResource ProfileIcon}" Click="Profile_Click" Grid.Column="1" Style="{StaticResource ButtonStyleMenu}"/>
+                    <Button x:Name="Profile" Click="Profile_Click" Grid.Column="1" Style="{StaticResource ButtonStyleMenu}">
+                        <DockPanel>
+                            <Image Source="{StaticResource ProfileIcon}" MaxHeight="25"/>
+                            <Label VerticalAlignment="Center" DockPanel.Dock="Bottom"> Profil
+                            </Label>
+                        </DockPanel>
+                    </Button>
                     <Button x:Name="Schedule" Content="{StaticResource CalendarIcon}" Click="Schedule_Click" Grid.Column="2" Style="{StaticResource ButtonStyleMenu}"/>
                     <Button x:Name="Attendance" Content="Frånvaro" Click="Attendance_Click" Grid.Column="3" Style="{StaticResource ButtonStyleMenu}" FontWeight="Bold" FontSize="13"/>
                     <Button x:Name="Meals" Content="{StaticResource FoodIcon}" Click="Meals_Click" Grid.Column="4" Style="{StaticResource ButtonStyleMenu}"/>
