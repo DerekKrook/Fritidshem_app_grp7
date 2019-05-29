@@ -16,7 +16,8 @@
     <Color x:Key="BorderBrush2" A="255" R="100" G="100" B="100"/>
 
     <Color x:Key="HeaderColorListView">#899DB8</Color>
-    
+
+
 
     <!--Gradients-->
 

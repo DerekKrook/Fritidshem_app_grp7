@@ -20,8 +20,10 @@
 
     <BitmapImage x:Key="StaffIcon"  UriSource="/Theme;component\Resources\teacher.png"/>
 
-    <BitmapImage x:Key="School" UriSource="/Theme;component\Resources\university.png"/>
+    <BitmapImage x:Key="SchoolIcon" UriSource="/Theme;component\Resources\university.png"/>
 
-    <BitmapImage x:Key="Exit" UriSource="/Theme;component\Resources\window-close.png"/>
+    <BitmapImage x:Key="ExitIcon" UriSource="/Theme;component\Resources\window-close.png"/>
+
+    <BitmapImage x:Key="MinimizeIcon" UriSource="/Theme;component\Resources\window-minimize.png"/>
 
 </ResourceDictionary>

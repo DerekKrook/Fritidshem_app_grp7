@@ -137,5 +137,8 @@
   <ItemGroup>
     <Resource Include="Resources\window-close.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\window-minimize.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,6 +24,7 @@
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="60"/>
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="Profile" Click="Profile_Click" Grid.Column="1" Style="{StaticResource ButtonStyleMenu}">
@@ -75,8 +76,12 @@
                         </DockPanel>
                     </Button>
 
-                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="8" Style="{StaticResource ButtonStyleMenu}">
-                        <Image Source="{StaticResource Exit}" MaxHeight="40" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    <Button x:Name="Minimize" Click="Minimize_Click" Grid.Column="8" Style="{StaticResource ButtonStyleMenu}">
+                        <Image Source="{StaticResource MinimizeIcon}" MaxHeight="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </Button>
+
+                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="9" Style="{StaticResource ButtonStyleMenu}">
+                        <Image Source="{StaticResource ExitIcon}" MaxHeight="40" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Button>
 
                 </Grid>

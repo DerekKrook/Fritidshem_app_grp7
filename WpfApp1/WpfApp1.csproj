@@ -105,6 +105,9 @@
     <Compile Include="Control\GuardianMenu.xaml.cs">
       <DependentUpon>GuardianMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Control\InvisbleMenu.xaml.cs">
+      <DependentUpon>InvisbleMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Control\StaffMenu.xaml.cs">
       <DependentUpon>StaffMenu.xaml</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <DependentUpon>StaffLogin.xaml</DependentUpon>
     </Compile>
     <Page Include="Control\GuardianMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\InvisbleMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

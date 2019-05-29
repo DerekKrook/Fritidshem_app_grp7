@@ -66,6 +66,13 @@ namespace WpfApp1
 
         }
 
+        private void Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            window.WindowState = WindowState.Minimized;
+        }
+
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);

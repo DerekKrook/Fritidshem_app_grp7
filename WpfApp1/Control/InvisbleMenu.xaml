@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="WpfApp1.InvisbleMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="65" d:DesignWidth="1280">
+
+    <UserControl.Template>
+        <ControlTemplate TargetType="UserControl">
+
+            <Border Background="#E5E5F3">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="60"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Button x:Name="Minimize" Click="Minimize_Click" Grid.Column="1" Style="{StaticResource ButtonStyleInvisible}">
+                        <Image Source="{StaticResource MinimizeIcon}" MaxHeight="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </Button>
+
+                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="2" Style="{StaticResource ButtonStyleInvisible}">
+                        <Image Source="{StaticResource ExitIcon}" MaxHeight="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                    </Button>
+
+                </Grid>
+
+            </Border>
+
+        </ControlTemplate>
+    </UserControl.Template>
+</UserControl>
