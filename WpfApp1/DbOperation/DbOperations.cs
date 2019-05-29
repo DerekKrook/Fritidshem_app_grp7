@@ -164,7 +164,7 @@ namespace WpfApp1
 
             var Id = child.Id;
 
-            var Query = $@"SELECT lecture.name AS Lecturename, dates.day AS Day, time.timestart AS Timestart 
+            var Query = $@"SELECT lecture.name AS Lecturename, dates.day AS Day, time.timestart AS Timestart, time.timefinish AS Timefinish 
             FROM ((((((child INNER JOIN schedule ON child.id = child_id) 
             INNER JOIN schedule_lecture ON schedule.id = schedule_id) 
             INNER JOIN lecture ON lecture__id = lecture.id) 
@@ -186,13 +186,14 @@ namespace WpfApp1
                         {
                             Lecturename = reader["Lecturename"].ToString(),
                             Day = reader["Day"].ToString(),
-                            Timestart = Convert.ToDateTime((reader["Timestart"]).ToString())
-                            
+                            Timestart = Convert.ToDateTime((reader["Timestart"]).ToString()),
+                            Timefinish = Convert.ToDateTime((reader["Timefinish"]).ToString())
+
                         };
 
                     schedules.Add(s);
-                    }
                     s.changeDateTime();
+                    }
                 }
             }
             return schedules;

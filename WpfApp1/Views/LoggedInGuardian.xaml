@@ -28,15 +28,16 @@
             </ListView.View>
             <Label Content="Label" Height="100" Width="100"/>
         </ListView>
-        <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Left" Margin="291,10,0,0" VerticalAlignment="Top" Width="216" FontSize="18"/>
-            <Button x:Name="btnScheduleChild" Content="Schemalägg" HorizontalAlignment="Left" Margin="47,190,0,0" VerticalAlignment="Top" Width="85" Click="BtnScheduleChild_Click" Height="44" Style="{StaticResource ButtonStyleNormal}"/>
-        <Button x:Name="btnReportAbsence" Content="Anmäl frånvaro" HorizontalAlignment="Left" Margin="168,190,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="0.609,-0.667" Height="44" Style="{StaticResource ButtonStyleNormal}"/>
+        <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Left" Margin="497,16,0,0" VerticalAlignment="Top" Width="216" FontSize="18"/>
+            <Button x:Name="btnScheduleChild" Content="Se schema" HorizontalAlignment="Left" Margin="47,190,0,0" VerticalAlignment="Top" Width="85" Click="BtnScheduleChild_Click" Height="44" Style="{StaticResource ButtonStyleNormal}"/>
+        <Button x:Name="btnReportAbsence" Content="Anmäl frånvaro" HorizontalAlignment="Left" Margin="168,190,0,0" VerticalAlignment="Top" Width="117" RenderTransformOrigin="0.609,-0.667" Height="44" Style="{StaticResource ButtonStyleNormal}"/>
             <ListView x:Name="listViewSchedule" HorizontalAlignment="Left" Height="252" Margin="337,71,0,0" VerticalAlignment="Top" Width="445">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Dag" Width="150" DisplayMemberBinding="{Binding Day}"/>
                         <GridViewColumn Header="Lektion" Width="150" DisplayMemberBinding="{Binding Lecturename}"/>
-                        <GridViewColumn Header="Tid start" Width="150" DisplayMemberBinding="{Binding Time}"/>
+                        <GridViewColumn Header="Tid" Width="150" DisplayMemberBinding="{Binding Time}"/>
+                        
                     </GridView>
                 </ListView.View>
             </ListView>
