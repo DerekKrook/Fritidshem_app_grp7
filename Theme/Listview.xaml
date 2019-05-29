@@ -6,78 +6,14 @@
     
     
     <!--My Colors-->
-    <Color x:Key="BackgroundListView">#BAD4C5</Color>
-    
-    <!--Control colors.--><!--
-    <Color x:Key="WindowColor">#FFE8EDF9</Color>
-    <Color x:Key="ContentAreaColorLight">#FFC5CBF9</Color>
-    <Color x:Key="ContentAreaColorDark">#FF7381F9</Color>
+    <Color x:Key="BackgroundListView">#DBDBE8</Color>
 
-    <Color x:Key="DisabledControlLightColor">#FFE8EDF9</Color>
-    <Color x:Key="DisabledControlDarkColor">#FFC5CBF9</Color>
-    <Color x:Key="DisabledForegroundColor">#FF888888</Color>
+    <Color x:Key="BorderBrush1" A="255" R="0" G="0" B="0"/>
+    <Color x:Key="BorderBrush2" A="255" R="100" G="100" B="100"/>
 
-    <Color x:Key="SelectedBackgroundColor">#FFC5CBF9</Color>
-    <Color x:Key="SelectedUnfocusedColor">#FFDDDDDD</Color>
+    <Color x:Key="ControlMouseOverColor" A="255" R="160" G="210" B="230" />
 
-    <Color x:Key="ControlLightColor">#BAD4C5</Color>
-    <Color x:Key="ControlMediumColor">#FF7381F9</Color>
-    <Color x:Key="ControlDarkColor">#FF211AA9</Color>
-
-    <Color x:Key="ControlMouseOverColor">#FF3843C4</Color>
-    <Color x:Key="ControlPressedColor">#FF211AA9</Color>
-
-
-    <Color x:Key="GlyphColor">#FF444444</Color>
-    <Color x:Key="GlyphMouseOver">sc#1, 0.004391443, 0.002428215, 0.242281124</Color>
-
-    --><!--Border colors--><!--
-    <Color x:Key="BorderLightColor">#FFCCCCCC</Color>
-    <Color x:Key="BorderMediumColor">#FF888888</Color>
-    <Color x:Key="BorderDarkColor">#FF444444</Color>
-
-    <Color x:Key="PressedBorderLightColor">#FF888888</Color>
-    <Color x:Key="PressedBorderDarkColor">#FF444444</Color>
-
-    <Color x:Key="DisabledBorderLightColor">#FFAAAAAA</Color>
-    <Color x:Key="DisabledBorderDarkColor">#FF888888</Color>
-
-    <Color x:Key="DefaultBorderBrushDarkColor">Black</Color>
-
-    --><!--Control-specific resources.--><!--
-    <Color x:Key="HeaderTopColor">#FFC5CBF9</Color>
-    <Color x:Key="DatagridCurrentCellBorderColor">Black</Color>
-    <Color x:Key="SliderTrackDarkColor">#FFC5CBF9</Color>
-
-    <Color x:Key="NavButtonFrameColor">#FF3843C4</Color>
-
-    <LinearGradientBrush x:Key="MenuPopupBrush"
-                     EndPoint="0.5,1"
-                     StartPoint="0.5,0">
-        <GradientStop Color="{DynamicResource ControlLightColor}"
-                Offset="0" />
-        <GradientStop Color="{DynamicResource ControlMediumColor}"
-                Offset="0.5" />
-        <GradientStop Color="{DynamicResource ControlLightColor}"
-                Offset="1" />
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="ProgressBarIndicatorAnimatedFill"
-                     StartPoint="0,0"
-                     EndPoint="1,0">
-        <LinearGradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Color="#000000FF"
-                    Offset="0" />
-                <GradientStop Color="#600000FF"
-                    Offset="0.4" />
-                <GradientStop Color="#600000FF"
-                    Offset="0.6" />
-                <GradientStop Color="#000000FF"
-                    Offset="1" />
-            </GradientStopCollection>
-        </LinearGradientBrush.GradientStops>
-    </LinearGradientBrush>-->
+    <Color x:Key="HeaderColorListView">#899DB8</Color>
 
 
     <!--ScrollViewer-->
@@ -202,7 +138,7 @@
     
     <!--GridViewColumnHeader-->
     
-    <!--<Style x:Key="{x:Type GridViewColumnHeader}"
+    <Style x:Key="{x:Type GridViewColumnHeader}"
        TargetType="GridViewColumnHeader">
         <Setter Property="HorizontalContentAlignment"
           Value="Center" />
@@ -232,16 +168,16 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Border x:Name="HeaderBorder"
-                  BorderThickness="0,1,0,1"
-                  Padding="2,0,2,0">
+                  BorderThickness="0.5,1,0.5,1"
+                  Padding="0,0,0,0">
                             <Border.BorderBrush>
                                 <LinearGradientBrush StartPoint="0,0"
                                    EndPoint="0,1">
                                     <LinearGradientBrush.GradientStops>
                                         <GradientStopCollection>
-                                            <GradientStop Color="{DynamicResource BorderLightColor}"
+                                            <GradientStop Color="{DynamicResource BorderBrush2}"
                                   Offset="0.0" />
-                                            <GradientStop Color="{DynamicResource BorderDarkColor}"
+                                            <GradientStop Color="{DynamicResource BorderBrush1}"
                                   Offset="1.0" />
                                         </GradientStopCollection>
                                     </LinearGradientBrush.GradientStops>
@@ -254,9 +190,9 @@
                                    EndPoint="0,1">
                                     <LinearGradientBrush.GradientStops>
                                         <GradientStopCollection>
-                                            <GradientStop Color="{DynamicResource ControlLightColor}"
+                                            <GradientStop Color="{DynamicResource HeaderColorListView}"
                                   Offset="0.0" />
-                                            <GradientStop Color="{DynamicResource ControlMediumColor}"
+                                            <GradientStop Color="{DynamicResource HeaderColorListView}"
                                   Offset="1.0" />
                                         </GradientStopCollection>
                                     </LinearGradientBrush.GradientStops>
@@ -270,10 +206,10 @@
                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
-                        <Thumb x:Name="PART_HeaderGripper"
+                        <!--<Thumb x:Name="PART_HeaderGripper"
                  HorizontalAlignment="Right"
                  Margin="0,0,-9,0"
-                 Style="{StaticResource GridViewColumnHeaderGripper}" />
+                 Style="{StaticResource GridViewColumnHeaderGripper}" />-->
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -303,7 +239,7 @@
                             <Border Name="HeaderBorder"
                     BorderThickness="0,1,0,1">
                                 <Border.Background>
-                                    <SolidColorBrush Color="{DynamicResource ControlLightColor}" />
+                                    <SolidColorBrush Color="{DynamicResource HeaderColorListView}" />
                                 </Border.Background>
                                 <Border.BorderBrush>
                                     <LinearGradientBrush StartPoint="0,0"
@@ -324,12 +260,12 @@
                 </Setter>
             </Trigger>
         </Style.Triggers>
-    </Style>--> 
+    </Style> 
 
     
     <!--Listview-->
     
-    <!--<Style x:Key="{x:Type ListView}"
+    <Style x:Key="{x:Type ListView}"
        TargetType="ListView">
         <Setter Property="SnapsToDevicePixels"
           Value="true" />
@@ -352,7 +288,7 @@
                             <SolidColorBrush Color="{StaticResource BackgroundListView}" />
                         </Border.Background>
                         <Border.BorderBrush>
-                            <SolidColorBrush Color="{StaticResource BorderMediumColor}" />
+                            <SolidColorBrush Color="{StaticResource BorderBrush2}" />
                         </Border.BorderBrush>
                         <ScrollViewer Style="{DynamicResource
                         {x:Static GridView.GridViewScrollViewerStyleKey}}">
@@ -378,7 +314,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>-->
+    </Style>
+    
+    
+    <!--ListView Items-->
 
     <!--<Style x:Key="{x:Type ListViewItem}"
        TargetType="ListViewItem">

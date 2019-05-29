@@ -13,7 +13,7 @@
     <Color x:Key="BackgroundColor1" A="255" R="189" G="213" B="234" />
 
     <Color x:Key="BorderBrush1" A="255" R="0" G="0" B="0"/>
-    <Color x:Key="BorderBrush2" A="255" R="0" G="0" B="0"/>
+    <Color x:Key="BorderBrush2" A="255" R="100" G="100" B="100"/>
 
 
 
