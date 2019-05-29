@@ -23,6 +23,7 @@
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="60"/>
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="Profile" Click="Profile_Click" Grid.Column="1" Style="{StaticResource ButtonStyleMenu}">
@@ -72,6 +73,10 @@
                                 Logga Ut
                             </Label>
                         </DockPanel>
+                    </Button>
+
+                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="8" Style="{StaticResource ButtonStyleMenu}">
+                        <Image Source="{StaticResource Exit}" MaxHeight="40" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Button>
 
                 </Grid>

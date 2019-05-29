@@ -8,5 +8,8 @@
         <Setter Property="Control.Background" Value="{DynamicResource  BackgroundGradient}"/>
         <Setter Property="FontFamily" Value="Yu Gothic UI Semibolds" />
         <Setter Property="FontSize" Value="15"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="WindowState" Value="Maximized"/>
     </Style>
 </ResourceDictionary>

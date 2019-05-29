@@ -65,5 +65,12 @@ namespace WpfApp1
             window.Close();
 
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            window.Close();
+        }
     }
 }
