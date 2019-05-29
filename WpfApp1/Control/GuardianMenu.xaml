@@ -16,12 +16,12 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
-                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
@@ -41,7 +41,7 @@
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Attendance" Click="Attendance_Click" Grid.Column="3" Style="{StaticResource ButtonStyleMenu}" FontWeight="Bold" FontSize="13">
+                    <Button x:Name="Attendance" Click="Attendance_Click" Grid.Column="3" Style="{StaticResource ButtonStyleMenu}">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource AttendanceIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">

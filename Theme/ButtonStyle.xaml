@@ -178,7 +178,6 @@
         <Setter Property="MinWidth"
           Value="60" />
         <Setter Property="TextBlock.FontWeight" Value="Bold"/>
-        <Setter Property="TextBlock.FontSize" Value="13"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
