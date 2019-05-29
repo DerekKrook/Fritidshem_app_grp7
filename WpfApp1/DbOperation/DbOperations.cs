@@ -187,11 +187,12 @@ namespace WpfApp1
                             Lecturename = reader["Lecturename"].ToString(),
                             Day = reader["Day"].ToString(),
                             Timestart = Convert.ToDateTime((reader["Timestart"]).ToString())
-
+                            
                         };
 
                     schedules.Add(s);
                     }
+                    s.changeDateTime();
                 }
             }
             return schedules;
