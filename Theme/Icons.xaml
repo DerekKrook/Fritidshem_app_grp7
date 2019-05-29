@@ -20,4 +20,6 @@
 
     <BitmapImage x:Key="StaffIcon"  UriSource="/Theme;component\Resources\teacher.png"/>
 
+    <BitmapImage x:Key="School" UriSource="/Theme;component\Resources\university.png"/>
+
 </ResourceDictionary>
