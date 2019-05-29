@@ -55,6 +55,14 @@ namespace WpfApp1
         private void Fritids_Click(object sender, RoutedEventArgs e)
         {
 
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            StaffFritids staffFritids = new StaffFritids();
+
+            staffFritids.Show();
+
+            window.Close();
+
         }
     }
 }
