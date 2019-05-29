@@ -36,7 +36,7 @@
                     <GridView>
                         <GridViewColumn Header="Dag" Width="150" DisplayMemberBinding="{Binding Day}"/>
                         <GridViewColumn Header="Lektion" Width="150" DisplayMemberBinding="{Binding Lecturename}"/>
-                        <GridViewColumn Header="Tid start" Width="150" DisplayMemberBinding="{Binding Timestart}"/>
+                        <GridViewColumn Header="Tid start" Width="150" DisplayMemberBinding="{Binding Time}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
