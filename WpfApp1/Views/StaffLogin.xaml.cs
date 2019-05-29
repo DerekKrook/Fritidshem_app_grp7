@@ -13,9 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.DbOperation;
 using WpfApp1.Models;
-using WpfApp1.Views;
+using WpfApp1;
 
-namespace WpfApp1.Views
+namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for StaffLogin.xaml

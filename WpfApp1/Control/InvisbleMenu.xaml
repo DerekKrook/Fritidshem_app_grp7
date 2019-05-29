@@ -21,11 +21,11 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Button x:Name="Minimize" Click="Minimize_Click" Grid.Column="1" Style="{StaticResource ButtonStyleInvisible}">
+                    <Button x:Name="Minimize" Click="Minimize_Click" Grid.Column="1" Style="{StaticResource ButtonStyleInvisible}" Margin="0,2,0,0">
                         <Image Source="{StaticResource MinimizeIcon}" MaxHeight="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Button>
 
-                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="2" Style="{StaticResource ButtonStyleInvisible}">
+                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="2" Style="{StaticResource ButtonStyleInvisible}" Margin="0,2,2,0">
                         <Image Source="{StaticResource ExitIcon}" MaxHeight="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Button>
 

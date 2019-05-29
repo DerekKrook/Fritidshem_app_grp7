@@ -10,6 +10,7 @@
         <ResourceDictionary Source="Color.xaml"/>
         <ResourceDictionary Source="Textbox.xaml"/>
         <ResourceDictionary Source="Tabcontrol.xaml"/>
+        <ResourceDictionary Source="Label.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

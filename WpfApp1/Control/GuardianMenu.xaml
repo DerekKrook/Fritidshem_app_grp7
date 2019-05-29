@@ -22,12 +22,21 @@
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="60"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button x:Name="Profile" Click="Profile_Click" Grid.Column="1" Style="{StaticResource ButtonStyleMenu}">
+                    <Button x:Name="Home" Click="Home_Click" Grid.Column="1" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
+                        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Image Source="{StaticResource HomeIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
+                            <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
+                                Hem
+                            </Label>
+                        </DockPanel>
+                    </Button>
+                    <Button x:Name="Profile" Click="Profile_Click" Grid.Column="6" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource ProfileIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
@@ -35,7 +44,7 @@
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Schedule" Click="Schedule_Click" Grid.Column="2" Style="{StaticResource ButtonStyleMenu}">
+                    <Button x:Name="Schedule" Click="Schedule_Click" Grid.Column="2" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource CalendarIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
@@ -43,7 +52,7 @@
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Attendance" Click="Attendance_Click" Grid.Column="3" Style="{StaticResource ButtonStyleMenu}">
+                    <Button x:Name="Attendance" Click="Attendance_Click" Grid.Column="3" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource AttendanceIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
@@ -51,7 +60,7 @@
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Meals" Click="Meals_Click" Grid.Column="4" Style="{StaticResource ButtonStyleMenu}">
+                    <Button x:Name="Meals" Click="Meals_Click" Grid.Column="4" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource FoodIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
@@ -59,7 +68,7 @@
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Contact" Click="Contact_Click" Grid.Column="5" Style="{StaticResource ButtonStyleMenu}">
+                    <Button x:Name="Contact" Click="Contact_Click" Grid.Column="5" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource ContactIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
@@ -67,7 +76,7 @@
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Loggout" Click="Button_Click_LogOut" Grid.Column="6" Style="{StaticResource ButtonStyleMenu}">
+                    <Button x:Name="Loggout" Click="Button_Click_LogOut" Grid.Column="7" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource SignoutIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
@@ -76,11 +85,11 @@
                         </DockPanel>
                     </Button>
 
-                    <Button x:Name="Minimize" Click="Minimize_Click" Grid.Column="8" Style="{StaticResource ButtonStyleMenu}">
+                    <Button x:Name="Minimize" Click="Minimize_Click" Grid.Column="9" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <Image Source="{StaticResource MinimizeIcon}" MaxHeight="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Button>
 
-                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="9" Style="{StaticResource ButtonStyleMenu}">
+                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="10" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,2,0">
                         <Image Source="{StaticResource ExitIcon}" MaxHeight="40" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Button>
 

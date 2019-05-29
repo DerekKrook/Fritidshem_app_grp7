@@ -26,4 +26,6 @@
 
     <BitmapImage x:Key="MinimizeIcon" UriSource="/Theme;component\Resources\window-minimize.png"/>
 
+    <BitmapImage x:Key="HomeIcon" UriSource="/Theme;component\Resources\home.png"/>
+
 </ResourceDictionary>

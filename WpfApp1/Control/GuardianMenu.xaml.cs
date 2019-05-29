@@ -39,7 +39,13 @@ namespace WpfApp1
 
         private void Schedule_Click(object sender, RoutedEventArgs e)
         {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
+            ScheduleView scheduleView = new ScheduleView();
+
+            scheduleView.Show();
+
+            window.Close();
         }
 
         private void Meals_Click(object sender, RoutedEventArgs e)
@@ -74,6 +80,17 @@ namespace WpfApp1
             var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
             window.Close();
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            //var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            //LoggedInGuardian loggedInGuardian = new LoggedInGuardian();
+
+            //loggedInGuardian.Show();
+
+            //window.Close();
         }
     }
 }

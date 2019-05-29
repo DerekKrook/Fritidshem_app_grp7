@@ -1,12 +1,21 @@
-﻿<Window x:Class="WpfApp1.Views.ScheduleView"
+﻿<Window x:Class="WpfApp1.ScheduleView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1.Views"
+        xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="ScheduleView" Height="450" Width="800">
+        Title="ScheduleView" Style="{StaticResource MyWindowStyle}">
     <Grid>
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:GuardianMenu Grid.Row="0">
+
+        </local:GuardianMenu>
+
     </Grid>
 </Window>

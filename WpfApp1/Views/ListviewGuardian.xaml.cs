@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using WpfApp1.DbOperation;
 using WpfApp1.Models;
 
-namespace WpfApp1.Views
+namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for ListviewGuardian.xaml

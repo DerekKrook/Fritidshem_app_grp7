@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Models;
-using WpfApp1.Views;
+using WpfApp1;
 
 namespace WpfApp1
 {

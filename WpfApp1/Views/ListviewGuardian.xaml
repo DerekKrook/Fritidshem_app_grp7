@@ -1,13 +1,34 @@
-﻿<Window x:Class="WpfApp1.Views.ListviewGuardian"
+﻿<Window x:Class="WpfApp1.ListviewGuardian"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1.Views"
+        xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="ListviewGuardian" Style="{StaticResource MyWindowStyle}">
-    <Grid Margin="0,0,2,-6">
-        <ListView x:Name="listViewGuardian" HorizontalAlignment="Left" Height="275" Margin="163,105,0,0" VerticalAlignment="Top" Width="653" SelectionChanged="ListViewGuardian_SelectionChanged" Loaded="ListViewGuardian_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="585"/>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+        <local:InvisbleMenu Grid.ColumnSpan="6" Grid.Row="0">
+
+        </local:InvisbleMenu>
+
+        <ListView x:Name="listViewGuardian" HorizontalAlignment="Center" Height="275" VerticalAlignment="Top" Width="660" SelectionChanged="ListViewGuardian_SelectionChanged" Loaded="ListViewGuardian_Loaded" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan='2'>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
@@ -19,10 +40,12 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btnSearchGuardian" Content="Sök" HorizontalAlignment="Left" Margin="46,144,0,0" VerticalAlignment="Top" Width="75" Click="BtnSearchGuardian_Click" Style="{StaticResource ButtonStyleNormal}"/>
-        <TextBox x:Name="txtLastNameGuardian" HorizontalAlignment="Left" Height="23" Margin="26,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="lblGuardian" Content="Vårdnadshavare" HorizontalAlignment="Left" Margin="400,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.97,0.346" Width="199"/>
-        <Label Content="Sök på namn" HorizontalAlignment="Left" Margin="26,64,0,0" VerticalAlignment="Top" Width="179"/>
+        <Button x:Name="btnSearchGuardian" Content="Sök" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Click="BtnSearchGuardian_Click" Style="{StaticResource ButtonStyleNormal}" Grid.Column="3" Grid.Row="2" Height="25"/>
+        <TextBox x:Name="txtLastNameGuardian" HorizontalAlignment="Right" Height="25" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="120" Grid.Column="2" Grid.Row="2" FontStyle="Italic">Sök på namn</TextBox>
+        <Label x:Name="lblGuardian" Content="Välj Vårdnadshavare" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="-0.97,0.346" Width="198" Grid.Column="2" Grid.Row="2" FontSize="18" Margin="0,0,0,-7"/>
+
+
+        <!--<Label Content="Sök på namn" HorizontalAlignment="Left" Margin="26,64,0,0" VerticalAlignment="Top" Width="179" Grid.Column="1" Grid.Row="1"/>-->
 
     </Grid>
 </Window>
