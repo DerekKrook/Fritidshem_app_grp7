@@ -35,11 +35,14 @@ namespace WpfApp1
 
         private void BtnSearchChild_Click(object sender, RoutedEventArgs e)
         {
-            btnEmptySearch.IsEnabled = true;
+            
+            ListViewStaff1.Visibility = Visibility.Visible; 
+            btnEmptySearch.Visibility = Visibility.Visible;
             children = DbOperations.GetChildren(txtNameChild.Text);
             txtNameChild.Clear();
             ListViewStaff1.ItemsSource = children;
             ListViewStaff1.DisplayMemberPath = "Fullinformation";
+
         }
 
         private void Window_Activated(object sender, EventArgs e)
@@ -76,7 +79,9 @@ namespace WpfApp1
 
         private void BtnEmptySearch_Click(object sender, RoutedEventArgs e)
         {
-            btnEmptySearch.IsEnabled = false;
+            ListViewStaff1.Visibility = Visibility.Hidden;
+            btnEmptySearch.Visibility = Visibility.Hidden;
+            
             listViewGuardian.ItemsSource = null;
             children = DbOperations.GetAllChildren();
 

@@ -23,7 +23,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT * FROM child WHERE firstname LIKE '%{a}%' OR lastname LIKE '%{a}%'").ToList();
+                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, class_id, class.name AS Class FROM(child INNER JOIN class on class_id = class.id) WHERE child.firstname LIKE '%{a}%' OR child.lastname LIKE '%{a}%';").ToList();
 
                 return output;
 
@@ -46,7 +46,8 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT * FROM child WHERE class_id IN(1, 2)  ORDER BY child.firstname DESC").ToList();
+                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, class_id, class.name AS Class, department.id, department.name AS avdelning FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) WHERE department_id = 1 ORDER BY class_id DESC;").ToList();
+
 
                 return output;
             }
@@ -56,7 +57,7 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT * FROM child WHERE class_id = 3 ORDER BY child.firstname DESC").ToList();
+                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, class_id, class.name AS Class, department.id, department.name AS avdelning FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) WHERE department_id = 2 ORDER BY class_id DESC;").ToList();
 
                 return output;
             }
@@ -66,7 +67,7 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($"SELECT * FROM child WHERE class_id = 7 ORDER BY child.firstname DESC").ToList();
+                var output = connection.Query<Child>($"SELECT child.id, child.firstname, child.lastname, child.leavealone, class_id, class.name AS Class, department.id, department.name AS avdelning FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) WHERE department_id = 4 ORDER BY class_id DESC;").ToList();
 
                 return output;
             }
