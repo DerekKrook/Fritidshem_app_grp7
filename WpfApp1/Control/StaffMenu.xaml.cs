@@ -44,12 +44,13 @@ namespace WpfApp1
 
         private void Attendance_Click(object sender, RoutedEventArgs e)
         {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
-        }
+            ListViewStaff listViewStaff = new ListViewStaff();
 
-        private void Contact_Click(object sender, RoutedEventArgs e)
-        {
+            listViewStaff.Show();
 
+            window.Close();
         }
 
         private void Fritids_Click(object sender, RoutedEventArgs e)
