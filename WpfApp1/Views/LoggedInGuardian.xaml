@@ -9,7 +9,7 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -34,9 +34,9 @@
             <ListView x:Name="listViewSchedule" HorizontalAlignment="Left" Height="252" Margin="337,71,0,0" VerticalAlignment="Top" Width="445">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Dag" Width="150" DisplayMemberBinding="{Binding Date}"/>
+                        <GridViewColumn Header="Dag" Width="150" DisplayMemberBinding="{Binding Day}"/>
                         <GridViewColumn Header="Lektion" Width="150" DisplayMemberBinding="{Binding Lecturename}"/>
-                        <GridViewColumn Header="Tid start" Width="150" DisplayMemberBinding="{Binding Time}"/>
+                        <GridViewColumn Header="Tid start" Width="150" DisplayMemberBinding="{Binding Timestart}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
