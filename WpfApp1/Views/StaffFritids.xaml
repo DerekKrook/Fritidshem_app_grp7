@@ -7,12 +7,14 @@
         mc:Ignorable="d"
         Title="StaffFritids" Height="450" Width="800">
     <Grid>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="263" Margin="30,116,0,0" VerticalAlignment="Top" Width="627">
+        <ListView x:Name="listViewTotalFritids" HorizontalAlignment="Left" Height="255" Margin="95,94,0,0" VerticalAlignment="Top" Width="606" SelectionChanged="ListViewTotalStaff_SelectionChanged" Loaded="listViewTotalFritids_Loaded">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Barn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
-                    <GridViewColumn Header="Vårdnadshavare" Width="200" DisplayMemberBinding="{Binding Lastname}"/>
-                    <GridViewColumn Header="Dag" Width="120" DisplayMemberBinding="{Binding Day}"/>
+                    <GridViewColumn Header="Barn" Width="150" DisplayMemberBinding="{Binding Child}"/>
+                    <GridViewColumn Header="Förälder" Width="150" DisplayMemberBinding="{Binding Parent}"/>
+                    <GridViewColumn Header="Dag" Width="150" DisplayMemberBinding="{Binding Day}"/>
+                    <GridViewColumn Header="Kommentar" Width="150" DisplayMemberBinding="{Binding Comment}"/>
+
                 </GridView>
             </ListView.View>
         </ListView>

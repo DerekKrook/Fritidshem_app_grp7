@@ -13,8 +13,6 @@
 
     <Color x:Key="ControlMouseOverColor" A="255" R="160" G="210" B="230" />
 
-    <Color x:Key="HeaderColorListView">#899DB8</Color>
-
 
     <!--ScrollViewer-->
     
