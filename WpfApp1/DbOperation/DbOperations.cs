@@ -219,6 +219,56 @@ namespace WpfApp1
             }
 
         }
+
+        // uppdatera mail och/eller telefon på förälder EJ KLAR
+        public static List<Guardian> UpdateGuardianProperties(int id, int phone, string email)
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Guardian>($@"UPDATE guardian SET email = {email}, phone = {phone} WHERE id = { id }").ToList();
+
+                return output;
+            }
+                
+        }
+        // Lägg till nytt barn EJ KLAR
+        public static List<Child> AddNewChild(string firstname,string lastname, int age, bool leavealone)
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>($@"INSERT INTO child (id, firstname, lastname) VALUES ({firstname}, {lastname}, {age}, {leavealone} ").ToList();
+
+                return output;
+            }
+
+        }
+        // Lägg till ny förälder EJ KLAR
+        public static List<Guardian> AddNewGuardian(int phone, string firstname, string lastname, string email)
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Guardian>($@"INSERT INTO guardian (id, firstname, lastname, phone, email) VALUES ({firstname}, {lastname}, {phone}, {email})").ToList();
+
+                return output;
+            }
+
+        }
+
+        // Sätt gå hem EJ KLAR 
+        public static List<Attendance> GoneHome(Attendance home, int id)
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"UPDATE attendance SET gonehome = {home}, WHERE id = { id }").ToList();
+
+                return output;
+            }
+
+        }
     }
 }
 
