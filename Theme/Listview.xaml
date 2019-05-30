@@ -281,7 +281,6 @@
           Value="true" />
         <Setter Property="VerticalContentAlignment"
           Value="Center" />
-        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">
@@ -320,11 +319,12 @@
     </Style>
     
     
-    <!--ListView Items Not In Use-->
+    <!--ListView Items-->
 
-    <!--<Style x:Key="{x:Type ListViewItem}"
+    <Style x:Key="{x:Type ListViewItem}"
        TargetType="ListViewItem">
-        <Setter Property="SnapsToDevicePixels"
+        <Setter Property="Cursor" Value="Hand"/>
+        <!--<Setter Property="SnapsToDevicePixels"
           Value="true" />
         <Setter Property="OverridesDefaultStyle"
           Value="true" />
@@ -369,6 +369,6 @@
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>
-    </Style>--> 
+        </Setter>-->
+    </Style> 
 </ResourceDictionary>
