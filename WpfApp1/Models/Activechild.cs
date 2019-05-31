@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp1.Models
+
+namespace WpfApp1
 {
+
     public static class Activechild
     {
         public static int Id { get; set; }
