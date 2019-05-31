@@ -57,7 +57,13 @@ namespace WpfApp1
 
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
-            
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            Profile profile = new Profile();
+
+            profile.Show();
+
+            window.Close();
         }
 
         private void Attendance_Click(object sender, RoutedEventArgs e)
