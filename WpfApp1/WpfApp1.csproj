@@ -113,6 +113,9 @@
     </Compile>
     <Compile Include="ErrorHandler\InputHandler.cs" />
     <Compile Include="Models\Class.cs" />
+    <Compile Include="Views\GuardianApp\Contact.xaml.cs">
+      <DependentUpon>Contact.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ListviewGuardian.xaml.cs">
       <DependentUpon>ListviewGuardian.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\GuardianApp\Contact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ListviewGuardian.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -240,8 +247,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Guardian\" />
-    <Folder Include="Views\Staff\" />
+    <Folder Include="Views\StaffApp\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

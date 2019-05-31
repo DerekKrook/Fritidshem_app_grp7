@@ -1,0 +1,45 @@
+﻿<Window x:Class="WpfApp1.Contact"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Contact" Style="{StaticResource MyWindowStyle}">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="65"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="605"/>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
+
+        <local:GuardianMenu Grid.ColumnSpan="6" Grid.Row="0">
+
+        </local:GuardianMenu>
+        
+        
+        <ListView x:Name="listviewcontactdepartment" Grid.Column="2" HorizontalAlignment="Center" Height="100" Grid.Row="3" VerticalAlignment="Center" Width="300">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Avdelnig" Width="150" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Telefonnummer" Width="150" DisplayMemberBinding="{Binding Phone}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+
+    </Grid>
+</Window>

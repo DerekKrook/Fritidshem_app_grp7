@@ -199,7 +199,7 @@ namespace WpfApp1
             return schedules;
         }
 
-   public static List<Attendance> GetChildrenAtFritids()
+        public static List<Attendance> GetChildrenAtFritids()
         {
 
             Attendance a = new Attendance();
@@ -268,6 +268,21 @@ namespace WpfApp1
                 return output;
             }
 
+        }
+
+        //Hämtar Avdelning och Telefonnummer 
+
+        public static List<Department> ContactDepartment()
+        {
+            List<Department> departments = new List<Department>();
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            { 
+
+                var output = connection.Query<Department>($@"SELECT * FROM Department").ToList();
+                
+                return output;
+            }
         }
     }
 }

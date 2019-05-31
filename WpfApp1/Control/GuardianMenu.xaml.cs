@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Models;
+using WpfApp1;
 
 namespace WpfApp1
 {
@@ -65,7 +67,13 @@ namespace WpfApp1
 
         private void Contact_Click(object sender, RoutedEventArgs e)
         {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
+            Contact contact = new Contact();
+
+            contact.Show();
+
+            window.Close();
         }
 
         private void Minimize_Click(object sender, RoutedEventArgs e)
