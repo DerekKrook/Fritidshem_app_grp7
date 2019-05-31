@@ -57,7 +57,7 @@ namespace WpfApp1
 
         private void Profile_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void Attendance_Click(object sender, RoutedEventArgs e)
@@ -93,13 +93,13 @@ namespace WpfApp1
         private void Home_Click(object sender, RoutedEventArgs e)
         {
 
-            //var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
-            //LoggedInGuardian loggedInGuardian = new LoggedInGuardian();
+            LoggedInGuardian loggedInGuardian = new LoggedInGuardian();
 
-            //loggedInGuardian.Show();
+            loggedInGuardian.Show();
 
-            //window.Close();
+            window.Close();
         }
     }
 }

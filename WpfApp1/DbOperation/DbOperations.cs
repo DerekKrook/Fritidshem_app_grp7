@@ -122,10 +122,9 @@ namespace WpfApp1
         }
 
         //Hämtar barn till vårdnadshavare 
-        public static List<Child> GetChildrenOfGuardian(Guardian guardian)
+        public static List<Child> GetChildrenOfGuardian()
         {
-
-            var Id = guardian.Id;
+            var Id = Activeguardian.Id;
 
             var Query = $@"SELECT * FROM guardian_child INNER JOIN child ON child_id = child.id WHERE guardian_id='{Id}'"; 
 

@@ -23,16 +23,17 @@ namespace WpfApp1
     /// </summary>
     public partial class LoggedInGuardian : Window
     {
-        List<Guardian> guardians = new List<Guardian>();
         List<Child> children = new List<Child>();
         List<Schedule> schedule = new List<Schedule>();
 
-        public LoggedInGuardian(List<Child>children, Guardian guardian)
+        public LoggedInGuardian()
         {
             
-            InitializeComponent();
-           
-            lblGuardianFirstName.Content = $"Inloggad som {guardian.Firstname} {guardian.Lastname}";
+            InitializeComponent();  
+
+            lblGuardianFirstName.Content = $"Inloggad som {Activeguardian.Firstname} {Activeguardian.Lastname}";
+
+            children = DbOperations.GetChildrenOfGuardian();
 
             listViewGuardianChild.Items.Clear();
             listViewGuardianChild.ItemsSource = children;

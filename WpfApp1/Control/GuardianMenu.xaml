@@ -68,7 +68,7 @@
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Contact" Click="Contact_Click" Grid.Column="5" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
+                    <Button x:Name="Contactbtn" Click="Contact_Click" Grid.Column="5" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource ContactIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">

@@ -21,14 +21,12 @@ namespace WpfApp1
     /// </summary>
     public partial class ListviewGuardian : Window
     {
-        Guardian activeguardian; // skapa objekt av activeguardian
         List<Guardian> guardians = new List<Guardian>();
-        List<Child> children = new List<Child>();
+        
 
         public ListviewGuardian()
         {
             InitializeComponent();
-            //UpdateListView();
         }
 
         private void UpdateListViewGuardian()
@@ -48,15 +46,13 @@ namespace WpfApp1
 
         private void ListViewGuardian_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Guardian guardian = (Guardian)listViewGuardian.SelectedItem;
-            children = DbOperations.GetChildrenOfGuardian(guardian);
-            
-            LoggedInGuardian loggedIn = new LoggedInGuardian(children, guardian);
 
-            activeguardian = (Guardian)listViewGuardian.SelectedItem; // tilldelar objektet activeguardian vald person i listan
-            
-           
+            Activeguardian.Setactiveguardian((Guardian)listViewGuardian.SelectedItem); // tilldelar objektet activeguardian vald person i listan
+
+            LoggedInGuardian loggedIn = new LoggedInGuardian();
+
             loggedIn.Show();
+
             this.Close();
                       
         }
