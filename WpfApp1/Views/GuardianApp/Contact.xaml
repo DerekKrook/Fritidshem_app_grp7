@@ -12,6 +12,7 @@
             <RowDefinition Height="65"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="150"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
@@ -19,8 +20,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="605"/>
-            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="308"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
@@ -28,9 +28,10 @@
         <local:GuardianMenu Grid.ColumnSpan="6" Grid.Row="0">
 
         </local:GuardianMenu>
-        
-        
-        <ListView x:Name="listviewcontactdepartment" Grid.Column="2" HorizontalAlignment="Center" Height="100" Grid.Row="3" VerticalAlignment="Center" Width="300">
+
+        <Label x:Name="LblContact" Content="Kontakt Uppgifter Till Skolans Avdelningar" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+        <ListView x:Name="listviewcontactdepartment" Grid.Column="2" HorizontalAlignment="Center" Height="150" Grid.Row="3" VerticalAlignment="Center" Width="308">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Avdelnig" Width="150" DisplayMemberBinding="{Binding Name}"/>
