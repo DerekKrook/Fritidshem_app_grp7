@@ -13,14 +13,14 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="100"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="260"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
@@ -29,12 +29,13 @@
 
         </local:GuardianMenu>
 
-        <Image x:Name="imgProfile" Source="{StaticResource ProfilewomanIcon}" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" MaxHeight="150"/>
+        <Image x:Name="imgProfileBorder" Source="{StaticResource ExitIcon}" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" MaxHeight="185"/>
+        <Image x:Name="imgProfile" Source="{StaticResource ProfilewomanIcon}" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" MaxHeight="127"/>
 
-        <TextBox x:Name="txtboxFirstName" Grid.Column="2" HorizontalAlignment="Right" Height="30" Grid.Row="3" TextWrapping="Wrap" Text="{x:Static local:Activeguardian.Firstname}" VerticalAlignment="Top" Width="135" Margin="0,0,10,0"/>
+        <TextBox x:Name="txtboxFirstName" Grid.Column="2" HorizontalAlignment="Right" Height="30" Grid.Row="3" TextWrapping="Wrap" Text="{x:Static local:Activeguardian.Firstname}" VerticalAlignment="Top" Width="135" Margin="0,0,10,0" IsEnabled="False"/>
         <Label x:Name="lblFirstName" Content="Förnamn" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Top" Height="30"/>
 
-        <TextBox x:Name="txtboxLastName" Grid.Column="2" HorizontalAlignment="Right" Height="30" Grid.Row="3" TextWrapping="Wrap" Text="{x:Static local:Activeguardian.Lastname}" VerticalAlignment="Bottom" Width="135" Margin="0,0,10,0"/>
+        <TextBox x:Name="txtboxLastName" Grid.Column="2" HorizontalAlignment="Right" Height="30" Grid.Row="3" TextWrapping="Wrap" Text="{x:Static local:Activeguardian.Lastname}" VerticalAlignment="Bottom" Width="135" Margin="0,0,10,0" IsEnabled="False"/>
         <Label x:Name="lblLastName" Content="Förnamn" Grid.Column="2" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Bottom" Height="30"/>
 
     </Grid>
