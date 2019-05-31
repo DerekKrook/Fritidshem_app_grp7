@@ -27,11 +27,13 @@ namespace WpfApp1
         List<Child> getclassone = new List<Child>();
         List<Child> getclasstwo = new List<Child>();
         List<Child> getclassthree = new List<Child>();
-
+      
         public ListViewStaff()
         {
             InitializeComponent();
+
         }
+
 
         private void BtnSearchChild_Click(object sender, RoutedEventArgs e)
         {
@@ -47,6 +49,7 @@ namespace WpfApp1
 
         private void Window_Activated(object sender, EventArgs e)
         {
+            lblStaffFirstname.Content = $"Inloggad som {Activestaff.Firstname} {Activestaff.Lastname}";
             children = DbOperations.GetAllChildren();
             getclassone = DbOperations.GetFirstGraders();
             getclasstwo = DbOperations.GetSecondGraders();

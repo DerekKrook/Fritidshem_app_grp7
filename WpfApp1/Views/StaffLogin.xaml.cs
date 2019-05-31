@@ -31,13 +31,9 @@ namespace WpfApp1
         private void Window_Activated(object sender, EventArgs e)
         {
 
-           // DbOperations db = new DbOperations();
             List<Staff> staff = new List<Staff>();
 
-            //staff = db.GetAllStaff();
-
             staff = DbOperations.GetAllStaff();
-
 
             listViewTotalStaff.ItemsSource = staff;
             listViewTotalStaff.DisplayMemberPath = "Fullinformation";
@@ -46,8 +42,8 @@ namespace WpfApp1
 
         private void ListViewTotalStaff_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            // Staff staff = (Staff)listBoxStaff.SelectedItem;
+
+            Activestaff.Setactivestaff((Staff)listViewTotalStaff.SelectedItem);
             ListViewStaff staffview = new ListViewStaff();
 
 
