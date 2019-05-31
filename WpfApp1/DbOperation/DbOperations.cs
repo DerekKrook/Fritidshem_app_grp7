@@ -220,12 +220,12 @@ namespace WpfApp1
         }
 
         // uppdatera mail och/eller telefon på förälder EJ KLAR
-        public static List<Guardian> UpdateGuardianProperties(int id, int phone, string email)
+        public static List<Guardian> UpdateGuardianProperties(int phone, string email, int id)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"UPDATE guardian SET email = {email}, phone = {phone} WHERE id = { id }").ToList();
+                var output = connection.Query<Guardian>($@"UPDATE guardian SET email = '{email}', phone = {phone} WHERE id = {id}").ToList();
 
                 return output;
             }

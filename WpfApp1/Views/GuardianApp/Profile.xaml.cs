@@ -23,5 +23,26 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            Int32.TryParse(txtboxPhone.Text, out int phone);
+            string email = txtboxEmail.Text;
+            int id = Activeguardian.Id;
+
+            DbOperations.UpdateGuardianProperties(phone, email, id);
+
+            Activeguardian.Phone = phone.ToString();
+            Activeguardian.Email = email;
+
+            UpdatedMessage();
+        }
+
+        public async void UpdatedMessage()
+        {
+            lblUpdated.Visibility = Visibility.Visible;
+            await Task.Delay(3500);
+            lblUpdated.Visibility = Visibility.Hidden;
+        }
     }
 }

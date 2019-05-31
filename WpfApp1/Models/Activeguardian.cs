@@ -12,7 +12,7 @@ namespace WpfApp1
         public static string Firstname { get; set; }
         public static string Lastname { get; set; }
         public static string Email { get; set; }
-        public static int Phone { get; set; }
+        public static string Phone { get; set; }
 
         public static string Getactiveguardian
         {
@@ -30,7 +30,7 @@ namespace WpfApp1
             Activeguardian.Firstname = guardian.Firstname;
             Activeguardian.Lastname = guardian.Lastname;
             Activeguardian.Email = guardian.Email;
-            Activeguardian.Phone = guardian.Phone;
+            Activeguardian.Phone = guardian.Phone.ToString();
 
             return null;
         }
