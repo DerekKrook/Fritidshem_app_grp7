@@ -13,8 +13,9 @@
                 <RowDefinition Height="80"/>
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="100"/>
-                <RowDefinition Height="100"/>
-                <RowDefinition Height="65"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -28,7 +29,7 @@
         <local:GuardianMenu Grid.ColumnSpan="6" Grid.Row="0">
 
         </local:GuardianMenu>
-
+        
         <Image x:Name="imgProfileBorder" Source="{StaticResource ExitIcon}" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" MaxHeight="185"/>
         <Image x:Name="imgProfile" Source="{StaticResource ProfilewomanIcon}" Grid.Column="2" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" MaxHeight="127"/>
 
