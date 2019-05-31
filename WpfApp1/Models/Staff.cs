@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace WpfApp1.Models
 {
-    class Staff
+   public class Staff
     {
         public int Id { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-        public string Department { get; set; }
+        public int Department { get; set; }
 
         public string Fullinformation
         {
