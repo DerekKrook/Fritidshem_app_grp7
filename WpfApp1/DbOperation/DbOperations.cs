@@ -219,20 +219,33 @@ namespace WpfApp1
 
         }
 
-        // uppdatera mail och/eller telefon på förälder EJ KLAR
-        public static List<Guardian> UpdateGuardianProperties(int phone, string email, int id)
-        {
 
+        // uppdatera mail och/eller telefon på förälder EJ KLAR
+        public static List<Guardian> UpdateGuardianProperties(int phone, string email, string firstname, string lastname)
+        {
+            var Id = Activeguardian.Id;
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"UPDATE guardian SET email = '{email}', phone = {phone} WHERE id = {id}").ToList();
+                var output = connection.Query<Guardian>($@"UPDATE guardian SET firstname = '{firstname}', lastname = '{lastname}', email = '{email}', phone = {phone} WHERE id = {Id}").ToList();
 
                 return output;
             }
-                
+
         }
+
+        //public static List<Guardian> UpdateChildProperties(int id, string firstname, string lastname)
+        //{
+
+        //    using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+        //    {
+        //        var output = connection.Query<Guardian>($@"UPDATE child SET firstname = '{firstname}', lastname = {lastname} WHERE id = {id}").ToList();
+
+        //        return output;
+        //    }
+
+        //}
         // Lägg till nytt barn EJ KLAR
-        public static List<Child> AddNewChild(string firstname,string lastname, int age, bool leavealone)
+        public static List<Child> AddNewChild(string firstname, string lastname, int age, bool leavealone)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
@@ -276,14 +289,13 @@ namespace WpfApp1
             List<Department> departments = new List<Department>();
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            { 
+            {
 
                 var output = connection.Query<Department>($@"SELECT * FROM Department").ToList();
-                
+
                 return output;
             }
         }
     }
 }
-
 
