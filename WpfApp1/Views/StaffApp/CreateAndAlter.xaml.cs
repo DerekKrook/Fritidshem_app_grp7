@@ -27,7 +27,6 @@ namespace WpfApp1
 
         List<Child> children = new List<Child>();
         List<Guardian> guardian = new List<Guardian>();
-        Child child;
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
@@ -51,7 +50,8 @@ namespace WpfApp1
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-            // tömm alla fält och selecteditem
+            ListViewChildren.SelectedItem = null;
+            ClearTextbox();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -70,6 +70,33 @@ namespace WpfApp1
 
         }
 
+        public void UpdateChild()
+        {
+            txtboxFirstName.Text = Activechild.Firstname;
+            txtboxLastName.Text = Activechild.Lastname;
+            txtboxClass.Text = Activechild.Class;
+            txtboxGuardian.Text = Activechild.Guardian;
+        }
+
+        public void UpdateGuardian()
+        {
+            txtboxFirstNameGuardian.Text = Activeguardian.Firstname;
+            txtboxLastNameGuardian.Text = Activeguardian.Lastname;
+            txtboxPhoneGuardian.Text = Activeguardian.Phone.ToString();
+            txtboxEmailGuardian.Text = Activeguardian.Email;
+        }
+        public void ClearTextbox()
+        {
+            txtboxFirstNameGuardian.Clear();
+            txtboxLastNameGuardian.Clear();
+            txtboxPhoneGuardian.Clear();
+            txtboxEmailGuardian.Clear();
+
+            txtboxFirstName.Clear();
+            txtboxLastName.Clear();
+            txtboxClass.Clear();
+            txtboxGuardian.Clear();
+        }
         private void ListViewGuardians_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -82,38 +109,82 @@ namespace WpfApp1
 
                 return;
             }
+            UpdateGuardian();
 
-            if (guardian != null)
-            {
-                txtboxFirstNameGuardian.Text = Activeguardian.Firstname;
-                txtboxLastNameGuardian.Text = Activeguardian.Lastname;
-                txtboxPhoneGuardian.Text = Activeguardian.Phone.ToString();
-                txtboxEmailGuardian.Text = Activeguardian.Email;
-            }
         }
 
         private void ListViewChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
-            txtboxFirstName.Text = Activechild.Firstname;
-            txtboxFirstName.Text = Activechild.Lastname;
-            txtboxClass.Text = Activechild.Class;
-            txtboxGuardian.Text = Activechild.Guardian;
+            try
+            {
+                Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+            UpdateChild();
         }
 
         private void BtnChange_Click(object sender, RoutedEventArgs e)
         {
             // DbOperations.UpdateChildProperties();
-           
-           // children = DbOperations.GetAllChildren();
-           // ListViewChildren.ItemsSource = children;
+
+            // children = DbOperations.GetAllChildren();
+            // ListViewChildren.ItemsSource = children;
+            // ClearTextbox();
         }
         private void SaveGuardian_Click(object sender, RoutedEventArgs e)
         {
-
             Activeguardian.Setactiveguardian((Guardian)ListViewGuardians.SelectedItem);
             DbOperations.UpdateGuardianProperties(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxEmailGuardian.Text, txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text);
             ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
+            ClearTextbox();
+
+        }
+
+        private void BtnCancelGuardian_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewGuardians.SelectedItem = null;
+            ClearTextbox();
+        }
+
+        private void BtnDeleteGuardian_Click(object sender, RoutedEventArgs e)
+        {
+            DbOperations.DeleteGuardian();
+            ListViewGuardians.SelectedItem = null;
+            ClearTextbox();
+        }
+
+        private void AddNewGuardian_Click(object sender, RoutedEventArgs e)
+        {
+
+            //DbOperations.AddNewGuardian(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text, txtboxEmailGuardian.Text);
+            if (txtboxFirstNameGuardian != null && txtboxLastNameGuardian != null)
+            {
+                try
+                {
+                    DbOperations.AddNewGuardian(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text, txtboxEmailGuardian.Text);
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Fyll i fält",
+                                    "Felmeddelande");
+                }
+            }
+            ClearTextbox();
+            ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
+        }
+
+        private void BtnDeleteGuardian_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddNewGuardian_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
