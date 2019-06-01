@@ -11,13 +11,21 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="360"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <local:GuardianMenu Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="412"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <local:GuardianMenu Grid.Row="0" Grid.ColumnSpan="3">
 
         </local:GuardianMenu>
 
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="358" Margin="29,77,0,0" VerticalAlignment="Top" Width="410" Grid.Row="1">
+        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="2" Grid.Column="1">
             <TabItem x:Name="Monday" Header="Måndag" Loaded="Monday_Loaded">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -87,7 +95,8 @@
             </TabItem>
         </TabControl>
 
-        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Margin="816,196,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxChildren_SelectionChanged"/>
+        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="20,40,0,0"/>
+        <Label x:Name="lblChoseChild" Content="Välj Barn:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="3" Margin="20,15,0,0"/>
 
     </Grid>
 </Window>
