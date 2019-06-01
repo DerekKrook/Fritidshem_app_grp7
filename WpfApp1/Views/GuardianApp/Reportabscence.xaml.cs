@@ -19,12 +19,26 @@ namespace WpfApp1
     /// </summary>
     public partial class Reportabscence : Window
     {
+        List<Child> children = new List<Child>();
+
         public Reportabscence()
         {
             InitializeComponent();
+
+            DataBinding();
         }
 
         //Tänk en formulär med flera comboboxar där man väljer barn, frånvaro anlednning, datum och sen en textbox med kommentar :D
+
+        public void DataBinding()
+        {
+            children = DbOperations.GetChildrenOfGuardian();
+
+            comboBoxChildren.ItemsSource = children;
+            comboBoxChildren.DisplayMemberPath = "Fullinformation";
+
+            comboBoxChildren.SelectedIndex = 0;
+        }
 
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
