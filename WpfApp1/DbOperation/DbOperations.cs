@@ -257,13 +257,27 @@ namespace WpfApp1
             }
 
         }
-        // Lägg till ny förälder EJ KLAR
+
         public static List<Guardian> AddNewGuardian(int phone, string firstname, string lastname, string email)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"INSERT INTO guardian (id, firstname, lastname, phone, email) VALUES ({firstname}, {lastname}, {phone}, {email})").ToList();
+                var output = connection.Query<Guardian>($@"INSERT INTO guardian (firstname, lastname, phone, email) VALUES ('{firstname}', '{lastname}', {phone}, '{email}')").ToList();
+
+
+                return output;
+            }
+
+        }
+        public static List<Guardian> DeleteGuardian()
+        {
+            var Id = Activeguardian.Id;
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Guardian>($@"DELETE FROM guardian WHERE id = {Id};").ToList();
+
 
                 return output;
             }
