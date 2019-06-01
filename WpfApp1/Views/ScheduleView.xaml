@@ -17,5 +17,77 @@
 
         </local:GuardianMenu>
 
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="358" Margin="29,77,0,0" VerticalAlignment="Top" Width="410" Grid.Row="1">
+            <TabItem x:Name="Monday" Header="Måndag" Loaded="Monday_Loaded">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="78*"/>
+                        <ColumnDefinition Width="81*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="287*"/>
+                        <ColumnDefinition Width="109*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="ListViewMonday" HorizontalAlignment="Left" Height="325" VerticalAlignment="Top" Width="410"  Grid.ColumnSpan="5">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Tuesday" Header="Tisdag" Loaded="Tuesday_Loaded">
+                <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="ListViewTuesday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Wednesday" Header="Onsdag" Loaded="Wednesday_Loaded">
+                <Grid Background="#FFE5E5E5" >
+                    <ListView x:Name="ListViewWednesday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Thursday" Header="Torsdag" Loaded="Thursday_Loaded">
+                <Grid Background="#FFE5E5E5" >
+                    <ListView x:Name="ListViewThursday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Friday" Header="Fredag" Loaded="Friday_Loaded">
+                <Grid Background="#FFE5E5E5" >
+                    <ListView x:Name="ListViewFriday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Margin="816,196,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxChildren_SelectionChanged"/>
+
     </Grid>
 </Window>

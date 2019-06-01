@@ -155,13 +155,14 @@ namespace WpfApp1
         }
 
         //Hämta scheman för barn
-        public static List<Schedule> GetSchedule (Child child)
+        public static List<Schedule> GetSchedule (int Id, string day)
         {
 
             Schedule s = new Schedule();
             List <Schedule> schedules = new List<Schedule>();
 
-            var Id = child.Id;
+            //var Id = child.Id;
+            //var Day = schedule.Day;
 
             var Query = $@"SELECT lecture.name AS Lecturename, dates.day AS Day, time.timestart AS Timestart, time.timefinish AS Timefinish 
             FROM ((((((child INNER JOIN schedule ON child.id = child_id) 
@@ -169,7 +170,7 @@ namespace WpfApp1
             INNER JOIN lecture ON lecture__id = lecture.id) 
             INNER JOIN lecture_dates_time ON lecture.id = lecture_id) 
             INNER JOIN dates ON dates_id = dates.id) INNER JOIN time ON time_id = time.id)
-            WHERE child.id='{Id}' ORDER BY time.timestart ASC";           
+            WHERE child.id='{Id}' AND dates.day='{day}' ORDER BY time.timestart ASC";           
 
             using (var conn = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -219,7 +220,7 @@ namespace WpfApp1
 
         }
 
-        // uppdatera mail och/eller telefon på förälder EJ KLAR
+        // uppdatera mail och/eller telefon på förälder
         public static List<Guardian> UpdateGuardianProperties(int phone, string email, int id)
         {
 
@@ -270,7 +271,6 @@ namespace WpfApp1
         }
 
         //Hämtar Avdelning och Telefonnummer 
-
         public static List<Department> ContactDepartment()
         {
             List<Department> departments = new List<Department>();

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.Models;
 
 namespace WpfApp1
 {
@@ -19,9 +20,71 @@ namespace WpfApp1
     /// </summary>
     public partial class ScheduleView : Window
     {
+        List<Schedule> schedule = new List<Schedule>();
+        List<Child> children = new List<Child>();
+
         public ScheduleView()
         {
             InitializeComponent();
+
+            DataBinding();
+        }
+
+        public void DataBinding()
+        {
+            children = DbOperations.GetChildrenOfGuardian();
+
+            comboBoxChildren.ItemsSource = children;
+            comboBoxChildren.DisplayMemberPath = "Fullinformation";
+
+        }
+
+        private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxChildren.SelectedItem != null)
+            {
+                Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
+
+                UpdateSchedule();
+            }
+        }
+
+        public void UpdateSchedule()
+        {
+            TabItem tabItem = tabControl.SelectedItem as TabItem;
+
+            string day = tabItem.Header.ToString();
+
+            int id = Activechild.Id;
+
+            schedule = DbOperations.GetSchedule(id, day);
+            ListViewMonday.ItemsSource = schedule;
+            ListViewMonday.DisplayMemberPath = "Fullinformation";
+        }
+
+        private void Monday_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule();
+        }
+
+        private void Tuesday_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule();
+        }
+
+        private void Wednesday_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule();
+        }
+
+        private void Thursday_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule();
+        }
+
+        private void Friday_Loaded(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule();
         }
     }
 }

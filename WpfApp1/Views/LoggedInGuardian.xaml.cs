@@ -41,14 +41,14 @@ namespace WpfApp1
         }
 
         private void BtnScheduleChild_Click(object sender, RoutedEventArgs e)
-        {           
-            Child child = (Child)listViewGuardianChild.SelectedItem;
-            if(child != null)
-            {
-                schedule = DbOperations.GetSchedule(child);
-                listViewSchedule.ItemsSource = schedule;
-                listViewSchedule.DisplayMemberPath = "Fullinformation";
-            }
+        {
+            //Child child = (Child)listViewGuardianChild.SelectedItem;
+            //if (child != null)
+            //{
+            //    schedule = DbOperations.GetSchedule(child);
+            //    listViewSchedule.ItemsSource = schedule;
+            //    listViewSchedule.DisplayMemberPath = "Fullinformation";
+            //}
         }
     }
 }

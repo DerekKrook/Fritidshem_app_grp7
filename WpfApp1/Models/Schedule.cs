@@ -29,7 +29,7 @@ namespace WpfApp1.Models
         public void changeDateTime()
         {
 
-            Time = Timestart.ToString("HH:mm") +" " + Timefinish.ToString("HH:mm");
+            Time = Timestart.ToString("HH:mm") +" - " + Timefinish.ToString("HH:mm");
             
         }
     }
