@@ -17,15 +17,21 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="412"/>
+            <ColumnDefinition Width="166"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="166"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <local:GuardianMenu Grid.Row="0" Grid.ColumnSpan="3">
+        <local:GuardianMenu Grid.Row="0" Grid.ColumnSpan="5">
 
         </local:GuardianMenu>
 
-        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="2" Grid.Column="1">
+        <Image x:Name="imgLeftArrow" Grid.Column="1" Grid.Row="1" Source="{StaticResource LeftArrowIcon}" MaxHeight="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,2"/>
+        <Label x:Name="lblWeel" Content="Vecka 46" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="1"/>
+        <Image x:Name="imgRightArrow" Grid.Column="3" Grid.Row="1" Source="{StaticResource RightArrowIcon}" MaxHeight="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,2"/>
+
+        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
             <TabItem x:Name="Monday" Header="Måndag" Loaded="Monday_Loaded">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -95,8 +101,8 @@
             </TabItem>
         </TabControl>
 
-        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="20,40,0,0"/>
-        <Label x:Name="lblChoseChild" Content="Välj Barn:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="3" Margin="20,15,0,0"/>
+        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="4" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="20,40,0,0"/>
+        <Label x:Name="lblChoseChild" Content="Välj Barn:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="4" Margin="20,15,0,0"/>
 
     </Grid>
 </Window>

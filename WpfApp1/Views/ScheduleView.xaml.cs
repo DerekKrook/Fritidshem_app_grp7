@@ -51,6 +51,8 @@ namespace WpfApp1
 
         public void UpdateSchedule()
         {
+            //Vill ha med cateogry_attendance för barn/dag  så att det kan stå när orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
+
             TabItem tabItem = tabControl.SelectedItem as TabItem;
 
             string day = tabItem.Header.ToString();
@@ -60,6 +62,8 @@ namespace WpfApp1
             schedule = DbOperations.GetSchedule(id, day);
             ListViewMonday.ItemsSource = schedule;
             ListViewMonday.DisplayMemberPath = "Fullinformation";
+
+            comboBoxChildren.SelectedIndex = 0;
         }
 
         private void Monday_Loaded(object sender, RoutedEventArgs e)

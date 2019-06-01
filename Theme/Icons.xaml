@@ -32,4 +32,8 @@
 
     <BitmapImage x:Key="AddPersonIcon"  UriSource="/Theme;component\Resources\add-contact.png"/>
 
+    <BitmapImage x:Key="RightArrowIcon"  UriSource="/Theme;component\Resources\right-arrow.png"/>
+
+    <BitmapImage x:Key="LeftArrowIcon"  UriSource="/Theme;component\Resources\left-arrow.png"/>
+
 </ResourceDictionary>

@@ -154,15 +154,12 @@ namespace WpfApp1
             }
         }
 
-        //Hämta scheman för barn
+        //Hämta scheman för barn   Vill ha med category attendance ID  för dag/barnet 
         public static List<Schedule> GetSchedule (int Id, string day)
         {
 
             Schedule s = new Schedule();
             List <Schedule> schedules = new List<Schedule>();
-
-            //var Id = child.Id;
-            //var Day = schedule.Day;
 
             var Query = $@"SELECT lecture.name AS Lecturename, dates.day AS Day, time.timestart AS Timestart, time.timefinish AS Timefinish 
             FROM ((((((child INNER JOIN schedule ON child.id = child_id) 
@@ -245,6 +242,7 @@ namespace WpfApp1
         //    }
 
         //}
+
         // Lägg till nytt barn EJ KLAR
         public static List<Child> AddNewChild(string firstname, string lastname, int age, bool leavealone)
         {

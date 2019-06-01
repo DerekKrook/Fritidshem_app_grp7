@@ -153,5 +153,9 @@
   <ItemGroup>
     <Resource Include="Resources\add-contact.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\left-arrow.png" />
+    <Resource Include="Resources\right-arrow.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
