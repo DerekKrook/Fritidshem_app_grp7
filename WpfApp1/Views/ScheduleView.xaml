@@ -95,7 +95,7 @@
             </TabItem>
         </TabControl>
 
-        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="20,40,0,0"/>
+        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="20,40,0,0"/>
         <Label x:Name="lblChoseChild" Content="Välj Barn:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="3" Margin="20,15,0,0"/>
 
     </Grid>
