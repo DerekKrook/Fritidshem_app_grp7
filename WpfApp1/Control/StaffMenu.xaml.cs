@@ -79,5 +79,17 @@ namespace WpfApp1
 
             window.Close();
         }
+
+        private void CreateandAlter_Click(object sender, RoutedEventArgs e)
+        {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            CreateAndAlter createAndAlter = new CreateAndAlter();
+
+            createAndAlter.Show();
+
+            window.Close();
+
+        }
     }
 }

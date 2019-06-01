@@ -30,4 +30,6 @@
 
     <BitmapImage x:Key="ProfilewomanIcon" UriSource="/Theme;component\Resources\girl.png"/>
 
+    <BitmapImage x:Key="AddPersonIcon"  UriSource="/Theme;component\Resources\add-contact.png"/>
+
 </ResourceDictionary>
