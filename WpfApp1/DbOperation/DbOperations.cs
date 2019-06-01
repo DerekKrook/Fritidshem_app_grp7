@@ -196,6 +196,7 @@ namespace WpfApp1
             return schedules;
         }
 
+        //Hämtar barn på fritids
         public static List<Attendance> GetChildrenAtFritids()
         {
 
@@ -256,6 +257,7 @@ namespace WpfApp1
 
         }
 
+        //  Lägg till ny vårdnadshavare (EJ KLAR?)
         public static List<Guardian> AddNewGuardian(int phone, string firstname, string lastname, string email)
         {
 
@@ -268,6 +270,8 @@ namespace WpfApp1
             }
 
         }
+
+        // Ta bort vårdnadshavare (EJ KLAR?)
         public static List<Guardian> DeleteGuardian()
         {
             var Id = Activeguardian.Id;
@@ -307,6 +311,20 @@ namespace WpfApp1
 
                 return output;
             }
+        }
+
+        //Lägg till frånvaro EJ KLAR Behövs lägga till datum!
+        public static List<Attendance> GuardianReportAttendance(int id, string comment, int categoryattendanceid, string day)
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"INSERT INTO attendance (id, guardian_id, child_id, comment, category_attendance_id) VALUES ('{id}', '{Activeguardian.Id}', '{Activechild.Id}', '{comment}', '{categoryattendanceid}')").ToList();
+
+
+                return output;
+            }
+
         }
     }
 }

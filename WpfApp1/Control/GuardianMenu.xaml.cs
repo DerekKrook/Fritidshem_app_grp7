@@ -68,7 +68,13 @@ namespace WpfApp1
 
         private void Attendance_Click(object sender, RoutedEventArgs e)
         {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
+            Reportabscence reportabscence = new Reportabscence();
+
+            reportabscence.Show();
+
+            window.Close();
         }
 
         private void Contact_Click(object sender, RoutedEventArgs e)

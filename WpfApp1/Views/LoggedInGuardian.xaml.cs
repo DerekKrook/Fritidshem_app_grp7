@@ -41,8 +41,8 @@ namespace WpfApp1
             listViewGuardianChild.DisplayMemberPath = "Fullinformation";
         }
 
-        private void BtnScheduleChild_Click(object sender, RoutedEventArgs e)
-        {
+        //private void BtnScheduleChild_Click(object sender, RoutedEventArgs e)
+        //{
             //Child child = (Child)listViewGuardianChild.SelectedItem;
             //if (child != null)
             //{
@@ -50,7 +50,7 @@ namespace WpfApp1
             //    listViewSchedule.ItemsSource = schedule;
             //    listViewSchedule.DisplayMemberPath = "Fullinformation";
             //}
-        }
+        //}
 
         private void ListViewGuardianChild_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

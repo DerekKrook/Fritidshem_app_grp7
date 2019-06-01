@@ -39,6 +39,8 @@ namespace WpfApp1
 
         }
 
+        //kan man sätta active child här direkt?
+
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxChildren.SelectedItem != null)
