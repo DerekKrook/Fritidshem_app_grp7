@@ -25,15 +25,13 @@ namespace WpfApp1
             }
         }
 
-        public static string Setactivechild(Child child)
+        public static void Setactivechild(Child child)
         {
             Activechild.Id = child.Id;
             Activechild.Firstname = child.Firstname;
             Activechild.Lastname = child.Lastname;
             Activechild.LeaveAlone = child.LeaveAlone;
             Activechild.Class = child.Class;
-
-            return null;
         }
     }
 }

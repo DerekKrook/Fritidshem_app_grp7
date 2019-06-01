@@ -23,14 +23,12 @@ namespace WpfApp1.Models
             }
         }
 
-        public static string Setactivestaff(Staff staff)
+        public static void Setactivestaff(Staff staff)
         {
             Activestaff.Id = staff.Id;
             Activestaff.Firstname = staff.Firstname;
             Activestaff.Lastname = staff.Lastname;
             Activestaff.Department = staff.Department;
-
-            return null;
         }
     }
 }

@@ -24,15 +24,13 @@ namespace WpfApp1
             }
         }
 
-        public static string Setactiveguardian(Guardian guardian)
+        public static void Setactiveguardian(Guardian guardian)
         {
             Activeguardian.Id = guardian.Id;
             Activeguardian.Firstname = guardian.Firstname;
             Activeguardian.Lastname = guardian.Lastname;
             Activeguardian.Email = guardian.Email;
             Activeguardian.Phone = guardian.Phone.ToString();
-
-            return null;
         }
     }
 }
