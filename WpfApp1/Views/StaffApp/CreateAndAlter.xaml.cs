@@ -25,41 +25,16 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-
-
-        private void Barn_Loaded(object sender, RoutedEventArgs e) // loadar den varje gång man klickar på taben??
-        {
-            txtboxEmail.IsEnabled = false;
-            lblEmail.IsEnabled = false;
-            txtboxPhone.IsEnabled = false;
-            lblPhone.IsEnabled = false;
-            txtboxGuardian.IsEnabled = true;
-            lblGuardian.IsEnabled = true;
-            txtboxClass.IsEnabled = true;
-            lblClass.IsEnabled = true;
-        }
-
-        private void Vårdnadshavare_Loaded(object sender, RoutedEventArgs e) // loadar den varje gång man klickar på taben??
-        {
-            txtboxEmail.IsEnabled = true;
-            lblEmail.IsEnabled = true;
-            txtboxPhone.IsEnabled = true;
-            lblPhone.IsEnabled = true;
-            txtboxGuardian.IsEnabled = false;
-            lblGuardian.IsEnabled = false;
-            txtboxClass.IsEnabled = false;
-            lblClass.IsEnabled = false;
-        }
+        List<Child> children = new List<Child>();
+        List<Guardian> guardian = new List<Guardian>();
+        Child child;
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
             // TXT BOX är du säker på att ta bort?
         }
 
-        private void BtnChange_Click(object sender, RoutedEventArgs e)
-        {
-            // uppdatera query på vald person beroende på guardian / child?
-        }
+
 
         private void BtnAddNew_Click(object sender, RoutedEventArgs e)
         {
@@ -68,6 +43,10 @@ namespace WpfApp1
             // text om att ny är tillagd
 
             // uppdatera list
+
+            //DbOperations.AddNewGuardian();
+            //DbOperations.AddNewChild();
+
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
@@ -77,8 +56,64 @@ namespace WpfApp1
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
             lblStaffFirstname.Content = $"Inloggad som {Activestaff.Firstname} {Activestaff.Lastname}";
 
+            children = DbOperations.GetAllChildren();
+            ListViewChildren.ItemsSource = children;
+            guardian = DbOperations.GetAllGuardians();
+            ListViewGuardians.ItemsSource = guardian;
+
+        }
+
+        private void ListViewGuardians_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Activeguardian.Setactiveguardian((Guardian)ListViewGuardians.SelectedItem);
+
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+
+            if (guardian != null)
+            {
+                txtboxFirstNameGuardian.Text = Activeguardian.Firstname;
+                txtboxLastNameGuardian.Text = Activeguardian.Lastname;
+                txtboxPhoneGuardian.Text = Activeguardian.Phone.ToString();
+                txtboxEmailGuardian.Text = Activeguardian.Email;
+            }
+        }
+
+        private void ListViewChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
+            txtboxFirstName.Text = Activechild.Firstname;
+            txtboxFirstName.Text = Activechild.Lastname;
+            txtboxClass.Text = Activechild.Class;
+            txtboxGuardian.Text = Activechild.Guardian;
+        }
+
+        private void BtnChange_Click(object sender, RoutedEventArgs e)
+        {
+            // DbOperations.UpdateChildProperties();
+           
+           // children = DbOperations.GetAllChildren();
+           // ListViewChildren.ItemsSource = children;
+        }
+        private void SaveGuardian_Click(object sender, RoutedEventArgs e)
+        {
+
+            Activeguardian.Setactiveguardian((Guardian)ListViewGuardians.SelectedItem);
+            DbOperations.UpdateGuardianProperties(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxEmailGuardian.Text, txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text);
+            ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
         }
     }
 }

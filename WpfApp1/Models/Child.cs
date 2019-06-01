@@ -14,6 +14,8 @@ namespace WpfApp1
         public string Lastname { get; set; }
         public bool LeaveAlone { get; set; }
         public string Class { get ; set ; }
+        public string Guardian { get; set; }
+
         public string Fullinformation
         {
             get

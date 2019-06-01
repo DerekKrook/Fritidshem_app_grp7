@@ -29,8 +29,10 @@ namespace WpfApp1
             Int32.TryParse(txtboxPhone.Text, out int phone);
             string email = txtboxEmail.Text;
             int id = Activeguardian.Id;
+            string firstname = txtboxFirstName.Text;
+            string lastname = txtboxLastName.Text;
 
-            DbOperations.UpdateGuardianProperties(phone, email, id);
+            DbOperations.UpdateGuardianProperties(phone, email, firstname, lastname);
 
             Activeguardian.Phone = phone.ToString();
             Activeguardian.Email = email;

@@ -16,6 +16,8 @@ namespace WpfApp1
         public static bool LeaveAlone { get; set; }
         public static string Class { get; set; }
 
+        public static string Guardian { get; set; }
+
         public static string Getactivechild
         {
             get
