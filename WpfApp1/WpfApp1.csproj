@@ -112,9 +112,11 @@
       <DependentUpon>StaffMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="ErrorHandler\InputHandler.cs" />
+    <Compile Include="Models\ActiveAttendancecategory.cs" />
     <Compile Include="Models\Activechild.cs" />
     <Compile Include="Models\Activeguardian.cs" />
     <Compile Include="Models\Activestaff.cs" />
+    <Compile Include="Models\Attendancecategory.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Connections.cs" />
     <Compile Include="Settings.cs" />

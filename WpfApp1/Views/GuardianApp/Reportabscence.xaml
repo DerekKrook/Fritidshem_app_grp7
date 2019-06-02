@@ -11,12 +11,16 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="65"/>
             <RowDefinition Height="80"/>
-            <RowDefinition Height="220"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="65"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -32,7 +36,18 @@
         </local:GuardianMenu>
 
 
-        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="00,0,0,0"/>
+        <Label x:Name="lblChooseChild" Content="Välj Barn" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
+        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="0,0,0,0"/>
 
+        <Label x:Name="lblChooseAbscence" Content="Frånvaro Anledning" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
+        <ComboBox x:Name="comboBoxAbscence" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxAbscence_SelectionChanged" Margin="0,0,0,0"/>
+
+        <Label x:Name="lblChooseDate" Content="Ange Datum" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="txtbxDate" Text="DD/MM/YYYY" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="2" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center"/>
+
+        <Label x:Name="lblComment" Content="Kommentar" Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="txtbxComment" Text="" HorizontalAlignment="Center" Grid.Row="8" Grid.Column="2" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center" Height="70"/>
+
+        <Button x:Name="btnReportAbscence" Content="Anmäl Frånvaro" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="10" Grid.Column="2" VerticalAlignment="Bottom" Width="220" Height="35"/>
     </Grid>
 </Window>

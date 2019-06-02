@@ -20,6 +20,8 @@ namespace WpfApp1
     public partial class Reportabscence : Window
     {
         List<Child> children = new List<Child>();
+        List<Attendance> attendances = new List<Attendance>();
+        List<Attendancecategory> attendancecategories = new List<Attendancecategory>();
 
         public Reportabscence()
         {
@@ -38,6 +40,14 @@ namespace WpfApp1
             comboBoxChildren.DisplayMemberPath = "Fullinformation";
 
             comboBoxChildren.SelectedIndex = 0;
+
+
+            attendancecategories = DbOperations.GetAttendances();
+
+            comboBoxAbscence.ItemsSource = attendancecategories;
+            comboBoxAbscence.DisplayMemberPath = "Fullinformation";
+
+            comboBoxAbscence.SelectedIndex = 0;
         }
 
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,6 +56,23 @@ namespace WpfApp1
             {
                 Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
             }
+        }
+
+        private void ComboBoxAbscence_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxAbscence.SelectedItem != null)
+            {
+                ActiveAttendancecategory.Set((Attendancecategory)comboBoxAbscence.SelectedItem);
+            }
+        }
+
+        private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
+        {
+            int id  = 1;
+            string comment = txtbxComment.Text;
+            string day = "måndag";
+
+           attendances = DbOperations.GuardianReportAttendance(id, comment, day);
         }
     }
 }
