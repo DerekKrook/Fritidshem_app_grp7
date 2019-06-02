@@ -27,24 +27,35 @@ namespace WpfApp1
 
         List<Child> children = new List<Child>();
         List<Guardian> guardian = new List<Guardian>();
+        List<Connections> connections = new List<Connections>();
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
-            // TXT BOX är du säker på att ta bort?
+            DbOperations.DeleteChild();
+            ListViewChildren.SelectedItem = null;
+            ClearTextbox();
         }
 
 
 
         private void BtnAddNew_Click(object sender, RoutedEventArgs e)
         {
-            // query lägga till person i lista beroende på guardian / child
 
-            // text om att ny är tillagd
+            if (txtboxFirstName != null && txtboxLastName != null)
+            {
+                try
+                {
+                    DbOperations.AddNewChild(txtboxFirstName.Text, txtboxLastName.Text);
+                }
+                catch (Exception)
+                {
 
-            // uppdatera list
-
-            //DbOperations.AddNewGuardian();
-            //DbOperations.AddNewChild();
+                    MessageBox.Show("Fyll i fält",
+                                    "Felmeddelande");
+                }
+            }
+            ClearTextbox();
+            ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
 
         }
 
@@ -67,6 +78,9 @@ namespace WpfApp1
             ListViewChildren.ItemsSource = children;
             guardian = DbOperations.GetAllGuardians();
             ListViewGuardians.ItemsSource = guardian;
+            connections = DbOperations.GetChildGuardian();
+            ListViewConnections.ItemsSource = connections;
+            ListViewConnections.DisplayMemberPath = "Fullinformation";
 
         }
 
@@ -128,9 +142,9 @@ namespace WpfApp1
 
         private void BtnChange_Click(object sender, RoutedEventArgs e)
         {
-            // DbOperations.UpdateChildProperties();
 
-            // children = DbOperations.GetAllChildren();
+            Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
+             //DbOperations.UpdateChildProperties();
             // ListViewChildren.ItemsSource = children;
             // ClearTextbox();
         }
@@ -159,7 +173,6 @@ namespace WpfApp1
         private void AddNewGuardian_Click(object sender, RoutedEventArgs e)
         {
 
-            //DbOperations.AddNewGuardian(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text, txtboxEmailGuardian.Text);
             if (txtboxFirstNameGuardian != null && txtboxLastNameGuardian != null)
             {
                 try
@@ -177,14 +190,29 @@ namespace WpfApp1
             ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
         }
 
-        private void BtnDeleteGuardian_Click_1(object sender, RoutedEventArgs e)
+        private void Connect_Click(object sender, RoutedEventArgs e)
         {
-
+            DbOperations.ConnectChildAndGuardian();
+            ListViewGuardians.SelectedItem = null;
+            ListViewChildren.SelectedItem = null;
+            ListViewConnections.SelectedItem = null;
+            connections = DbOperations.GetChildGuardian();
+            ListViewConnections.ItemsSource = connections;
+            ListViewConnections.DisplayMemberPath = "Fullinformation";
         }
 
-        private void AddNewGuardian_Click_1(object sender, RoutedEventArgs e)
+        private void ListViewConnections_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+ 
+        }
 
+        private void RemoveConnection_Click(object sender, RoutedEventArgs e)
+        {
+         //   DbOperations.DeleteConnection();
+            ListViewConnections.SelectedItem = null;
+            connections = DbOperations.GetChildGuardian();
+            ListViewConnections.ItemsSource = connections;
+            ListViewConnections.DisplayMemberPath = "Fullinformation";
         }
     }
 }

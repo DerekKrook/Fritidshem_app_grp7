@@ -231,33 +231,6 @@ namespace WpfApp1
             }
 
         }
-
-        //public static List<Guardian> UpdateChildProperties(int id, string firstname, string lastname)
-        //{
-
-        //    using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-        //    {
-        //        var output = connection.Query<Guardian>($@"UPDATE child SET firstname = '{firstname}', lastname = {lastname} WHERE id = {id}").ToList();
-
-        //        return output;
-        //    }
-
-        //}
-
-        // Lägg till nytt barn EJ KLAR
-        public static List<Child> AddNewChild(string firstname, string lastname, int age, bool leavealone)
-        {
-
-            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            {
-                var output = connection.Query<Child>($@"INSERT INTO child (id, firstname, lastname) VALUES ({firstname}, {lastname}, {age}, {leavealone} ").ToList();
-
-                return output;
-            }
-
-        }
-
-        //  Lägg till ny vårdnadshavare (EJ KLAR?)
         public static List<Guardian> AddNewGuardian(int phone, string firstname, string lastname, string email)
         {
 
@@ -270,9 +243,94 @@ namespace WpfApp1
             }
 
         }
+        public static List<Child> UpdateChildProperties(string firstname, string lastname)
+        {
+            var Id = Activechild.Id;
 
-        // Ta bort vårdnadshavare (EJ KLAR?)
-        public static List<Guardian> DeleteGuardian()
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>($@"UPDATE child SET firstname = '{firstname}', lastname = '{lastname}' WHERE id = {Id}").ToList();
+
+                return output;
+            }
+
+        }
+  
+
+        public static List<Child> AddNewChild(string firstname, string lastname)
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>($@"INSERT INTO child (firstname, lastname, leavealone) VALUES ('{firstname}', '{lastname}')").ToList();
+                
+                return output;
+            }
+
+        }
+        public static List<Child> DeleteChild()
+        {
+            var Id = Activechild.Id;
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>($@"DELETE FROM child WHERE id = {Id};").ToList();
+
+
+                return output;
+            }
+
+        }
+
+
+
+       
+        public static List<Connections> GetChildGuardian()
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                //LÄGG TILL I TABELL GUARDIAN_CHILD
+                var output = connection.Query<Connections>
+                    ($@"SELECT guardian_id,  guardian.firstname ||' '|| guardian.lastname AS Guardian, child_id, child.firstname ||' '|| child.lastname AS Child
+                    FROM((guardian_child INNER JOIN child ON child_id = child.id AND child.firstname = child.firstname AND child.lastname = child.lastname) 
+                    INNER JOIN guardian ON guardian_id = guardian.id AND guardian.firstname = guardian.firstname AND guardian.lastname = guardian.lastname);").ToList();
+
+          
+
+                return output;
+            }
+
+}
+        public static List<Guardian> ConnectChildAndGuardian()
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+               
+                var output = connection.Query<Guardian>($@"INSERT INTO guardian_child(guardian_id, child_id) VALUES('{Activeguardian.Id}', '{Activechild.Id}')").ToList();
+  
+
+        return output;
+    }
+
+}
+        // EJ KLAR
+    //    public static List<Guardian> DeleteConnection()
+    //    {
+
+    //        using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+    //        {
+               
+    //            var output = connection.Query<Guardian>($@"DELETE FROM guardian_child WHERE guardian_id = {Activeguardian.Id} AND child_id = {Activechild.Id}").ToList();
+  
+
+    //    return output;
+    //}
+//}
+
+
+       public static List<Guardian> DeleteGuardian()
         {
             var Id = Activeguardian.Id;
 
