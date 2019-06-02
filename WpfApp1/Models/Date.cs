@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class Date
+    public class Date
     {
         public int Id { get; set; }
         public string Day { get; set; }

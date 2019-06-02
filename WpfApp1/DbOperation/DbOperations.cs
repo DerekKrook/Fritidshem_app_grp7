@@ -371,13 +371,13 @@ namespace WpfApp1
             }
         }
 
-        //Lägg till frånvaro EJ KLAR Behövs lägga till datum!
-        public static List<Attendance> GuardianReportAttendance(int id, string comment, string day)
+        //Lägg till frånvaro
+        public static List<Attendance> GuardianReportAttendance(int id, string comment)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"INSERT INTO attendance (id, guardian_id, child_id, comment, category_attendance_id) VALUES ('{id}', '{Activeguardian.Id}', '{Activechild.Id}', '{comment}', '{ActiveAttendancecategory.Id}')").ToList();
+                var output = connection.Query<Attendance>($@"INSERT INTO attendance (id, guardian_id, child_id, comment, category_attendance_id) VALUES ('{id}', '{Activeguardian.Id}', '{Activechild.Id}', '{comment}', '{ActiveAttendancecategory.Id}'); INSERT INTO attendance_dates (attendance_id, dates_id) VALUES ('{id}', '{ActiveDate.Id}')").ToList();
 
 
                 return output;

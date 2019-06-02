@@ -32,7 +32,7 @@ namespace WpfApp1
             DataBinding();
         }
 
-        //Tänk en formulär med flera comboboxar där man väljer barn, frånvaro anlednning, datum och sen en textbox med kommentar :D
+        // generera id saknas  - hur ska man göra detta smart? man vill ju inte ha så man kan anmäla frånvaro dubbelt? skapa system där id är GCWWDDYY(guardian child week day year)? då blir det unikt och om det redan finns så skriv popup meddelande
 
         public void DataBinding()
         {
@@ -83,7 +83,10 @@ namespace WpfApp1
 
         private void ComboBoxDay_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (comboBoxDay.SelectedItem != null)
+            {
+                ActiveDate.Setactivatedate((Date)comboBoxDay.SelectedItem);
+            }
         }
 
         private void ComboBoxWeek_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -93,11 +96,24 @@ namespace WpfApp1
 
         private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
         {
-            int id = 1;
+            int id = 19;
             string comment = txtbxComment.Text;
-            string day = "måndag";
 
-            attendances = DbOperations.GuardianReportAttendance(id, comment, day);
+            //string week = comboBoxWeek.SelectedItem.ToString();
+            //string day = comboBoxDay.SelectedItem.ToString();
+
+            int dates_id = ActiveDate.Id;
+
+            attendances = DbOperations.GuardianReportAttendance(id, comment);
+
+            UpdatedMessage();
+        }
+
+        public async void UpdatedMessage()
+        {
+            lblUpdated.Visibility = Visibility.Visible;
+            await Task.Delay(3500);
+            lblUpdated.Visibility = Visibility.Hidden;
         }
     }
 }
