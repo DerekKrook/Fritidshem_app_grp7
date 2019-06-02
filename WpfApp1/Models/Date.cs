@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfApp1.Models
+namespace WpfApp1
 {
     class Date
     {
@@ -13,5 +13,13 @@ namespace WpfApp1.Models
         public int Week { get; set; }
         public DateTime Timestart { get; set; }
         public DateTime Timefinish { get; set; }
+
+        public string InformationDay
+        {
+            get
+            {
+                return $"{Day}";
+            }
+        }
     }
 }

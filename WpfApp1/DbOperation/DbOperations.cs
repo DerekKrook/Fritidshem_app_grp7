@@ -398,6 +398,34 @@ namespace WpfApp1
             }
 
         }
+
+        //Hämtar alla datum
+        public static List<Date> GetDays()
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Date>($@"SELECT * FROM dates").ToList();
+
+
+                return output;
+            }
+
+        }
+
+        //Hämtar alla Veckor
+        public static List<Weeks> GetWeek()
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Weeks>($@"SELECT week FROM dates GROUP BY week").ToList();
+
+
+                return output;
+            }
+
+        }
     }
 }
 

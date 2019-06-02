@@ -119,6 +119,7 @@
     <Compile Include="Models\Attendancecategory.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\Connections.cs" />
+    <Compile Include="Models\Weeks.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Views\GuardianApp\Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>

@@ -22,6 +22,8 @@ namespace WpfApp1
         List<Child> children = new List<Child>();
         List<Attendance> attendances = new List<Attendance>();
         List<Attendancecategory> attendancecategories = new List<Attendancecategory>();
+        List<Date> dates = new List<Date>();
+        List<Weeks> weeks = new List<Weeks>();
 
         public Reportabscence()
         {
@@ -34,6 +36,7 @@ namespace WpfApp1
 
         public void DataBinding()
         {
+            //Hämta barn
             children = DbOperations.GetChildrenOfGuardian();
 
             comboBoxChildren.ItemsSource = children;
@@ -41,13 +44,25 @@ namespace WpfApp1
 
             comboBoxChildren.SelectedIndex = 0;
 
-
+            //Hämta frånvaro typer
             attendancecategories = DbOperations.GetAttendances();
 
             comboBoxAbscence.ItemsSource = attendancecategories;
             comboBoxAbscence.DisplayMemberPath = "Fullinformation";
 
             comboBoxAbscence.SelectedIndex = 0;
+
+            //Hämta veckor
+            weeks = DbOperations.GetWeek();
+
+            comboBoxWeek.ItemsSource = weeks;
+            comboBoxWeek.DisplayMemberPath = "InformationWeek";
+
+            //Hämta dagar
+            dates = DbOperations.GetDays();
+
+            comboBoxDay.ItemsSource = dates;
+            comboBoxDay.DisplayMemberPath = "InformationDay";
         }
 
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,13 +81,23 @@ namespace WpfApp1
             }
         }
 
+        private void ComboBoxDay_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBoxWeek_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
         private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
         {
-            int id  = 1;
+            int id = 1;
             string comment = txtbxComment.Text;
             string day = "måndag";
 
-           attendances = DbOperations.GuardianReportAttendance(id, comment, day);
+            attendances = DbOperations.GuardianReportAttendance(id, comment, day);
         }
     }
 }

@@ -10,15 +10,17 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="65"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -42,13 +44,15 @@
         <Label x:Name="lblChooseAbscence" Content="Frånvaro Anledning" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
         <ComboBox x:Name="comboBoxAbscence" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxAbscence_SelectionChanged" Margin="0,0,0,0"/>
 
-        <!--combobox for week then days with activeweek and active day class-->
-        <Label x:Name="lblChooseDate" Content="Ange Datum" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="txtbxDate" Text="DD/MM/YYYY" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="2" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center"/>
+        <Label x:Name="lblChooseWeek" Content="Välj Vecka" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
+        <ComboBox x:Name="comboBoxWeek" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="2" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxWeek_SelectionChanged" Margin="0,0,0,0" SelectedIndex="0"/>
 
-        <Label x:Name="lblComment" Content="Kommentar" Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="txtbxComment" Text="" HorizontalAlignment="Center" Grid.Row="8" Grid.Column="2" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center" Height="70"/>
+        <Label x:Name="lblChooseDay" Content="Välj Dag" Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
+        <ComboBox x:Name="comboBoxDay" HorizontalAlignment="Center" Grid.Row="8" Grid.Column="2" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxDay_SelectionChanged" Margin="0,0,0,0" SelectedIndex="0"/>
+        
+        <Label x:Name="lblComment" Content="Kommentar" Grid.Column="2" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="txtbxComment" Text="" HorizontalAlignment="Center" Grid.Row="10" Grid.Column="2" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center" Height="70"/>
 
-        <Button x:Name="btnReportAbscence" Content="Anmäl Frånvaro" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="10" Grid.Column="2" VerticalAlignment="Bottom" Width="220" Height="35"/>
+        <Button x:Name="btnReportAbscence" Content="Anmäl Frånvaro" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="12" Grid.Column="2" VerticalAlignment="Bottom" Width="220" Height="35"/>
     </Grid>
 </Window>
