@@ -54,12 +54,13 @@ namespace WpfApp1
             //Vill ha med cateogry_attendance för barn/dag så att det står orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
 
             if (comboBoxChildren.SelectedItem != null)
-            {                            
+            {
                 TabItem tabItem = tabControl.SelectedItem as TabItem;
 
                 string day = tabItem.Header.ToString();
-           
+
                 schedule = DbOperations.GetSchedule(day);
+                
                 ListViewMonday.ItemsSource = schedule;
                 ListViewMonday.DisplayMemberPath = "Fullinformation";
 
@@ -67,29 +68,53 @@ namespace WpfApp1
             }
         }
 
-        private void Monday_Loaded(object sender, RoutedEventArgs e)
+        public void UpdateSchedule(ListView listView)
         {
-            UpdateSchedule();
+            //Vill ha med cateogry_attendance för barn/dag så att det står orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
+
+            if (comboBoxChildren.SelectedItem != null)
+            {                            
+                TabItem tabItem = tabControl.SelectedItem as TabItem;
+                
+                string day = tabItem.Header.ToString();
+
+                schedule = DbOperations.GetSchedule(day);
+                listView.ItemsSource = schedule;               
+                listView.DisplayMemberPath = "Fullinformation";
+
+                comboBoxChildren.SelectedIndex = 0;
+            }
         }
 
-        private void Tuesday_Loaded(object sender, RoutedEventArgs e)
+        
+
+        private void Tuesday_GotFocus(object sender, RoutedEventArgs e)
         {
-            UpdateSchedule();
+            UpdateSchedule(ListViewTuesday);
         }
 
-        private void Wednesday_Loaded(object sender, RoutedEventArgs e)
+        private void Monday_GotFocus(object sender, RoutedEventArgs e)
         {
-            UpdateSchedule();
+            UpdateSchedule(ListViewMonday);
+
         }
 
-        private void Thursday_Loaded(object sender, RoutedEventArgs e)
+        private void Wednesday_GotFocus(object sender, RoutedEventArgs e)
         {
-            UpdateSchedule();
+            UpdateSchedule(ListViewWednesday);
+
         }
 
-        private void Friday_Loaded(object sender, RoutedEventArgs e)
+        private void Thursday_GotFocus(object sender, RoutedEventArgs e)
         {
-            UpdateSchedule();
+            UpdateSchedule(ListViewThursday);
+
+        }
+
+        private void Friday_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule(ListViewFriday);
+           
         }
     }
 }
