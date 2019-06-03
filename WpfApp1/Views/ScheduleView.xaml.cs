@@ -42,28 +42,29 @@ namespace WpfApp1
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxChildren.SelectedItem != null)
-            {
+            {                
                 Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
-
                 UpdateSchedule();
             }
+            
         }
 
         public void UpdateSchedule()
         {
             //Vill ha med cateogry_attendance för barn/dag så att det står orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
 
-            TabItem tabItem = tabControl.SelectedItem as TabItem;
+            if (comboBoxChildren.SelectedItem != null)
+            {                            
+                TabItem tabItem = tabControl.SelectedItem as TabItem;
 
-            string day = tabItem.Header.ToString();
+                string day = tabItem.Header.ToString();
+           
+                schedule = DbOperations.GetSchedule(day);
+                ListViewMonday.ItemsSource = schedule;
+                ListViewMonday.DisplayMemberPath = "Fullinformation";
 
-            int id = Activechild.Id;
-
-            schedule = DbOperations.GetSchedule(id, day);
-            ListViewMonday.ItemsSource = schedule;
-            ListViewMonday.DisplayMemberPath = "Fullinformation";
-
-            comboBoxChildren.SelectedIndex = 0;
+                comboBoxChildren.SelectedIndex = 0;
+            }
         }
 
         private void Monday_Loaded(object sender, RoutedEventArgs e)

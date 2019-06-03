@@ -155,9 +155,9 @@ namespace WpfApp1
         }
 
         //Hämta scheman för barn   Vill ha med category attendance ID  för dag/barnet 
-        public static List<Schedule> GetSchedule (int Id, string day)
+        public static List<Schedule> GetSchedule (string day)
         {
-
+            var Id = Activechild.Id;
             Schedule s = new Schedule();
             List <Schedule> schedules = new List<Schedule>();
 

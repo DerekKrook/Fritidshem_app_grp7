@@ -41,9 +41,9 @@
         </ListView>-->
 
 
-        <Label x:Name="GuardiansChildren" Content="Dina Barn:" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="3"/>
-        
-        <ListView x:Name="listViewGuardianChild" Height="250" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="310" Grid.Column="1" Grid.Row="4" SelectionChanged="ListViewGuardianChild_SelectionChanged">
+        <Label x:Name="GuardiansChildren" Content="Dina Barn:" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Row="3" Margin="503,0,0,0" RenderTransformOrigin="-0.308,0.533"/>
+
+        <ListView x:Name="listViewGuardianChild" Height="250" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="310" Grid.Row="4" SelectionChanged="ListViewGuardianChild_SelectionChanged" Margin="503,0,107,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>

@@ -29,9 +29,9 @@ namespace WpfApp1
         public LoggedInGuardian()
         {
             
-            InitializeComponent();
+           InitializeComponent();
 
-            lblWelcome.Content = "Välkommen till fritidshem";
+           lblWelcome.Content = "Välkommen till fritidshem";
            lblGuardianFirstName.Content = $"{Activeguardian.Firstname} {Activeguardian.Lastname}";
 
             children = DbOperations.GetChildrenOfGuardian();
@@ -40,18 +40,7 @@ namespace WpfApp1
             listViewGuardianChild.ItemsSource = children;
             listViewGuardianChild.DisplayMemberPath = "Fullinformation";
         }
-
-        //private void BtnScheduleChild_Click(object sender, RoutedEventArgs e)
-        //{
-            //Child child = (Child)listViewGuardianChild.SelectedItem;
-            //if (child != null)
-            //{
-            //    schedule = DbOperations.GetSchedule(child);
-            //    listViewSchedule.ItemsSource = schedule;
-            //    listViewSchedule.DisplayMemberPath = "Fullinformation";
-            //}
-        //}
-
+        
         private void ListViewGuardianChild_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Activechild.Setactivechild((Child)listViewGuardianChild.SelectedItem);
