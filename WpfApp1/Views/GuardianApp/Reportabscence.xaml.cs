@@ -44,6 +44,14 @@ namespace WpfApp1
 
             comboBoxChildren.SelectedIndex = 0;
 
+            //Hämta barn se
+            children = DbOperations.GetChildrenOfGuardian();
+
+            comboBoxChildren2.ItemsSource = children;
+            comboBoxChildren2.DisplayMemberPath = "Fullinformation";
+
+            comboBoxChildren2.SelectedIndex = 0;
+
             //Hämta frånvaro typer
             attendancecategories = DbOperations.GetAttendances();
 
@@ -73,6 +81,14 @@ namespace WpfApp1
             }
         }
 
+        private void ComboBoxChildren2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (comboBoxChildren2.SelectedItem != null)
+            {
+                Activechild.Setactivechild((Child)comboBoxChildren2.SelectedItem);
+            }
+        }
+
         private void ComboBoxAbscence_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxAbscence.SelectedItem != null)
@@ -99,12 +115,7 @@ namespace WpfApp1
             int id = 19;
             string comment = txtbxComment.Text;
 
-            //string week = comboBoxWeek.SelectedItem.ToString();
-            //string day = comboBoxDay.SelectedItem.ToString();
-
-            int dates_id = ActiveDate.Id;
-
-            attendances = DbOperations.GuardianReportAttendance(id, comment);
+            attendances = DbOperations.GuardianReportAttendance(comment);
 
             UpdatedMessage();
         }
@@ -114,6 +125,11 @@ namespace WpfApp1
             lblUpdated.Visibility = Visibility.Visible;
             await Task.Delay(3500);
             lblUpdated.Visibility = Visibility.Hidden;
+        }
+
+        private void Seereports_Loaded(object sender, RoutedEventArgs e)
+        {
+            //attendances = DbOperations.Geta
         }
     }
 }
