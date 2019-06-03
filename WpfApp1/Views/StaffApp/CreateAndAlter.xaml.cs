@@ -89,7 +89,6 @@ namespace WpfApp1
             txtboxFirstName.Text = Activechild.Firstname;
             txtboxLastName.Text = Activechild.Lastname;
             txtboxClass.Text = Activechild.Class;
-            txtboxGuardian.Text = Activechild.Guardian;
         }
 
         public void UpdateGuardian()
@@ -144,9 +143,9 @@ namespace WpfApp1
         {
 
             Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
-             //DbOperations.UpdateChildProperties();
-            // ListViewChildren.ItemsSource = children;
-            // ClearTextbox();
+            DbOperations.UpdateChildProperties(txtboxFirstName.Text, txtboxLastName.Text);
+            ListViewChildren.ItemsSource = children;
+            ClearTextbox();
         }
         private void SaveGuardian_Click(object sender, RoutedEventArgs e)
         {
@@ -208,7 +207,7 @@ namespace WpfApp1
 
         private void RemoveConnection_Click(object sender, RoutedEventArgs e)
         {
-         //   DbOperations.DeleteConnection();
+            DbOperations.DeleteConnection();
             ListViewConnections.SelectedItem = null;
             connections = DbOperations.GetChildGuardian();
             ListViewConnections.ItemsSource = connections;

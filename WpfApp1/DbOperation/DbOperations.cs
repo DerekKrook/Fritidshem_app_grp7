@@ -230,8 +230,8 @@ namespace WpfApp1
             }
 
         }
-        // lägg till ny vårdnadshavare
 
+        // lägg till ny vårdnadshavare
         public static List<Guardian> AddNewGuardian(int phone, string firstname, string lastname, string email)
         {
 
@@ -244,8 +244,8 @@ namespace WpfApp1
             }
 
         }
-       // Uppdatera barnuppgifter
 
+       // Uppdatera barnuppgifter
         public static List<Child> UpdateChildProperties(string firstname, string lastname)
         {
             var Id = Activechild.Id;
@@ -302,8 +302,8 @@ namespace WpfApp1
             }
 
 }
-        // Koppla ihop vårdnadshavare och barn
 
+        // Koppla ihop vårdnadshavare och barn
         public static List<Guardian> ConnectChildAndGuardian()
         {
 
@@ -317,22 +317,23 @@ namespace WpfApp1
     }
 
 }
-        // EJ KLAR
-    //    public static List<Guardian> DeleteConnection()
-    //    {
 
-    //        using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-    //        {
-               
-    //            var output = connection.Query<Guardian>($@"DELETE FROM guardian_child WHERE guardian_id = {Activeguardian.Id} AND child_id = {Activechild.Id}").ToList();
-  
+        // ta bort koppling mellan vårdnadshavare och barn
+        public static List<Guardian> DeleteConnection()
+        {
 
-    //    return output;
-    //}
-//}
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
 
-       // TA BORT VÅRDNADSHAVARE
-       public static List<Guardian> DeleteGuardian()
+                var output = connection.Query<Guardian>($@"DELETE FROM guardian_child WHERE guardian_id = {Activeguardian.Id} AND child_id = {Activechild.Id}").ToList();
+
+
+                return output;
+            }
+        }
+
+        // Tar bort vårdnadshavare
+        public static List<Guardian> DeleteGuardian()
         {
             var Id = Activeguardian.Id;
 
