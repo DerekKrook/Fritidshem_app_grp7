@@ -27,6 +27,8 @@ namespace WpfApp1
         {
             InitializeComponent();
 
+            lblGuardianFirstName.Content = $"{Activeguardian.Firstname} {Activeguardian.Lastname}";
+
             DataBinding();
         }
 

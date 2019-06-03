@@ -49,9 +49,9 @@ namespace WpfApp1
 
             Activeguardian.Setactiveguardian((Guardian)listViewGuardian.SelectedItem); // tilldelar objektet activeguardian vald person i listan
 
-            LoggedInGuardian loggedIn = new LoggedInGuardian();
+            ScheduleView scheduleView = new ScheduleView();
 
-            loggedIn.Show();
+            scheduleView.Show();
 
             this.Close();
                       

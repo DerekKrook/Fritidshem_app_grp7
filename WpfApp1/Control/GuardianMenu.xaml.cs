@@ -47,9 +47,9 @@ namespace WpfApp1
         {
             var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
-            ScheduleView scheduleView = new ScheduleView();
+            LoggedInGuardian loggedInGuardian = new LoggedInGuardian();
 
-            scheduleView.Show();
+            loggedInGuardian.Show();
 
             window.Close();
         }
@@ -111,9 +111,9 @@ namespace WpfApp1
 
             var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
-            LoggedInGuardian loggedInGuardian = new LoggedInGuardian();
+            ScheduleView scheduleView = new ScheduleView();
 
-            loggedInGuardian.Show();
+            scheduleView.Show();
 
             window.Close();
         }

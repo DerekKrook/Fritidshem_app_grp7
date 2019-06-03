@@ -31,9 +31,6 @@ namespace WpfApp1
             
            InitializeComponent();
 
-           lblWelcome.Content = "Välkommen till fritidshem";
-           lblGuardianFirstName.Content = $"{Activeguardian.Firstname} {Activeguardian.Lastname}";
-
             children = DbOperations.GetChildrenOfGuardian();
 
             listViewGuardianChild.Items.Clear();
