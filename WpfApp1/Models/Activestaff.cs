@@ -32,24 +32,24 @@ namespace WpfApp1
             Activestaff.Lastname = staff.Lastname;
             Activestaff.Email = staff.Email;
             Activestaff.Class = staff.Class;
-            Activestaff.Department = staff.Department;
+            
 
 
 
             //blir fel måste fixa ett sätt att fixa detta på
-            if (int.Parse(staff.Department) == 1 )
+            if (staff.Department == 1 )
             {
                 Activestaff.Department = "Årskurs 1";
             }
-            else if (int.Parse(staff.Department) == 2)
+            else if (staff.Department == 2)
             {
                 Activestaff.Department = "Årskurs 2";
             }
-            else if (int.Parse(staff.Department) == 3)
+            else if (staff.Department == 3)
             {
                 Activestaff.Department = "Fritids";
             }
-            else if (int.Parse(staff.Department) == 4)
+            else if (staff.Department == 4)
             {
                 Activestaff.Department = "Årskurs 3";
             }
