@@ -375,12 +375,12 @@ namespace WpfApp1
         }
 
         //Lägg till frånvaro
-        public static List<Attendance> GuardianReportAttendance(int id, string comment)
+        public static List<Attendance> GuardianReportAttendance(string comment)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"INSERT INTO attendance (id, guardian_id, child_id, comment, category_attendance_id) VALUES ('{id}', '{Activeguardian.Id}', '{Activechild.Id}', '{comment}', '{ActiveAttendancecategory.Id}'); INSERT INTO attendance_dates (attendance_id, dates_id) VALUES ('{id}', '{ActiveDate.Id}')").ToList();
+                var output = connection.Query<Attendance>($@"INSERT INTO attendance (guardian_id, child_id, comment, category_attendance_id) VALUES ('{Activeguardian.Id}', '{Activechild.Id}', '{comment}', '{ActiveAttendancecategory.Id}');").ToList();
 
 
                 return output;
@@ -423,6 +423,25 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Weeks>($@"SELECT week FROM dates GROUP BY week").ToList();
+
+
+                return output;
+            }
+
+        }
+
+        //Hämtar alla Frånvaro till Förälder
+        public static List<Attendance> Getabscenceasguardian()
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"SELECT category_attendance.name_type AS Reason, dates.day AS Day
+                                                             FROM (((attendance 
+                                                             INNER JOIN attendance_dates ON attendance_id=attendance.id)
+                                                             INNER JOIN dates ON dates_id=dates.id)
+                                                             INNER JOIN category_attendance ON category_attendance_id = category_attendance.id) 
+                                                             where child_id = '{Activechild.Id}' AND category_attendance_id = 1 OR category_attendance_id = 2;").ToList();
 
 
                 return output;

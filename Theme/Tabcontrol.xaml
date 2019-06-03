@@ -14,7 +14,7 @@
           Value="True" />
         <Setter Property="SnapsToDevicePixels"
           Value="True" />
-        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Cursor" Value="Arrow"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabControl}">
@@ -54,9 +54,9 @@
                             <Border.Background>
                                 <LinearGradientBrush EndPoint="0.5,1"
                                    StartPoint="0.5,0">
-                                    <GradientStop Color="{DynamicResource BorderTest1}"
+                                    <GradientStop Color="{DynamicResource BackgroundWindowColor}"
                               Offset="0" />
-                                    <GradientStop Color="{DynamicResource BorderTest2}"
+                                    <GradientStop Color="{DynamicResource BackgroundWindowColor}"
                               Offset="1" />
                                 </LinearGradientBrush>
                             </Border.Background>
