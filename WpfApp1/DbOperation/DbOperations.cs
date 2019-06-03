@@ -218,6 +218,7 @@ namespace WpfApp1
 
         }
 
+        //Hämtar barn som gått hem
         public static List<Attendance> GetChildrenGoneHome()
         {
             Attendance a = new Attendance();
@@ -238,6 +239,7 @@ namespace WpfApp1
             }
         }
 
+        //Markera att barn gått hem
         //public static List<Attendance> SetChildGoneHome()
         //{
 
