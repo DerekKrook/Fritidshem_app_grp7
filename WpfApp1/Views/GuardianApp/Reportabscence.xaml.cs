@@ -112,7 +112,6 @@ namespace WpfApp1
 
         private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
         {
-            int id = 19;
             string comment = txtbxComment.Text;
 
             attendances = DbOperations.GuardianReportAttendance(comment);
@@ -129,7 +128,9 @@ namespace WpfApp1
 
         private void Seereports_Loaded(object sender, RoutedEventArgs e)
         {
-            //attendances = DbOperations.Geta
+            attendances = DbOperations.Getabscenceasguardian();
+
+            ListView.ItemsSource = attendances;
         }
     }
 }

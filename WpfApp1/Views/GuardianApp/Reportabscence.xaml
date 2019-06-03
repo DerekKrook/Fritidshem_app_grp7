@@ -17,7 +17,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="425"/>
+            <ColumnDefinition Width="560"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
@@ -26,7 +26,7 @@
 
         </local:GuardianMenu>
 
-        <TabControl x:Name="ReportvsView" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Height="600">
+        <TabControl x:Name="ReportvsView" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Height="600" Width="560">
             <TabItem x:Name="Report" Header="Anmäl Frånvaro">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -77,11 +77,13 @@
                     <Label x:Name="lblChooseChild2" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
                     <ComboBox x:Name="comboBoxChildren2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren2_SelectionChanged" Margin="0,0,0,0"/>
 
-                    <ListView x:Name="ListViewMonday" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="425"  Grid.Row="2">
+                    <ListView x:Name="ListView" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="560"  Grid.Row="2">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Datum" Width="205" DisplayMemberBinding="{Binding Lecturename}"/>
-                                <GridViewColumn Header="Anledning" Width="205" DisplayMemberBinding="{Binding Time}"/>
+                                <GridViewColumn Header="Vecka" Width="50" DisplayMemberBinding="{Binding Week}"/>
+                                <GridViewColumn Header="Dag" Width="100" DisplayMemberBinding="{Binding Day}"/>
+                                <GridViewColumn Header="Anledning" Width="135" DisplayMemberBinding="{Binding Category_attendance}"/>
+                                <GridViewColumn Header="Kommentar" Width="255" DisplayMemberBinding="{Binding Comment}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

@@ -15,5 +15,6 @@ namespace WpfApp1
         public string Guardian { get; set; }
         public string Day { get; set; }
         public string LeaveAlone { get; set; }
+        public string Week { get; set; }
     }
 }
