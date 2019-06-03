@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1"
              mc:Ignorable="d" 
-             d:DesignHeight="65" d:DesignWidth="1280">
+             d:DesignHeight="85" d:DesignWidth="1280">
 
     <UserControl.Template>
         <ControlTemplate TargetType="UserControl">
@@ -16,13 +16,12 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="125"/>
+                        <ColumnDefinition Width="125"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="60"/>
@@ -48,7 +47,7 @@
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource CalendarIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
-                                Fritids
+                                Anmäl Fritids
                             </Label>
                         </DockPanel>
                     </Button>
@@ -56,19 +55,11 @@
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource AttendanceIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
-                                Frånvaro
+                                Anmäl Frånvaro
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Meals" Click="Meals_Click" Grid.Column="5" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
-                        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Image Source="{StaticResource FoodIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
-                            <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
-                                Matschema
-                            </Label>
-                        </DockPanel>
-                    </Button>
-                    <Button x:Name="Contactbtn" Click="Contact_Click" Grid.Column="6" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
+                    <Button x:Name="Contactbtn" Click="Contact_Click" Grid.Column="5" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource ContactIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
@@ -76,7 +67,7 @@
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Loggout" Click="Button_Click_LogOut" Grid.Column="7" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
+                    <Button x:Name="Loggout" Click="Button_Click_LogOut" Grid.Column="6" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource SignoutIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
@@ -85,11 +76,11 @@
                         </DockPanel>
                     </Button>
 
-                    <Button x:Name="Minimize" Click="Minimize_Click" Grid.Column="9" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
+                    <Button x:Name="Minimize" Click="Minimize_Click" Grid.Column="8" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <Image Source="{StaticResource MinimizeIcon}" MaxHeight="45" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Button>
 
-                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="10" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,2,0">
+                    <Button x:Name="Exit" Click="Exit_Click" Grid.Column="9" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,2,0">
                         <Image Source="{StaticResource ExitIcon}" MaxHeight="40" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                     </Button>
 
