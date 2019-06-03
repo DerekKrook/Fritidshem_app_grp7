@@ -16,7 +16,7 @@
         <local:StaffMenu Grid.Row="0">
 
         </local:StaffMenu>
-        <Button x:Name="btnChildHome" Content="Går hem" HorizontalAlignment="Left" Margin="10,457,0,0" VerticalAlignment="Top" Width="103" Height="26" Grid.Row="1" Style="{StaticResource ButtonStyleNormal}"/>
+        <Button x:Name="btnChildHome" Content="Går hem" HorizontalAlignment="Left" Margin="10,457,0,0" VerticalAlignment="Top" Width="103" Height="26" Grid.Row="1" Style="{StaticResource ButtonStyleNormal}" Click="BtnChildHome_Click"/>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="392" Margin="10,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="693">
             <TabItem Header="Fritids">
 
@@ -40,7 +40,7 @@
             </TabItem>
             <TabItem Header="Gått hem">
                 <Grid Background="#FFE5E5E5">
-                    <ListView x:Name="listViewFritidsGonehome" HorizontalAlignment="Left" Height="361" Margin="0,0,0,-3" VerticalAlignment="Top" Width="683">
+                    <ListView x:Name="listViewFritidsGonehome" HorizontalAlignment="Left" Height="361" Margin="0,0,0,-3" VerticalAlignment="Top" Width="683" Loaded="ListViewFritidsGonehome_Loaded" >
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Barn" Width="150" DisplayMemberBinding="{Binding Child}"/>

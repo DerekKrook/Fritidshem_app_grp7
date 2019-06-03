@@ -13,8 +13,10 @@ using WpfApp1.ErrorHandler;
 
 namespace WpfApp1
 {
+
     static class DbOperations
     {
+
         //Hämtar specifikt barn SÖK för- och efternamn.
         public static List<Child> GetChildren(string input)
         {
@@ -218,6 +220,45 @@ namespace WpfApp1
 
         }
 
+        //Hämtar barn som gått hem
+        public static List<Attendance> GetChildrenGoneHome()
+        {
+            Attendance a = new Attendance();
+            List<Attendance> attendance = new List<Attendance>();
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"SELECT attendance_id AS id, child.firstname ||' '|| child.lastname AS Child, guardian.firstname ||' '|| guardian.lastname AS Guardian, category_attendance.name_type AS Category_attendance, dates.day AS Day, attendance.comment AS Comment, child.leavealone AS LeaveAlone
+            FROM (((((attendance INNER JOIN child ON child_id = child.id) INNER JOIN guardian ON guardian_id = guardian.id) 
+            INNER JOIN category_attendance ON category_attendance_id = category_attendance.id)  
+            INNER JOIN attendance_dates ON attendance_dates.dates_id = attendance_dates.dates_id AND attendance.id = attendance_dates.attendance_id) 
+            INNER JOIN dates ON attendance_dates.dates_id = dates.id AND dates.day = dates.day) 
+            WHERE category_attendance_id = 4
+ 
+            ORDER BY dates.day;").ToList();
+
+                return output;
+            }
+        }
+
+        //Markera att barn gått hem
+        //public static List<Attendance> SetChildGoneHome()
+        //{
+
+        //Attendance a = new Attendance();
+        //List<Attendance> attendance = new List<Attendance>();
+
+        //    using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+        //    {
+        //        var output = connection.Query<Attendance>($@"UPDATE attendance SET category_attendance_id = 4 WHERE '{ActiveAttendance.Id}';").ToList();
+
+        //        return output;
+        //    }
+        //  
+
+        //}
+
+
         //uppdatera mail och/eller telefon på förälder 
         public static List<Guardian> UpdateGuardianProperties(int phone, string email, string firstname, string lastname)
         {
@@ -234,6 +275,10 @@ namespace WpfApp1
         // lägg till ny vårdnadshavare
         public static List<Guardian> AddNewGuardian(int phone, string firstname, string lastname, string email)
         {
+            InputHandler inputhandler = new InputHandler();
+
+            var a = inputhandler.Uppercase(firstname);
+            var b = inputhandler.Uppercase(lastname);
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -242,13 +287,16 @@ namespace WpfApp1
 
                 return output;
             }
-
         }
 
        // Uppdatera barnuppgifter
         public static List<Child> UpdateChildProperties(string firstname, string lastname)
         {
             var Id = Activechild.Id;
+            InputHandler inputhandler = new InputHandler();
+   
+            var a = inputhandler.Uppercase(firstname);
+            var b = inputhandler.Uppercase(lastname);
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -262,6 +310,10 @@ namespace WpfApp1
         // lägg till nytt barn
         public static List<Child> AddNewChild(string firstname, string lastname)
         {
+
+            InputHandler inputhandler = new InputHandler();
+            var a = inputhandler.Uppercase(firstname);
+            var b = inputhandler.Uppercase(lastname);
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -341,19 +393,6 @@ namespace WpfApp1
             {
                 var output = connection.Query<Guardian>($@"DELETE FROM guardian WHERE id = {Id};").ToList();
 
-
-                return output;
-            }
-
-        }
-
-        // Sätt gå hem EJ KLAR 
-        public static List<Attendance> GoneHome(Attendance home, int id)
-        {
-
-            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            {
-                var output = connection.Query<Attendance>($@"UPDATE attendance SET gonehome = {home}, WHERE id = { id }").ToList();
 
                 return output;
             }
