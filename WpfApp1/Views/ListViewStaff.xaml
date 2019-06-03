@@ -46,8 +46,7 @@
             </ListView.View>
         </ListView>
         <Label x:Name="label_Copy" Content="Vårdnadshavare för valt barn" HorizontalAlignment="Left" Margin="45,113,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="2" Height="31" Width="228"/>
-        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Left" Margin="153,81,0,0" VerticalAlignment="Top" Width="104" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
-        <Button x:Name="btnChildHome" Content="Går hem" HorizontalAlignment="Left" Margin="45,81,0,0" VerticalAlignment="Top" Width="103" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
+        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Left" Margin="45,66,0,0" VerticalAlignment="Top" Width="104" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="278" Margin="45,98,0,0" Grid.Row="1" VerticalAlignment="Top" Width="624" Grid.RowSpan="2">
             <TabItem Header="Avdelning 1">
                 <Grid Background="#FFE5E5E5">

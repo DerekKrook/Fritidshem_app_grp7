@@ -218,6 +218,32 @@ namespace WpfApp1
 
         }
 
+        public static List<Attendance> GetChildrenGoneHome()
+        {
+            Attendance a = new Attendance();
+            List<Attendance> attendance = new List<Attendance>();
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"SELECT attendance_id AS id, child.firstname ||' '|| child.lastname AS Child, guardian.firstname ||' '|| guardian.lastname AS Guardian, category_attendance.name_type AS Category_attendance, dates.day AS Day, attendance.comment AS Comment, child.leavealone AS LeaveAlone
+            FROM (((((attendance INNER JOIN child ON child_id = child.id) INNER JOIN guardian ON guardian_id = guardian.id) 
+            INNER JOIN category_attendance ON category_attendance_id = category_attendance.id)  
+            INNER JOIN attendance_dates ON attendance_dates.dates_id = attendance_dates.dates_id AND attendance.id = attendance_dates.attendance_id) 
+            INNER JOIN dates ON attendance_dates.dates_id = dates.id AND dates.day = dates.day) 
+            WHERE category_attendance_id = 4
+ 
+            ORDER BY dates.day;").ToList();
+
+                return output;
+            }
+        }
+
+        //public static List<Attendance> SetChildGoneHome()
+        //{
+
+        //}
+        
+
         //uppdatera mail och/eller telefon på förälder 
         public static List<Guardian> UpdateGuardianProperties(int phone, string email, string firstname, string lastname)
         {

@@ -21,6 +21,7 @@ namespace WpfApp1
     public partial class StaffFritids : Window
     {
         List<Attendance> fritdschildren = new List<Attendance>();
+        List<Attendance> fritidsgonehome = new List<Attendance>();
         public StaffFritids()
         {
             InitializeComponent();
@@ -31,6 +32,18 @@ namespace WpfApp1
             fritdschildren = DbOperations.GetChildrenAtFritids();
             listViewTotalFritids.ItemsSource = fritdschildren;
             listViewTotalFritids.DisplayMemberPath = "Fullinformation";
+        }
+
+        private void ListViewFritidsGonehome_Loaded(object sender, RoutedEventArgs e)
+        {
+            fritidsgonehome = DbOperations.GetChildrenGoneHome();
+            listViewFritidsGonehome.ItemsSource = fritdschildren;
+            listViewFritidsGonehome.DisplayMemberPath = "Fullinformation";
+        }
+
+        private void BtnChildHome_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
