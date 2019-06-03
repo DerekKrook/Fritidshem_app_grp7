@@ -196,7 +196,7 @@ namespace WpfApp1
             return schedules;
         }
 
-        //Hämtar barn på fritids
+        //Hämtar barn registrerade på fritids
         public static List<Attendance> GetChildrenAtFritids()
         {
 
@@ -218,8 +218,7 @@ namespace WpfApp1
 
         }
 
-
-        // uppdatera mail och/eller telefon på förälder EJ KLAR
+        //uppdatera mail och/eller telefon på förälder 
         public static List<Guardian> UpdateGuardianProperties(int phone, string email, string firstname, string lastname)
         {
             var Id = Activeguardian.Id;
@@ -231,6 +230,8 @@ namespace WpfApp1
             }
 
         }
+        // lägg till ny vårdnadshavare
+
         public static List<Guardian> AddNewGuardian(int phone, string firstname, string lastname, string email)
         {
 
@@ -243,6 +244,8 @@ namespace WpfApp1
             }
 
         }
+       // Uppdatera barnuppgifter
+
         public static List<Child> UpdateChildProperties(string firstname, string lastname)
         {
             var Id = Activechild.Id;
@@ -256,7 +259,7 @@ namespace WpfApp1
 
         }
   
-
+        // lägg till nytt barn
         public static List<Child> AddNewChild(string firstname, string lastname)
         {
 
@@ -268,6 +271,7 @@ namespace WpfApp1
             }
 
         }
+        // tar bort barn
         public static List<Child> DeleteChild()
         {
             var Id = Activechild.Id;
@@ -282,9 +286,7 @@ namespace WpfApp1
 
         }
 
-
-
-       
+       // Hämtar tabellen guardian_child med namn för att se kopplingar mellan barn och vårdnadshavare
         public static List<Connections> GetChildGuardian()
         {
 
@@ -296,12 +298,12 @@ namespace WpfApp1
                     FROM((guardian_child INNER JOIN child ON child_id = child.id AND child.firstname = child.firstname AND child.lastname = child.lastname) 
                     INNER JOIN guardian ON guardian_id = guardian.id AND guardian.firstname = guardian.firstname AND guardian.lastname = guardian.lastname);").ToList();
 
-          
-
                 return output;
             }
 
 }
+        // Koppla ihop vårdnadshavare och barn
+
         public static List<Guardian> ConnectChildAndGuardian()
         {
 
@@ -329,7 +331,7 @@ namespace WpfApp1
     //}
 //}
 
-
+       // TA BORT VÅRDNADSHAVARE
        public static List<Guardian> DeleteGuardian()
         {
             var Id = Activeguardian.Id;
