@@ -541,6 +541,26 @@ namespace WpfApp1
             }
 
         }
+
+        public static List<Meal> GetMeals()
+        {
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Meal>($@"SELECT child.firstname, child.lastname, category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, meals.name
+                    FROM ((((((((child
+                    INNER JOIN guardian_child on child.id=child_id)
+                    INNER JOIN guardian on guardian_id=guardian.id)
+                    INNER JOIN attendance on guardian.id=attendance.guardian_id)
+                    INNER JOIN category_attendance on category_attendance_id=category_attendance.id)
+                    INNER JOIN attendance_dates on attendance.id=attendance_id)
+                    INNER JOIN meals on child.id=meals.child_id)
+                    INNER JOIN meals_dates ON meals.id=meals_id)
+                    INNER JOIN dates on meals_dates.dates_id=dates.id)
+                    WHERE child.id='{Activechild.Id}'").ToList();
+
+                return output;
+            }
+        }
     }
 }
 
