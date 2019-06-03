@@ -241,22 +241,20 @@ namespace WpfApp1
             }
         }
 
-        //Markera att barn gått hem
-        //public static List<Attendance> SetChildGoneHome()
-        //{
+       // Markera att barn gått hem
+        public static List<Attendance> SetChildGoneHome()
+        {
+            Attendance a = new Attendance();
+            List<Attendance> attendance = new List<Attendance>();
 
-        //Attendance a = new Attendance();
-        //List<Attendance> attendance = new List<Attendance>();
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"UPDATE attendance SET category_attendance_id = 4, staff_id = {Activestaff.Id} WHERE id = {ActiveAttendance.Id};").ToList();
 
-        //    using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-        //    {
-        //        var output = connection.Query<Attendance>($@"UPDATE attendance SET category_attendance_id = 4 WHERE '{ActiveAttendance.Id}';").ToList();
+                return output;
+            }
 
-        //        return output;
-        //    }
-        //  
-
-        //}
+        }
 
 
         //uppdatera mail och/eller telefon på förälder 
