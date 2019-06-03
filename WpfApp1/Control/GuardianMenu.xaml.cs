@@ -25,7 +25,11 @@ namespace WpfApp1
         public GuardianMenu()
         {
             InitializeComponent();
+
+            
         }
+
+        //https://stackoverflow.com/questions/39886903/how-do-i-access-buttons-inside-a-usercontrol-from-xaml
 
         private void Button_Click_LogOut(object sender, RoutedEventArgs e)
         {
