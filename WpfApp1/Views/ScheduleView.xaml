@@ -36,8 +36,8 @@
         <Label x:Name="lblWeek" Content="vecka 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="3" FontSize="19"/>
         <Image x:Name="imgRightArrow" Grid.Column="3" Grid.Row="3" Source="{StaticResource RightArrowIcon}" MaxHeight="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,2"/>
 
-        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3">
-            <TabItem x:Name="Monday" Header="Måndag" Loaded="Monday_Loaded">
+        <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
+            <TabItem x:Name="Monday" Header="Måndag" GotFocus="Monday_GotFocus" >
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="78*"/>
@@ -56,7 +56,7 @@
                     </ListView>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Tuesday" Header="Tisdag" Loaded="Tuesday_Loaded">
+            <TabItem x:Name="Tuesday" Header="Tisdag" GotFocus="Tuesday_GotFocus">
                 <Grid Background="#FFE5E5E5">
                     <ListView x:Name="ListViewTuesday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
                         <ListView.View>
@@ -68,7 +68,7 @@
                     </ListView>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Wednesday" Header="Onsdag" Loaded="Wednesday_Loaded">
+            <TabItem x:Name="Wednesday" Header="Onsdag" GotFocus="Wednesday_GotFocus" >
                 <Grid Background="#FFE5E5E5" >
                     <ListView x:Name="ListViewWednesday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
                         <ListView.View>
@@ -80,7 +80,7 @@
                     </ListView>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Thursday" Header="Torsdag" Loaded="Thursday_Loaded">
+            <TabItem x:Name="Thursday" Header="Torsdag" GotFocus="Thursday_GotFocus" >
                 <Grid Background="#FFE5E5E5" >
                     <ListView x:Name="ListViewThursday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
                         <ListView.View>
@@ -92,7 +92,7 @@
                     </ListView>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Friday" Header="Fredag" Loaded="Friday_Loaded">
+            <TabItem x:Name="Friday" Header="Fredag" GotFocus="Friday_GotFocus">
                 <Grid Background="#FFE5E5E5" >
                     <ListView x:Name="ListViewFriday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
                         <ListView.View>
