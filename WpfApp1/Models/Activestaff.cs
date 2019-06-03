@@ -30,24 +30,7 @@ namespace WpfApp1
             Activestaff.Firstname = staff.Firstname;
             Activestaff.Lastname = staff.Lastname;
             Activestaff.Email = staff.Email;
-
-            //blir fel måste fixa ett sätt att fixa detta på
-            if (staff.Department == 1 )
-            {
-                Activestaff.Department = "Årskurs 1";
-            }
-            else if (staff.Department == 2)
-            {
-                Activestaff.Department = "Årskurs 2";
-            }
-            else if (staff.Department == 3)
-            {
-                Activestaff.Department = "Fritids";
-            }
-            else if (staff.Department == 4)
-            {
-                Activestaff.Department = "Årskurs 3";
-            }
+            Activestaff.Department =staff.Department;
         }
     }
 }

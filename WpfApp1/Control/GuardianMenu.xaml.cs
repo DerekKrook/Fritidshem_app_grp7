@@ -47,9 +47,9 @@ namespace WpfApp1
         {
             var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
 
-            LoggedInGuardian loggedInGuardian = new LoggedInGuardian();
+            Reportfritids reportfritids = new Reportfritids();
 
-            loggedInGuardian.Show();
+            reportfritids.Show();
 
             window.Close();
         }

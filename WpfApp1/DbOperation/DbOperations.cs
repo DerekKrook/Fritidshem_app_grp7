@@ -501,6 +501,24 @@ namespace WpfApp1
             }
 
         }
+
+        //Lägg till fritids som Guardian
+        public static List<Attendance> GuardianReportFritids(string comment, int classid)
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
+                                                                    VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{classid}', '{comment}');
+                                                             INSERT INTO attendance_dates (attendance_id, dates_id) 
+                                                                    SELECT attendance.id, dates.id 
+                                                                    FROM attendance, dates 
+                                                                    WHERE attendance.id = (SELECT MAX(attendance.id) 
+                                                                    FROM attendance) AND dates.id = '{ActiveDate.Id}';").ToList();
+                return output;
+            }
+
+        }
     }
 }
 

@@ -132,6 +132,9 @@
     <Compile Include="Views\GuardianApp\Reportabscence.xaml.cs">
       <DependentUpon>Reportabscence.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GuardianApp\Reportfritids.xaml.cs">
+      <DependentUpon>Reportfritids.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ListviewGuardian.xaml.cs">
       <DependentUpon>ListviewGuardian.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\GuardianApp\Reportabscence.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GuardianApp\Reportfritids.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
