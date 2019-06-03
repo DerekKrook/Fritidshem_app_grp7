@@ -13,8 +13,10 @@ using WpfApp1.ErrorHandler;
 
 namespace WpfApp1
 {
+
     static class DbOperations
     {
+
         //Hämtar specifikt barn SÖK för- och efternamn.
         public static List<Child> GetChildren(string input)
         {
@@ -243,8 +245,19 @@ namespace WpfApp1
         //public static List<Attendance> SetChildGoneHome()
         //{
 
+        //Attendance a = new Attendance();
+        //List<Attendance> attendance = new List<Attendance>();
+
+        //    using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+        //    {
+        //        var output = connection.Query<Attendance>($@"UPDATE attendance SET category_attendance_id = 4 WHERE '{ActiveAttendance.Id}';").ToList();
+
+        //        return output;
+        //    }
+        //  
+
         //}
-        
+
 
         //uppdatera mail och/eller telefon på förälder 
         public static List<Guardian> UpdateGuardianProperties(int phone, string email, string firstname, string lastname)
@@ -262,6 +275,10 @@ namespace WpfApp1
         // lägg till ny vårdnadshavare
         public static List<Guardian> AddNewGuardian(int phone, string firstname, string lastname, string email)
         {
+            InputHandler inputhandler = new InputHandler();
+
+            var a = inputhandler.Uppercase(firstname);
+            var b = inputhandler.Uppercase(lastname);
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -270,13 +287,16 @@ namespace WpfApp1
 
                 return output;
             }
-
         }
 
        // Uppdatera barnuppgifter
         public static List<Child> UpdateChildProperties(string firstname, string lastname)
         {
             var Id = Activechild.Id;
+            InputHandler inputhandler = new InputHandler();
+   
+            var a = inputhandler.Uppercase(firstname);
+            var b = inputhandler.Uppercase(lastname);
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -290,6 +310,10 @@ namespace WpfApp1
         // lägg till nytt barn
         public static List<Child> AddNewChild(string firstname, string lastname)
         {
+
+            InputHandler inputhandler = new InputHandler();
+            var a = inputhandler.Uppercase(firstname);
+            var b = inputhandler.Uppercase(lastname);
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -369,19 +393,6 @@ namespace WpfApp1
             {
                 var output = connection.Query<Guardian>($@"DELETE FROM guardian WHERE id = {Id};").ToList();
 
-
-                return output;
-            }
-
-        }
-
-        // Sätt gå hem EJ KLAR 
-        public static List<Attendance> GoneHome(Attendance home, int id)
-        {
-
-            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            {
-                var output = connection.Query<Attendance>($@"UPDATE attendance SET gonehome = {home}, WHERE id = { id }").ToList();
 
                 return output;
             }
