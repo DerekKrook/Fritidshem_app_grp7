@@ -521,19 +521,21 @@ namespace WpfApp1
         }
 
 
-        //Hämtar alla Fritids till Förälder  kommentar kommer inte upp?
+        //Hämtar alla anmälda fritidsdagar till förälder 
         public static List<Attendance> Getfritidsguardian()
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"SELECT category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, attendance.comment AS Comment
-                                                             FROM (((attendance 
-                                                             INNER JOIN attendance_dates ON attendance_id=attendance.id)
-                                                             INNER JOIN dates ON dates_id=dates.id)
-                                                             INNER JOIN category_attendance ON category_attendance_id = category_attendance.id) 
-                                                             where child_id = {Activechild.Id} AND category_attendance_id = 3;").ToList();
-
+                var output = connection.Query<Attendance>($@"SELECT category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, attendance.comment AS Comment 
+                    FROM ((((((child
+                    INNER JOIN guardian_child on child.id=child_id)
+                    INNER JOIN guardian on guardian_id=guardian.id)
+                    INNER JOIN attendance on guardian.id=attendance.guardian_id)
+                    INNER JOIN category_attendance on category_attendance_id=category_attendance.id)
+                    INNER JOIN attendance_dates on attendance.id=attendance_id)
+                    INNER JOIN dates on dates_id=dates.id)
+                    WHERE child.id='{Activechild.Id}' AND category_attendance.name_type = 'Fritids'").ToList(); 
 
                 return output;
             }
