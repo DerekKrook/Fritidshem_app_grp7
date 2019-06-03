@@ -18,7 +18,7 @@ namespace WpfApp1.Models
             get
             {
 
-                return $"{Name} {Day} {Week}";
+                return $"{Week} {Day} {Name}";
 
             }
         }
