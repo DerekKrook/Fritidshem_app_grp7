@@ -13,7 +13,7 @@
 
 
 
-    <!--<ControlTemplate x:Key="ComboBoxToggleButton"
+    <ControlTemplate x:Key="ComboBoxToggleButton"
                  TargetType="{x:Type ToggleButton}">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -29,8 +29,8 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
                 (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                           Storyboard.TargetName="Border">
-                                --><!--<EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource ControlMouseOverColor}" />--><!--
+                                <!--<EasingColorKeyFrame KeyTime="0"
+                                   Value="{StaticResource ControlMouseOverColor}" />-->
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -40,20 +40,20 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
                 (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                           Storyboard.TargetName="Border">
-                                --><!--<EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource DisabledControlDarkColor}" />--><!--
+                                <!--<EasingColorKeyFrame KeyTime="0"
+                                   Value="{StaticResource DisabledControlDarkColor}" />-->
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).
                 (SolidColorBrush.Color)"
                                           Storyboard.TargetName="Arrow">
-                                --><!--<EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource DisabledForegroundColor}" />--><!--
+                                <!--<EasingColorKeyFrame KeyTime="0"
+                                   Value="{StaticResource DisabledForegroundColor}" />-->
                             </ColorAnimationUsingKeyFrames>
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).
                 (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                           Storyboard.TargetName="Border">
-                                --><!--<EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource DisabledBorderDarkColor}" />--><!--
+                                <!--<EasingColorKeyFrame KeyTime="0"
+                                   Value="{StaticResource DisabledBorderDarkColor}" />-->
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -64,8 +64,8 @@
                             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).
                 (GradientBrush.GradientStops)[1].(GradientStop.Color)"
                                           Storyboard.TargetName="Border">
-                                --><!--<EasingColorKeyFrame KeyTime="0"
-                                   Value="{StaticResource ControlPressedColor}" />--><!--
+                                <!--<EasingColorKeyFrame KeyTime="0"
+                                   Value="{StaticResource ControlPressedColor}" />-->
                             </ColorAnimationUsingKeyFrames>
                         </Storyboard>
                     </VisualState>
@@ -138,6 +138,7 @@
           Value="120" />
         <Setter Property="MinHeight"
           Value="20" />
+        <Setter Property="Cursor" Value="Arrow"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
@@ -151,8 +152,8 @@
                                         <ColorAnimationUsingKeyFrames Storyboard.TargetName="PART_EditableTextBox"
                                                 Storyboard.TargetProperty="(TextElement.Foreground).
                       (SolidColorBrush.Color)">
-                                            --><!--<EasingColorKeyFrame KeyTime="0"
-                                         Value="{StaticResource DisabledForegroundColor}" />--><!--
+                                            <!--<EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource DisabledForegroundColor}" />-->
                                         </ColorAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
@@ -190,9 +191,10 @@
                             ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                             Margin="3,3,23,3"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Left">
+                            HorizontalAlignment="Left"
+                            Cursor="Arrow">
                         </ContentPresenter>
-                        <TextBox x:Name="PART_EditableTextBox"
+                        <!--<TextBox x:Name="PART_EditableTextBox"
                    Style="{x:Null}"
                    Template="{StaticResource ComboBoxTextBox}"
                    HorizontalAlignment="Left"
@@ -201,7 +203,7 @@
                    Focusable="True"
                    Background="Transparent"
                    Visibility="Hidden"
-                   IsReadOnly="{TemplateBinding IsReadOnly}" />
+                   IsReadOnly="{TemplateBinding IsReadOnly}"/>-->
                         <Popup x:Name="Popup"
                  Placement="Bottom"
                  IsOpen="{TemplateBinding IsDropDownOpen}"
@@ -211,15 +213,17 @@
                             <Grid x:Name="DropDown"
                   SnapsToDevicePixels="True"
                   MinWidth="{TemplateBinding ActualWidth}"
-                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                  MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                  Cursor="Arrow">
                                 <Border x:Name="DropDownBorder"
                                         BorderThickness="1"
-                                        CornerRadius="2">
+                                        CornerRadius="2"
+                                        Cursor="Arrow">
                                     <Border.BorderBrush>
                                         <SolidColorBrush Color="{DynamicResource BorderDarkColor}" />
                                     </Border.BorderBrush>
                                     <Border.Background>
-                                        <SolidColorBrush Color="{DynamicResource ComboBackgroundLight}" />
+                                        <SolidColorBrush Color="{DynamicResource LightLavender}" />
                                     </Border.Background>
                                 </Border>
                                 <ScrollViewer Margin="4,6,4,6"
@@ -265,6 +269,7 @@
           Value="true" />
         <Setter Property="OverridesDefaultStyle"
           Value="true" />
+        <Setter Property="Cursor" Value="Arrow"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBoxItem}">
@@ -273,7 +278,31 @@
                 CornerRadius="2"
                 SnapsToDevicePixels="true"
                 Background="Transparent">
-
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Unselected" />
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                    (SolidColorBrush.Color)">
+                                            <!--<EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource SelectedBackgroundColor}" />-->
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="SelectedUnfocused">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border"
+                                                Storyboard.TargetProperty="(Panel.Background).
+                    (SolidColorBrush.Color)">
+                                            <!--<EasingColorKeyFrame KeyTime="0"
+                                         Value="{StaticResource SelectedUnfocusedColor}" />-->
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
                         <ContentPresenter/>
                     </Border>
                 </ControlTemplate>
@@ -281,13 +310,6 @@
         </Setter>
     </Style>
 
-    <ControlTemplate x:Key="ComboBoxTextBox"
-                 TargetType="{x:Type TextBox}">
-        <Border x:Name="PART_ContentHost"
-          Focusable="False"
-          Background="{TemplateBinding Background}" />
-    </ControlTemplate>-->
 
-    
 
 </ResourceDictionary>

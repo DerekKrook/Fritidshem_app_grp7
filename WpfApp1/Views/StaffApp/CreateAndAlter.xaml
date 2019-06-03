@@ -46,8 +46,6 @@
                     <Label x:Name="lblClass" Content="Klass" HorizontalAlignment="Left" Margin="11,441,0,0" VerticalAlignment="Top" Height="30" />
                     <Button x:Name="btnAddNew" Content="Lägg till" HorizontalAlignment="Left" Margin="8,532,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnAddNew_Click" Grid.ColumnSpan="2"/>
                     <Button x:Name="btnChange" Content="Spara" HorizontalAlignment="Left" Margin="26,532,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnChange_Click" Grid.ColumnSpan="2" Grid.Column="2"/>
-                    <TextBox x:Name="txtboxGuardian" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,476,95,0" Grid.ColumnSpan="2" Grid.Column="2" />
-                    <Label x:Name="lblGuardian" Content="Vårdnadshavare" HorizontalAlignment="Left" Margin="11,476,0,0" VerticalAlignment="Top" Height="30" Grid.ColumnSpan="2" />
                     <Button x:Name="btnRemove" Content="Ta bort" HorizontalAlignment="Left" Margin="87,532,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnRemove_Click" Grid.Column="4" />
                     <Button x:Name="btnCancel" Content="Avbryt" HorizontalAlignment="Left" Margin="35,532,0,0" VerticalAlignment="Top" Width="119" Height="30" RenderTransformOrigin="0.437,0.833" Click="BtnCancel_Click" Grid.ColumnSpan="2" Grid.Column="3" />
                     <Label x:Name="lblChangeInfo" Content="Välj person i listan" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="3"/>
@@ -106,7 +104,8 @@
                     </ListView>
                     <Button x:Name="Connect" Content="Koppla" Grid.Column="3" HorizontalAlignment="Left" Margin="466,163,0,0" VerticalAlignment="Top" Width="115" Height="39" Click="Connect_Click"/>
                     <Button x:Name="RemoveConnection" Content="Ta bort koppling" Grid.Column="3" HorizontalAlignment="Left" Margin="607,163,0,0" VerticalAlignment="Top" Width="115" Height="39" Click="RemoveConnection_Click"/>
-                    <TextBlock x:Name="Headerinfo" Grid.Column="3" HorizontalAlignment="Left" Margin="453,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="100" Width="309"><Run Text="För att koppla ett barn till en förälder, välj barn i Barn-fliken och förälder i Förälder-fliken och klicka sedan på Koppla"/><Run Text=" i Kopplingar-fliken"/></TextBlock>
+                    <TextBlock x:Name="Headerinfo" Grid.Column="3" HorizontalAlignment="Left" Margin="415,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="123" Width="396"><Run Text="Välj ett Barn i Barn-fliken och en Vårdnadshavare i Vårdnadshavare-fliken och klicka sedan på Koppla eller Ta bort koppling"/><Run Text=" i Kopplingar-fliken"/></TextBlock>
+                    <Label x:Name="lblInfo" Content="För att koppla eller ta bort koppling mellan barn och vårdnadshavare:" Grid.Column="3" HorizontalAlignment="Left" Margin="374,0,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
         </TabControl>

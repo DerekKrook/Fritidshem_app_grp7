@@ -44,15 +44,15 @@
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Schedule" Click="Schedule_Click" Grid.Column="3" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
+                    <Button x:Name="Schedule" Click="Schedule_Click" Grid.Column="4" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource CalendarIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
-                                Schema
+                                Fritids
                             </Label>
                         </DockPanel>
                     </Button>
-                    <Button x:Name="Attendance" Click="Attendance_Click" Grid.Column="4" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
+                    <Button x:Name="Attendance" Click="Attendance_Click" Grid.Column="3" Style="{StaticResource ButtonStyleMenu}" Margin="0,2,0,0">
                         <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Image Source="{StaticResource AttendanceIcon}" MaxHeight="30" DockPanel.Dock="Top"/>
                             <Label VerticalAlignment="Bottom" DockPanel.Dock="Bottom">

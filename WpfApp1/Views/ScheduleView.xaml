@@ -10,7 +10,9 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="65"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="360"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -27,9 +29,12 @@
 
         </local:GuardianMenu>
 
-        <Image x:Name="imgLeftArrow" Grid.Column="1" Grid.Row="1" Source="{StaticResource LeftArrowIcon}" MaxHeight="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,2"/>
-        <Label x:Name="lblWeel" Content="Vecka 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="1"/>
-        <Image x:Name="imgRightArrow" Grid.Column="3" Grid.Row="1" Source="{StaticResource RightArrowIcon}" MaxHeight="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,2"/>
+        <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Center" VerticalAlignment="Top" Width="237" FontSize="20" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5"/>
+        <Label x:Name="lblGuardianFirstName" Content="" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="232" Grid.Row="2" Grid.Column="0" FontSize="18" HorizontalContentAlignment="Center" Grid.ColumnSpan="5"/>
+
+        <Image x:Name="imgLeftArrow" Grid.Column="1" Grid.Row="3" Source="{StaticResource LeftArrowIcon}" MaxHeight="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,2"/>
+        <Label x:Name="lblWeek" Content="vecka 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="3" FontSize="19"/>
+        <Image x:Name="imgRightArrow" Grid.Column="3" Grid.Row="3" Source="{StaticResource RightArrowIcon}" MaxHeight="25" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0,0,0,2"/>
 
         <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
             <TabItem x:Name="Monday" Header="Måndag" GotFocus="Monday_GotFocus" >
@@ -101,8 +106,8 @@
             </TabItem>
         </TabControl>
 
-        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="4" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="20,40,0,0"/>
-        <Label x:Name="lblChoseChild" Content="Välj Barn:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="4" Margin="20,15,0,0"/>
+        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="4" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="20,40,0,0"/>
+        <Label x:Name="lblChoseChild" Content="Välj Barn:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" Grid.Column="4" Margin="20,15,0,0"/>
 
     </Grid>
 </Window>
