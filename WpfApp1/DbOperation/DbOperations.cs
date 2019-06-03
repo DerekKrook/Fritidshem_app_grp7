@@ -419,12 +419,13 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"INSERT INTO attendance (guardian_id, child_id, comment, category_attendance_id) 
-                                                                    VALUES ('{Activeguardian.Id}', '{Activechild.Id}', '{comment}', '{ActiveAttendancecategory.Id}'); 
-                                                                    INSERT INTO attendance_dates (attendance_id, dates_id) 
-                                                                    VALUES (  '{ActiveDate.Id}') ;").ToList();
-
-
+                var output = connection.Query<Attendance>($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
+                                                                    VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{ActiveAttendancecategory.Id}', '{comment}');
+                                                             INSERT INTO attendance_dates (attendance_id, dates_id) 
+                                                                    SELECT attendance.id, dates.id 
+                                                                    FROM attendance, dates 
+                                                                    WHERE attendance.id = (SELECT MAX(attendance.id) 
+                                                                    FROM attendance) AND dates.id = '{ActiveDate.Id}';").ToList();
                 return output;
             }
 
@@ -485,6 +486,18 @@ namespace WpfApp1
                                                              INNER JOIN category_attendance ON category_attendance_id = category_attendance.id) 
                                                              where child_id = {Activechild.Id} AND category_attendance_id = 1 OR category_attendance_id = 2;").ToList();
 
+
+                return output;
+            }
+
+        }
+
+        //uppdatera mail på Staff 
+        public static List<Guardian> UpdateStaffProperties(string email)
+        {
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Guardian>($@"UPDATE staff SET email = '{email}' WHERE id = {Activestaff.Id}").ToList();
 
                 return output;
             }

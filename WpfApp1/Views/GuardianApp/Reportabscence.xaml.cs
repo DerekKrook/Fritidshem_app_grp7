@@ -32,8 +32,6 @@ namespace WpfApp1
             DataBinding();
         }
 
-        // generera id saknas  - hur ska man göra detta smart? man vill ju inte ha så man kan anmäla frånvaro dubbelt? skapa system där id är GCWWDDYY(guardian child week day year)? då blir det unikt och om det redan finns så skriv popup meddelande
-
         public void DataBinding()
         {
             //Hämta barn
