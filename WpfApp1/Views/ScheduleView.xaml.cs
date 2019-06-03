@@ -39,8 +39,6 @@ namespace WpfApp1
 
         }
 
-        //kan man sätta active child här direkt?
-
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxChildren.SelectedItem != null)
@@ -53,7 +51,7 @@ namespace WpfApp1
 
         public void UpdateSchedule()
         {
-            //Vill ha med cateogry_attendance för barn/dag  så att det kan stå när orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
+            //Vill ha med cateogry_attendance för barn/dag så att det står orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
 
             TabItem tabItem = tabControl.SelectedItem as TabItem;
 
