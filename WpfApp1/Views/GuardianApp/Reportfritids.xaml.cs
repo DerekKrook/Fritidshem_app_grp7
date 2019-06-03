@@ -111,7 +111,7 @@ namespace WpfApp1
 
         private void Seereports_Loaded(object sender, RoutedEventArgs e)
         {
-            attendances = DbOperations.Getabscenceasguardian();
+            attendances = DbOperations.Getfritidsguardian();
 
             ListView.ItemsSource = attendances;
         }

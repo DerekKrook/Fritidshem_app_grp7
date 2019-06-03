@@ -471,7 +471,7 @@ namespace WpfApp1
 
         }
 
-        //Hämtar alla Frånvaro till Förälder  kommentar kommer inte upp?
+        //Hämtar alla Frånvaro till Förälder
         public static List<Attendance> Getabscenceasguardian()
         {
 
@@ -515,6 +515,26 @@ namespace WpfApp1
                                                                     FROM attendance, dates 
                                                                     WHERE attendance.id = (SELECT MAX(attendance.id) 
                                                                     FROM attendance) AND dates.id = '{ActiveDate.Id}';").ToList();
+                return output;
+            }
+
+        }
+
+
+        //Hämtar alla Fritids till Förälder  kommentar kommer inte upp?
+        public static List<Attendance> Getfritidsguardian()
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"SELECT category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, attendance.comment AS Comment
+                                                             FROM (((attendance 
+                                                             INNER JOIN attendance_dates ON attendance_id=attendance.id)
+                                                             INNER JOIN dates ON dates_id=dates.id)
+                                                             INNER JOIN category_attendance ON category_attendance_id = category_attendance.id) 
+                                                             where child_id = {Activechild.Id} AND category_attendance_id = 3;").ToList();
+
+
                 return output;
             }
 

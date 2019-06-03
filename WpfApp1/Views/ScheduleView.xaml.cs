@@ -45,7 +45,8 @@ namespace WpfApp1
         {
             if (comboBoxChildren.SelectedItem != null)
             {                
-                Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);               
+                Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);       
+                
                 UpdateSchedule();
             }
             
@@ -65,8 +66,6 @@ namespace WpfApp1
                 
                 ListViewMonday.ItemsSource = schedule;
                 ListViewMonday.DisplayMemberPath = "Fullinformation";
-
-                comboBoxChildren.SelectedIndex = 0;
             }
         }
 
@@ -83,8 +82,6 @@ namespace WpfApp1
                 schedule = DbOperations.GetSchedule(day);
                 listView.ItemsSource = schedule;               
                 listView.DisplayMemberPath = "Fullinformation";
-
-                comboBoxChildren.SelectedIndex = 0;
             }
         }
 
