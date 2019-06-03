@@ -37,13 +37,49 @@ namespace WpfApp1
         private void ListViewFritidsGonehome_Loaded(object sender, RoutedEventArgs e)
         {
             fritidsgonehome = DbOperations.GetChildrenGoneHome();
-            listViewFritidsGonehome.ItemsSource = fritdschildren;
+            listViewFritidsGonehome.ItemsSource = fritidsgonehome;
             listViewFritidsGonehome.DisplayMemberPath = "Fullinformation";
         }
 
         private void BtnChildHome_Click(object sender, RoutedEventArgs e)
         {
+            DbOperations.SetChildGoneHome();
 
+            fritdschildren = DbOperations.GetChildrenAtFritids();
+            listViewTotalFritids.ItemsSource = fritdschildren;
+            listViewTotalFritids.DisplayMemberPath = "Fullinformation";
+
+            fritidsgonehome = DbOperations.GetChildrenGoneHome();
+            listViewFritidsGonehome.ItemsSource = fritidsgonehome;
+            listViewFritidsGonehome.DisplayMemberPath = "Fullinformation";
+        }
+
+        private void ListViewTotalFritids_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ActiveAttendance.Setactiveattendance((Attendance)listViewTotalFritids.SelectedItem);
+
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+        }
+
+        private void ListViewFritidsGonehome_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ActiveAttendance.Setactiveattendance((Attendance)listViewFritidsGonehome.SelectedItem);
+
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
         }
     }
 }
