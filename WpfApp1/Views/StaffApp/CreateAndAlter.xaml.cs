@@ -108,7 +108,6 @@ namespace WpfApp1
             txtboxFirstName.Clear();
             txtboxLastName.Clear();
             txtboxClass.Clear();
-            txtboxGuardian.Clear();
         }
         private void ListViewGuardians_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
