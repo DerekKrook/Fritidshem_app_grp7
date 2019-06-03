@@ -45,7 +45,7 @@ namespace WpfApp1
         {
             if (comboBoxChildren.SelectedItem != null)
             {                
-                Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
+                Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);               
                 UpdateSchedule();
             }
             

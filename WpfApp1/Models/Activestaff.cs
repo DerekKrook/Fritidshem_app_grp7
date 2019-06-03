@@ -13,6 +13,7 @@ namespace WpfApp1
         public static string Lastname { get; set; }
         public static string Email { get; set; }
         public static string Department { get; set; }
+        public static string Class { get; set; }
 
         public static string Getactivestaff
         {
@@ -30,7 +31,8 @@ namespace WpfApp1
             Activestaff.Firstname = staff.Firstname;
             Activestaff.Lastname = staff.Lastname;
             Activestaff.Email = staff.Email;
-            Activestaff.Department =staff.Department;
+            Activestaff.Class = staff.Class;
+                 
         }
     }
 }
