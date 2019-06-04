@@ -30,14 +30,17 @@ namespace WpfApp1
 
         public static void Setactivechild(Child child)
         {
-            Activechild.Id = child.Id;
-            Activechild.Firstname = child.Firstname;
-            Activechild.Lastname = child.Lastname;
-            Activechild.LeaveAlone = child.LeaveAlone;
-            Activechild.Age = child.Age;
-            Activechild.Class = child.Class;
-            Activechild.Guardian = child.Guardian;
-            Activechild.Mealsid = child.Mealsid;
+            if (child != null)
+            {
+                Activechild.Id = child.Id;
+                Activechild.Firstname = child.Firstname;
+                Activechild.Lastname = child.Lastname;
+                Activechild.LeaveAlone = child.LeaveAlone;
+                Activechild.Age = child.Age;
+                Activechild.Class = child.Class;
+                Activechild.Guardian = child.Guardian;
+                Activechild.Mealsid = child.Mealsid;
+            }
         }
     }
 }

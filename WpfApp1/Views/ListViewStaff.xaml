@@ -10,32 +10,31 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="85"/>
-            <RowDefinition Height="13*"/>
-            <RowDefinition Height="14*"/>
+            <RowDefinition Height="500*"/>
+            <RowDefinition Height="500*"/>
         </Grid.RowDefinitions>
 
         <local:StaffMenu Grid.Row="0">
 
         </local:StaffMenu>
 
-        <ListView x:Name="ListViewStaff1" HorizontalAlignment="Left" Height="205" Margin="698,129,0,0" VerticalAlignment="Top" Width="535" Grid.Row="1" Grid.RowSpan="2" SelectionChanged="ListViewStaff1_SelectionChanged_1" Visibility="Hidden">
+        <ListView x:Name="ListViewStaff1" HorizontalAlignment="Left" Height="63" Margin="794,45,0,0" VerticalAlignment="Top" Width="476" Grid.Row="1" SelectionChanged="ListViewStaff1_SelectionChanged_1" Visibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
                     <GridViewColumn Header="Efternamn" Width="150" DisplayMemberBinding="{Binding Lastname}"/>
-                    <GridViewColumn Header="Klass" Width="80" DisplayMemberBinding="{Binding Class}"/>
-                    <GridViewColumn Header="Hem själv" Width="80" DisplayMemberBinding="{Binding LeaveAlone}"/>
-                    <GridViewColumn Header="Närvaro" Width="70" DisplayMemberBinding="{Binding Attendance}"/>
+                    <GridViewColumn Header="Klass" Width="100" DisplayMemberBinding="{Binding Class}"/>
+                    <GridViewColumn Header="Hem själv" Width="70" DisplayMemberBinding="{Binding LeaveAlone}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Left" Margin="527,16,0,0" VerticalAlignment="Top" Width="216" FontSize="18" Grid.Row="1"/>
-        <Label x:Name="label" Content="Barn" HorizontalAlignment="Left" Margin="45,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="1"/>
-        <Button x:Name="btnSearchChild" Content="Sök barn" HorizontalAlignment="Left" Margin="861,80,0,0" VerticalAlignment="Top" Width="103" Click="BtnSearchChild_Click" Height="26" Style="{StaticResource ButtonStyleNormal}" Grid.Row="1"/>
-        <TextBox x:Name="txtNameChild" HorizontalAlignment="Left" Height="24" Margin="861,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" RenderTransformOrigin="0.142,0.625" AutomationProperties.HelpText="Sök barn" Grid.Row="1"/>
-        <Button x:Name="btnEmptySearch" Content="Avbryt sök" HorizontalAlignment="Left" Margin="973,80,0,0" VerticalAlignment="Top" Width="103" Height="26" Click="BtnEmptySearch_Click" Style="{StaticResource ButtonStyleNormal}" Grid.Row="1" Visibility="Hidden" />
+        <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Left" Margin="527,16,0,0" VerticalAlignment="Top" Width="216" FontSize="18" Grid.Row="1" Height="34"/>
+        <Label x:Name="label" Content="Barn" HorizontalAlignment="Left" Margin="35,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="1" Height="31" Width="43"/>
+        <Button x:Name="btnSearchChild" Content="Sök barn" HorizontalAlignment="Left" Margin="1014,14,0,0" VerticalAlignment="Top" Width="103" Click="BtnSearchChild_Click" Height="26" Style="{StaticResource ButtonStyleNormal}" Grid.Row="1"/>
+        <TextBox x:Name="txtNameChild" HorizontalAlignment="Left" Height="24" Margin="794,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" RenderTransformOrigin="0.142,0.625" AutomationProperties.HelpText="Sök barn" Grid.Row="1"/>
+        <Button x:Name="btnEmptySearch" Content="Avbryt sök" HorizontalAlignment="Left" Margin="1122,14,0,0" VerticalAlignment="Top" Width="103" Height="26" Click="BtnEmptySearch_Click" Style="{StaticResource ButtonStyleNormal}" Grid.Row="1" Visibility="Hidden" />
 
-        <ListView x:Name="listViewGuardian" HorizontalAlignment="Left" Height="121" Margin="45,144,0,0" VerticalAlignment="Top" Width="624" Grid.Row="2">
+        <ListView x:Name="listViewGuardian" HorizontalAlignment="Left" Height="121" Margin="35,158,0,0" VerticalAlignment="Top" Width="624" Grid.Row="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
@@ -45,9 +44,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Label x:Name="label_Copy" Content="Vårdnadshavare för valt barn" HorizontalAlignment="Left" Margin="45,113,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="2" Height="31" Width="228"/>
-        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Left" Margin="45,66,0,0" VerticalAlignment="Top" Width="104" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="278" Margin="45,98,0,0" Grid.Row="1" VerticalAlignment="Top" Width="624" Grid.RowSpan="2">
+        <Label x:Name="label_Copy" Content="Vårdnadshavare för valt barn" HorizontalAlignment="Left" Margin="35,127,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="2" Height="31" Width="228"/>
+        <Label x:Name="lblActiveChild2" Content="ActiveChild" HorizontalAlignment="Left" Margin="253,128,0,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="84"/>
+        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Left" Margin="35,80,0,0" VerticalAlignment="Top" Width="104" Click="BtnSearchChild_Click" Height="26" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="278" Margin="35,103,0,0" Grid.Row="1" VerticalAlignment="Top" Width="624" Grid.RowSpan="2">
             <TabItem Header="Avdelning 1">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -56,13 +56,12 @@
                         <ColumnDefinition Width="60*"/>
                         <ColumnDefinition Width="399*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="ListViewStaff1_Class1" HorizontalAlignment="Left" Height="251" VerticalAlignment="Top" Width="618" SelectionChanged="ListViewStaff1_Class1_SelectionChanged" Grid.ColumnSpan="4">
+                    <ListView x:Name="ListViewStaff1_Class1" HorizontalAlignment="Left" Height="251" VerticalAlignment="Top" Width="605" SelectionChanged="ListViewStaff1_Class1_SelectionChanged" Grid.ColumnSpan="4" Margin="0,0,0,-7">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Förnamn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
                                 <GridViewColumn Header="Efternamn" Width="200" DisplayMemberBinding="{Binding Lastname}"/>
-                                <GridViewColumn Header="Klass" Width="100" DisplayMemberBinding="{Binding Class}"/>
-                                <GridViewColumn Header="Närvaro" Width="120" DisplayMemberBinding="{Binding Attendance}"/>
+                                <GridViewColumn Header="Klass" Width="200" DisplayMemberBinding="{Binding Class}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -70,31 +69,101 @@
             </TabItem>
             <TabItem Header="Avdelning 2">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,33">
-                    <ListView x:Name="ListViewStaff1_Class2" HorizontalAlignment="Left" Height="248" VerticalAlignment="Top" Width="625" SelectionChanged="ListViewStaff1_Class2_SelectionChanged" Margin="0,0,-7,-31">
+                    <ListView x:Name="ListViewStaff1_Class2" HorizontalAlignment="Left" Height="248" VerticalAlignment="Top" Width="605" SelectionChanged="ListViewStaff1_Class2_SelectionChanged" Margin="0,0,0,-37">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Förnamn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
                                 <GridViewColumn Header="Efternamn" Width="200" DisplayMemberBinding="{Binding Lastname}"/>
-                                <GridViewColumn Header="Klass" Width="100" DisplayMemberBinding="{Binding Class}"/>
-                                <GridViewColumn Header="Närvaro" Width="120" DisplayMemberBinding="{Binding Attendance}"/>
+                                <GridViewColumn Header="Klass" Width="200" DisplayMemberBinding="{Binding Class}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </Grid>
             </TabItem>
             <TabItem Header="Avdelning 3">
-                <ListView x:Name="ListViewStaff1_Class3" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="618" SelectionChanged="ListViewStaff1_Class3_SelectionChanged">
+                <ListView x:Name="ListViewStaff1_Class3" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="608" SelectionChanged="ListViewStaff1_Class3_SelectionChanged">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Förnamn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
                             <GridViewColumn Header="Efternamn" Width="200" DisplayMemberBinding="{Binding Lastname}"/>
-                            <GridViewColumn Header="Klass" Width="100" DisplayMemberBinding="{Binding Class}"/>
-                            <GridViewColumn Header="Närvaro" Width="120" DisplayMemberBinding="{Binding Attendance}"/>
+                            <GridViewColumn Header="Klass" Width="200" DisplayMemberBinding="{Binding Class}"/>
                         </GridView>
                     </ListView.View>
                 </ListView>
             </TabItem>
         </TabControl>
-        <Label x:Name="lblStaffFirstname" Content="Label" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="lblStaffFirstname" Content="ActiveStaff" HorizontalAlignment="Left" Margin="25,0,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="81"/>
+        <Label x:Name="lblActiveChild" Content="ActiveChild" HorizontalAlignment="Left" Margin="771,142,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="84" Grid.RowSpan="2"/>
+
+
+        <TabControl x:Name="tabSchedule" HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="1" Margin="771,177,99,100" Grid.RowSpan="2">
+            <TabItem x:Name="Monday" Header="Måndag" GotFocus="Monday_GotFocus">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="78*"/>
+                        <ColumnDefinition Width="81*"/>
+                        <ColumnDefinition Width="60*"/>
+                        <ColumnDefinition Width="287*"/>
+                        <ColumnDefinition Width="109*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListView x:Name="ListViewMonday" HorizontalAlignment="Left" Height="325" VerticalAlignment="Top" Width="410"  Grid.ColumnSpan="5">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Tuesday" Header="Tisdag" GotFocus="Tuesday_GotFocus">
+                <Grid Background="#FFE5E5E5">
+                    <ListView x:Name="ListViewTuesday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Wednesday" Header="Onsdag" GotFocus="Wednesday_GotFocus" >
+                <Grid Background="#FFE5E5E5" >
+                    <ListView x:Name="ListViewWednesday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Thursday" Header="Torsdag" GotFocus="Thursday_GotFocus" >
+                <Grid Background="#FFE5E5E5" >
+                    <ListView x:Name="ListViewThursday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Friday" Header="Fredag" GotFocus="Friday_GotFocus">
+                <Grid Background="#FFE5E5E5" >
+                    <ListView x:Name="ListViewFriday" Height="325" VerticalAlignment="Top" HorizontalAlignment="Left" Width="410">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Lektion" Width="200" DisplayMemberBinding="{Binding Lecturename}"/>
+                                <GridViewColumn Header="Tid" Width="200" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
