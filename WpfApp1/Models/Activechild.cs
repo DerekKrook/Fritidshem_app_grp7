@@ -15,10 +15,9 @@ namespace WpfApp1
         public static string Lastname { get; set; }
         public static bool LeaveAlone { get; set; }
         public static int Age { get; set; }
-
         public static string Class { get; set; }
-
         public static string Guardian { get; set; }
+        public static int Mealsid { get; set; }
 
         public static string Getactivechild
         {
@@ -37,6 +36,8 @@ namespace WpfApp1
             Activechild.LeaveAlone = child.LeaveAlone;
             Activechild.Age = child.Age;
             Activechild.Class = child.Class;
+            Activechild.Guardian = child.Guardian;
+            Activechild.Mealsid = child.Mealsid;
         }
     }
 }

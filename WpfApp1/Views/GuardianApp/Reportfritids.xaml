@@ -64,7 +64,7 @@
                     <Label x:Name="lblComment" Content="Kommentar" Grid.Column="2" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
                     <TextBox x:Name="txtbxComment" Text="" HorizontalAlignment="Center" Grid.Row="10" Grid.Column="2" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center" Height="70"/>
 
-                    <Button x:Name="btnReportAbscence" Content="Anmäl Frånvaro" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="11" Grid.Column="2" VerticalAlignment="Bottom" Width="220" Height="35"/>
+                    <Button x:Name="btnReportAbscence" Content="Anmäl Fritids" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="11" Grid.Column="2" VerticalAlignment="Bottom" Width="220" Height="35"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Seereports" Header="Se Anmäld Fritids"  Loaded="Seereports_Loaded_1">
@@ -83,7 +83,9 @@
                             <GridView>
                                 <GridViewColumn Header="Vecka" Width="50" DisplayMemberBinding="{Binding Week}"/>
                                 <GridViewColumn Header="Dag" Width="100" DisplayMemberBinding="{Binding Day}"/>
-                                <GridViewColumn Header="Kommentar" Width="255" DisplayMemberBinding="{Binding Comment}"/>
+                                <GridViewColumn Header="Vad" Width="150" DisplayMemberBinding="{Binding Category_attendance}"/>
+                                <GridViewColumn Header="Måltid" Width="50" DisplayMemberBinding="{Binding ismeal}" />
+                                <GridViewColumn Header="Kommentar" Width="205" DisplayMemberBinding="{Binding Comment}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

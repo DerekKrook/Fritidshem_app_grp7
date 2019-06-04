@@ -24,7 +24,6 @@ namespace WpfApp1
     public partial class LoggedInGuardian : Window
     {
         List<Child> children = new List<Child>();
-        List<Schedule> schedule = new List<Schedule>();
 
         public LoggedInGuardian()
         {
