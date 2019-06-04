@@ -96,7 +96,6 @@
         <Label x:Name="lblActiveChild" Content="ActiveChild" HorizontalAlignment="Left" Margin="771,142,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="84" Grid.RowSpan="2"/>
 
 
-
         <TabControl x:Name="tabSchedule" HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="1" Margin="771,177,99,100" Grid.RowSpan="2">
             <TabItem x:Name="Monday" Header="Måndag" GotFocus="Monday_GotFocus">
                 <Grid Background="#FFE5E5E5">
