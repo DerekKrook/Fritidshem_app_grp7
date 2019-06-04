@@ -43,7 +43,6 @@
                     <Label x:Name="lblFirstName" Content="Förnamn" HorizontalAlignment="Left" Margin="11,394,0,0" VerticalAlignment="Top" Height="30" />
                     <TextBox x:Name="txtboxLastName" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="135" Margin="0,0,95,123" Grid.ColumnSpan="2" Grid.Column="2" />
                     <Label x:Name="lblLastName" Content="Efternamn" HorizontalAlignment="Left" Margin="11,0,0,123" VerticalAlignment="Bottom" Height="30" />
-                    <TextBox x:Name="txtboxClass" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,499,95,0" Grid.ColumnSpan="2" Grid.Column="2" />
                     <Label x:Name="lblClass" Content="Klass" HorizontalAlignment="Left" Margin="11,499,0,0" VerticalAlignment="Top" Height="30" />
                     <Button x:Name="btnAddNew" Content="Lägg till" HorizontalAlignment="Left" Margin="9,542,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnAddNew_Click" Grid.ColumnSpan="2"/>
                     <Button x:Name="btnChange" Content="Spara" HorizontalAlignment="Left" Margin="27,542,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnChange_Click" Grid.ColumnSpan="2" Grid.Column="2"/>
@@ -52,7 +51,7 @@
                     <TextBlock x:Name="txtInfo" HorizontalAlignment="Left" Margin="8,330,0,0" TextWrapping="Wrap" Text="För att redigera uppgifter välj en person i listan. För att lägga till en ny fyll i fält nedan och klicka Lägg till." VerticalAlignment="Top" Grid.ColumnSpan="4" Height="59" Width="317" FontWeight="Bold"/>
                     <TextBox x:Name="txtboxAge" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,464,95,0" Grid.ColumnSpan="2" Grid.Column="2" />
                     <Label x:Name="lblAge" Content="Ålder" HorizontalAlignment="Left" Margin="11,464,0,0" VerticalAlignment="Top" Height="30" />
-                    <ComboBox x:Name="comboBox" Grid.Column="4" HorizontalAlignment="Left" Margin="24,499,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="comboBoxClass" Grid.Column="2" HorizontalAlignment="Left" Margin="0,503,0,0" VerticalAlignment="Top" Width="135" SelectionChanged="ComboBoxClass_SelectionChanged" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Vårdnadshavare" Header="Vårdnadshavare">

@@ -40,10 +40,18 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.age, child.leavealone, department.name AS Class 
-                FROM((child INNER JOIN class ON class_id = class.id) 
-                INNER JOIN department ON department_id = department.id) 
-                ORDER BY department.name DESC").ToList();
+                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.age, child.leavealone, class.name AS Class 
+                FROM(child INNER JOIN class ON class_id = class.id) 
+                ORDER BY class.name DESC").ToList();
+
+                return output;
+            }
+        }
+        public static List<Class> GetAllClasses()
+        {
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Class>($@"SELECT * FROM CLASS").ToList();
 
                 return output;
             }
@@ -288,7 +296,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"INSERT INTO guardian (firstname, lastname, phone, email) VALUES ('{firstname}', '{lastname}', {phone}, '{email}')").ToList();
+                var output = connection.Query<Guardian>($@"INSERT INTO guardian (firstname, lastname, phone, email) VALUES ('{@firstname}', '{@lastname}', {@phone}, '{@email}')").ToList();
 
 
                 return output;
@@ -306,7 +314,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($@"UPDATE child SET firstname = '{firstname}', lastname = '{lastname}' WHERE id = {Id}").ToList();
+                var output = connection.Query<Child>($@"UPDATE child SET firstname = '{@firstname}', lastname = '{@lastname}' WHERE id = {Id}").ToList();
 
                 return output;
             }

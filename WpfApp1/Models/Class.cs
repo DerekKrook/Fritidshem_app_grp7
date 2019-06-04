@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace WpfApp1.Models
 {
-   public class Class
+    public class Class
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public string Phone { get; set; }
+
+        public string ClassName
+        {
+            get
+            {
+                return $"{Name}";
+            }
+        }
     }
 }
