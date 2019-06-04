@@ -40,7 +40,7 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, department.name AS Class 
+                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.age, child.leavealone, department.name AS Class 
                 FROM((child INNER JOIN class ON class_id = class.id) 
                 INNER JOIN department ON department_id = department.id) 
                 ORDER BY department.name DESC").ToList();
@@ -315,7 +315,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($@"INSERT INTO child (firstname, lastname, leavealone) VALUES ('{firstname}', '{lastname}')").ToList();
+                var output = connection.Query<Child>($@"INSERT INTO child (firstname, lastname) VALUES ('{@firstname}', '{@lastname}');").ToList();
                 
                 return output;
             }

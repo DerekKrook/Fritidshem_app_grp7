@@ -29,11 +29,26 @@ namespace WpfApp1
         List<Guardian> guardian = new List<Guardian>();
         List<Connections> connections = new List<Connections>();
 
+
+        private void Updatelists()
+        {
+            ListViewGuardians.SelectedItem = null;
+            ListViewChildren.SelectedItem = null;
+            ListViewConnections.SelectedItem = null;
+            children = DbOperations.GetAllChildren();
+            ListViewChildren.ItemsSource = children;
+            guardian = DbOperations.GetAllGuardians();
+            ListViewGuardians.ItemsSource = guardian;
+            connections = DbOperations.GetChildGuardian();
+            ListViewConnections.ItemsSource = connections;
+            ListViewConnections.DisplayMemberPath = "Fullinformation";
+        }
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
             DbOperations.DeleteChild();
             ListViewChildren.SelectedItem = null;
             ClearTextbox();
+            Updatelists();
         }
 
 
@@ -41,7 +56,7 @@ namespace WpfApp1
         private void BtnAddNew_Click(object sender, RoutedEventArgs e)
         {
 
-            if (txtboxFirstName != null && txtboxLastName != null)
+            if (txtboxFirstName != null || txtboxLastName != null)
             {
                 try
                 {
@@ -55,7 +70,7 @@ namespace WpfApp1
                 }
             }
             ClearTextbox();
-            ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
+            Updatelists();
 
         }
 
@@ -63,24 +78,16 @@ namespace WpfApp1
         {
             ListViewChildren.SelectedItem = null;
             ClearTextbox();
+            
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void Window_Activated(object sender, EventArgs e)
         {
             lblStaffFirstname.Content = $"Inloggad som {Activestaff.Firstname} {Activestaff.Lastname}";
 
-            children = DbOperations.GetAllChildren();
-            ListViewChildren.ItemsSource = children;
-            guardian = DbOperations.GetAllGuardians();
-            ListViewGuardians.ItemsSource = guardian;
-            connections = DbOperations.GetChildGuardian();
-            ListViewConnections.ItemsSource = connections;
-            ListViewConnections.DisplayMemberPath = "Fullinformation";
+            Updatelists();
 
         }
 
@@ -89,6 +96,7 @@ namespace WpfApp1
             txtboxFirstName.Text = Activechild.Firstname;
             txtboxLastName.Text = Activechild.Lastname;
             txtboxClass.Text = Activechild.Class;
+            txtboxAge.Text = Activechild.Age.ToString();
         }
 
         public void UpdateGuardian()
@@ -108,6 +116,7 @@ namespace WpfApp1
             txtboxFirstName.Clear();
             txtboxLastName.Clear();
             txtboxClass.Clear();
+            txtboxAge.Clear();  
         }
         private void ListViewGuardians_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -143,14 +152,14 @@ namespace WpfApp1
 
             Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
             DbOperations.UpdateChildProperties(txtboxFirstName.Text, txtboxLastName.Text);
-            ListViewChildren.ItemsSource = children;
+            Updatelists();
             ClearTextbox();
         }
         private void SaveGuardian_Click(object sender, RoutedEventArgs e)
         {
             Activeguardian.Setactiveguardian((Guardian)ListViewGuardians.SelectedItem);
             DbOperations.UpdateGuardianProperties(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxEmailGuardian.Text, txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text);
-            ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
+            Updatelists();
             ClearTextbox();
 
         }
@@ -164,14 +173,14 @@ namespace WpfApp1
         private void BtnDeleteGuardian_Click(object sender, RoutedEventArgs e)
         {
             DbOperations.DeleteGuardian();
-            ListViewGuardians.SelectedItem = null;
+            Updatelists();
             ClearTextbox();
         }
 
         private void AddNewGuardian_Click(object sender, RoutedEventArgs e)
         {
 
-            if (txtboxFirstNameGuardian != null && txtboxLastNameGuardian != null)
+            if (txtboxFirstNameGuardian != null || txtboxLastNameGuardian != null)
             {
                 try
                 {
@@ -191,12 +200,8 @@ namespace WpfApp1
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
             DbOperations.ConnectChildAndGuardian();
-            ListViewGuardians.SelectedItem = null;
-            ListViewChildren.SelectedItem = null;
-            ListViewConnections.SelectedItem = null;
-            connections = DbOperations.GetChildGuardian();
-            ListViewConnections.ItemsSource = connections;
-            ListViewConnections.DisplayMemberPath = "Fullinformation";
+
+            Updatelists();
         }
 
         private void ListViewConnections_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -207,10 +212,7 @@ namespace WpfApp1
         private void RemoveConnection_Click(object sender, RoutedEventArgs e)
         {
             DbOperations.DeleteConnection();
-            ListViewConnections.SelectedItem = null;
-            connections = DbOperations.GetChildGuardian();
-            ListViewConnections.ItemsSource = connections;
-            ListViewConnections.DisplayMemberPath = "Fullinformation";
+            Updatelists();
         }
     }
 }
