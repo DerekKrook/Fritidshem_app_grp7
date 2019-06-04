@@ -27,7 +27,7 @@
         </local:GuardianMenu>
 
         <TabControl x:Name="ReportvsView" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Height="600" Width="560">
-            <TabItem x:Name="Report" Header="Anmäl Fritids">
+            <TabItem x:Name="Report" Header="Anmäl fritids">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30"/>
@@ -50,7 +50,7 @@
                     <Label x:Name="lblChooseChild" Content="Välj Barn" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
                     <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="0,0,0,0"/>
 
-                    <Label x:Name="lblChooseType" Content="Välj Morgon eller Kvälls Fritids" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
+                    <Label x:Name="lblChooseType" Content="Välj morgon - eller kvällsfritids" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="230" HorizontalContentAlignment="Center" Margin="166,0,155,0"/>
                     <ComboBox x:Name="comboBoxType" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Bottom" Width="220" Margin="0,0,0,0" SelectedIndex="0" SelectionChanged="ComboBoxType_SelectionChanged"/>
 
                     <CheckBox x:Name="chxbxBreakfast" Content="Kryssa i om barnet ska anmälas för frukost" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="4" FontSize="20" IsEnabled="False" Visibility="Visible"/>
@@ -67,7 +67,7 @@
                     <Button x:Name="btnReportAbscence" Content="Anmäl Fritids" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="11" Grid.Column="2" VerticalAlignment="Bottom" Width="220" Height="35"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Seereports" Header="Se Anmäld Fritids"  Loaded="Seereports_Loaded_1">
+            <TabItem x:Name="Seereports" Header="Se anmäld fritids"  Loaded="Seereports_Loaded_1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="52*"/>
@@ -114,7 +114,7 @@
                                 <GridViewColumn Header="Anmälda måltider" Width="350" DisplayMemberBinding="{Binding Name}"/>
                             </GridView>
                         </ListView.View>
-                        
+
                     </ListView>
                 </Grid>
             </TabItem>
