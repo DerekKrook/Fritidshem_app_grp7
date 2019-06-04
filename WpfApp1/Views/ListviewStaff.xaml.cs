@@ -73,6 +73,10 @@ namespace WpfApp1
             ListViewStaff1.ItemsSource = null;
 
         }
+        private void BtnAbscense_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         private void ListViewStaff1_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
@@ -80,8 +84,9 @@ namespace WpfApp1
             
             guardian = DbOperations.GetGuardianOfChild(Activechild.Id);
             getguardian();
-          
-    }
+            UpdateSchedule();
+
+        }
 
         private void ListViewStaff1_Class1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -89,6 +94,7 @@ namespace WpfApp1
 
             guardian = DbOperations.GetGuardianOfChild(Activechild.Id);
             getguardian();
+            UpdateSchedule();
 
         }
         private void ListViewStaff1_Class2_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -97,6 +103,8 @@ namespace WpfApp1
 
             guardian = DbOperations.GetGuardianOfChild(Activechild.Id);
             getguardian();
+            UpdateSchedule();
+
 
         }
         private void ListViewStaff1_Class3_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -105,13 +113,12 @@ namespace WpfApp1
 
             guardian = DbOperations.GetGuardianOfChild(Activechild.Id);
             getguardian();
+            UpdateSchedule();
         }
 
 
         public void UpdateSchedule()
         {
-            //Vill ha med cateogry_attendance för barn/dag så att det står orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
-            
                 TabItem tabItem = tabSchedule.SelectedItem as TabItem;
 
                 string day = tabItem.Header.ToString();
@@ -125,9 +132,7 @@ namespace WpfApp1
 
         public void UpdateSchedule(ListView listView)
         {
-            //Vill ha med cateogry_attendance för barn/dag så att det står orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
 
-           
                 TabItem tabItem = tabSchedule.SelectedItem as TabItem;
 
                 string day = tabItem.Header.ToString();
@@ -135,7 +140,6 @@ namespace WpfApp1
                 schedule = DbOperations.GetSchedule(day);
                 listView.ItemsSource = schedule;
                 listView.DisplayMemberPath = "Fullinformation";
-
             
         }
         private void Tuesday_GotFocus(object sender, RoutedEventArgs e)
@@ -166,5 +170,7 @@ namespace WpfApp1
             UpdateSchedule(ListViewFriday);
 
         }
+
+
     }
 }
