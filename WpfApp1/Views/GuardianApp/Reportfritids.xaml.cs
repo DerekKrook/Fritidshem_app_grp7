@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.Models;
 
 namespace WpfApp1
 {
@@ -24,6 +25,7 @@ namespace WpfApp1
         List<Date> dates = new List<Date>();
         List<Weeks> weeks = new List<Weeks>();
         List<Attendancecategory> attendancecategories = new List<Attendancecategory>();
+        List<Meal> meals = new List<Meal>(); 
 
         public Reportfritids()
         {
@@ -41,6 +43,10 @@ namespace WpfApp1
             comboBoxChildren.DisplayMemberPath = "Fullinformation";
 
             comboBoxChildren.SelectedIndex = 0;
+
+            comboBoxChildMeals.ItemsSource = children;
+            comboBoxChildMeals.DisplayMemberPath = "Fullinformation";
+            comboBoxChildMeals.SelectedIndex = 0;
 
             //Hämta barn se
             children = DbOperations.GetChildrenOfGuardian();
@@ -83,8 +89,9 @@ namespace WpfApp1
             {
                 Activechild.Setactivechild((Child)comboBoxChildren2.SelectedItem);
                 attendances = DbOperations.Getfritidsguardian();
-
+                
                 ListView.ItemsSource = attendances;
+                
                 ListView.Items.Refresh();
             }
         }
@@ -157,11 +164,27 @@ namespace WpfApp1
 
         private void Seereports_Loaded_1(object sender, RoutedEventArgs e)
         {
-            //Skriva måltid registrerad som yes/no?
+            
 
             attendances = DbOperations.Getfritidsguardian();
 
             ListView.ItemsSource = attendances;
+        }
+
+        private void Seereportedmeals_Loaded(object sender, RoutedEventArgs e)
+        {
+            meals = DbOperations.GetMeals();
+            ListViewMeals.ItemsSource = meals;
+            
+        }
+
+        private void ComboBoxChildMeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Activechild.Setactivechild((Child)comboBoxChildMeals.SelectedItem);
+
+            meals = DbOperations.GetMeals();
+            ListViewMeals.ItemsSource = meals;
+            ListViewMeals.Items.Refresh();
         }
     }
 }

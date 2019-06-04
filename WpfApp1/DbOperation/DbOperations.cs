@@ -577,18 +577,19 @@ namespace WpfApp1
 
         }
 
-        //Hämtar anmäld frukost kollas över
+        //Hämtar anmäld frukost 
         public static List<Meal> GetMeals()
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Meal>($@"SELECT dates.day AS Day, dates.week AS Week, meals.name AS Name
+                var output = connection.Query<Meal>($@"SELECT dates.id, dates.day AS Day, dates.week AS Week, meals.name AS Name
                     FROM (((child                   
                     INNER JOIN meals on child.id=meals.child_id)
                     INNER JOIN meals_dates ON meals.id=meals_id)
                     INNER JOIN dates on meals_dates.dates_id=dates.id)
                     WHERE child.id='{Activechild.Id}'
-                    GROUP BY dates.day, dates.week, meals.name").ToList();
+                    GROUP BY dates.id, dates.day, dates.week, meals.name
+                    ORDER BY dates.id ASC").ToList();
 
                 return output;
             }
