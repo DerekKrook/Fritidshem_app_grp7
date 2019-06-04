@@ -82,6 +82,10 @@ namespace WpfApp1
             if (comboBoxChildren2.SelectedItem != null)
             {
                 Activechild.Setactivechild((Child)comboBoxChildren2.SelectedItem);
+                attendances = DbOperations.Getfritidsguardian();
+
+                ListView.ItemsSource = attendances;
+                ListView.Items.Refresh();
             }
         }
 
@@ -129,26 +133,9 @@ namespace WpfApp1
             lblUpdated.Visibility = Visibility.Hidden;
         }
 
-        private void ComboBoxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-            int i = comboBoxType.SelectedIndex;
+       
 
-            if (i == 1)
-            {
-                chxbxBreakfast.IsEnabled = true;
-            }
-            else if (i == 0)
-            {
-                chxbxBreakfast.IsEnabled = true;
-            }
-            else if (i == 2)
-            {
-                chxbxBreakfast.IsEnabled = false;
-            }
-        }
-
-        private void Seereports_Loaded(object sender, RoutedEventArgs e)
+        private void Seereports_Loaded_1(object sender, RoutedEventArgs e)
         {
             attendances = DbOperations.Getfritidsguardian();
 

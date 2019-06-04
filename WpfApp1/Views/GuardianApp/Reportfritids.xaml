@@ -67,7 +67,7 @@
                     <Button x:Name="btnReportAbscence" Content="Anmäl Frånvaro" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="11" Grid.Column="2" VerticalAlignment="Bottom" Width="220" Height="35"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="Seereports" Header="Se Anmäld Fritids" GotFocus="Seereports_Loaded">
+            <TabItem x:Name="Seereports" Header="Se Anmäld Fritids"  Loaded="Seereports_Loaded_1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
