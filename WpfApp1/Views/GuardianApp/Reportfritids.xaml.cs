@@ -23,6 +23,7 @@ namespace WpfApp1
         List<Attendance> attendances = new List<Attendance>();
         List<Date> dates = new List<Date>();
         List<Weeks> weeks = new List<Weeks>();
+        List<Attendancecategory> attendancecategories = new List<Attendancecategory>();
 
         public Reportfritids()
         {
@@ -60,6 +61,12 @@ namespace WpfApp1
 
             comboBoxDay.ItemsSource = dates;
             comboBoxDay.DisplayMemberPath = "InformationDay";
+
+            //Hämta Morgon/Kväll
+            attendancecategories = DbOperations.GetFritidsMorningEvening();
+
+            comboBoxType.ItemsSource = attendancecategories;
+            comboBoxType.DisplayMemberPath = "Fullinformation";
         }
 
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -93,9 +100,22 @@ namespace WpfApp1
 
         private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
         {
+            int i = comboBoxType.SelectedIndex;
             string comment = txtbxComment.Text;
-
             int classid = 3;
+
+            //if (i == 1)
+            //{
+            //    chxbxBreakfast.IsEnabled = true;
+            //}
+            //else if (i == 0)
+            //{
+            //    chxbxBreakfast.IsEnabled = true;
+            //}
+            //else if (i == 2)
+            //{
+            //    chxbxBreakfast.IsEnabled = false;
+            //}
 
             attendances = DbOperations.GuardianReportFritids(comment, classid);
 
@@ -107,6 +127,25 @@ namespace WpfApp1
             lblUpdated.Visibility = Visibility.Visible;
             await Task.Delay(3500);
             lblUpdated.Visibility = Visibility.Hidden;
+        }
+
+        private void ComboBoxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            int i = comboBoxType.SelectedIndex;
+
+            if (i == 1)
+            {
+                chxbxBreakfast.IsEnabled = true;
+            }
+            else if (i == 0)
+            {
+                chxbxBreakfast.IsEnabled = true;
+            }
+            else if (i == 2)
+            {
+                chxbxBreakfast.IsEnabled = false;
+            }
         }
 
         private void Seereports_Loaded(object sender, RoutedEventArgs e)
