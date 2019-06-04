@@ -27,7 +27,7 @@ namespace WpfApp1
             {
                 var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class_id, class.name AS Class 
                 FROM(child INNER JOIN class on class_id = class.id) 
-                WHERE child.firstname LIKE '%{a}%' OR child.lastname LIKE '%{a}%';").ToList();
+                WHERE child.firstname LIKE '%{@a}%' OR child.lastname LIKE '%{@a}%';").ToList();
 
                 return output;
 
@@ -129,7 +129,7 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Guardian>($@"SELECT * FROM child 
-                WHERE firstname LIKE '%{firstName}%' OR lastname LIKE '%{lastName}%'").ToList();
+                WHERE firstname LIKE '%{@firstName}%' OR lastname LIKE '%{@lastName}%'").ToList();
 
                 return output;
             }
@@ -279,7 +279,7 @@ namespace WpfApp1
             var Id = Activeguardian.Id;
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"UPDATE guardian SET firstname = '{firstname}', lastname = '{lastname}', email = '{email}', phone = {phone} WHERE id = {Id}").ToList();
+                var output = connection.Query<Guardian>($@"UPDATE guardian SET firstname = '{@firstname}', lastname = '{@lastname}', email = '{@email}', phone = {phone} WHERE id = {Id}").ToList();
 
                 return output;
             }
