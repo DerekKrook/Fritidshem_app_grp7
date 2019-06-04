@@ -93,7 +93,11 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Staff>($@"SELECT * FROM staff").ToList();
+                var output = connection.Query<Staff>($@"SELECT staff.id, firstname, lastname, email, department.name AS department
+                                                        FROM ((staff 
+	                                                    INNER JOIN department_staff on id = department_staff.staff_id)
+	                                                    INNER JOIN department on department.id = department_staff.department_id)
+	                                                    WHERE department.id = 1 OR department.id = 2 OR department.id = 4").ToList();
 
                 return output;
             }
@@ -541,6 +545,7 @@ namespace WpfApp1
             }
 
         }
+
 
         public static List<Meal> GetMeals()
         {
