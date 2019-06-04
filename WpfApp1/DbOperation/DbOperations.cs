@@ -539,7 +539,7 @@ namespace WpfApp1
                     INNER JOIN category_attendance on category_attendance_id=category_attendance.id)
                     INNER JOIN attendance_dates on attendance.id=attendance_id)
                     INNER JOIN dates on dates_id=dates.id)
-                    WHERE child.id='{Activechild.Id}' AND category_attendance.name_type = 'Fritids'").ToList(); 
+                    WHERE child.id='{Activechild.Id}' AND category_attendance_id = 3 OR category_attendance_id = 7").ToList(); 
 
                 return output;
             }
