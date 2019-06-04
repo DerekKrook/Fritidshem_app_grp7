@@ -107,6 +107,7 @@ namespace WpfApp1
             int i = comboBoxType.SelectedIndex;
             string comment = txtbxComment.Text;
             int classid = 3;
+            
 
             //if (i == 1)
             //{
@@ -133,7 +134,24 @@ namespace WpfApp1
             lblUpdated.Visibility = Visibility.Hidden;
         }
 
-       
+        private void ComboBoxType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            int i = comboBoxType.SelectedIndex;
+
+            if (i == 1)
+            {
+                chxbxBreakfast.IsEnabled = true;
+            }
+            else if (i == 0)
+            {
+                chxbxBreakfast.IsEnabled = true;
+            }
+            else if (i == 2)
+            {
+                chxbxBreakfast.IsEnabled = false;
+            }
+        }
 
         private void Seereports_Loaded_1(object sender, RoutedEventArgs e)
         {
