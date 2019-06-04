@@ -14,6 +14,8 @@ namespace WpfApp1
         public static string Firstname { get; set; }
         public static string Lastname { get; set; }
         public static bool LeaveAlone { get; set; }
+        public static int Age { get; set; }
+
         public static string Class { get; set; }
 
         public static string Guardian { get; set; }
@@ -33,6 +35,7 @@ namespace WpfApp1
             Activechild.Firstname = child.Firstname;
             Activechild.Lastname = child.Lastname;
             Activechild.LeaveAlone = child.LeaveAlone;
+            Activechild.Age = child.Age;
             Activechild.Class = child.Class;
         }
     }

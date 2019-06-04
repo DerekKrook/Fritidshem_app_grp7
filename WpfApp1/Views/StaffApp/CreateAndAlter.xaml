@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-         Title="ListviewChildrenAndGuardians" Style="{StaticResource MyWindowStyle}" Loaded="Window_Loaded" Activated="Window_Activated">
+         Title="ListviewChildrenAndGuardians" Style="{StaticResource MyWindowStyle}" Activated="Window_Activated">
     <Grid Margin="0,-44,0,10">
 
         <Grid.RowDefinitions>
@@ -29,27 +29,30 @@
                         <ColumnDefinition Width="467*"/>
                         <ColumnDefinition Width="177*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="ListViewChildren" HorizontalAlignment="Left" Height="325" VerticalAlignment="Top" Width="829"  Grid.ColumnSpan="6" SelectionChanged="ListViewChildren_SelectionChanged">
+                    <ListView x:Name="ListViewChildren" HorizontalAlignment="Left" Height="325" VerticalAlignment="Top" Width="755"  Grid.ColumnSpan="5" SelectionChanged="ListViewChildren_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Förnamn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
                                 <GridViewColumn Header="Efternamn" Width="200" DisplayMemberBinding="{Binding Lastname}"/>
+                                <GridViewColumn Header="Ålder" Width="150" DisplayMemberBinding="{Binding Age}"/>
                                 <GridViewColumn Header="Klass" Width="200" DisplayMemberBinding="{Binding Class}"/>
-                                <GridViewColumn Header="Vårdnadshavare" Width="230" DisplayMemberBinding="{Binding Guardian}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <TextBox x:Name="txtboxFirstName" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,371,95,0" Grid.ColumnSpan="2" Grid.Column="2" />
-                    <Label x:Name="lblFirstName" Content="Förnamn" HorizontalAlignment="Left" Margin="11,371,0,0" VerticalAlignment="Top" Height="30" />
-                    <TextBox x:Name="txtboxLastName" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="135" Margin="0,0,95,146" Grid.ColumnSpan="2" Grid.Column="2" />
-                    <Label x:Name="lblLastName" Content="Efternamn" HorizontalAlignment="Left" Margin="11,0,0,146" VerticalAlignment="Bottom" Height="30" />
-                    <TextBox x:Name="txtboxClass" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,441,95,0" Grid.ColumnSpan="2" Grid.Column="2" />
-                    <Label x:Name="lblClass" Content="Klass" HorizontalAlignment="Left" Margin="11,441,0,0" VerticalAlignment="Top" Height="30" />
-                    <Button x:Name="btnAddNew" Content="Lägg till" HorizontalAlignment="Left" Margin="8,532,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnAddNew_Click" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnChange" Content="Spara" HorizontalAlignment="Left" Margin="26,532,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnChange_Click" Grid.ColumnSpan="2" Grid.Column="2"/>
-                    <Button x:Name="btnRemove" Content="Ta bort" HorizontalAlignment="Left" Margin="87,532,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnRemove_Click" Grid.Column="4" />
-                    <Button x:Name="btnCancel" Content="Avbryt" HorizontalAlignment="Left" Margin="35,532,0,0" VerticalAlignment="Top" Width="119" Height="30" RenderTransformOrigin="0.437,0.833" Click="BtnCancel_Click" Grid.ColumnSpan="2" Grid.Column="3" />
-                    <Label x:Name="lblChangeInfo" Content="Välj person i listan" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="txtboxFirstName" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,394,95,0" Grid.ColumnSpan="2" Grid.Column="2" />
+                    <Label x:Name="lblFirstName" Content="Förnamn" HorizontalAlignment="Left" Margin="11,394,0,0" VerticalAlignment="Top" Height="30" />
+                    <TextBox x:Name="txtboxLastName" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="135" Margin="0,0,95,123" Grid.ColumnSpan="2" Grid.Column="2" />
+                    <Label x:Name="lblLastName" Content="Efternamn" HorizontalAlignment="Left" Margin="11,0,0,123" VerticalAlignment="Bottom" Height="30" />
+                    <TextBox x:Name="txtboxClass" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,499,95,0" Grid.ColumnSpan="2" Grid.Column="2" />
+                    <Label x:Name="lblClass" Content="Klass" HorizontalAlignment="Left" Margin="11,499,0,0" VerticalAlignment="Top" Height="30" />
+                    <Button x:Name="btnAddNew" Content="Lägg till" HorizontalAlignment="Left" Margin="9,542,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnAddNew_Click" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnChange" Content="Spara" HorizontalAlignment="Left" Margin="27,542,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnChange_Click" Grid.ColumnSpan="2" Grid.Column="2"/>
+                    <Button x:Name="btnRemove" Content="Ta bort" HorizontalAlignment="Left" Margin="88,542,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnRemove_Click" Grid.Column="4" />
+                    <Button x:Name="btnCancel" Content="Avbryt" HorizontalAlignment="Left" Margin="36,542,0,0" VerticalAlignment="Top" Width="119" Height="30" RenderTransformOrigin="0.437,0.833" Click="BtnCancel_Click" Grid.ColumnSpan="2" Grid.Column="3" />
+                    <TextBlock x:Name="txtInfo" HorizontalAlignment="Left" Margin="8,330,0,0" TextWrapping="Wrap" Text="För att redigera uppgifter välj en person i listan. För att lägga till en ny fyll i fält nedan och klicka Lägg till." VerticalAlignment="Top" Grid.ColumnSpan="4" Height="59" Width="317" FontWeight="Bold"/>
+                    <TextBox x:Name="txtboxAge" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,464,95,0" Grid.ColumnSpan="2" Grid.Column="2" />
+                    <Label x:Name="lblAge" Content="Ålder" HorizontalAlignment="Left" Margin="11,464,0,0" VerticalAlignment="Top" Height="30" />
+                    <ComboBox x:Name="comboBox" Grid.Column="4" HorizontalAlignment="Left" Margin="24,499,0,0" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Vårdnadshavare" Header="Vårdnadshavare">
@@ -60,30 +63,30 @@
                         <ColumnDefinition Width="17*"/>
                         <ColumnDefinition Width="868*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="ListViewGuardians" Height="285" VerticalAlignment="Top" HorizontalAlignment="Left" Width="813" Grid.ColumnSpan="4" SelectionChanged="ListViewGuardians_SelectionChanged">
+                    <ListView x:Name="ListViewGuardians" Height="285" VerticalAlignment="Top" HorizontalAlignment="Left" Width="715" Grid.ColumnSpan="4" SelectionChanged="ListViewGuardians_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Förnamn" Width="180" DisplayMemberBinding="{Binding Firstname}"/>
                                 <GridViewColumn Header="Efternamn" Width="180" DisplayMemberBinding="{Binding Lastname}"/>
                                 <GridViewColumn Header="Epost" Width="200" DisplayMemberBinding="{Binding Email}"/>
                                 <GridViewColumn Header="Telefon" Width="150" DisplayMemberBinding="{Binding Phone}"/>
-                                <GridViewColumn Header="Barn" Width="100" DisplayMemberBinding="{Binding Child}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <TextBox x:Name="txtboxFirstNameGuardian" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,342,739,0" Grid.Column="2" Grid.ColumnSpan="2"  />
-                    <Label x:Name="lblFirstNameGuardian" Content="Förnamn" HorizontalAlignment="Left" Margin="11,342,0,0" VerticalAlignment="Top" Height="30" Grid.ColumnSpan="2" />
-                    <TextBox x:Name="txtboxLastNameGuardian" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="135" Margin="0,0,739,164" Grid.Column="2" Grid.ColumnSpan="2" />
-                    <Label x:Name="lblLastNameGuardian" Content="Efternamn" HorizontalAlignment="Left" Margin="11,0,0,165" VerticalAlignment="Bottom" Height="30" Grid.ColumnSpan="2" />
-                    <Label x:Name="lblChangeInfo_Copy" Content="Välj person i listan" HorizontalAlignment="Left" Margin="10,301,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.ColumnSpan="4"/>
-                    <TextBox x:Name="txtboxPhoneGuardian" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="135" Margin="0,0,739,129" Grid.Column="2" Grid.ColumnSpan="2" />
-                    <Label x:Name="lblPhoneGuardian" Content="Telefon" HorizontalAlignment="Left" Margin="11,0,0,130" VerticalAlignment="Bottom" Height="30" Grid.ColumnSpan="2" />
-                    <TextBox x:Name="txtboxEmailGuardian" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="135" Margin="0,0,740,94" Grid.Column="2" Grid.ColumnSpan="2" />
-                    <Label x:Name="lblEmailGuardian" Content="Epost" HorizontalAlignment="Left" Margin="10,0,0,95" VerticalAlignment="Bottom" Height="30" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="txtboxFirstNameGuardian" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,364,738,0" Grid.Column="2" Grid.ColumnSpan="2"  />
+                    <Label x:Name="lblFirstNameGuardian" Content="Förnamn" HorizontalAlignment="Left" Margin="12,364,0,0" VerticalAlignment="Top" Height="30" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="txtboxLastNameGuardian" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="135" Margin="0,0,738,142" Grid.Column="2" Grid.ColumnSpan="2" />
+                    <Label x:Name="lblLastNameGuardian" Content="Efternamn" HorizontalAlignment="Left" Margin="12,0,0,143" VerticalAlignment="Bottom" Height="30" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="txtboxPhoneGuardian" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="135" Margin="0,0,738,107" Grid.Column="2" Grid.ColumnSpan="2" />
+                    <Label x:Name="lblPhoneGuardian" Content="Telefon" HorizontalAlignment="Left" Margin="12,0,0,108" VerticalAlignment="Bottom" Height="30" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="txtboxEmailGuardian" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Bottom" Width="135" Margin="0,0,739,72" Grid.Column="2" Grid.ColumnSpan="2" />
+                    <Label x:Name="lblEmailGuardian" Content="Epost" HorizontalAlignment="Left" Margin="11,0,0,73" VerticalAlignment="Bottom" Height="30" Grid.ColumnSpan="2" />
                     <Button x:Name="AddNewGuardian" Content="Lägg till" HorizontalAlignment="Left" Margin="1,515,0,0" VerticalAlignment="Top" Width="119" Height="30"  RenderTransformOrigin="0.364,0.417" Click="AddNewGuardian_Click" Grid.ColumnSpan="2"/>
                     <Button x:Name="SaveGuardian" Content="Spara" Grid.Column="2" HorizontalAlignment="Left" Margin="11,515,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="SaveGuardian_Click" Grid.ColumnSpan="2"/>
                     <Button x:Name="btnCancelGuardian" Content="Avbryt" Grid.Column="3" HorizontalAlignment="Left" Margin="126.5,515,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnCancelGuardian_Click"/>
                     <Button x:Name="btnDeleteGuardian" Content="Ta bort" Grid.Column="3" HorizontalAlignment="Left" Margin="263.5,515,0,0" VerticalAlignment="Top" Width="119" Height="30" RenderTransformOrigin="0.593,0.5" Click="BtnDeleteGuardian_Click"/>
+                    <TextBlock x:Name="txtInfoguardian" HorizontalAlignment="Left" Margin="10,300,0,0" TextWrapping="Wrap" Text="För att redigera uppgifter välj en person i listan. För att lägga till en ny fyll i fält nedan och klicka Lägg till." VerticalAlignment="Top" Grid.ColumnSpan="4" Height="59" Width="317" FontWeight="Bold"/>
+
 
                 </Grid>
             </TabItem>
