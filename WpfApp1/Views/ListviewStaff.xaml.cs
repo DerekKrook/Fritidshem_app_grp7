@@ -24,6 +24,7 @@ namespace WpfApp1
        
         List<Child> children = new List<Child>();
         List<Guardian> guardian = new List<Guardian>();
+        List<Schedule> schedule = new List<Schedule>();
 
         public ListViewStaff()
         {
@@ -104,6 +105,92 @@ namespace WpfApp1
 
             guardian = DbOperations.GetGuardianOfChild(Activechild.Id);
             getguardian();
+        }
+
+
+        public void UpdateSchedule()
+        {
+            //Vill ha med cateogry_attendance för barn/dag så att det står orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
+
+                TabItem tabItem = tabControl.SelectedItem as TabItem;
+
+                string day = tabSchedule.Header.ToString();
+
+                schedule = DbOperations.GetSchedule(day);
+
+                ListViewMonday.ItemsSource = schedule;
+                ListViewMonday.DisplayMemberPath = "Fullinformation";
+            
+        }
+
+        public void UpdateSchedule(ListView listView)
+        {
+            //Vill ha med cateogry_attendance för barn/dag så att det står orsak istället för schema om barnet inte är där och om den får gå hem samma sak med fritids och mat hade varit fin fint :O
+
+           
+            
+                TabItem tabItem = tabSchedule.SelectedItem as TabItem;
+
+                string day = tabItem.Header.ToString();
+
+                schedule = DbOperations.GetSchedule(day);
+                listView.ItemsSource = schedule;
+                listView.DisplayMemberPath = "Fullinformation";
+
+            
+        }
+        private void Tuesday_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule(ListViewTuesday);
+        }
+
+        private void Monday_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule(ListViewMonday);
+
+        }
+
+        private void Wednesday_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule(ListViewWednesday);
+
+        }
+
+        private void Thursday_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule(ListViewThursday);
+
+        }
+
+        private void Friday_GotFocus(object sender, RoutedEventArgs e)
+        {
+            UpdateSchedule(ListViewFriday);
+
+        }
+
+        private void Friday_GotFocus_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Thursday_GotFocus_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Wednesday_GotFocus_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Tuesday_GotFocus_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Monday_GotFocus_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
