@@ -20,7 +20,7 @@
 
         <TabControl x:Name="tabControl" HorizontalAlignment="Center" Height="602" VerticalAlignment="Center" Width="1010" Grid.Row="2">
             <TabItem x:Name="Barn" Header="Barn">
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,-14">
+                <Grid Margin="0,0,0,-14">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="113*"/>
                         <ColumnDefinition Width="15*"/>
@@ -55,7 +55,7 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="Vårdnadshavare" Header="Vårdnadshavare">
-                <Grid Background="#FFE5E5E5" Margin="0,0,-3,-4">
+                <Grid Margin="0,0,-3,-4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="17*"/>
                         <ColumnDefinition Width="103*"/>
@@ -90,7 +90,7 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="Kopplingar" Header="Kopplingar">
-                <Grid Background="#FFE5E5E5" Margin="0,0,-3,-4">
+                <Grid Margin="0,0,-3,-4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="17*"/>
                         <ColumnDefinition Width="103*"/>

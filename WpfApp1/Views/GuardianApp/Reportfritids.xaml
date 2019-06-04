@@ -53,7 +53,7 @@
                     <Label x:Name="lblChooseType" Content="Välj Morgon eller Kvälls Fritids" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
                     <ComboBox x:Name="comboBoxType" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Bottom" Width="220" Margin="0,0,0,0" SelectedIndex="0" SelectionChanged="ComboBoxType_SelectionChanged"/>
 
-                    <CheckBox x:Name="chxbxBreakfast" Content="Kryssa i om barnet ska anmälas för frukost" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="4" FontSize="20" VerticalContentAlignment="Center" IsEnabled="False"/>
+                    <CheckBox x:Name="chxbxBreakfast" Content="Kryssa i om barnet ska anmälas för frukost" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="4" FontSize="20" IsEnabled="False" Visibility="Visible"/>
 
                     <Label x:Name="lblChooseWeek" Content="Välj Vecka" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
                     <ComboBox x:Name="comboBoxWeek" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxWeek_SelectionChanged" Margin="0,0,0,0" SelectedIndex="0"/>
@@ -69,25 +69,52 @@
             </TabItem>
             <TabItem x:Name="Seereports" Header="Se Anmäld Fritids"  Loaded="Seereports_Loaded_1">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="52*"/>
+                        <ColumnDefinition Width="222*"/>
+                        <ColumnDefinition Width="277*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="500"/>
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="lblChooseChild2" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxChildren2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren2_SelectionChanged" Margin="0,0,0,0"/>
+                    <Label x:Name="lblChooseChild2" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Margin="114,0,165,0" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="comboBoxChildren2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren2_SelectionChanged" Margin="114,0,165,0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                    <ListView x:Name="ListView" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="560"  Grid.Row="2">
+                    <ListView x:Name="ListView" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="560"  Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,-9,0">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Vecka" Width="50" DisplayMemberBinding="{Binding Week}"/>
+                                <GridViewColumn Header="Vecka" Width="100" DisplayMemberBinding="{Binding Week}"/>
                                 <GridViewColumn Header="Dag" Width="100" DisplayMemberBinding="{Binding Day}"/>
-                                <GridViewColumn Header="Vad" Width="150" DisplayMemberBinding="{Binding Category_attendance}"/>
-                                <GridViewColumn Header="Måltid" Width="50" DisplayMemberBinding="{Binding ismeal}" />
+                                <GridViewColumn Header="Fritids" Width="150" DisplayMemberBinding="{Binding Category_attendance}"/>
+
                                 <GridViewColumn Header="Kommentar" Width="205" DisplayMemberBinding="{Binding Comment}"/>
                             </GridView>
                         </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Seereportedmeals" Header="Se anmälda måltider" Loaded="Seereportedmeals_Loaded">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="500"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="lblChooseChild3" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Margin="114,0,165,0" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="comboBoxChildMeals" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildMeals_SelectionChanged" Margin="114,0,165,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+                    <ListView x:Name="ListViewMeals" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="560"  Grid.Row="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Vecka" Width="100" DisplayMemberBinding="{Binding Week}"/>
+                                <GridViewColumn Header="Dag" Width="100" DisplayMemberBinding="{Binding Day}"/>
+                                <GridViewColumn Header="Anmälda måltider" Width="350" DisplayMemberBinding="{Binding Name}"/>
+                            </GridView>
+                        </ListView.View>
+                        
                     </ListView>
                 </Grid>
             </TabItem>
