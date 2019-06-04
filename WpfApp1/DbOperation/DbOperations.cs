@@ -546,7 +546,7 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Meal>($@"dates.day AS Day, dates.week AS Week, meals.name AS Name
+                var output = connection.Query<Meal>($@"SELECT dates.day AS Day, dates.week AS Week, meals.name AS Name
                     FROM ((((((((child
                     INNER JOIN guardian_child on child.id=child_id)
                     INNER JOIN guardian on guardian_id=guardian.id)
