@@ -132,7 +132,11 @@ namespace WpfApp1
         {
             var Id = Activeguardian.Id;
 
-            var Query = $@"SELECT * FROM guardian_child INNER JOIN child ON child_id = child.id WHERE guardian_id='{Id}'"; 
+            var Query = $@"SELECT guardian_child.guardian_id, guardian_child.child_id, child.id, child.firstname, child.age, child.leavealone, child.lastname, child.class_id, meals.id AS mealsid
+                                  FROM ((guardian_child 
+	                                INNER JOIN child ON child_id = child.id)
+	                                INNER JOIN meals ON meals.child_id = child.id)	    
+                                    WHERE guardian_child.guardian_id='{Id}'"; 
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -506,7 +510,7 @@ namespace WpfApp1
 
         }
 
-        //Lägg till fritids som Guardian
+        //Lägg till fritids som Guardian utan frukost
         public static List<Attendance> GuardianReportFritids(string comment, int attendanceid)
         {
 
@@ -519,6 +523,26 @@ namespace WpfApp1
                                                                     FROM attendance, dates 
                                                                     WHERE attendance.id = (SELECT MAX(attendance.id) 
                                                                     FROM attendance) AND dates.id = '{ActiveDate.Id}';").ToList();
+                return output;
+            }
+
+        }
+
+        //Lägg till fritids som Guardian med frukost
+        public static List<Attendance> GuardianReportFritidsBreakfast(string comment, int attendanceid)
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
+                                                                    VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
+                                                             INSERT INTO attendance_dates (attendance_id, dates_id) 
+                                                                    SELECT attendance.id, dates.id 
+                                                                    FROM attendance, dates 
+                                                                    WHERE attendance.id = (SELECT MAX(attendance.id) 
+                                                                    FROM attendance) AND dates.id = '{ActiveDate.Id}';
+                                                             INSERT INTO meals_dates (meals_id, dates_id) 
+			                                                        VALUES ('{Activechild.Mealsid}', '{ActiveDate.Id}');").ToList();
                 return output;
             }
 
@@ -544,7 +568,7 @@ namespace WpfApp1
 
         }
 
-
+        //Hämtar anmäld frukost kollas över
         public static List<Meal> GetMeals()
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))

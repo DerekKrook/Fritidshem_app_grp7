@@ -16,6 +16,7 @@ namespace WpfApp1
         public int Age {get; set; }
         public string Class { get ; set ; }
         public string Guardian { get; set; }
+        public int Mealsid { get; set; }
 
         public string Fullinformation
         {

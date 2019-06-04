@@ -106,23 +106,25 @@ namespace WpfApp1
         {
             int i = comboBoxType.SelectedIndex;
             string comment = txtbxComment.Text;
-            int classid = 3;
-            
 
-            //if (i == 1)
-            //{
-            //    chxbxBreakfast.IsEnabled = true;
-            //}
-            //else if (i == 0)
-            //{
-            //    chxbxBreakfast.IsEnabled = true;
-            //}
-            //else if (i == 2)
-            //{
-            //    chxbxBreakfast.IsEnabled = false;
-            //}
+            if (i == 0)
+            {
+                int attendanceid = 7;
+                attendances = DbOperations.GuardianReportFritidsBreakfast(comment, attendanceid);
 
-            attendances = DbOperations.GuardianReportFritids(comment, classid);
+                attendanceid = 3;
+                attendances = DbOperations.GuardianReportFritids(comment, attendanceid);
+            }
+            else if (i == 1)
+            {
+                int attendanceid = 7;
+                attendances = DbOperations.GuardianReportFritidsBreakfast(comment, attendanceid);
+            }
+            else if (i == 2)
+            {
+                int attendanceid = 3;
+                attendances = DbOperations.GuardianReportFritids(comment, attendanceid);
+            }
 
             UpdatedMessage();
         }
@@ -139,11 +141,11 @@ namespace WpfApp1
 
             int i = comboBoxType.SelectedIndex;
 
-            if (i == 1)
+            if (i == 0)
             {
                 chxbxBreakfast.IsEnabled = true;
             }
-            else if (i == 0)
+            else if (i == 1)
             {
                 chxbxBreakfast.IsEnabled = true;
             }
