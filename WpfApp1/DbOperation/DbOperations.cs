@@ -304,7 +304,7 @@ namespace WpfApp1
         }
 
        // Uppdatera barnuppgifter
-        public static List<Child> UpdateChildProperties(string firstname, string lastname)
+        public static List<Child> UpdateChildProperties(string firstname, string lastname, string age, int classid)
         {
             var Id = Activechild.Id;
             InputHandler inputhandler = new InputHandler();
@@ -312,9 +312,10 @@ namespace WpfApp1
             var a = inputhandler.Uppercase(firstname);
             var b = inputhandler.Uppercase(lastname);
 
+
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($@"UPDATE child SET firstname = '{@firstname}', lastname = '{@lastname}' WHERE id = {Id}").ToList();
+                var output = connection.Query<Child>($@"UPDATE child SET firstname = '{@firstname}', lastname = '{@lastname}', age = {age}, class_id = {classid} WHERE id = {Id}").ToList();
 
                 return output;
             }
@@ -322,7 +323,7 @@ namespace WpfApp1
         }
   
         // lägg till nytt barn
-        public static List<Child> AddNewChild(string firstname, string lastname)
+        public static List<Child> AddNewChild(string firstname, string lastname, string age, int classid)
         {
 
             InputHandler inputhandler = new InputHandler();
@@ -331,7 +332,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($@"INSERT INTO child (firstname, lastname) VALUES ('{@firstname}', '{@lastname}');").ToList();
+                var output = connection.Query<Child>($@"INSERT INTO child (firstname, lastname, age, class_id) VALUES ('{@firstname}','{@lastname}', {@age}, {classid});").ToList();
                 
                 return output;
             }

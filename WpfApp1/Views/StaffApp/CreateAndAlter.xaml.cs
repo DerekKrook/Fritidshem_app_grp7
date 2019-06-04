@@ -30,6 +30,7 @@ namespace WpfApp1
         List<Connections> connections = new List<Connections>();
         List<Class> classes = new List<Class>();
 
+    
 
         private void Updatelists()
         {
@@ -60,11 +61,13 @@ namespace WpfApp1
         private void BtnAddNew_Click(object sender, RoutedEventArgs e)
         {
 
+            Class classes = (Class)comboBoxClass.SelectedItem;
+
             if (txtboxFirstName != null || txtboxLastName != null)
             {
                 try
                 {
-                    DbOperations.AddNewChild(txtboxFirstName.Text, txtboxLastName.Text);
+                    DbOperations.AddNewChild(txtboxFirstName.Text, txtboxLastName.Text, txtboxAge.Text, classes.Id);
                 }
                 catch (Exception)
                 {
@@ -77,7 +80,14 @@ namespace WpfApp1
             Updatelists();
 
         }
-
+        private void BtnChange_Click(object sender, RoutedEventArgs e)
+        {
+            Class classes = (Class)comboBoxClass.SelectedItem;
+            Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
+            DbOperations.UpdateChildProperties(txtboxFirstName.Text, txtboxLastName.Text, txtboxAge.Text, classes.Id);
+            Updatelists();
+            ClearTextbox();
+        }
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
             ListViewChildren.SelectedItem = null;
@@ -151,14 +161,7 @@ namespace WpfApp1
             UpdateChild();
         }
 
-        private void BtnChange_Click(object sender, RoutedEventArgs e)
-        {
 
-            Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
-            DbOperations.UpdateChildProperties(txtboxFirstName.Text, txtboxLastName.Text);
-            Updatelists();
-            ClearTextbox();
-        }
         private void SaveGuardian_Click(object sender, RoutedEventArgs e)
         {
             Activeguardian.Setactiveguardian((Guardian)ListViewGuardians.SelectedItem);
@@ -221,7 +224,6 @@ namespace WpfApp1
 
         private void ComboBoxClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
     }
 }
