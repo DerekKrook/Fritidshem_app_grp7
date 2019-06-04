@@ -28,6 +28,7 @@ namespace WpfApp1
         List<Child> children = new List<Child>();
         List<Guardian> guardian = new List<Guardian>();
         List<Connections> connections = new List<Connections>();
+        List<Class> classes = new List<Class>();
 
 
         private void Updatelists()
@@ -42,6 +43,9 @@ namespace WpfApp1
             connections = DbOperations.GetChildGuardian();
             ListViewConnections.ItemsSource = connections;
             ListViewConnections.DisplayMemberPath = "Fullinformation";
+            classes = DbOperations.GetAllClasses();
+            comboBoxClass.ItemsSource = classes;
+            comboBoxClass.DisplayMemberPath = "ClassName";
         }
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
         {
@@ -95,8 +99,8 @@ namespace WpfApp1
         {
             txtboxFirstName.Text = Activechild.Firstname;
             txtboxLastName.Text = Activechild.Lastname;
-            txtboxClass.Text = Activechild.Class;
             txtboxAge.Text = Activechild.Age.ToString();
+            comboBoxClass.Text = Activechild.Class;
         }
 
         public void UpdateGuardian()
@@ -115,8 +119,8 @@ namespace WpfApp1
 
             txtboxFirstName.Clear();
             txtboxLastName.Clear();
-            txtboxClass.Clear();
-            txtboxAge.Clear();  
+            txtboxAge.Clear();
+            
         }
         private void ListViewGuardians_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -213,6 +217,11 @@ namespace WpfApp1
         {
             DbOperations.DeleteConnection();
             Updatelists();
+        }
+
+        private void ComboBoxClass_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
