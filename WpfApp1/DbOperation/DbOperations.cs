@@ -56,47 +56,47 @@ namespace WpfApp1
                 return output;
             }
         }
-        // hämtar årkurs 1
-        public static List<Child> GetFirstGraders()
+        // hämtar årkurser
+        public static List<Child> GetFirstGraders(int departmentid)
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning 
                 FROM((child INNER JOIN class ON class_id = class.id) 
                 INNER JOIN department ON department_id = department.id) 
-                WHERE department_id = 1 ORDER BY class_id DESC;").ToList();
-
+                WHERE department_id = {departmentid} ORDER BY class_id DESC;").ToList();
 
                 return output;
             }
         }
+        // ersatt med hämtar årkurs
         // hämtar årkurs 2
-        public static List<Child> GetSecondGraders()
-        {
-            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            {
-                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning 
-                FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) 
-                WHERE department_id = 2 ORDER BY class_id DESC;").ToList();
+        //public static List<Child> GetSecondGraders()
+        //{
+        //    using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+        //    {
+        //        var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning 
+        //        FROM((child INNER JOIN class ON class_id = class.id) INNER JOIN department ON department_id = department.id) 
+        //        WHERE department_id = 2 ORDER BY class_id DESC;").ToList();
 
-                return output;
-            }
-        }
-        // hämtar årkurs 3
-        public static List<Child> GetThirdGraders()
-        {
-            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            {
-                var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning 
-                FROM((child INNER JOIN class ON class_id = class.id) 
-                INNER JOIN department ON department_id = department.id)
-                WHERE department_id = 4 ORDER BY class_id DESC;").ToList();
+        //        return output;
+        //    }
+        //}
+        //// hämtar årkurs 3
+        //public static List<Child> GetThirdGraders()
+        //{
+        //    using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+        //    {
+        //        var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning 
+        //        FROM((child INNER JOIN class ON class_id = class.id) 
+        //        INNER JOIN department ON department_id = department.id)
+        //        WHERE department_id = 4 ORDER BY class_id DESC;").ToList();
 
-                return output;
-            }
-        }
+        //        return output;
+        //    }
+        //}
 
-        //Hämtar alla anställda
+        //Hämtar alla anställda 
         public static List<Staff> GetAllStaff()
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
@@ -155,10 +155,9 @@ namespace WpfApp1
         }
 
         // Hämtar vårdnadshavare till barn
-        public static List<Guardian> GetGuardianOfChild(Child child)
+        public static List<Guardian> GetGuardianOfChild(int Id)
         {
 
-            var Id = child.Id;
                       
             var Query = $@"SELECT * FROM guardian_child 
             INNER JOIN guardian ON guardian_id = guardian.id 
