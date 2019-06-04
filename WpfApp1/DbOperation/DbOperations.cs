@@ -93,7 +93,11 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Staff>($@"SELECT * FROM staff").ToList();
+                var output = connection.Query<Staff>($@"SELECT staff.id, firstname, lastname, email, department.name AS department
+                                                        FROM ((staff 
+	                                                    INNER JOIN department_staff on id = department_staff.staff_id)
+	                                                    INNER JOIN department on department.id = department_staff.department_id)
+	                                                    WHERE department.id = 1 OR department.id = 2 OR department.id = 4").ToList();
 
                 return output;
             }
@@ -503,13 +507,13 @@ namespace WpfApp1
         }
 
         //Lägg till fritids som Guardian
-        public static List<Attendance> GuardianReportFritids(string comment, int classid)
+        public static List<Attendance> GuardianReportFritids(string comment, int attendanceid)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Attendance>($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
-                                                                    VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{classid}', '{comment}');
+                                                                    VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
                                                              INSERT INTO attendance_dates (attendance_id, dates_id) 
                                                                     SELECT attendance.id, dates.id 
                                                                     FROM attendance, dates 
@@ -528,10 +532,8 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Attendance>($@"SELECT category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, attendance.comment AS Comment 
-                    FROM ((((((child
-                    INNER JOIN guardian_child on child.id=child_id)
-                    INNER JOIN guardian on guardian_id=guardian.id)
-                    INNER JOIN attendance on guardian.id=attendance.guardian_id)
+                    FROM ((((child                 
+                    INNER JOIN attendance on child.id=child_id)
                     INNER JOIN category_attendance on category_attendance_id=category_attendance.id)
                     INNER JOIN attendance_dates on attendance.id=attendance_id)
                     INNER JOIN dates on dates_id=dates.id)
@@ -541,6 +543,7 @@ namespace WpfApp1
             }
 
         }
+
 
         public static List<Meal> GetMeals()
         {
@@ -558,6 +561,19 @@ namespace WpfApp1
                     INNER JOIN dates on meals_dates.dates_id=dates.id)
                     WHERE child.id='{Activechild.Id}'
                     GROUP BY dates.day, dates.week, meals.name").ToList();
+
+                return output;
+            }
+        }
+
+        //Hämtar Fritids morgon/kväll
+        public static List<Attendancecategory> GetFritidsMorningEvening()
+        {
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendancecategory>($@"SELECT * FROM category_attendance WHERE id = 3 OR id = 7 OR id = 8
+                                                                     ORDER BY category_attendance.id DESC").ToList();
+
 
                 return output;
             }

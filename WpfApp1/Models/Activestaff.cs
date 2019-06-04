@@ -31,7 +31,7 @@ namespace WpfApp1
             Activestaff.Firstname = staff.Firstname;
             Activestaff.Lastname = staff.Lastname;
             Activestaff.Email = staff.Email;
-            Activestaff.Class = staff.Class;
+            Activestaff.Department = staff.Department;
                  
         }
     }
