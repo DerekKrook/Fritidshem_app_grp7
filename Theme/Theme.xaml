@@ -12,6 +12,7 @@
         <ResourceDictionary Source="Tabcontrol.xaml"/>
         <ResourceDictionary Source="Label.xaml"/>
         <ResourceDictionary Source="Combobox.xaml"/>
+        <ResourceDictionary Source="Checkbox.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

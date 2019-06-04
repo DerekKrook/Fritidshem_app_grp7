@@ -144,14 +144,18 @@ namespace WpfApp1
             if (i == 0)
             {
                 chxbxBreakfast.IsEnabled = true;
+                chxbxBreakfast.Visibility = Visibility.Visible;
             }
             else if (i == 1)
             {
                 chxbxBreakfast.IsEnabled = true;
+                chxbxBreakfast.Visibility = Visibility.Visible;
             }
             else if (i == 2)
             {
                 chxbxBreakfast.IsEnabled = false;
+                chxbxBreakfast.IsChecked = false;
+                chxbxBreakfast.Visibility = Visibility.Hidden;
             }
         }
 
