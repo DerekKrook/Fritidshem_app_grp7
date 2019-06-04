@@ -157,6 +157,8 @@ namespace WpfApp1
 
         private void Seereports_Loaded_1(object sender, RoutedEventArgs e)
         {
+            //Skriva måltid registrerad som yes/no?
+
             attendances = DbOperations.Getfritidsguardian();
 
             ListView.ItemsSource = attendances;

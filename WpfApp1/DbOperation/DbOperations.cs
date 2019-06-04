@@ -376,7 +376,7 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                
-                var output = connection.Query<Guardian>($@"INSERT INTO guardian_child(guardian_id, child_id) VALUES('{Activeguardian.Id}', '{Activechild.Id}')").ToList();
+                var output = connection.Query<Guardian>($@"INSERT INTO guardian_child(guardian_id, child_id) VALUES('{Activeguardian.Id}', '{Activechild.Id}'); INSERT INTO meals (name, guardian_id, child_id) VALUES('frukost', '{Activeguardian.Id}', '{Activechild.Id}')").ToList();
   
 
         return output;
@@ -391,7 +391,7 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
 
-                var output = connection.Query<Guardian>($@"DELETE FROM guardian_child WHERE guardian_id = {Activeguardian.Id} AND child_id = {Activechild.Id}").ToList();
+                var output = connection.Query<Guardian>($@"DELETE FROM guardian_child WHERE guardian_id = {Activeguardian.Id} AND child_id = {Activechild.Id}; DELETE FROM meals WHERE meals.id = '{Activechild.Mealsid}';").ToList();
 
 
                 return output;
