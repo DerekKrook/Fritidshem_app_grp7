@@ -11,8 +11,8 @@ namespace WpfApp1
         public static int Id { get; set; }
         public static string Day { get; set; }
         public static int Week { get; set; }
-        public static DateTime Timestart { get; set; }
-        public static DateTime Timefinish { get; set; }
+        public static DateTime? Timestart { get; set; }
+        public static DateTime? Timefinish { get; set; }
 
         public static void Setactivatedate(Date date)
         {

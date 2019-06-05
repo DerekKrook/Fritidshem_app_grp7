@@ -47,10 +47,7 @@ namespace WpfApp1
             comboBoxChildMeals.ItemsSource = children;
             comboBoxChildMeals.DisplayMemberPath = "Fullinformation";
             comboBoxChildMeals.SelectedIndex = 0;
-
-            //Hämta barn se
-            children = DbOperations.GetChildrenOfGuardian();
-
+                       
             comboBoxChildren2.ItemsSource = children;
             comboBoxChildren2.DisplayMemberPath = "Fullinformation";
             comboBoxChildren2.SelectedIndex = 0;
@@ -62,10 +59,13 @@ namespace WpfApp1
             comboBoxWeek.DisplayMemberPath = "InformationWeek";
 
             //Hämta dagar
-            dates = DbOperations.GetDays();
+            Weeks week = new Weeks();
+            week.Week = 1;
+            dates = DbOperations.GetDays(week);
 
             comboBoxDay.ItemsSource = dates;
             comboBoxDay.DisplayMemberPath = "InformationDay";
+            
 
             //Hämta Morgon/Kväll
             attendancecategories = DbOperations.GetFritidsMorningEvening();
@@ -105,6 +105,13 @@ namespace WpfApp1
             Activechild.Setactivechild((Child)comboBox.SelectedItem);
         }
 
+        private void ActivateDate(Date date)
+        {
+            
+            ActiveDate.Setactivatedate(date);
+
+        }
+
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxChildren.SelectedItem != null)
@@ -112,7 +119,7 @@ namespace WpfApp1
                 SetActiveChild(comboBoxChildren);
                 GetAttendances();
                 UpdateComboBox(comboBoxChildren2, comboBoxChildren);
-                UpdateComboBox(comboBoxChildMeals, comboBoxChildren);
+               
             }
         }
 
@@ -120,10 +127,7 @@ namespace WpfApp1
         {
             if (comboBoxChildren2.SelectedItem != null)
             {
-                SetActiveChild(comboBoxChildren2);
-                
-                UpdateComboBox(comboBoxChildMeals, comboBoxChildren2);
-
+                SetActiveChild(comboBoxChildren2);                               
                 GetAttendances();
             }
         }
@@ -138,7 +142,18 @@ namespace WpfApp1
 
         private void ComboBoxWeek_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (comboBoxWeek.SelectedItem != null)
+            {
+                if (comboBoxWeek.SelectedItem != null)
+                {
+                    Weeks week = (Weeks)comboBoxWeek.SelectedItem;
 
+                    dates = DbOperations.GetDays(week);
+                    comboBoxDay.Items.Refresh();
+                    comboBoxDay.ItemsSource = dates;
+                    comboBoxDay.DisplayMemberPath = "InformationDay";
+                }
+            }
         }
 
         private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
@@ -203,6 +218,11 @@ namespace WpfApp1
                 UpdatedMessage();
                 GetMeals();
                 GetAttendances();
+
+               
+
+
+                
                                               
             }
             catch (PostgresException ex)
@@ -250,18 +270,13 @@ namespace WpfApp1
         }
 
         private void Seereportedmeals_Loaded(object sender, RoutedEventArgs e)
-        {
-           
-            UpdateComboBox(comboBoxChildMeals, comboBoxChildren);
-            GetMeals();
-            
-
+        {                     
+            GetMeals();            
         }
 
         private void ComboBoxChildMeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SetActiveChild(comboBoxChildMeals);
-            
+            SetActiveChild(comboBoxChildMeals);           
             GetMeals();
         }
 

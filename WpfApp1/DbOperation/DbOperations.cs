@@ -459,14 +459,17 @@ namespace WpfApp1
         }
 
         //Hämtar alla datum
-        public static List<Date> GetDays()
+        public static List<Date> GetDays(Weeks week)
         {
+            var weeks = week.Week;
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Date>($@"SELECT * FROM dates").ToList();
-
-
+                var output = connection.Query<Date>($@"SELECT dates.id, week, dates.day 
+                            FROM dates 
+                            WHERE week='{weeks}'
+                            GROUP BY dates.id, week, dates.day
+                            ORDER BY dates.id ASC").ToList();
                 return output;
             }
 
@@ -478,7 +481,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Weeks>($@"SELECT week FROM dates GROUP BY week").ToList();
+                var output = connection.Query<Weeks>($@"SELECT week FROM dates GROUP BY week ORDER BY week ASC").ToList();
 
 
                 return output;

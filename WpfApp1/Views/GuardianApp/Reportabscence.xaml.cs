@@ -25,6 +25,7 @@ namespace WpfApp1
         List<Attendancecategory> attendancecategories = new List<Attendancecategory>();
         List<Date> dates = new List<Date>();
         List<Weeks> weeks = new List<Weeks>();
+        
 
         public Reportabscence()
         {
@@ -66,11 +67,12 @@ namespace WpfApp1
             comboBoxWeek.DisplayMemberPath = "InformationWeek";
 
             //Hämta dagar
-            dates = DbOperations.GetDays();
-
+            Weeks week = new Weeks();
+            week.Week = 1;
+            dates = DbOperations.GetDays(week);
             comboBoxDay.ItemsSource = dates;
             comboBoxDay.DisplayMemberPath = "InformationDay";
-
+            
             Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
         }
 
@@ -128,9 +130,12 @@ namespace WpfApp1
 
         private void ComboBoxWeek_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (comboBoxDay.SelectedItem != null)
+            if (comboBoxWeek.SelectedItem != null)
             {
-                ActiveDate.Setactivatedate((Date)comboBoxWeek.SelectedItem);
+                Weeks week = (Weeks)comboBoxWeek.SelectedItem;
+                dates = DbOperations.GetDays(week);
+                comboBoxDay.ItemsSource = dates;
+                comboBoxDay.DisplayMemberPath = "InformationDay";
             }
         }
 
