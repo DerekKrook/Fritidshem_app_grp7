@@ -47,7 +47,9 @@ namespace WpfApp1.Views.StaffApp
             comboBoxWeek.DisplayMemberPath = "InformationWeek";
 
             //Hämta dagar
-            dates = DbOperations.GetDays();
+            Weeks week = new Weeks();
+            week.Week = 1;
+            dates = DbOperations.GetDays(week);
 
             comboBoxDay.ItemsSource = dates;
             comboBoxDay.DisplayMemberPath = "InformationDay";
