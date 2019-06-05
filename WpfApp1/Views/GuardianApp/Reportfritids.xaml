@@ -48,18 +48,18 @@
                     <Label x:Name="lblUpdated" Content="Din information är nu uppdaterad" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" Foreground="DarkOliveGreen" Visibility="Hidden" Margin="0,0,0,-5"/>
 
                     <Label x:Name="lblChooseChild" Content="Välj Barn" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="0,0,0,0"/>
+                    <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="0,0,0,0" SelectedIndex="0"/>
 
                     <Label x:Name="lblChooseType" Content="Välj morgon - eller kvällsfritids" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="230" HorizontalContentAlignment="Center" Margin="166,0,155,0"/>
                     <ComboBox x:Name="comboBoxType" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Bottom" Width="220" Margin="0,0,0,0" SelectedIndex="0" SelectionChanged="ComboBoxType_SelectionChanged"/>
 
-                    <CheckBox x:Name="chxbxBreakfast" Content="Kryssa i om barnet ska anmälas för frukost" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="4" FontSize="20" IsEnabled="False" Visibility="Visible"/>
+                    <CheckBox x:Name="chxbxBreakfast" Content="Vill du att ditt barn skall ha frukost?" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="8" FontSize="16" IsEnabled="False" Visibility="Visible" Margin="145,0,136,0"/>
 
-                    <Label x:Name="lblChooseWeek" Content="Välj Vecka" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxWeek" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxWeek_SelectionChanged" Margin="0,0,0,0" SelectedIndex="0"/>
+                    <Label x:Name="lblChooseWeek" Content="Välj Vecka" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Margin="166,26,165,0" Grid.RowSpan="2"/>
+                    <ComboBox x:Name="comboBoxWeek" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxWeek_SelectionChanged" Margin="166,0,165,44" SelectedIndex="0" Grid.RowSpan="2"/>
 
-                    <Label x:Name="lblChooseDay" Content="Välj Dag" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxDay" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxDay_SelectionChanged" Margin="0,0,0,0" SelectedIndex="0"/>
+                    <Label x:Name="lblChooseDay" Content="Välj Dag" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Margin="166,30,165,0" Grid.RowSpan="2"/>
+                    <ComboBox x:Name="comboBoxDay" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxDay_SelectionChanged" Margin="166,0,165,0" SelectedIndex="0"/>
 
                     <Label x:Name="lblComment" Content="Kommentar" Grid.Column="2" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
                     <TextBox x:Name="txtbxComment" Text="" HorizontalAlignment="Center" Grid.Row="10" Grid.Column="2" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center" Height="70"/>
@@ -81,7 +81,7 @@
                     </Grid.RowDefinitions>
 
                     <Label x:Name="lblChooseChild2" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Margin="114,0,165,0" Grid.ColumnSpan="2"/>
-                    <ComboBox x:Name="comboBoxChildren2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren2_SelectionChanged" Margin="114,0,165,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="comboBoxChildren2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren2_SelectionChanged" Margin="114,0,165,0" Grid.Column="1" Grid.ColumnSpan="2" SelectedIndex="0"/>
 
                     <ListView x:Name="ListView" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="560"  Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,-9,0">
                         <ListView.View>

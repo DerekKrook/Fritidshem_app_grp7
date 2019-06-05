@@ -140,11 +140,10 @@ namespace WpfApp1
         {
             var Id = Activeguardian.Id;
 
-            var Query = $@"SELECT guardian_child.guardian_id, guardian_child.child_id, child.id, child.firstname, child.age, child.leavealone, child.lastname, child.class_id, meals.id AS mealsid
-                                  FROM ((guardian_child 
-	                                INNER JOIN child ON child_id = child.id)
-	                                INNER JOIN meals ON meals.child_id = child.id)	    
-                                    WHERE guardian_child.guardian_id='{Id}'"; 
+            var Query = $@"SELECT guardian_child.guardian_id, guardian_child.child_id, child.id, child.firstname, child.age, child.leavealone, child.lastname, child.class_id
+                                  FROM guardian_child 
+	                              INNER JOIN child ON child_id = child.id	                                 
+                                  WHERE guardian_child.guardian_id='{Id}'"; 
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
@@ -563,13 +562,13 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"SELECT category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, attendance.comment AS Comment 
-                    FROM ((((child                 
-                    INNER JOIN attendance on child.id=child_id)
-                    INNER JOIN category_attendance on category_attendance_id=category_attendance.id)
-                    INNER JOIN attendance_dates on attendance.id=attendance_id)
-                    INNER JOIN dates on dates_id=dates.id)
-                    WHERE child.id='{Activechild.Id}' AND category_attendance_id = 3 OR category_attendance_id = 7").ToList(); 
+                var output = connection.Query<Attendance>($@"SELECT child_id, category_attendance_id, category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, comment AS Comment 
+                    FROM ((((attendance
+                    INNER JOIN child on child_id = child.id)
+                    INNER JOIN category_attendance on category_attendance_id = category_attendance.id)
+                    INNER JOIN attendance_dates on attendance.id = attendance_id)
+                    INNER JOIN dates on dates_id = dates.id)
+                    WHERE child_id = '{Activechild.Id}' AND (category_attendance_id = 3 OR category_attendance_id = 7)").ToList(); 
 
                 return output;
             }
@@ -599,7 +598,7 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendancecategory>($@"SELECT * FROM category_attendance WHERE id = 3 OR id = 7 OR id = 8
+                var output = connection.Query<Attendancecategory>($@"SELECT * FROM category_attendance WHERE (id = 3 OR id = 7 OR id = 8)
                                                                      ORDER BY category_attendance.id DESC").ToList();
 
 

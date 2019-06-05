@@ -42,8 +42,7 @@ namespace WpfApp1
 
             comboBoxChildren.ItemsSource = children;
             comboBoxChildren.DisplayMemberPath = "Fullinformation";
-
-            comboBoxChildren.SelectedIndex = 0;
+            comboBoxChildren.SelectedIndex = 0; 
 
             comboBoxChildMeals.ItemsSource = children;
             comboBoxChildMeals.DisplayMemberPath = "Fullinformation";
@@ -54,7 +53,6 @@ namespace WpfApp1
 
             comboBoxChildren2.ItemsSource = children;
             comboBoxChildren2.DisplayMemberPath = "Fullinformation";
-
             comboBoxChildren2.SelectedIndex = 0;
 
             //Hämta veckor
@@ -97,12 +95,20 @@ namespace WpfApp1
             ListView.Items.Refresh();            
         }
 
+        private void UpdateComboBox(ComboBox comboBox, ComboBox combo)
+        {
+            comboBox.Text = combo.Text;            
+        }
+
 
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxChildren.SelectedItem != null)
             {
                 Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
+                GetAttendances();
+                UpdateComboBox(comboBoxChildren2, comboBoxChildren);
+                UpdateComboBox(comboBoxChildMeals, comboBoxChildren);
             }
         }
 
@@ -112,6 +118,8 @@ namespace WpfApp1
             {
                 Activechild.Setactivechild((Child)comboBoxChildren2.SelectedItem);
                 
+                UpdateComboBox(comboBoxChildMeals, comboBoxChildren2);
+
                 GetAttendances();
             }
         }
@@ -191,10 +199,13 @@ namespace WpfApp1
                 UpdatedMessage();
                 GetMeals();
                 GetAttendances();
+                
+                
+               // comboBoxChildren2.Text = comboBoxChildren.Text;
             }
             catch (PostgresException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Du har redan anmält måltid för denna dag");
             }
            
         }
@@ -239,15 +250,19 @@ namespace WpfApp1
         private void Seereportedmeals_Loaded(object sender, RoutedEventArgs e)
         {
            
+            UpdateComboBox(comboBoxChildMeals, comboBoxChildren);
             GetMeals();
+            
 
         }
 
         private void ComboBoxChildMeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Activechild.Setactivechild((Child)comboBoxChildMeals.SelectedItem);
-
+            
             GetMeals();
         }
+
+       
     }
 }
