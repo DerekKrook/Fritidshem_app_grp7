@@ -492,12 +492,13 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"SELECT category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, attendance.comment AS Comment
-                                                             FROM (((attendance 
+                var output = connection.Query<Attendance>($@"SELECT child.id, category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, attendance.comment AS Comment
+                                                             FROM ((((attendance 
+                                                             INNER JOIN child ON child_id=child.id)   
                                                              INNER JOIN attendance_dates ON attendance_id=attendance.id)
                                                              INNER JOIN dates ON dates_id=dates.id)
                                                              INNER JOIN category_attendance ON category_attendance_id = category_attendance.id) 
-                                                             where child_id = {Activechild.Id} AND category_attendance_id = 1 OR category_attendance_id = 2;").ToList();
+                                                             where child_id = {Activechild.Id} AND (category_attendance_id = 1 OR category_attendance_id = 2)").ToList();
 
 
                 return output;

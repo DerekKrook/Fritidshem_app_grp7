@@ -100,12 +100,16 @@ namespace WpfApp1
             comboBox.Text = combo.Text;            
         }
 
+        private void SetActiveChild(ComboBox comboBox)
+        {
+            Activechild.Setactivechild((Child)comboBox.SelectedItem);
+        }
 
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxChildren.SelectedItem != null)
             {
-                Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
+                SetActiveChild(comboBoxChildren);
                 GetAttendances();
                 UpdateComboBox(comboBoxChildren2, comboBoxChildren);
                 UpdateComboBox(comboBoxChildMeals, comboBoxChildren);
@@ -116,7 +120,7 @@ namespace WpfApp1
         {
             if (comboBoxChildren2.SelectedItem != null)
             {
-                Activechild.Setactivechild((Child)comboBoxChildren2.SelectedItem);
+                SetActiveChild(comboBoxChildren2);
                 
                 UpdateComboBox(comboBoxChildMeals, comboBoxChildren2);
 
@@ -143,7 +147,7 @@ namespace WpfApp1
             string comment = txtbxComment.Text;
             int attendanceid = 0;
 
-            Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
+            SetActiveChild(comboBoxChildren);
 
             try
             {
@@ -199,9 +203,7 @@ namespace WpfApp1
                 UpdatedMessage();
                 GetMeals();
                 GetAttendances();
-                
-                
-               // comboBoxChildren2.Text = comboBoxChildren.Text;
+                                              
             }
             catch (PostgresException ex)
             {
@@ -258,11 +260,15 @@ namespace WpfApp1
 
         private void ComboBoxChildMeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Activechild.Setactivechild((Child)comboBoxChildMeals.SelectedItem);
+            SetActiveChild(comboBoxChildMeals);
             
             GetMeals();
         }
 
-       
+        private void Seereports_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SetActiveChild(comboBoxChildren2);
+            GetAttendances();
+        }
     }
 }
