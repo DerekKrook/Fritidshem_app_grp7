@@ -73,6 +73,12 @@ namespace WpfApp1
             ListViewStaff1.ItemsSource = null;
 
         }
+
+        private void UpdateChildLabel()
+        {
+            lblActiveChild.Content = $"Inloggad som {Activechild.Firstname} {Activechild.Lastname}";
+            lblActiveChild2.Content = $"Inloggad som {Activechild.Firstname} {Activechild.Lastname}";
+        }
         private void BtnAbscense_Click(object sender, RoutedEventArgs e)
         {
 
@@ -85,6 +91,7 @@ namespace WpfApp1
             guardian = DbOperations.GetGuardianOfChild(Activechild.Id);
             getguardian();
             UpdateSchedule();
+            UpdateChildLabel();
 
         }
 
@@ -95,7 +102,7 @@ namespace WpfApp1
             guardian = DbOperations.GetGuardianOfChild(Activechild.Id);
             getguardian();
             UpdateSchedule();
-
+            UpdateChildLabel();
         }
         private void ListViewStaff1_Class2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -104,7 +111,7 @@ namespace WpfApp1
             guardian = DbOperations.GetGuardianOfChild(Activechild.Id);
             getguardian();
             UpdateSchedule();
-
+            UpdateChildLabel();
 
         }
         private void ListViewStaff1_Class3_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -114,6 +121,7 @@ namespace WpfApp1
             guardian = DbOperations.GetGuardianOfChild(Activechild.Id);
             getguardian();
             UpdateSchedule();
+            UpdateChildLabel();
         }
 
 

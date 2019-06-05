@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfApp1.Views.StaffApp.StaffReportAbsence"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Views.StaffApp"
+        mc:Ignorable="d"
+        Title="StaffReportAbsence" Style="{StaticResource MyWindowStyle}">
+    <Grid>
+        <TabControl x:Name="Report" VerticalAlignment="Center" Height="485" Margin="374,48,374,187" Background="Aqua">
+            <TabItem x:Name="ReportingAbsence" Header="Anmäl Frånvaro">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="lblChooseAbscence" Content="Frånvaro Anledning" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Margin="136,10,137,0" Grid.RowSpan="2"/>
+                    <ComboBox x:Name="comboBoxAbscence" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxAbscence_SelectionChanged" Margin="136,0,137,22" SelectedIndex="0"/>
+
+                    <Label x:Name="lblChooseWeek" Content="Välj Vecka" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Margin="136,1,137,0"/>
+                    <ComboBox x:Name="comboBoxWeek" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxWeek_SelectionChanged" Margin="136,0,137,30" SelectedIndex="0" Grid.RowSpan="2"/>
+
+                    <Label x:Name="lblChooseDay" Content="Välj Dag" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Margin="136,0,137,0"/>
+                    <ComboBox x:Name="comboBoxDay" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxDay_SelectionChanged" Margin="136,0,137,30" SelectedIndex="0" Grid.RowSpan="2"/>
+
+                    <Label x:Name="lblComment" Content="Kommentar" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Margin="136,5,137,0" Grid.RowSpan="2"/>
+                    <TextBox x:Name="txtbxComment" Text="" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center" Height="70" Margin="136,0,137,5" Grid.RowSpan="2"/>
+
+                    <Button x:Name="btnReportAbscence" Content="Anmäl Frånvaro" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="11" VerticalAlignment="Bottom" Width="220" Height="35" Margin="136,0,137,55"/>
+
+                    <Label x:Name="lblUpdated" Content="Din information är nu uppdaterad" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" Foreground="DarkOliveGreen" Visibility="Hidden" Margin="0,0,0,-5"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Label x:Name="WhoIsGettingreported" Content="Barn som anmäls" HorizontalAlignment="Left" Margin="574,46,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
