@@ -86,11 +86,19 @@ namespace WpfApp1
             ListView.ItemsSource = attendances;
         }
 
+        private void SetActiveChild(ComboBox comboBox)
+        {
+            Activechild.Setactivechild((Child)comboBox.SelectedItem);
+           
+        }
+
+
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxChildren.SelectedItem != null)
             {
-                Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
+                SetActiveChild(comboBoxChildren);
+                GetAttendances();
             }
         }
 
@@ -98,7 +106,7 @@ namespace WpfApp1
         {
             if (comboBoxChildren2.SelectedItem != null)
             {
-                Activechild.Setactivechild((Child)comboBoxChildren2.SelectedItem);
+                SetActiveChild(comboBoxChildren2);
             }
         }
 
@@ -142,7 +150,10 @@ namespace WpfApp1
 
         private void Seereports_Loaded(object sender, RoutedEventArgs e)
         {
+            SetActiveChild(comboBoxChildren2);
             GetAttendances();           
         }
+
+
     }
 }
