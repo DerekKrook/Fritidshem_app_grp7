@@ -80,9 +80,15 @@ namespace WpfApp1.Views.StaffApp
         {
             string comment = txtbxComment.Text;
 
-           // attendances = DbOperations.StaffReportAttendance(comment);
+            DbOperations.StaffReportAttendance(comment);
 
            
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            lblActiveChild.Content = $"{Activechild.Firstname} {Activechild.Lastname}";
+            DataBinding();
         }
     }
 }

@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using WpfApp1.Models; 
+using WpfApp1.Models;
+using WpfApp1.Views.StaffApp;
 
 namespace WpfApp1
 {
@@ -76,12 +77,17 @@ namespace WpfApp1
 
         private void UpdateChildLabel()
         {
-            lblActiveChild.Content = $"Inloggad som {Activechild.Firstname} {Activechild.Lastname}";
-            lblActiveChild2.Content = $"Inloggad som {Activechild.Firstname} {Activechild.Lastname}";
+            lblActiveChild.Content = $"{Activechild.Firstname} {Activechild.Lastname}";
+            lblActiveChild2.Content = $"{Activechild.Firstname} {Activechild.Lastname}";
         }
         private void BtnAbscense_Click(object sender, RoutedEventArgs e)
         {
 
+            StaffReportAbsence staffreportabsence = new StaffReportAbsence();
+
+            staffreportabsence.Show();
+
+            this.Close();
         }
 
         private void ListViewStaff1_SelectionChanged_1(object sender, SelectionChangedEventArgs e)

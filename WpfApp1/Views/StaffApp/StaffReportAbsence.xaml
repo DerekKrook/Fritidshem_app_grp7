@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.Views.StaffApp"
         mc:Ignorable="d"
-        Title="StaffReportAbsence" Style="{StaticResource MyWindowStyle}">
+        Title="StaffReportAbsence" Style="{StaticResource MyWindowStyle}" Activated="Window_Activated">
     <Grid>
         <TabControl x:Name="Report" VerticalAlignment="Center" Height="485" Margin="374,48,374,187" Background="Aqua">
             <TabItem x:Name="ReportingAbsence" Header="Anmäl Frånvaro">
@@ -44,6 +44,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label x:Name="WhoIsGettingreported" Content="Barn som anmäls" HorizontalAlignment="Left" Margin="574,46,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblActiveChild" Content="" HorizontalAlignment="Left" Margin="474,79,0,0" VerticalAlignment="Top" Height="38" Width="370"/>
     </Grid>
 </Window>
