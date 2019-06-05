@@ -25,6 +25,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
+                
                 var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class_id, class.name AS Class 
                 FROM(child INNER JOIN class on class_id = class.id) 
                 WHERE child.firstname LIKE '%{@a}%' OR child.lastname LIKE '%{@a}%';").ToList();
@@ -154,19 +155,16 @@ namespace WpfApp1
         }
 
         // Hämtar vårdnadshavare till barn
-        public static List<Guardian> GetGuardianOfChild(int Id)
+        public static List<Guardian> GetGuardianOfChild(int id)
         {
-
-                      
-            var Query = $@"SELECT * FROM guardian_child 
-            INNER JOIN guardian ON guardian_id = guardian.id 
-            WHERE child_id='{Id}'";
-
+                                
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            {
-                var output = connection.Query<Guardian>(Query).ToList();
-
-                return output;
+            {               
+                    var output = connection.Query<Guardian>($@"SELECT * FROM guardian_child 
+                    INNER JOIN guardian ON guardian_id = guardian.id 
+                    WHERE child_id = @Id", new {Id = id}).ToList();
+                    return output;
+                
             }
         }
 
@@ -256,36 +254,31 @@ namespace WpfApp1
         }
 
        // Markera att barn gått hem
-        public static List<Attendance> SetChildGoneHome()
+        public static void SetChildGoneHome()
         {
-            Attendance a = new Attendance();
-            List<Attendance> attendance = new List<Attendance>();
-
+            
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"UPDATE attendance SET category_attendance_id = 4, staff_id = {Activestaff.Id} WHERE id = {ActiveAttendance.Id};").ToList();
-
-                return output;
+                connection.Execute($@"UPDATE attendance SET category_attendance_id = 4, staff_id = {Activestaff.Id} WHERE id = {ActiveAttendance.Id};");
+          
             }
 
         }
 
-
         //uppdatera mail och/eller telefon på förälder 
-        public static List<Guardian> UpdateGuardianProperties(int phone, string email, string firstname, string lastname)
+        public static void UpdateGuardianProperties(int phone, string email, string firstname, string lastname)
         {
             var Id = Activeguardian.Id;
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"UPDATE guardian SET firstname = '{@firstname}', lastname = '{@lastname}', email = '{@email}', phone = {phone} WHERE id = {Id}").ToList();
-
-                return output;
+                connection.Execute($@"UPDATE guardian SET firstname = '{@firstname}', lastname = '{@lastname}', email = '{@email}', phone = {phone} WHERE id = {Id}");
+               
             }
 
         }
 
         // lägg till ny vårdnadshavare
-        public static List<Guardian> AddNewGuardian(int phone, string firstname, string lastname, string email)
+        public static void AddNewGuardian(int phone, string firstname, string lastname, string email)
         {
             InputHandler inputhandler = new InputHandler();
 
@@ -294,15 +287,13 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"INSERT INTO guardian (firstname, lastname, phone, email) VALUES ('{@firstname}', '{@lastname}', {@phone}, '{@email}')").ToList();
-
-
-                return output;
+                connection.Execute($@"INSERT INTO guardian (firstname, lastname, phone, email) VALUES ('{@firstname}', '{@lastname}', {@phone}, '{@email}')");
+               
             }
         }
 
        // Uppdatera barnuppgifter
-        public static List<Child> UpdateChildProperties(string firstname, string lastname, string age, int classid)
+        public static void UpdateChildProperties(string firstname, string lastname, string age, int classid)
         {
             var Id = Activechild.Id;
             InputHandler inputhandler = new InputHandler();
@@ -313,15 +304,13 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($@"UPDATE child SET firstname = '{@firstname}', lastname = '{@lastname}', age = {age}, class_id = {classid} WHERE id = {Id}").ToList();
-
-                return output;
+                connection.Execute($@"UPDATE child SET firstname = '{@firstname}', lastname = '{@lastname}', age = {age}, class_id = {classid} WHERE id = {Id}");               
             }
 
         }
   
         // lägg till nytt barn
-        public static List<Child> AddNewChild(string firstname, string lastname, string age, int classid)
+        public static void AddNewChild(string firstname, string lastname, string age, int classid)
         {
 
             InputHandler inputhandler = new InputHandler();
@@ -330,23 +319,21 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($@"INSERT INTO child (firstname, lastname, age, class_id) VALUES ('{@firstname}','{@lastname}', {@age}, {classid});").ToList();
-                
-                return output;
+                connection.Execute($@"INSERT INTO child (firstname, lastname, age, class_id) VALUES ('{@firstname}','{@lastname}', {@age}, {classid});");
+                             
             }
 
         }
         // tar bort barn
-        public static List<Child> DeleteChild()
+        public static void DeleteChild()
         {
             var Id = Activechild.Id;
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Child>($@"DELETE FROM child WHERE id = {Id};").ToList();
 
-
-                return output;
+                connection.Execute($@"DELETE FROM child WHERE id = {Id};");
+                
             }
 
         }
@@ -369,45 +356,40 @@ namespace WpfApp1
 }
 
         // Koppla ihop vårdnadshavare och barn
-        public static List<Guardian> ConnectChildAndGuardian()
+        public static void ConnectChildAndGuardian()
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                
-                var output = connection.Query<Guardian>($@"INSERT INTO guardian_child(guardian_id, child_id) VALUES('{Activeguardian.Id}', '{Activechild.Id}'); INSERT INTO meals (name, guardian_id, child_id) VALUES('frukost', '{Activeguardian.Id}', '{Activechild.Id}')").ToList();
-  
+                connection.Execute($@"INSERT INTO guardian_child(guardian_id, child_id) VALUES('{Activeguardian.Id}', '{Activechild.Id}'); INSERT INTO meals (name, guardian_id, child_id) VALUES('frukost', '{Activeguardian.Id}', '{Activechild.Id}')").ToList();
+                  
+            }
 
-        return output;
         }
 
-}
-
         // ta bort koppling mellan vårdnadshavare och barn
-        public static List<Guardian> DeleteConnection()
+        public static void DeleteConnection()
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
 
-                var output = connection.Query<Guardian>($@"DELETE FROM guardian_child WHERE guardian_id = {Activeguardian.Id} AND child_id = {Activechild.Id}; DELETE FROM meals WHERE meals.id = '{Activechild.Mealsid}';").ToList();
-
-
-                return output;
+                connection.Execute($@"DELETE FROM guardian_child WHERE guardian_id = {Activeguardian.Id} AND child_id = {Activechild.Id}; DELETE FROM meals WHERE meals.id = '{Activechild.Mealsid}';");
+                
             }
         }
 
         // Tar bort vårdnadshavare
-        public static List<Guardian> DeleteGuardian()
+        public static void DeleteGuardian()
         {
             var Id = Activeguardian.Id;
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"DELETE FROM guardian WHERE id = {Id};").ToList();
 
-
-                return output;
+                connection.Execute($@"DELETE FROM guardian WHERE id = {Id};");
+               
             }
 
         }
@@ -427,30 +409,30 @@ namespace WpfApp1
         }
 
         //Lägg till frånvaro som Guardian
-        public static List<Attendance> GuardianReportAttendance(string comment)
+        public static void GuardianReportAttendance(string comment)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
+                connection.Execute($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
                                                                     VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{ActiveAttendancecategory.Id}', '{comment}');
                                                              INSERT INTO attendance_dates (attendance_id, dates_id) 
                                                                     SELECT attendance.id, dates.id 
                                                                     FROM attendance, dates 
                                                                     WHERE attendance.id = (SELECT MAX(attendance.id) 
-                                                                    FROM attendance) AND dates.id = '{ActiveDate.Id}';").ToList();
-                return output;
+                                                                    FROM attendance) AND dates.id = '{ActiveDate.Id}';");
+                
             }
 
         }
 
         // rapportera frånvaro som staff
-        public static List<Attendance> StaffReportAttendance(string comment)
+        public static void StaffReportAttendance(string comment)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"INSERT INTO attendance(child_id, staff_id, category_attendance_id, comment)
+                connection.Query<Attendance>($@"INSERT INTO attendance(child_id, staff_id, category_attendance_id, comment)
                 VALUES('{Activechild.Id}', '{Activestaff.Id}', '{ActiveAttendancecategory.Id}', '{comment}');
                 INSERT INTO attendance_dates(attendance_id, dates_id)
                 SELECT attendance.id, dates.id
@@ -458,7 +440,7 @@ namespace WpfApp1
                 WHERE attendance.id = (SELECT MAX(attendance.id)
                 FROM attendance) AND dates.id = '{ActiveDate.Id}'; ").ToList();
 
-                return output;
+                
             }
 
         }
@@ -470,8 +452,6 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Attendancecategory>($@"SELECT * FROM category_attendance WHERE present = false").ToList();
-
-
                 return output;
             }
 
@@ -529,13 +509,12 @@ namespace WpfApp1
         }
 
         //uppdatera mail på Staff 
-        public static List<Guardian> UpdateStaffProperties(string email)
+        public static void UpdateStaffProperties(string email)
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"UPDATE staff SET email = '{email}' WHERE id = {Activestaff.Id}").ToList();
-
-                return output;
+                connection.Query<Guardian>($@"UPDATE staff SET email = '{email}' WHERE id = {Activestaff.Id}").ToList();
+               
             }
 
         }

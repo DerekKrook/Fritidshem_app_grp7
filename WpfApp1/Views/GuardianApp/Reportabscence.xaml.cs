@@ -142,7 +142,7 @@ namespace WpfApp1
         private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
         {
             string comment = txtbxComment.Text;
-            attendances = DbOperations.GuardianReportAttendance(comment);
+            DbOperations.GuardianReportAttendance(comment);
             UpdatedMessage();
         }
 
