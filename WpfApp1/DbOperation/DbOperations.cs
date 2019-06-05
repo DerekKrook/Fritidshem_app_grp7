@@ -444,6 +444,25 @@ namespace WpfApp1
 
         }
 
+        // rapportera frånvaro som staff
+        public static List<Attendance> StaffReportAttendance(string comment)
+        {
+
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Attendance>($@"INSERT INTO attendance(child_id, staff_id, category_attendance_id, comment)
+                VALUES('{Activechild.Id}', '{Activestaff.Id}', '{ActiveAttendancecategory.Id}', '{comment}');
+                INSERT INTO attendance_dates(attendance_id, dates_id)
+                SELECT attendance.id, dates.id
+                FROM attendance, dates
+                WHERE attendance.id = (SELECT MAX(attendance.id)
+                FROM attendance) AND dates.id = '{ActiveDate.Id}'; ").ToList();
+
+                return output;
+            }
+
+        }
+
         //Hämta category attendances
         public static List<Attendancecategory> GetAttendances()
         {

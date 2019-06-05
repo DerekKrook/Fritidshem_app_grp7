@@ -153,6 +153,9 @@
     <Compile Include="Views\StaffApp\StaffProfile.xaml.cs">
       <DependentUpon>StaffProfile.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\StaffApp\StaffReportAbsence.xaml.cs">
+      <DependentUpon>StaffReportAbsence.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StaffFritids.xaml.cs">
       <DependentUpon>StaffFritids.xaml</DependentUpon>
     </Compile>
@@ -224,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StaffApp\StaffProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StaffApp\StaffReportAbsence.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

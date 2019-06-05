@@ -22,9 +22,11 @@ namespace WpfApp1
     {
         List<Attendance> fritdschildren = new List<Attendance>();
         List<Attendance> fritidsgonehome = new List<Attendance>();
+
         public StaffFritids()
         {
             InitializeComponent();
+
         }
 
         private void ListViewTotalFritids_Loaded(object sender, RoutedEventArgs e)
@@ -80,6 +82,12 @@ namespace WpfApp1
 
                 return;
             }
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            lblStaffFirstname.Content = $"Inloggad som {Activestaff.Firstname} {Activestaff.Lastname}";
+
         }
     }
 }
