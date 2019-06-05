@@ -48,6 +48,8 @@ namespace WpfApp1
                 return output;
             }
         }
+
+        //Hämtar alla klasser
         public static List<Class> GetAllClasses()
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
@@ -362,7 +364,7 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                
-                connection.Execute($@"INSERT INTO guardian_child(guardian_id, child_id) VALUES('{Activeguardian.Id}', '{Activechild.Id}'); INSERT INTO meals (name, guardian_id, child_id) VALUES('frukost', '{Activeguardian.Id}', '{Activechild.Id}')").ToList();
+                connection.Execute($@"INSERT INTO guardian_child(guardian_id, child_id) VALUES('{Activeguardian.Id}', '{Activechild.Id}'); INSERT INTO meals (name, guardian_id, child_id) VALUES('frukost', '{Activeguardian.Id}', '{Activechild.Id}')");
                   
             }
 
@@ -432,13 +434,13 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Query<Attendance>($@"INSERT INTO attendance(child_id, staff_id, category_attendance_id, comment)
+                connection.Execute($@"INSERT INTO attendance(child_id, staff_id, category_attendance_id, comment)
                 VALUES('{Activechild.Id}', '{Activestaff.Id}', '{ActiveAttendancecategory.Id}', '{comment}');
                 INSERT INTO attendance_dates(attendance_id, dates_id)
                 SELECT attendance.id, dates.id
                 FROM attendance, dates
                 WHERE attendance.id = (SELECT MAX(attendance.id)
-                FROM attendance) AND dates.id = '{ActiveDate.Id}'; ").ToList();
+                FROM attendance) AND dates.id = '{ActiveDate.Id}'; ");
 
                 
             }
@@ -513,7 +515,7 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Query<Guardian>($@"UPDATE staff SET email = '{email}' WHERE id = {Activestaff.Id}").ToList();
+                connection.Execute($@"UPDATE staff SET email = '{email}' WHERE id = {Activestaff.Id}");
                
             }
 
@@ -525,7 +527,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Query($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
+                connection.Execute($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
                 VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
                 INSERT INTO attendance_dates (attendance_id, dates_id) 
                 SELECT attendance.id, dates.id 
@@ -543,7 +545,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Query($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
+                connection.Execute($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
                 VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
                 INSERT INTO attendance_dates (attendance_id, dates_id) 
                 SELECT attendance.id, dates.id 
