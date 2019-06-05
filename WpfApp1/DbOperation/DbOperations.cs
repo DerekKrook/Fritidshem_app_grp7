@@ -380,7 +380,7 @@ namespace WpfApp1
   
 
         return output;
-    }
+        }
 
 }
 
@@ -519,39 +519,39 @@ namespace WpfApp1
         }
 
         //Lägg till fritids som Guardian utan frukost
-        public static List<Attendance> GuardianReportFritids(string comment, int attendanceid)
+        public static void GuardianReportFritids(string comment, int attendanceid)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
-                                                                    VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
-                                                             INSERT INTO attendance_dates (attendance_id, dates_id) 
-                                                                    SELECT attendance.id, dates.id 
-                                                                    FROM attendance, dates 
-                                                                    WHERE attendance.id = (SELECT MAX(attendance.id) 
-                                                                    FROM attendance) AND dates.id = '{ActiveDate.Id}';").ToList();
-                return output;
+                connection.Query($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
+                VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
+                INSERT INTO attendance_dates (attendance_id, dates_id) 
+                SELECT attendance.id, dates.id 
+                FROM attendance, dates 
+                WHERE attendance.id = (SELECT MAX(attendance.id) 
+                FROM attendance) AND dates.id = '{ActiveDate.Id}';");
+                
             }
 
         }
 
         //Lägg till fritids som Guardian med frukost
-        public static List<Attendance> GuardianReportFritidsBreakfast(string comment, int attendanceid)
+        public static void GuardianReportFritidsBreakfast(string comment, int attendanceid)
         {
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
-                                                                    VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
-                                                             INSERT INTO attendance_dates (attendance_id, dates_id) 
-                                                                    SELECT attendance.id, dates.id 
-                                                                    FROM attendance, dates 
-                                                                    WHERE attendance.id = (SELECT MAX(attendance.id) 
-                                                                    FROM attendance) AND dates.id = '{ActiveDate.Id}';
-                                                             INSERT INTO meals_dates (meals_id, dates_id) 
-			                                                        VALUES ('{Activechild.Mealsid}', '{ActiveDate.Id}');").ToList();
-                return output;
+                connection.Query($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
+                VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
+                INSERT INTO attendance_dates (attendance_id, dates_id) 
+                SELECT attendance.id, dates.id 
+                FROM attendance, dates 
+                WHERE attendance.id = (SELECT MAX(attendance.id) 
+                FROM attendance) AND dates.id = '{ActiveDate.Id}';
+                INSERT INTO meals_dates (meals_id, dates_id) 
+			    VALUES ('{Activechild.Mealsid}', '{ActiveDate.Id}');");
+                
             }
 
         }
