@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace WpfApp1
 {
     /// <summary>
@@ -28,7 +29,7 @@ namespace WpfApp1
         public Reportabscence()
         {
             InitializeComponent();
-
+            
             DataBinding();
         }
 
@@ -69,6 +70,20 @@ namespace WpfApp1
 
             comboBoxDay.ItemsSource = dates;
             comboBoxDay.DisplayMemberPath = "InformationDay";
+
+            Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
+        }
+
+        private void UpdateCombobox(ComboBox comboBox, ComboBox combo)
+        {
+            comboBox.Text = combo.Text;
+        }
+
+        private void GetAttendances()
+        {
+            attendances = DbOperations.Getabscenceasguardian();
+            ListView.Items.Refresh();
+            ListView.ItemsSource = attendances;
         }
 
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -105,15 +120,16 @@ namespace WpfApp1
 
         private void ComboBoxWeek_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (comboBoxDay.SelectedItem != null)
+            {
+                ActiveDate.Setactivatedate((Date)comboBoxWeek.SelectedItem);
+            }
         }
 
         private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
         {
             string comment = txtbxComment.Text;
-
             attendances = DbOperations.GuardianReportAttendance(comment);
-
             UpdatedMessage();
         }
 
@@ -126,9 +142,7 @@ namespace WpfApp1
 
         private void Seereports_Loaded(object sender, RoutedEventArgs e)
         {
-            attendances = DbOperations.Getabscenceasguardian();
-
-            ListView.ItemsSource = attendances;
+            GetAttendances();           
         }
     }
 }
