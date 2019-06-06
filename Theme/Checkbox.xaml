@@ -24,7 +24,7 @@
                             <Border x:Name="Border"
                     Width="16"
                     Height="16"
-                    CornerRadius="8"
+                    CornerRadius="0.5"
                     BorderThickness="1.5"
                     Cursor="Arrow">
                                 <Border.BorderBrush>
