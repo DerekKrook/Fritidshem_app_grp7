@@ -19,7 +19,7 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="450"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
@@ -61,13 +61,13 @@
         </ListView>
 
 
-        <!--<Label x:Name="lblActiveChild2" Content="" HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="4" VerticalAlignment="Top" Height="24" Width="400"/>-->
+        <Label x:Name="lblActiveChild2" Content="" HorizontalAlignment="Left" Margin="223,0,0,0" Grid.Row="4" VerticalAlignment="Top" Height="31" Width="400" Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Left"/>
 
-        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}" Click="BtnAbscense_Click" Grid.Column="2" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnAbscense" Content="Frånvarande" HorizontalAlignment="Center" Margin="-500,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Grid.Row="2" Style="{StaticResource ButtonStyleNormal}" Click="BtnAbscense_Click" Grid.Column="1"/>
 
 
-        <Label x:Name="label" Content="Barn" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="2" Height="31" Width="43" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="280"  Grid.Row="2" VerticalAlignment="Bottom" Width="675" Grid.Column="1" Grid.ColumnSpan="2">
+        <Label x:Name="label" Content="Barn" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="3.835,0.497" FontSize="16" FontWeight="Bold" Grid.Row="2" Height="31" Width="43" Grid.Column="1"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="280"  Grid.Row="2" VerticalAlignment="Bottom" Width="675" Grid.Column="1">
             <TabItem Header="Avdelning 1">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -114,8 +114,10 @@
         </TabControl>
 
 
-        <Label x:Name="lblActiveChild" Content="" HorizontalAlignment="Right" Margin="0,30,15,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="394" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TabControl x:Name="tabSchedule" HorizontalAlignment="Right" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2">
+        <Label x:Name="lblActiveChild" Content="" HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="394" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+        <Label x:Name="lblActiveChild" Content="" HorizontalAlignment="Right" Margin="0,30,15,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="394" Grid.RowSpan="2" Grid.Column="1"/>
+        <TabControl x:Name="tabSchedule" HorizontalAlignment="Right" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1">
             <TabItem x:Name="Monday" Header="Måndag" GotFocus="Monday_GotFocus">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
