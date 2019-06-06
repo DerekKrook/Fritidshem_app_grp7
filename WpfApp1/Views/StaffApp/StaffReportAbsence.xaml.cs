@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfApp1.Views.StaffApp
+namespace WpfApp1
 {
     /// <summary>
     /// Interaction logic for StaffReportAbsence.xaml
@@ -91,6 +91,17 @@ namespace WpfApp1.Views.StaffApp
         {
             lblActiveChild.Content = $"{Activechild.Firstname} {Activechild.Lastname}";
             DataBinding();
+        }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            ListViewStaff listViewStaff = new ListViewStaff();
+
+            listViewStaff.Show();
+
+            window.Close();
         }
     }
 }

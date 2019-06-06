@@ -1,13 +1,25 @@
-﻿<Window x:Class="WpfApp1.Views.StaffApp.StaffReportAbsence"
+﻿<Window x:Class="WpfApp1.StaffReportAbsence"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1.Views.StaffApp"
+        xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="StaffReportAbsence" Style="{StaticResource MyWindowStyle}" Activated="Window_Activated">
     <Grid>
-        <TabControl x:Name="Report" VerticalAlignment="Center" Height="485" Margin="374,48,374,187" Background="Aqua">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="85"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <local:StaffMenu Grid.Row="0">
+
+        </local:StaffMenu>
+
+        <Button x:Name="btnBack" Content="Tillbaka" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource ButtonStyleNormal}" Grid.Row="1" Height="50" Width="95" Click="BtnBack_Click" />
+
+        <TabControl x:Name="Report" VerticalAlignment="Center" HorizontalAlignment="Center" Height="485" Background="Aqua" Grid.Row="1">
             <TabItem x:Name="ReportingAbsence" Header="Anmäl Frånvaro">
                 <Grid>
                     <Grid.RowDefinitions>
