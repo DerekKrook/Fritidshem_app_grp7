@@ -111,6 +111,21 @@
                     </ListView.View>
                 </ListView>
             </TabItem>
+            <TabItem Header="Frånvarande barn">
+                <ListView x:Name="ListViewStaff1_Abscense" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="668" SelectionChanged="ListViewStaff1_Class3_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Barn" Width="150" DisplayMemberBinding="{Binding Child}"/>
+                            <GridViewColumn Header="Förälder" Width="150" DisplayMemberBinding="{Binding Guardian}"/>
+                            <GridViewColumn Header="Vecka" Width="40" DisplayMemberBinding="{Binding Week}"/>
+                            <GridViewColumn Header="Dag" Width="80" DisplayMemberBinding="{Binding Day}"/>
+                            <GridViewColumn Header="Kommentar" Width="150" DisplayMemberBinding="{Binding Comment}"/>
+                            <GridViewColumn Header="Frånvarande" Width="100" DisplayMemberBinding="{Binding Category_attendance}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+
         </TabControl>
 
 

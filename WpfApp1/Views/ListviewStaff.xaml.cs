@@ -46,7 +46,7 @@ namespace WpfApp1
             ListViewStaff1_Class3.ItemsSource = DbOperations.GetFirstGraders(4);
             ListViewStaff1_Class3.DisplayMemberPath = "Fullinformation";
 
-            //ListViewStaff1_Abscense.ItemsSource = DbOperations.GetSickAndHolidayChildren();
+            ListViewStaff1_Abscense.ItemsSource = DbOperations.GetSickAndHolidayChildren();
             
         }
 
