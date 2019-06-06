@@ -29,8 +29,8 @@
 
         </local:GuardianMenu>
 
-        <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Center" VerticalAlignment="Top" Width="237" FontSize="20" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5"/>
-        <Label x:Name="lblGuardianFirstName" Content="" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="232" Grid.Row="2" Grid.Column="0" FontSize="18" HorizontalContentAlignment="Center" Grid.ColumnSpan="5"/>
+        <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Center" VerticalAlignment="Top" Width="237" FontSize="20" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="90,10,85,0" Grid.RowSpan="2"/>
+        <Label x:Name="lblGuardianFirstName" Content="" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="232" Grid.Row="1" Grid.Column="4" FontSize="18" HorizontalContentAlignment="Center" Margin="180,0,22,63" Grid.RowSpan="2"/>
 
         <Image x:Name="imgLeftArrow" Grid.Column="1" Grid.Row="3" Source="{StaticResource LeftArrowIcon}" MaxHeight="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,2"/>
         <Label x:Name="lblWeek" Content="vecka 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="3" FontSize="19"/>
@@ -106,8 +106,8 @@
             </TabItem>
         </TabControl>
 
-        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Grid.Row="4" Grid.Column="4" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="20,40,0,0"/>
-        <Label x:Name="lblChoseChild" Content="Välj Barn:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="4" Grid.Column="4" Margin="20,15,0,0"/>
+        <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="95,4,0,0" Grid.ColumnSpan="3"/>
+        <Label x:Name="lblChoseChild" Content="Välj Barn:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Margin="165,50,0,0" RenderTransformOrigin="1.239,0.533" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

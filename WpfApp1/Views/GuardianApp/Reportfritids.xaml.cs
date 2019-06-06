@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.Models;
+using Npgsql;
 
 namespace WpfApp1
 {
@@ -41,19 +42,14 @@ namespace WpfApp1
 
             comboBoxChildren.ItemsSource = children;
             comboBoxChildren.DisplayMemberPath = "Fullinformation";
-
-            comboBoxChildren.SelectedIndex = 0;
+            comboBoxChildren.SelectedIndex = 0; 
 
             comboBoxChildMeals.ItemsSource = children;
             comboBoxChildMeals.DisplayMemberPath = "Fullinformation";
             comboBoxChildMeals.SelectedIndex = 0;
-
-            //Hämta barn se
-            children = DbOperations.GetChildrenOfGuardian();
-
+                       
             comboBoxChildren2.ItemsSource = children;
             comboBoxChildren2.DisplayMemberPath = "Fullinformation";
-
             comboBoxChildren2.SelectedIndex = 0;
 
             //Hämta veckor
@@ -63,10 +59,13 @@ namespace WpfApp1
             comboBoxWeek.DisplayMemberPath = "InformationWeek";
 
             //Hämta dagar
-            dates = DbOperations.GetDays();
+            Weeks week = new Weeks();
+            week.Week = 1;
+            dates = DbOperations.GetDays(week);
 
             comboBoxDay.ItemsSource = dates;
             comboBoxDay.DisplayMemberPath = "InformationDay";
+            
 
             //Hämta Morgon/Kväll
             attendancecategories = DbOperations.GetFritidsMorningEvening();
@@ -75,11 +74,52 @@ namespace WpfApp1
             comboBoxType.DisplayMemberPath = "Fullinformation";
         }
 
+        private void GetMeals()
+        {
+            meals = DbOperations.GetMeals();
+            ListView.ItemsSource = null;
+            ListViewMeals.Items.Refresh();
+            ListViewMeals.ItemsSource = meals;
+        }
+
+        private void GetAttendances()
+        {
+            attendances = DbOperations.Getfritidsguardian();
+            ListView.ItemsSource = null;
+            ListView.Items.Refresh();
+            ListView.ItemsSource = attendances;
+        }
+
+        private void UpdateListView()
+        {
+            ListView.Items.Refresh();            
+        }
+
+        private void UpdateComboBox(ComboBox comboBox, ComboBox combo)
+        {
+            comboBox.Text = combo.Text;            
+        }
+
+        private void SetActiveChild(ComboBox comboBox)
+        {
+            Activechild.Setactivechild((Child)comboBox.SelectedItem);
+        }
+
+        private void ActivateDate(Date date)
+        {
+            
+            ActiveDate.Setactivatedate(date);
+
+        }
+
         private void ComboBoxChildren_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (comboBoxChildren.SelectedItem != null)
             {
-                Activechild.Setactivechild((Child)comboBoxChildren.SelectedItem);
+                SetActiveChild(comboBoxChildren);
+                GetAttendances();
+                UpdateComboBox(comboBoxChildren2, comboBoxChildren);
+               
             }
         }
 
@@ -87,12 +127,8 @@ namespace WpfApp1
         {
             if (comboBoxChildren2.SelectedItem != null)
             {
-                Activechild.Setactivechild((Child)comboBoxChildren2.SelectedItem);
-                attendances = DbOperations.Getfritidsguardian();
-                
-                ListView.ItemsSource = attendances;
-                
-                ListView.Items.Refresh();
+                SetActiveChild(comboBoxChildren2);                               
+                GetAttendances();
             }
         }
 
@@ -106,34 +142,94 @@ namespace WpfApp1
 
         private void ComboBoxWeek_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (comboBoxWeek.SelectedItem != null)
+            {
+                if (comboBoxWeek.SelectedItem != null)
+                {
+                    Weeks week = (Weeks)comboBoxWeek.SelectedItem;
 
+                    dates = DbOperations.GetDays(week);
+                    comboBoxDay.Items.Refresh();
+                    comboBoxDay.ItemsSource = dates;
+                    comboBoxDay.DisplayMemberPath = "InformationDay";
+                }
+            }
         }
 
         private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
         {
             int i = comboBoxType.SelectedIndex;
             string comment = txtbxComment.Text;
+            int attendanceid = 0;
 
-            if (i == 0)
-            {
-                int attendanceid = 7;
-                attendances = DbOperations.GuardianReportFritidsBreakfast(comment, attendanceid);
+            SetActiveChild(comboBoxChildren);
 
-                attendanceid = 3;
-                attendances = DbOperations.GuardianReportFritids(comment, attendanceid);
-            }
-            else if (i == 1)
+            try
             {
-                int attendanceid = 7;
-                attendances = DbOperations.GuardianReportFritidsBreakfast(comment, attendanceid);
-            }
-            else if (i == 2)
-            {
-                int attendanceid = 3;
-                attendances = DbOperations.GuardianReportFritids(comment, attendanceid);
-            }
+                if (chxbxBreakfast.IsChecked == true)
+                {
 
-            UpdatedMessage();
+                    if (i == 0)
+                    {
+                        attendanceid = 7;
+                        DbOperations.GuardianReportFritidsBreakfast(comment, attendanceid);
+
+                        attendanceid = 3;
+                        DbOperations.GuardianReportFritids(comment, attendanceid);
+
+                    }
+
+                    if (i == 1)
+                    {
+
+                        attendanceid = 7;
+                        DbOperations.GuardianReportFritidsBreakfast(comment, attendanceid);
+
+                    }
+
+                }
+                else
+                {
+
+                    if (i == 2)
+                    {
+
+                        attendanceid = 3;
+                        DbOperations.GuardianReportFritids(comment, attendanceid);
+
+                    }
+
+                    else if (i == 1)
+                    {
+                        attendanceid = 7;
+                        DbOperations.GuardianReportFritids(comment, attendanceid);
+                    }
+
+                    else if (i == 0)
+                    {
+                        attendanceid = 7;
+                        DbOperations.GuardianReportFritids(comment, attendanceid);
+
+                        attendanceid = 3;
+                        DbOperations.GuardianReportFritids(comment, attendanceid);
+                    }
+
+                }
+                UpdatedMessage();
+                GetMeals();
+                GetAttendances();
+
+               
+
+
+                
+                                              
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show("Du har redan anmält måltid för denna dag");
+            }
+           
         }
 
         public async void UpdatedMessage()
@@ -168,27 +264,26 @@ namespace WpfApp1
 
         private void Seereports_Loaded_1(object sender, RoutedEventArgs e)
         {
+
+            GetAttendances(); 
             
-
-            attendances = DbOperations.Getfritidsguardian();
-
-            ListView.ItemsSource = attendances;
         }
 
         private void Seereportedmeals_Loaded(object sender, RoutedEventArgs e)
-        {
-            meals = DbOperations.GetMeals();
-            ListViewMeals.ItemsSource = meals;
-            
+        {                     
+            GetMeals();            
         }
 
         private void ComboBoxChildMeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Activechild.Setactivechild((Child)comboBoxChildMeals.SelectedItem);
+            SetActiveChild(comboBoxChildMeals);           
+            GetMeals();
+        }
 
-            meals = DbOperations.GetMeals();
-            ListViewMeals.ItemsSource = meals;
-            ListViewMeals.Items.Refresh();
+        private void Seereports_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SetActiveChild(comboBoxChildren2);
+            GetAttendances();
         }
     }
 }

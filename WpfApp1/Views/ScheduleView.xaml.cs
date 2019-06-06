@@ -27,7 +27,7 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            lblGuardianFirstName.Content = $"{Activeguardian.Firstname} {Activeguardian.Lastname}";
+            lblGuardianFirstName.Content = $"Inloggad som {Activeguardian.Firstname} {Activeguardian.Lastname}";
 
             DataBinding();
         }

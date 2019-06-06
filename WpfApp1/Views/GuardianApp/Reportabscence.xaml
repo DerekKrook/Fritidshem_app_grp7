@@ -29,6 +29,10 @@
         <TabControl x:Name="ReportvsView" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Height="600" Width="560">
             <TabItem x:Name="Report" Header="Anmäl Frånvaro">
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="14*"/>
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="30"/>
@@ -45,24 +49,24 @@
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="lblChooseChild" Content="Välj Barn" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="0,0,0,0"/>
+                    <Label x:Name="lblChooseChild" Content="Välj Barn" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Margin="20.682,0,165,0"/>
+                    <ComboBox x:Name="comboBoxChildren" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren_SelectionChanged" Margin="20.682,0,165,0" Grid.Column="1"/>
 
-                    <Label x:Name="lblChooseAbscence" Content="Frånvaro Anledning" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxAbscence" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxAbscence_SelectionChanged" Margin="0,0,0,0" SelectedIndex="0"/>
+                    <Label x:Name="lblChooseAbscence" Content="Frånvaro Anledning" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Margin="20.682,0,165,0"/>
+                    <ComboBox x:Name="comboBoxAbscence" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxAbscence_SelectionChanged" Margin="20.682,0,165,0" SelectedIndex="0" Grid.Column="1"/>
 
-                    <Label x:Name="lblChooseWeek" Content="Välj Vecka" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxWeek" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxWeek_SelectionChanged" Margin="0,0,0,0" SelectedIndex="0"/>
+                    <Label x:Name="lblChooseWeek" Content="Välj Vecka" Grid.Row="7" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Margin="20.682,0,165,0"/>
+                    <ComboBox x:Name="comboBoxWeek" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxWeek_SelectionChanged" Margin="20.682,0,165,0" SelectedIndex="0" Grid.Column="1"/>
 
-                    <Label x:Name="lblChooseDay" Content="Välj Dag" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-                    <ComboBox x:Name="comboBoxDay" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxDay_SelectionChanged" Margin="0,0,0,0" SelectedIndex="0"/>
+                    <Label x:Name="lblChooseDay" Content="Välj Dag" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Margin="20.682,0,165,0"/>
+                    <ComboBox x:Name="comboBoxDay" HorizontalAlignment="Center" Grid.Row="9" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxDay_SelectionChanged" Margin="20.682,0,165,0" SelectedIndex="0" Grid.Column="1"/>
 
-                    <Label x:Name="lblComment" Content="Kommentar" Grid.Column="2" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="txtbxComment" Text="" HorizontalAlignment="Center" Grid.Row="11" Grid.Column="2" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center" Height="70"/>
+                    <Label x:Name="lblComment" Content="Kommentar" Grid.Column="1" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Margin="20.682,0,165,0"/>
+                    <TextBox x:Name="txtbxComment" Text="" HorizontalAlignment="Center" Grid.Row="11" Grid.Column="1" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center" Height="70" Margin="20.682,0,165,0"/>
 
-                    <Button x:Name="btnReportAbscence" Content="Anmäl Frånvaro" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="12" Grid.Column="2" VerticalAlignment="Bottom" Width="220" Height="35"/>
+                    <Button x:Name="btnReportAbscence" Content="Anmäl Frånvaro" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="12" Grid.Column="1" VerticalAlignment="Bottom" Width="220" Height="35" Margin="20.682,0,165,0"/>
 
-                    <Label x:Name="lblUpdated" Content="Din information är nu uppdaterad" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" Foreground="DarkOliveGreen" Visibility="Hidden" Margin="0,0,0,-5"/>
+                    <Label x:Name="lblUpdated" Content="Din information är nu uppdaterad" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" Foreground="DarkOliveGreen" Visibility="Hidden" Margin="9.682,0,155,26" Grid.RowSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Seereports" Header="Se frånvaro" GotFocus="Seereports_Loaded">
@@ -72,7 +76,7 @@
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="500"/>
                     </Grid.RowDefinitions>
-                    
+
                     <Label x:Name="lblChooseChild2" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
                     <ComboBox x:Name="comboBoxChildren2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren2_SelectionChanged" Margin="0,0,0,0"/>
 

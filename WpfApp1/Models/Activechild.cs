@@ -39,7 +39,7 @@ namespace WpfApp1
                 Activechild.Age = child.Age;
                 Activechild.Class = child.Class;
                 Activechild.Guardian = child.Guardian;
-                Activechild.Mealsid = child.Mealsid;
+                Activechild.Mealsid = child.Id;
             }
         }
     }
