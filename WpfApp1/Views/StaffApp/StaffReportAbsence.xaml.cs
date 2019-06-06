@@ -117,6 +117,14 @@ namespace WpfApp1
             lblUpdated.Visibility = Visibility.Visible;
             await Task.Delay(3500);
             lblUpdated.Visibility = Visibility.Hidden;
+
+            ListViewStaff listViewStaff = new ListViewStaff();
+
+            var window = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive);
+
+            listViewStaff.Show();
+
+            window.Close();
         }
     }
 }
