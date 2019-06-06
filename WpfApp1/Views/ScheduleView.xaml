@@ -30,7 +30,7 @@
         </local:GuardianMenu>
 
         <Label x:Name="lblWelcome" Content="Välkommen till fritidshem" HorizontalAlignment="Center" VerticalAlignment="Top" Width="237" FontSize="20" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="90,10,85,0" Grid.RowSpan="2"/>
-        <Label x:Name="lblGuardianFirstName" Content="" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="232" Grid.Row="1" Grid.Column="4" FontSize="18" HorizontalContentAlignment="Center" Margin="180,0,22,63" Grid.RowSpan="2"/>
+        <Label x:Name="lblGuardianFirstName" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Width="232" Grid.Row="1" Grid.Column="0" FontSize="18" HorizontalContentAlignment="Center" Grid.RowSpan="2"/>
 
         <Image x:Name="imgLeftArrow" Grid.Column="1" Grid.Row="3" Source="{StaticResource LeftArrowIcon}" MaxHeight="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,2"/>
         <Label x:Name="lblWeek" Content="vecka 1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="3" FontSize="19"/>
