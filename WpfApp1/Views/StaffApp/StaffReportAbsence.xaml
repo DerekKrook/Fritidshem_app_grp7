@@ -57,9 +57,9 @@
                     <Button x:Name="btnReportAbscence" Content="Anmäl Frånvaro" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="11" VerticalAlignment="Bottom" Width="220" Height="35" Margin="100,0,137,55" Grid.Column="1"/>
 
                     <Label x:Name="lblUpdated" Content="Din information är nu uppdaterad" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontWeight="Bold" Foreground="DarkOliveGreen" Visibility="Hidden" Margin="90,0,126,25" Grid.RowSpan="2"/>
+                    <Label x:Name="lblActiveChild" Content="" HorizontalAlignment="Center" VerticalAlignment="Center" Height="38" Width="370" Grid.Column="1" Grid.RowSpan="2" HorizontalContentAlignment="Center" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label x:Name="lblActiveChild" Content="" HorizontalAlignment="Left" Margin="474,79,0,0" VerticalAlignment="Top" Height="38" Width="370"/>
     </Grid>
 </Window>
