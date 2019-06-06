@@ -52,6 +52,7 @@
                     <TextBox x:Name="txtboxAge" HorizontalAlignment="Right" Height="30" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="135" Margin="0,464,95,0" Grid.ColumnSpan="2" Grid.Column="2" />
                     <Label x:Name="lblAge" Content="Ålder" HorizontalAlignment="Left" Margin="11,464,0,0" VerticalAlignment="Top" Height="30" />
                     <ComboBox x:Name="comboBoxClass" Grid.Column="2" HorizontalAlignment="Left" Margin="0,503,0,0" VerticalAlignment="Top" Width="135" SelectionChanged="ComboBoxClass_SelectionChanged" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblUpdatedchild" Content="Information är nu uppdaterad" HorizontalAlignment="Left" Margin="64,464,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="DarkOliveGreen" Visibility="Hidden" Grid.Column="3" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="Vårdnadshavare" Header="Vårdnadshavare">
@@ -85,6 +86,7 @@
                     <Button x:Name="btnCancelGuardian" Content="Avbryt" Grid.Column="3" HorizontalAlignment="Left" Margin="126.5,515,0,0" VerticalAlignment="Top" Width="119" Height="30" Click="BtnCancelGuardian_Click"/>
                     <Button x:Name="btnDeleteGuardian" Content="Ta bort" Grid.Column="3" HorizontalAlignment="Left" Margin="263.5,515,0,0" VerticalAlignment="Top" Width="119" Height="30" RenderTransformOrigin="0.593,0.5" Click="BtnDeleteGuardian_Click"/>
                     <TextBlock x:Name="txtInfoguardian" HorizontalAlignment="Left" Margin="10,300,0,0" TextWrapping="Wrap" Text="För att redigera uppgifter välj en person i listan. För att lägga till en ny fyll i fält nedan och klicka Lägg till." VerticalAlignment="Top" Grid.ColumnSpan="4" Height="59" Width="317" FontWeight="Bold"/>
+                    <Label x:Name="lblUpdatedguardian" Content="Information är nu uppdaterad" HorizontalAlignment="Left" Margin="169,449,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="DarkOliveGreen" Visibility="Hidden" Grid.Column="3"/>
 
 
                 </Grid>
@@ -109,6 +111,8 @@
                     <Button x:Name="RemoveConnection" Content="Ta bort koppling" Grid.Column="3" HorizontalAlignment="Left" Margin="607,163,0,0" VerticalAlignment="Top" Width="115" Height="39" Click="RemoveConnection_Click"/>
                     <TextBlock x:Name="Headerinfo" Grid.Column="3" HorizontalAlignment="Left" Margin="415,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="123" Width="396"><Run Text="Välj ett Barn i Barn-fliken och en Vårdnadshavare i Vårdnadshavare-fliken och klicka sedan på Koppla eller Ta bort koppling"/><Run Text=" i Kopplingar-fliken"/></TextBlock>
                     <Label x:Name="lblInfo" Content="För att koppla eller ta bort koppling mellan barn och vårdnadshavare:" Grid.Column="3" HorizontalAlignment="Left" Margin="374,0,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="lblUpdatedconnection" Content="Information är nu uppdaterad" HorizontalAlignment="Left" Margin="493,233,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="DarkOliveGreen" Visibility="Hidden" Grid.Column="3"/>
+
                 </Grid>
             </TabItem>
         </TabControl>

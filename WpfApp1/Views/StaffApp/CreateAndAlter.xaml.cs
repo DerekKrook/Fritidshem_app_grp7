@@ -30,7 +30,20 @@ namespace WpfApp1
         List<Connections> connections = new List<Connections>();
         List<Class> classes = new List<Class>();
 
-    
+        public async void UpdatedMessage()
+        {
+            lblUpdatedchild.Visibility = Visibility.Visible;
+            await Task.Delay(3500);
+            lblUpdatedchild.Visibility = Visibility.Hidden;
+
+            lblUpdatedguardian.Visibility = Visibility.Visible;
+            await Task.Delay(3500);
+            lblUpdatedguardian.Visibility = Visibility.Hidden;
+
+            lblUpdatedconnection.Visibility = Visibility.Visible;
+            await Task.Delay(3500);
+            lblUpdatedconnection.Visibility = Visibility.Hidden;
+        }
 
         private void Updatelists()
         {
@@ -54,6 +67,7 @@ namespace WpfApp1
             ListViewChildren.SelectedItem = null;
             ClearTextbox();
             Updatelists();
+            UpdatedMessage();
         }
 
 
@@ -78,6 +92,7 @@ namespace WpfApp1
             }
             ClearTextbox();
             Updatelists();
+            UpdatedMessage();
 
         }
         private void BtnChange_Click(object sender, RoutedEventArgs e)
@@ -87,6 +102,7 @@ namespace WpfApp1
             DbOperations.UpdateChildProperties(txtboxFirstName.Text, txtboxLastName.Text, txtboxAge.Text, classes.Id);
             Updatelists();
             ClearTextbox();
+            UpdatedMessage();
         }
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -168,7 +184,7 @@ namespace WpfApp1
             DbOperations.UpdateGuardianProperties(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxEmailGuardian.Text, txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text);
             Updatelists();
             ClearTextbox();
-
+            UpdatedMessage();
         }
 
         private void BtnCancelGuardian_Click(object sender, RoutedEventArgs e)
@@ -182,6 +198,7 @@ namespace WpfApp1
             DbOperations.DeleteGuardian();
             Updatelists();
             ClearTextbox();
+            UpdatedMessage();
         }
 
         private void AddNewGuardian_Click(object sender, RoutedEventArgs e)
@@ -202,6 +219,7 @@ namespace WpfApp1
             }
             ClearTextbox();
             ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
+            UpdatedMessage();
         }
 
         private void Connect_Click(object sender, RoutedEventArgs e)
@@ -220,6 +238,7 @@ namespace WpfApp1
         {
             DbOperations.DeleteConnection();
             Updatelists();
+            UpdatedMessage();
         }
 
         private void ComboBoxClass_SelectionChanged(object sender, SelectionChangedEventArgs e)

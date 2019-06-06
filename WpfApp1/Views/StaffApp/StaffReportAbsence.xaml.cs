@@ -67,7 +67,13 @@ namespace WpfApp1
 
         private void ComboBoxWeek_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (comboBoxWeek.SelectedItem != null)
+            {
+                Weeks week = (Weeks)comboBoxWeek.SelectedItem;
+                dates = DbOperations.GetDays(week);
+                comboBoxDay.ItemsSource = dates;
+                comboBoxDay.DisplayMemberPath = "InformationDay";
+            }
         }
 
         private void ComboBoxDay_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -83,8 +89,10 @@ namespace WpfApp1
             string comment = txtbxComment.Text;
 
             DbOperations.StaffReportAttendance(comment);
+            UpdatedMessage();
 
-           
+
+
         }
 
         private void Window_Activated(object sender, EventArgs e)
@@ -102,6 +110,13 @@ namespace WpfApp1
             listViewStaff.Show();
 
             window.Close();
+        }
+
+        public async void UpdatedMessage()
+        {
+            lblUpdated.Visibility = Visibility.Visible;
+            await Task.Delay(3500);
+            lblUpdated.Visibility = Visibility.Hidden;
         }
     }
 }
