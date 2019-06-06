@@ -127,12 +127,12 @@ namespace WpfApp1
         }
 
         //Hämtar föräldrar efter sökning av för - och efternamn
-        public static List<Guardian> GetGuardian(string firstName, string lastName)
+        public static List<Guardian> GetGuardian(string name)
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Guardian>($@"SELECT * FROM child 
-                WHERE firstname LIKE @Firstname OR lastname LIKE @Lastname", new {Firstname = '%' + firstName + '%', Lastname = '%' + lastName + '%' }).ToList();
+                var output = connection.Query<Guardian>($@"SELECT * FROM guardian 
+                WHERE firstname LIKE @Firstname OR lastname LIKE @Lastname", new {Firstname = '%' + name + '%', Lastname = '%' + name + '%' }).ToList();
 
                 return output;
             }

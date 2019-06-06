@@ -32,16 +32,16 @@ namespace WpfApp1
         private void UpdateListViewGuardian()
         {            
             guardians = DbOperations.GetAllGuardians();
-
-           
+            listViewGuardian.Items.Refresh();
             listViewGuardian.ItemsSource = guardians;
-            listViewGuardian.DisplayMemberPath = "Fullinfo";
-       
+                  
         }
 
         private void BtnSearchGuardian_Click(object sender, RoutedEventArgs e)
         {
-            UpdateListViewGuardian();
+            guardians = DbOperations.GetGuardian(txtLastNameGuardian.Text);
+            listViewGuardian.Items.Refresh();
+            listViewGuardian.ItemsSource = guardians;
         }
 
         private void ListViewGuardian_SelectionChanged(object sender, SelectionChangedEventArgs e)
