@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace WpfApp1
 {
     public static class Activestaff
     {
+        
         public static int Id { get; set; }
         public static string Firstname { get; set; }
-        public static string Lastname { get; set; }
+        public static string Lastname { get; set; }     
         public static string Email { get; set; }
         public static string Department { get; set; }
         public static string Class { get; set; }

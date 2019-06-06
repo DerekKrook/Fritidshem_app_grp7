@@ -227,11 +227,12 @@ namespace WpfApp1
             INNER JOIN category_attendance ON category_attendance_id = category_attendance.id)  
             INNER JOIN attendance_dates ON attendance_dates.dates_id = attendance_dates.dates_id AND attendance.id = attendance_dates.attendance_id) 
             INNER JOIN dates ON attendance_dates.dates_id = dates.id AND dates.day = dates.day) 
-            WHERE category_attendance_id = 3 
+            WHERE (category_attendance_id = 3 OR category_attendance_id = 7) 
             ORDER BY dates.day;").ToList();
-            //måste lägga till fritids kväll här också
+                
                 return output;
             }
+                
 
         }
 
@@ -497,7 +498,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"SELECT child.id, category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, attendance.comment AS Comment
+                var output = connection.Query<Attendance>($@"SELECT child.id, attendance.id AS Id, category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, attendance.comment AS Comment
                                                              FROM ((((attendance 
                                                              INNER JOIN child ON child_id=child.id)   
                                                              INNER JOIN attendance_dates ON attendance_id=attendance.id)
@@ -567,7 +568,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Attendance>($@"SELECT child_id, category_attendance_id, category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, comment AS Comment 
+                var output = connection.Query<Attendance>($@"SELECT child_id, attendance.id AS Id, category_attendance_id, category_attendance.name_type AS Category_attendance, dates.day AS Day, dates.week AS Week, comment AS Comment 
                     FROM ((((attendance
                     INNER JOIN child on child_id = child.id)
                     INNER JOIN category_attendance on category_attendance_id = category_attendance.id)
@@ -585,13 +586,13 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                var output = connection.Query<Meal>($@"SELECT dates.id, dates.day AS Day, dates.week AS Week, meals.name AS Name
+                var output = connection.Query<Meal>($@"SELECT dates.id AS DatesId, dates.day AS Day, dates.week AS Week, meals.name AS Name, meals.id AS Id
                     FROM (((child                   
                     INNER JOIN meals on child.id=meals.child_id)
                     INNER JOIN meals_dates ON meals.id=meals_id)
                     INNER JOIN dates on meals_dates.dates_id=dates.id)
                     WHERE child.id='{Activechild.Id}'
-                    GROUP BY dates.id, dates.day, dates.week, meals.name
+                    GROUP BY dates.id, dates.day, dates.week, meals.name, meals.id
                     ORDER BY dates.id ASC").ToList();
 
                 return output;

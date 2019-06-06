@@ -32,6 +32,12 @@ namespace WpfApp1
         private void ListViewTotalFritids_Loaded(object sender, RoutedEventArgs e)
         {
             fritdschildren = DbOperations.GetChildrenAtFritids();
+
+            foreach (var c in fritdschildren)
+            {
+                c.UpdateLeaveAlone();
+            }
+
             listViewTotalFritids.ItemsSource = fritdschildren;
             listViewTotalFritids.DisplayMemberPath = "Fullinformation";
         }
