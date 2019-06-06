@@ -29,13 +29,13 @@
                         <ColumnDefinition Width="467*"/>
                         <ColumnDefinition Width="177*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="ListViewChildren" HorizontalAlignment="Left" Height="325" VerticalAlignment="Top" Width="755"  Grid.ColumnSpan="5" SelectionChanged="ListViewChildren_SelectionChanged">
+                    <ListView x:Name="ListViewChildren" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="775"  Grid.ColumnSpan="5" SelectionChanged="ListViewChildren_SelectionChanged">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Förnamn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
                                 <GridViewColumn Header="Efternamn" Width="200" DisplayMemberBinding="{Binding Lastname}"/>
                                 <GridViewColumn Header="Ålder" Width="150" DisplayMemberBinding="{Binding Age}"/>
-                                <GridViewColumn Header="Klass" Width="200" DisplayMemberBinding="{Binding Class}"/>
+                                <GridViewColumn Header="Klass" Width="202" DisplayMemberBinding="{Binding Class}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -63,12 +63,12 @@
                         <ColumnDefinition Width="17*"/>
                         <ColumnDefinition Width="868*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="ListViewGuardians" Height="285" VerticalAlignment="Top" HorizontalAlignment="Left" Width="715" Grid.ColumnSpan="4" SelectionChanged="ListViewGuardians_SelectionChanged">
+                    <ListView x:Name="ListViewGuardians" Height="300" VerticalAlignment="Top" HorizontalAlignment="Left" Width="775" Grid.ColumnSpan="4" SelectionChanged="ListViewGuardians_SelectionChanged">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Förnamn" Width="180" DisplayMemberBinding="{Binding Firstname}"/>
-                                <GridViewColumn Header="Efternamn" Width="180" DisplayMemberBinding="{Binding Lastname}"/>
-                                <GridViewColumn Header="Epost" Width="200" DisplayMemberBinding="{Binding Email}"/>
+                                <GridViewColumn Header="Förnamn" Width="200" DisplayMemberBinding="{Binding Firstname}"/>
+                                <GridViewColumn Header="Efternamn" Width="200" DisplayMemberBinding="{Binding Lastname}"/>
+                                <GridViewColumn Header="Epost" Width="202" DisplayMemberBinding="{Binding Email}"/>
                                 <GridViewColumn Header="Telefon" Width="150" DisplayMemberBinding="{Binding Phone}"/>
                             </GridView>
                         </ListView.View>
