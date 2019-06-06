@@ -20,7 +20,7 @@ namespace WpfApp1
     /// </summary>
     public partial class StaffFritids : Window
     {
-        List<Attendance> fritdschildren = new List<Attendance>();
+        List<Attendance> fritidschildren = new List<Attendance>();
         List<Attendance> fritidsgonehome = new List<Attendance>();
 
         public StaffFritids()
@@ -29,37 +29,48 @@ namespace WpfApp1
 
         }
 
+        private void ChangeValueLeaveAlone(List list)
+        {
+
+        }
+
         private void ListViewTotalFritids_Loaded(object sender, RoutedEventArgs e)
         {
-            fritdschildren = DbOperations.GetChildrenAtFritids();
+            fritidschildren = DbOperations.GetChildrenAtFritids();
 
-            foreach (var c in fritdschildren)
+            foreach (var c in fritidschildren)
             {
                 c.UpdateLeaveAlone();
             }
 
-            listViewTotalFritids.ItemsSource = fritdschildren;
-            listViewTotalFritids.DisplayMemberPath = "Fullinformation";
+            listViewTotalFritids.ItemsSource = fritidschildren;
+           
         }
 
         private void ListViewFritidsGonehome_Loaded(object sender, RoutedEventArgs e)
         {
             fritidsgonehome = DbOperations.GetChildrenGoneHome();
+
+            foreach (var c in fritidsgonehome)
+            {
+                c.UpdateLeaveAlone();
+            }
+
             listViewFritidsGonehome.ItemsSource = fritidsgonehome;
-            listViewFritidsGonehome.DisplayMemberPath = "Fullinformation";
+          
         }
 
         private void BtnChildHome_Click(object sender, RoutedEventArgs e)
         {
             DbOperations.SetChildGoneHome();
 
-            fritdschildren = DbOperations.GetChildrenAtFritids();
-            listViewTotalFritids.ItemsSource = fritdschildren;
-            listViewTotalFritids.DisplayMemberPath = "Fullinformation";
+            fritidschildren = DbOperations.GetChildrenAtFritids();
+            listViewTotalFritids.ItemsSource = fritidschildren;
+            
 
             fritidsgonehome = DbOperations.GetChildrenGoneHome();
             listViewFritidsGonehome.ItemsSource = fritidsgonehome;
-            listViewFritidsGonehome.DisplayMemberPath = "Fullinformation";
+            
         }
 
         private void ListViewTotalFritids_SelectionChanged(object sender, SelectionChangedEventArgs e)

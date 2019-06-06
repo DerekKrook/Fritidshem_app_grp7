@@ -17,17 +17,7 @@ namespace WpfApp1
         public string LeaveAlone { get; set; }
         public string Week { get; set; }
         public string HomeAlone { get; set; }
-        //public string Fullinformation
-        //{
-        //    get
-        //    {
-
-        //        return $"{Child} {Guardian} {Day} {HomeAlone} {Comment}";
-
-        //    }
-        //}
-
-
+        
         public void UpdateLeaveAlone()
         {
             if (LeaveAlone == "True")
