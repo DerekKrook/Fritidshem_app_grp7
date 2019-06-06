@@ -78,7 +78,7 @@ namespace WpfApp1
         private void UpdateChildLabel()
         {
             lblActiveChild.Content = $"{Activechild.Firstname} {Activechild.Lastname}";
-            lblActiveChild2.Content = $"{Activechild.Firstname} {Activechild.Lastname}";
+            //lblActiveChild2.Content = $"{Activechild.Firstname} {Activechild.Lastname}";
         }
         private void BtnAbscense_Click(object sender, RoutedEventArgs e)
         {
