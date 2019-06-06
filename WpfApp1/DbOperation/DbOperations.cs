@@ -28,7 +28,7 @@ namespace WpfApp1
                 
                 var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class_id, class.name AS Class 
                 FROM(child INNER JOIN class on class_id = class.id) 
-                WHERE child.firstname LIKE '%{@a}%' OR child.lastname LIKE '%{@a}%';").ToList();
+                WHERE child.firstname LIKE @A OR child.lastname LIKE @A", new {A ='%' + a + '%'}).ToList();
 
                 return output;
 
@@ -67,7 +67,7 @@ namespace WpfApp1
                 var output = connection.Query<Child>($@"SELECT child.id, child.firstname, child.lastname, child.leavealone, class.name AS Class, department.id AS avdelning 
                 FROM((child INNER JOIN class ON class_id = class.id) 
                 INNER JOIN department ON department_id = department.id) 
-                WHERE department_id = {departmentid} ORDER BY class_id DESC;").ToList();
+                WHERE department_id = @DepartmentID ORDER BY class_id DESC;", new {DepartmentID = departmentid}).ToList();
 
                 return output;
             }
@@ -132,7 +132,7 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 var output = connection.Query<Guardian>($@"SELECT * FROM child 
-                WHERE firstname LIKE '%{@firstName}%' OR lastname LIKE '%{@lastName}%'").ToList();
+                WHERE firstname LIKE @Firstname OR lastname LIKE @Lastname", new {Firstname = '%' + firstName + '%', Lastname = '%' + lastName + '%' }).ToList();
 
                 return output;
             }
@@ -141,17 +141,16 @@ namespace WpfApp1
         //Hämtar barn till vårdnadshavare 
         public static List<Child> GetChildrenOfGuardian()
         {
-            var Id = Activeguardian.Id;
+            var id = Activeguardian.Id;
 
-            var Query = $@"SELECT guardian_id, child_id AS Id, child.firstname, child.lastname, child.age, child.leavealone, child.class_id, meals.id AS Mealsid
+           
+            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
+            {
+                var output = connection.Query<Child>($@"SELECT guardian_id, child_id AS Id, child.firstname, child.lastname, child.age, child.leavealone, child.class_id, meals.id AS Mealsid
                                   FROM ((meals
                                   INNER JOIN child ON child_id = child.id)
                                   INNER JOIN guardian ON guardian_id = guardian.id)
-                                  WHERE guardian_id = '{Id}'"; 
-
-            using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
-            {
-                var output = connection.Query<Child>(Query).ToList();
+                                  WHERE guardian_id = @Id", new { Id = id }).ToList();
 
                 return output;
             }
@@ -178,36 +177,49 @@ namespace WpfApp1
             Schedule s = new Schedule();
             List <Schedule> schedules = new List<Schedule>();
 
-            var Query = $@"SELECT lecture.name AS Lecturename, dates.day AS Day, time.timestart AS Timestart, time.timefinish AS Timefinish 
-            FROM ((((((child INNER JOIN schedule ON child.id = child_id) 
-            INNER JOIN schedule_lecture ON schedule.id = schedule_id) 
-            INNER JOIN lecture ON lecture__id = lecture.id) 
-            INNER JOIN lecture_dates_time ON lecture.id = lecture_id) 
-            INNER JOIN dates ON dates_id = dates.id) INNER JOIN time ON time_id = time.id)
-            WHERE child.id='{Id}' AND dates.day='{day}' ORDER BY time.timestart ASC";           
+                       
 
             using (var conn = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 conn.Open();
 
-                using (var cmd = new NpgsqlCommand(Query, conn))
-                    using (var reader = cmd.ExecuteReader())
+                using (var cmd = new NpgsqlCommand())
                 {
-                    while (reader.Read())
+
+
+                    cmd.Connection = conn; 
+                    cmd.CommandText = $@"SELECT lecture.name AS Lecturename, dates.day AS Day, time.timestart AS Timestart, time.timefinish AS Timefinish 
+                    FROM ((((((child INNER JOIN schedule ON child.id = child_id) 
+                    INNER JOIN schedule_lecture ON schedule.id = schedule_id) 
+                    INNER JOIN lecture ON lecture__id = lecture.id) 
+                    INNER JOIN lecture_dates_time ON lecture.id = lecture_id) 
+                    INNER JOIN dates ON dates_id = dates.id) INNER JOIN time ON time_id = time.id)
+                    WHERE child.id = @Id AND dates.day=@Day ORDER BY time.timestart ASC";
+
+                    cmd.Parameters.AddWithValue("Id", Id);
+                    cmd.Parameters.AddWithValue("Day", day);
+
+
+
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        s = new Schedule()
-
+                        while (reader.Read())
                         {
-                            Lecturename = reader["Lecturename"].ToString(),
-                            Day = reader["Day"].ToString(),
-                            Timestart = Convert.ToDateTime((reader["Timestart"]).ToString()),
-                            Timefinish = Convert.ToDateTime((reader["Timefinish"]).ToString())
+                            s = new Schedule()
 
-                        };
+                            {
+                                Lecturename = reader["Lecturename"].ToString(),
+                                Day = reader["Day"].ToString(),
+                                Timestart = Convert.ToDateTime((reader["Timestart"]).ToString()),
+                                Timefinish = Convert.ToDateTime((reader["Timefinish"]).ToString())
 
-                    schedules.Add(s);
-                    s.changeDateTime();
+                            };
+
+                            schedules.Add(s);
+                            s.changeDateTime();
+                        }
                     }
+
                 }
             }
             return schedules;
@@ -263,7 +275,7 @@ namespace WpfApp1
             
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Execute($@"UPDATE attendance SET category_attendance_id = 4, staff_id = {Activestaff.Id} WHERE id = {ActiveAttendance.Id};");
+                connection.Execute($@"UPDATE attendance SET category_attendance_id = 4, staff_id = @StaffID WHERE id = @AttendanceID", new {StaffID = Activestaff.Id, AttendanceID = ActiveAttendance.Id });
           
             }
 
@@ -272,10 +284,10 @@ namespace WpfApp1
         //uppdatera mail och/eller telefon på förälder 
         public static void UpdateGuardianProperties(int phone, string email, string firstname, string lastname)
         {
-            var Id = Activeguardian.Id;
+            var id = Activeguardian.Id;
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Execute($@"UPDATE guardian SET firstname = '{@firstname}', lastname = '{@lastname}', email = '{@email}', phone = {phone} WHERE id = {Id}");
+                connection.Execute($@"UPDATE guardian SET firstname = @Firstname, lastname = @Lastname, email = @Email, phone = @Phone WHERE id = @Id", new {Firstname = firstname, Lastname = lastname, Email = email, Phone = phone, Id = id});
                
             }
 
@@ -291,7 +303,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Execute($@"INSERT INTO guardian (firstname, lastname, phone, email) VALUES ('{@firstname}', '{@lastname}', {@phone}, '{@email}')");
+                connection.Execute($@"INSERT INTO guardian (firstname, lastname, phone, email) VALUES (@Firstname, @Lastname, @Phone, @Email)", new {Firstname = firstname, Lastname = lastname, Phone = phone, Email = email });
                
             }
         }
@@ -299,7 +311,7 @@ namespace WpfApp1
        // Uppdatera barnuppgifter
         public static void UpdateChildProperties(string firstname, string lastname, string age, int classid)
         {
-            var Id = Activechild.Id;
+            var id = Activechild.Id;
             InputHandler inputhandler = new InputHandler();
    
             var a = inputhandler.Uppercase(firstname);
@@ -308,7 +320,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Execute($@"UPDATE child SET firstname = '{@firstname}', lastname = '{@lastname}', age = {age}, class_id = {classid} WHERE id = {Id}");               
+                connection.Execute($@"UPDATE child SET firstname = @Firstname, lastname = @Lastname, age = @Age, class_id = @Classid WHERE id = @Id", new {Firstname = firstname, Lastname = lastname, Age = age, Classid = classid, Id = id});               
             }
 
         }
@@ -323,7 +335,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Execute($@"INSERT INTO child (firstname, lastname, age, class_id) VALUES ('{@firstname}','{@lastname}', {@age}, {classid});");
+                connection.Execute($@"INSERT INTO child (firstname, lastname, age, class_id) VALUES (@Firstname, @Lastname, @Age, @Classid);", new {Firstname = firstname, Lastname = lastname, Age = age, Classid = classid });
                              
             }
 
@@ -331,12 +343,12 @@ namespace WpfApp1
         // tar bort barn
         public static void DeleteChild()
         {
-            var Id = Activechild.Id;
+            var id = Activechild.Id;
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
 
-                connection.Execute($@"DELETE FROM child WHERE id = {Id};");
+                connection.Execute($@"DELETE FROM child WHERE id = @Id;", new {Id = id});
                 
             }
 
@@ -366,7 +378,7 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                
-                connection.Execute($@"INSERT INTO guardian_child(guardian_id, child_id) VALUES('{Activeguardian.Id}', '{Activechild.Id}'); INSERT INTO meals (name, guardian_id, child_id) VALUES('frukost', '{Activeguardian.Id}', '{Activechild.Id}')");
+                connection.Execute($@"INSERT INTO guardian_child(guardian_id, child_id) VALUES(@GuardianID, @ChildID); INSERT INTO meals (name, guardian_id, child_id) VALUES('frukost', @GuardianID, @ChildID)", new { GuardianID = Activeguardian.Id, ChildID = Activechild.Id});
                   
             }
 
@@ -379,7 +391,9 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
 
-                connection.Execute($@"DELETE FROM guardian_child WHERE guardian_id = {Activeguardian.Id} AND child_id = {Activechild.Id}; DELETE FROM meals WHERE meals.id = '{Activechild.Mealsid}';");
+                connection.Execute($@"DELETE FROM guardian_child 
+                WHERE guardian_id = @GuardianID AND child_id = @ChildID; 
+                DELETE FROM meals WHERE meals.id = @ChildMealsID", new {GuardianID = Activeguardian.Id, ChildID = Activechild.Id, ChildMealsID = Activechild.Mealsid});
                 
             }
         }
@@ -387,12 +401,12 @@ namespace WpfApp1
         // Tar bort vårdnadshavare
         public static void DeleteGuardian()
         {
-            var Id = Activeguardian.Id;
+            var id = Activeguardian.Id;
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
 
-                connection.Execute($@"DELETE FROM guardian WHERE id = {Id};");
+                connection.Execute($@"DELETE FROM guardian WHERE id = @Id", new {Id = id});
                
             }
 
@@ -419,13 +433,13 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 connection.Execute($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
-                                                                    VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{ActiveAttendancecategory.Id}', '{comment}');
+                                                                    VALUES (@ChildID, @GuardianID, @AttendanceCategoryID, @Comment);
                                                              INSERT INTO attendance_dates (attendance_id, dates_id) 
                                                                     SELECT attendance.id, dates.id 
                                                                     FROM attendance, dates 
                                                                     WHERE attendance.id = (SELECT MAX(attendance.id) 
-                                                                    FROM attendance) AND dates.id = '{ActiveDate.Id}';");
-                
+                                                                    FROM attendance) AND dates.id = @DateID", new {ChildID = Activechild.Id, GuardianID = Activeguardian.Id, AttendanceCategoryID = ActiveAttendancecategory.Id, Comment = comment, DateID = ActiveDate.Id});
+              
             }
 
         }
@@ -437,12 +451,12 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 connection.Execute($@"INSERT INTO attendance(child_id, staff_id, category_attendance_id, comment)
-                VALUES('{Activechild.Id}', '{Activestaff.Id}', '{ActiveAttendancecategory.Id}', '{comment}');
+                VALUES(@ChildID, @StaffID, @AttendanceCategoryID, @Comment);
                 INSERT INTO attendance_dates(attendance_id, dates_id)
                 SELECT attendance.id, dates.id
                 FROM attendance, dates
                 WHERE attendance.id = (SELECT MAX(attendance.id)
-                FROM attendance) AND dates.id = '{ActiveDate.Id}'; ");
+                FROM attendance) AND dates.id = @DateID", new {ChildID = Activechild.Id, StaffID = Activestaff.Id, AttendanceCategoryID = ActiveAttendancecategory.Id, Comment = comment, DateID = ActiveDate.Id});
 
                 
             }
@@ -470,9 +484,9 @@ namespace WpfApp1
             {
                 var output = connection.Query<Date>($@"SELECT dates.id, week, dates.day 
                             FROM dates 
-                            WHERE week='{weeks}'
+                            WHERE week=@Week
                             GROUP BY dates.id, week, dates.day
-                            ORDER BY dates.id ASC").ToList();
+                            ORDER BY dates.id ASC", new {Week = weeks}).ToList();
                 return output;
             }
 
@@ -517,7 +531,7 @@ namespace WpfApp1
         {
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Execute($@"UPDATE staff SET email = '{email}' WHERE id = {Activestaff.Id}");
+                connection.Execute($@"UPDATE staff SET email = @Email WHERE id = @StaffID", new {Email = email, StaffID = Activestaff.Id});
                
             }
 
@@ -530,12 +544,12 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 connection.Execute($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
-                VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
+                VALUES (@ChildID, @GuardianID, @AttendanceID, @Comment);
                 INSERT INTO attendance_dates (attendance_id, dates_id) 
                 SELECT attendance.id, dates.id 
                 FROM attendance, dates 
                 WHERE attendance.id = (SELECT MAX(attendance.id) 
-                FROM attendance) AND dates.id = '{ActiveDate.Id}';");
+                FROM attendance) AND dates.id = @DateID", new {ChildID = Activechild.Id, GuardianID = Activeguardian.Id, AttendanceID = attendanceid, Comment = comment, DateID = ActiveDate.Id});
                 
             }
 
@@ -548,14 +562,14 @@ namespace WpfApp1
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
                 connection.Execute($@"INSERT INTO attendance (child_id, guardian_id, category_attendance_id, comment)
-                VALUES ('{Activechild.Id}', '{Activeguardian.Id}', '{attendanceid}', '{comment}');
+                VALUES (@ChildID, @GuardianID, @AttendanceID, @Comment);
                 INSERT INTO attendance_dates (attendance_id, dates_id) 
                 SELECT attendance.id, dates.id 
                 FROM attendance, dates 
                 WHERE attendance.id = (SELECT MAX(attendance.id) 
-                FROM attendance) AND dates.id = '{ActiveDate.Id}';
+                FROM attendance) AND dates.id = @DateID;
                 INSERT INTO meals_dates (meals_id, dates_id) 
-			    VALUES ('{Activechild.Mealsid}', '{ActiveDate.Id}');");
+			    VALUES (@ChildMealsID, @DateID);", new {ChildID = Activechild.Id, GuardianID = Activeguardian.Id, AttendanceID = attendanceid, Comment = comment, DateID = ActiveDate.Id, ChildMealsID = Activechild.Mealsid});
                 
             }
 
@@ -574,7 +588,7 @@ namespace WpfApp1
                     INNER JOIN category_attendance on category_attendance_id = category_attendance.id)
                     INNER JOIN attendance_dates on attendance.id = attendance_id)
                     INNER JOIN dates on dates_id = dates.id)
-                    WHERE child_id = '{Activechild.Id}' AND (category_attendance_id = 3 OR category_attendance_id = 7)").ToList(); 
+                    WHERE child_id = @ChildID AND (category_attendance_id = 3 OR category_attendance_id = 7)", new {ChildID = Activechild.Id}).ToList(); 
 
                 return output;
             }
@@ -591,9 +605,9 @@ namespace WpfApp1
                     INNER JOIN meals on child.id=meals.child_id)
                     INNER JOIN meals_dates ON meals.id=meals_id)
                     INNER JOIN dates on meals_dates.dates_id=dates.id)
-                    WHERE child.id='{Activechild.Id}'
+                    WHERE child.id=@ChildID
                     GROUP BY dates.id, dates.day, dates.week, meals.name, meals.id
-                    ORDER BY dates.id ASC").ToList();
+                    ORDER BY dates.id ASC", new {ChildID = Activechild.Id}).ToList();
 
                 return output;
             }
