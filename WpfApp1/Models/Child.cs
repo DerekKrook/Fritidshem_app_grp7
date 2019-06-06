@@ -17,6 +17,7 @@ namespace WpfApp1
         public string Class { get ; set ; }
         public string Guardian { get; set; }
         public int Mealsid { get; set; }
+        public string LeaveAloneString { get; set; }
 
         public string Fullinformation
         {
@@ -28,6 +29,18 @@ namespace WpfApp1
             }
         }
 
-        
+        public void UpdateLeaveAlone()
+        {
+            if (LeaveAlone == true)
+            {
+                LeaveAloneString = "Ja";
+            }
+            else if (LeaveAlone==false)
+            {
+                LeaveAloneString = "Nej";
+            }
+
+        }
+
     }
 }

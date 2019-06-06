@@ -26,6 +26,7 @@ namespace WpfApp1
         List<Child> children = new List<Child>();
         List<Guardian> guardian = new List<Guardian>();
         List<Schedule> schedule = new List<Schedule>();
+        Child c = new Child();
 
         public ListViewStaff()
         {
@@ -64,8 +65,12 @@ namespace WpfApp1
 
             children = DbOperations.GetChildren(txtNameChild.Text);
             txtNameChild.Clear();
+            foreach (var c in children)
+            {
+                c.UpdateLeaveAlone();
+            }
             ListViewStaff1.ItemsSource = children;
-            ListViewStaff1.DisplayMemberPath = "Fullinformation";
+            
 
         }
         private void BtnEmptySearch_Click(object sender, RoutedEventArgs e)

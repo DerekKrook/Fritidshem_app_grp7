@@ -38,7 +38,7 @@
                     <GridViewColumn Header="Förnamn" Width="150" DisplayMemberBinding="{Binding Firstname}"/>
                     <GridViewColumn Header="Efternamn" Width="150" DisplayMemberBinding="{Binding Lastname}"/>
                     <GridViewColumn Header="Klass" Width="100" DisplayMemberBinding="{Binding Class}"/>
-                    <GridViewColumn Header="Hem själv" Width="70" DisplayMemberBinding="{Binding LeaveAlone}"/>
+                    <GridViewColumn Header="Hem själv" Width="70" DisplayMemberBinding="{Binding LeaveAloneString}"/>
                 </GridView>
             </ListView.View>
         </ListView>
