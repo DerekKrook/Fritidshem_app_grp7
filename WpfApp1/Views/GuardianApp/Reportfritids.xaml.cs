@@ -227,7 +227,7 @@ namespace WpfApp1
             }
             catch (PostgresException ex)
             {
-                MessageBox.Show("Du har redan anmält måltid för denna dag");
+                MessageBox.Show(ex.Message);
             }
            
         }
