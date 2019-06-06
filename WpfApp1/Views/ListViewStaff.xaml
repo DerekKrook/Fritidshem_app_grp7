@@ -115,10 +115,10 @@
                 <ListView x:Name="ListViewStaff1_Abscense" HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="668" SelectionChanged="ListViewStaff1_Class3_SelectionChanged">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Barn" Width="150" DisplayMemberBinding="{Binding Child}"/>
-                            <GridViewColumn Header="Förälder" Width="150" DisplayMemberBinding="{Binding Guardian}"/>
-                            <GridViewColumn Header="Vecka" Width="40" DisplayMemberBinding="{Binding Week}"/>
-                            <GridViewColumn Header="Dag" Width="80" DisplayMemberBinding="{Binding Day}"/>
+                            <GridViewColumn Header="Barn" Width="135" DisplayMemberBinding="{Binding Child}"/>
+                            <GridViewColumn Header="Förälder" Width="135" DisplayMemberBinding="{Binding Guardian}"/>
+                            <GridViewColumn Header="Vecka" Width="45" DisplayMemberBinding="{Binding Week}"/>
+                            <GridViewColumn Header="Dag" Width="70" DisplayMemberBinding="{Binding Day}"/>
                             <GridViewColumn Header="Kommentar" Width="150" DisplayMemberBinding="{Binding Comment}"/>
                             <GridViewColumn Header="Frånvarande" Width="100" DisplayMemberBinding="{Binding Category_attendance}"/>
                         </GridView>
@@ -129,9 +129,9 @@
         </TabControl>
 
 
-        <Label x:Name="lblActiveChild" Content="" HorizontalAlignment="Right" Margin="0,0,15,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="394" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="lblActiveChild" Content="" HorizontalAlignment="Center" Margin="0,0,15,0" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="394" Grid.RowSpan="2" Grid.Column="2" />
 
-        <TabControl x:Name="tabSchedule" HorizontalAlignment="Right" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2">
+        <TabControl x:Name="tabSchedule" HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="410" Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" >
             <TabItem x:Name="Monday" Header="Måndag" GotFocus="Monday_GotFocus">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
