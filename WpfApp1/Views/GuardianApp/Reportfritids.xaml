@@ -80,8 +80,8 @@
                         <RowDefinition Height="500"/>
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="lblChooseChild2" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Margin="114,0,165,0" Grid.ColumnSpan="2"/>
-                    <ComboBox x:Name="comboBoxChildren2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren2_SelectionChanged" Margin="114,0,165,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblChooseChild2" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Grid.ColumnSpan="3"/>
+                    <ComboBox x:Name="comboBoxChildren2" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildren2_SelectionChanged" Grid.Column="1" Grid.ColumnSpan="3"/>
 
                     <ListView x:Name="ListView" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="560"  Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,-9,0">
                         <ListView.View>
@@ -103,8 +103,8 @@
                         <RowDefinition Height="20"/>
                         <RowDefinition Height="500"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="lblChooseChild3" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Margin="114,0,165,0" Grid.ColumnSpan="2"/>
-                    <ComboBox x:Name="comboBoxChildMeals" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildMeals_SelectionChanged" Margin="114,0,165,0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <Label x:Name="lblChooseChild3" Content="Välj Barn" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="comboBoxChildMeals" HorizontalAlignment="Center" Grid.Row="0" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxChildMeals_SelectionChanged" Grid.Column="1" Grid.ColumnSpan="2"/>
 
                     <ListView x:Name="ListViewMeals" HorizontalAlignment="Left" Height="500" VerticalAlignment="Top" Width="560"  Grid.Row="2">
                         <ListView.View>
