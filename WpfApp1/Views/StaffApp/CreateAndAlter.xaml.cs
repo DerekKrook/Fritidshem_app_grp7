@@ -81,7 +81,7 @@ namespace WpfApp1
             {
                 try
                 {
-                    DbOperations.AddNewChild(txtboxFirstName.Text, txtboxLastName.Text, txtboxAge.Text, classes.Id);
+                    DbOperations.AddNewChild(txtboxFirstName.Text, txtboxLastName.Text, int.Parse(txtboxAge.Text), classes.Id);
                     ClearTextbox();
                     Updatelists();
                     UpdatedMessage();

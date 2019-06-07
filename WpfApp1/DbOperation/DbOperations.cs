@@ -348,7 +348,7 @@ namespace WpfApp1
         }
   
         // lägg till nytt barn
-        public static void AddNewChild(string firstname, string lastname, string age, int classid)
+        public static void AddNewChild(string firstname, string lastname, int age, int classid)
         {
 
             InputHandler inputhandler = new InputHandler();
@@ -357,7 +357,7 @@ namespace WpfApp1
 
             using (IDbConnection connection = new NpgsqlConnection(ConnString.ConnVal("dbConn")))
             {
-                connection.Execute($@"INSERT INTO child (firstname, lastname, age, class_id) VALUES (@Firstname, @Lastname, @Age, @Classid);", new {Firstname = firstname, Lastname = lastname, Age = age, Classid = classid });
+                connection.Execute($@"INSERT INTO child (firstname, lastname, age, class_id) VALUES (@Firstname, @Lastname, @Age, @Classid)", new {Firstname = firstname, Lastname = lastname, Age = age, Classid = classid });
                              
             }
 
