@@ -82,6 +82,9 @@ namespace WpfApp1
                 try
                 {
                     DbOperations.AddNewChild(txtboxFirstName.Text, txtboxLastName.Text, txtboxAge.Text, classes.Id);
+                    ClearTextbox();
+                    Updatelists();
+                    UpdatedMessage();
                 }
                 catch (Exception)
                 {
@@ -90,9 +93,7 @@ namespace WpfApp1
                                     "Felmeddelande");
                 }
             }
-            ClearTextbox();
-            Updatelists();
-            UpdatedMessage();
+
 
         }
         private void BtnChange_Click(object sender, RoutedEventArgs e)
