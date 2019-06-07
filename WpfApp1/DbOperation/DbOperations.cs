@@ -262,7 +262,7 @@ namespace WpfApp1
             INNER JOIN attendance_dates ON attendance_dates.dates_id = attendance_dates.dates_id AND attendance.id = attendance_dates.attendance_id) 
             INNER JOIN dates ON attendance_dates.dates_id = dates.id AND dates.day = dates.day) 
             WHERE (category_attendance_id = 3 OR category_attendance_id = 7) 
-            ORDER BY dates.week;").ToList();
+            ORDER BY attendance_dates.dates_id;").ToList();
                 
                 return output;
             }

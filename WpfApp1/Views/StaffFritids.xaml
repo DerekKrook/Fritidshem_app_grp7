@@ -30,8 +30,9 @@
                             <GridView>
                                 <GridViewColumn Header="Barn" Width="150" DisplayMemberBinding="{Binding Child}"/>
                                 <GridViewColumn Header="Förälder" Width="150" DisplayMemberBinding="{Binding Guardian}"/>
-                                <GridViewColumn Header="Vecka" Width="100" DisplayMemberBinding="{Binding Week}"/>
-
+                                <GridViewColumn Header="Fritids" Width="100" DisplayMemberBinding="{Binding Category_attendance}"/>
+                                <GridViewColumn Header="Vecka" Width="60" DisplayMemberBinding="{Binding Week}"/>
+                                
                                 <GridViewColumn Header="Dag" Width="100" DisplayMemberBinding="{Binding Day}"/>
                                 <GridViewColumn Header="Hem själv" Width="80" DisplayMemberBinding="{Binding LeaveAlone}"/>
                                 <GridViewColumn Header="Kommentar" Width="200" DisplayMemberBinding="{Binding Comment}"/>
@@ -51,7 +52,8 @@
                             <GridView>
                                 <GridViewColumn Header="Barn" Width="150" DisplayMemberBinding="{Binding Child}"/>
                                 <GridViewColumn Header="Förälder" Width="150" DisplayMemberBinding="{Binding Guardian}"/>
-                                <GridViewColumn Header="Vecka" Width="100" DisplayMemberBinding="{Binding Week}"/>
+                                <GridViewColumn Header="Fritids" Width="100" DisplayMemberBinding="{Binding Category_attendance}"/>
+                                <GridViewColumn Header="Vecka" Width="60" DisplayMemberBinding="{Binding Week}"/>
                                 <GridViewColumn Header="Dag" Width="100" DisplayMemberBinding="{Binding Day}"/>
                                 <GridViewColumn Header="Hem själv" Width="80" DisplayMemberBinding="{Binding LeaveAlone}"/>
                                 <GridViewColumn Header="Kommentar" Width="200" DisplayMemberBinding="{Binding Comment}"/>
