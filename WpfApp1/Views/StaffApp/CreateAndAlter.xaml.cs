@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.Models;
+using Npgsql;
 
 namespace WpfApp1
 {
@@ -33,16 +34,13 @@ namespace WpfApp1
         public async void UpdatedMessage()
         {
             lblUpdatedchild.Visibility = Visibility.Visible;
-            await Task.Delay(3500);
-            lblUpdatedchild.Visibility = Visibility.Hidden;
-
             lblUpdatedguardian.Visibility = Visibility.Visible;
-            await Task.Delay(3500);
-            lblUpdatedguardian.Visibility = Visibility.Hidden;
-
             lblUpdatedconnection.Visibility = Visibility.Visible;
             await Task.Delay(3500);
+            lblUpdatedguardian.Visibility = Visibility.Hidden;
+            lblUpdatedchild.Visibility = Visibility.Hidden;
             lblUpdatedconnection.Visibility = Visibility.Hidden;
+
         }
 
         private void Updatelists()
@@ -86,11 +84,10 @@ namespace WpfApp1
                     Updatelists();
                     UpdatedMessage();
                 }
-                catch (Exception)
+                catch (PostgresException ex)
                 {
 
-                    MessageBox.Show("Fyll i fält",
-                                    "Felmeddelande");
+                    MessageBox.Show(ex.Message);
                 }
             }
 
@@ -98,12 +95,21 @@ namespace WpfApp1
         }
         private void BtnChange_Click(object sender, RoutedEventArgs e)
         {
-            Class classes = (Class)comboBoxClass.SelectedItem;
-            Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
-            DbOperations.UpdateChildProperties(txtboxFirstName.Text, txtboxLastName.Text, int.Parse(txtboxAge.Text), classes.Id);
-            Updatelists();
-            ClearTextbox();
-            UpdatedMessage();
+            try
+            {
+                Class classes = (Class)comboBoxClass.SelectedItem;
+                Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
+                DbOperations.UpdateChildProperties(txtboxFirstName.Text, txtboxLastName.Text, int.Parse(txtboxAge.Text), classes.Id);
+                Updatelists();
+                ClearTextbox();
+                UpdatedMessage();
+            }
+            catch (PostgresException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+           
         }
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -154,14 +160,14 @@ namespace WpfApp1
             try
             {
                 Activeguardian.Setactiveguardian((Guardian)ListViewGuardians.SelectedItem);
-
+                UpdateGuardian();
             }
-            catch (Exception)
+            catch (PostgresException ex)
             {
 
-                return;
+                MessageBox.Show(ex.Message);
+
             }
-            UpdateGuardian();
 
         }
 
@@ -170,22 +176,34 @@ namespace WpfApp1
             try
             {
                 Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
+                UpdateChild();
             }
-            catch (Exception)
+            catch (PostgresException ex)
             {
-                return;
+                MessageBox.Show(ex.Message);
+
             }
-            UpdateChild();
+
         }
 
 
         private void SaveGuardian_Click(object sender, RoutedEventArgs e)
         {
-            Activeguardian.Setactiveguardian((Guardian)ListViewGuardians.SelectedItem);
-            DbOperations.UpdateGuardianProperties(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxEmailGuardian.Text, txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text);
-            Updatelists();
-            ClearTextbox();
-            UpdatedMessage();
+            try
+            {
+                Activeguardian.Setactiveguardian((Guardian)ListViewGuardians.SelectedItem);
+                DbOperations.UpdateGuardianProperties(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxEmailGuardian.Text, txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text);
+                Updatelists();
+                ClearTextbox();
+                UpdatedMessage();
+            }
+            catch (PostgresException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
         }
 
         private void BtnCancelGuardian_Click(object sender, RoutedEventArgs e)
@@ -196,10 +214,20 @@ namespace WpfApp1
 
         private void BtnDeleteGuardian_Click(object sender, RoutedEventArgs e)
         {
-            DbOperations.DeleteGuardian();
-            Updatelists();
-            ClearTextbox();
-            UpdatedMessage();
+            try
+            {
+                DbOperations.DeleteGuardian();
+                Updatelists();
+                ClearTextbox();
+                UpdatedMessage();
+            }
+            catch (PostgresException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+                
+            }
+           
         }
 
         private void AddNewGuardian_Click(object sender, RoutedEventArgs e)
@@ -210,24 +238,35 @@ namespace WpfApp1
                 try
                 {
                     DbOperations.AddNewGuardian(Convert.ToInt32(txtboxPhoneGuardian.Text), txtboxFirstNameGuardian.Text, txtboxLastNameGuardian.Text, txtboxEmailGuardian.Text);
+                    ClearTextbox();
+                    ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
+                    UpdatedMessage();
                 }
-                catch (Exception)
+                catch (PostgresException ex)
                 {
 
-                    MessageBox.Show("Fyll i fält",
-                                    "Felmeddelande");
+                    MessageBox.Show(ex.Message);
+
                 }
             }
-            ClearTextbox();
-            ListViewGuardians.ItemsSource = DbOperations.GetAllGuardians();
-            UpdatedMessage();
+
         }
 
         private void Connect_Click(object sender, RoutedEventArgs e)
         {
-            DbOperations.ConnectChildAndGuardian();
+            try
+            {
+                DbOperations.ConnectChildAndGuardian();
 
-            Updatelists();
+                Updatelists();
+            }
+            catch (PostgresException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
         }
 
         private void ListViewConnections_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -237,9 +276,19 @@ namespace WpfApp1
 
         private void RemoveConnection_Click(object sender, RoutedEventArgs e)
         {
-            DbOperations.DeleteConnection();
-            Updatelists();
-            UpdatedMessage();
+            try
+            {
+                DbOperations.DeleteConnection();
+                Updatelists();
+                UpdatedMessage();
+            }
+            catch (PostgresException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+
+            }
+
         }
 
         private void ComboBoxClass_SelectionChanged(object sender, SelectionChangedEventArgs e)

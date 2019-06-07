@@ -62,7 +62,7 @@
                     <ComboBox x:Name="comboBoxDay" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Bottom" Width="220" SelectionChanged="ComboBoxDay_SelectionChanged" Margin="166,0,165,0" SelectedIndex="0"/>
 
 
-                    <Label x:Name="lblComment" Content="Ange när barnet lämnas/hämtas" Grid.Row="10" HorizontalAlignment="Center" VerticalAlignment="Top" Width="230" HorizontalContentAlignment="Center" Margin="160,0,161,0"/>
+                    <Label x:Name="lblComment" Content="Ange när barnet lämnas/hämtas och av vem" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Top" Width="308" HorizontalContentAlignment="Center" Margin="116,25,127,0" Grid.RowSpan="2"/>
                     <TextBox x:Name="txtbxComment" Text="" HorizontalAlignment="Center" Grid.Row="10" Grid.Column="2" VerticalAlignment="Bottom" Width="220" HorizontalContentAlignment="Center" Height="70"/>
 
                     <Button x:Name="btnReportAbscence" Content="Anmäl Fritids" Click="BtnReportAbscence_Click" Style="{StaticResource ButtonStyleNormal}" HorizontalAlignment="Center" Grid.Row="11" Grid.Column="2" VerticalAlignment="Bottom" Width="220" Height="35"/>

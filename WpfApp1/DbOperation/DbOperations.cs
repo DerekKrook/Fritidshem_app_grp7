@@ -540,7 +540,8 @@ namespace WpfApp1
                                                              INNER JOIN attendance_dates ON attendance_id=attendance.id)
                                                              INNER JOIN dates ON dates_id=dates.id)
                                                              INNER JOIN category_attendance ON category_attendance_id = category_attendance.id) 
-                                                             where child_id = {Activechild.Id} AND (category_attendance_id = 1 OR category_attendance_id = 2)").ToList();
+                                                             where child_id = {Activechild.Id} AND (category_attendance_id = 1 OR category_attendance_id = 2)
+                                                             ORDER BY attendance.id").ToList();
 
 
                 return output;
@@ -610,7 +611,8 @@ namespace WpfApp1
                     INNER JOIN category_attendance on category_attendance_id = category_attendance.id)
                     INNER JOIN attendance_dates on attendance.id = attendance_id)
                     INNER JOIN dates on dates_id = dates.id)
-                    WHERE child_id = @ChildID AND (category_attendance_id = 3 OR category_attendance_id = 7)", new {ChildID = Activechild.Id}).ToList(); 
+                    WHERE child_id = @ChildID AND (category_attendance_id = 3 OR category_attendance_id = 7)
+                    ORDER BY attendance.id", new {ChildID = Activechild.Id}).ToList(); 
 
                 return output;
             }

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Npgsql;
 
 namespace WpfApp1
 {
@@ -86,12 +87,17 @@ namespace WpfApp1
 
         private void BtnReportAbscence_Click(object sender, RoutedEventArgs e)
         {
-            string comment = txtbxComment.Text;
+            try
+            {
+                string comment = txtbxComment.Text;
 
-            DbOperations.StaffReportAttendance(comment);
-            UpdatedMessage();
-
-
+                DbOperations.StaffReportAttendance(comment);
+                UpdatedMessage();
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 

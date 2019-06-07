@@ -29,11 +29,14 @@ namespace WpfApp1
 
         public static void Setactivestaff(Staff staff)
         {
-            Activestaff.Id = staff.Id;
-            Activestaff.Firstname = staff.Firstname;
-            Activestaff.Lastname = staff.Lastname;
-            Activestaff.Email = staff.Email;
-            Activestaff.Department = staff.Department;
+            if (staff != null)
+            {
+                Activestaff.Id = staff.Id;
+                Activestaff.Firstname = staff.Firstname;
+                Activestaff.Lastname = staff.Lastname;
+                Activestaff.Email = staff.Email;
+                Activestaff.Department = staff.Department;
+            }
                  
         }
     }
