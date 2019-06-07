@@ -100,7 +100,7 @@ namespace WpfApp1
         {
             Class classes = (Class)comboBoxClass.SelectedItem;
             Activechild.Setactivechild((Child)ListViewChildren.SelectedItem);
-            DbOperations.UpdateChildProperties(txtboxFirstName.Text, txtboxLastName.Text, txtboxAge.Text, classes.Id);
+            DbOperations.UpdateChildProperties(txtboxFirstName.Text, txtboxLastName.Text, int.Parse(txtboxAge.Text), classes.Id);
             Updatelists();
             ClearTextbox();
             UpdatedMessage();

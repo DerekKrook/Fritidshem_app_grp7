@@ -331,7 +331,7 @@ namespace WpfApp1
         }
 
        // Uppdatera barnuppgifter
-        public static void UpdateChildProperties(string firstname, string lastname, string age, int classid)
+        public static void UpdateChildProperties(string firstname, string lastname, int age, int classid)
         {
             var id = Activechild.Id;
             InputHandler inputhandler = new InputHandler();
